@@ -32,6 +32,8 @@ HEADERS = {
 MAANDEN = {
     "jan": "01", "feb": "02", "mar": "03", "apr": "04", "may": "05", "jun": "06",
     "jul": "07", "aug": "08", "sep": "09", "oct": "10", "nov": "11", "dec": "12",
+    # Nederlandse maandafkortingen die afwijken van de Engelse.
+    "mrt": "03", "mei": "05", "okt": "10",
 }
 
 LANDEN_NL = {
@@ -296,7 +298,113 @@ def scrape_asra():
     return entries
 
 
-SCRAPERS = [scrape_euroanaesthesia, scrape_esra_congress, scrape_painweek, scrape_asra]
+def scrape_nva_anesthesiologendagen():
+    """NVA (Nederlandse Vereniging voor Anesthesiologie): de agenda-pagina toont
+    een jaaroverzicht-kalender per maand met daarin de jaarlijkse
+    Anesthesiologendagen. Andere NVA-events (cursussen, ledenbijeenkomsten,
+    examens) worden genegeerd."""
+    url = "https://www.anesthesiologie.nl/agenda/"
+    try:
+        lines = fetch_lines(url)
+    except requests.RequestException as e:
+        warn("NVA", f"kon {url} niet ophalen: {e}")
+        return []
+
+    maand_header = re.compile(
+        r"^(Januari|Februari|Maart|April|Mei|Juni|Juli|Augustus|September|Oktober|November|December)\s+(20\d{2})$"
+    )
+    dag_regel = re.compile(r"^(\d{1,2})\s*(?:-\s*(\d{1,2}))?\s+([a-zA-Z]{3})$")
+
+    entries = []
+    huidig_jaar = None
+    i = 0
+    while i < len(lines):
+        regel = lines[i]
+        if maand_header.match(regel):
+            huidig_jaar = maand_header.match(regel).group(2)
+            i += 1
+            continue
+        m_dag = dag_regel.match(regel)
+        if m_dag and huidig_jaar and i + 1 < len(lines):
+            naam = lines[i + 1]
+            if "anesthesiologendagen" in naam.lower():
+                dag_start = m_dag.group(1)
+                dag_eind = m_dag.group(2) or dag_start
+                maand_naam = m_dag.group(3)
+                datum_start = maak_datum(huidig_jaar, maand_naam, dag_start)
+                datum_eind = maak_datum(huidig_jaar, maand_naam, dag_eind)
+                if datum_start and datum_eind:
+                    locatie = ""
+                    if (
+                        i + 3 < len(lines)
+                        and not maand_header.match(lines[i + 3])
+                        and not dag_regel.match(lines[i + 3])
+                        and lines[i + 3] not in ("Congres", "Opleiding")
+                    ):
+                        locatie = lines[i + 3]
+                    entries.append({
+                        "id": f"nva-anesthesiologendagen-{huidig_jaar}",
+                        "naam": naam,
+                        "organisatie": "NVA (Nederlandse Vereniging voor Anesthesiologie)",
+                        "land": "Nederland",
+                        "stad": locatie or "Nog niet bekend",
+                        "datumStart": datum_start,
+                        "datumEind": datum_eind,
+                        "onderwerp": ["algemene anesthesiologie"],
+                        "kosten": "Nog niet gepubliceerd",
+                        "bron": url,
+                    })
+            i += 2
+            continue
+        i += 1
+
+    if not entries:
+        warn("NVA", f"geen 'Anesthesiologendagen' gevonden op {url} -- pagina-structuur mogelijk gewijzigd.")
+    return entries
+
+
+def scrape_espa():
+    """ESPA (European Society for Paediatric Anaesthesiology): de jaarlijkse
+    congressite toont de actuele editie in een enkele titelregel. Toekomstige
+    edities staan pas op een nieuwe site zodra die gepubliceerd wordt, dus
+    verder dan het lopende/eerstvolgende jaar kijkt dit (nog) niet."""
+    url = "https://www.espacongress.com/"
+    try:
+        lines = fetch_lines(url)
+    except requests.RequestException as e:
+        warn("ESPA", f"kon {url} niet ophalen: {e}")
+        return []
+
+    for regel in lines:
+        m = re.search(
+            r"(\d+)\w{2} European [Cc]ongress for Paediatric Anaesthesiology,\s*"
+            r"([A-Za-z .]+),\s*([A-Za-z .]+)\s+(\d{2})/(\d{2})/(20\d{2})\s*-\s*(\d{2})/(\d{2})/(20\d{2})",
+            regel,
+        )
+        if m:
+            nummer, stad, land, d1, m1, j1, d2, m2, j2 = m.groups()
+            if m1 == m2 and j1 == j2:
+                return [{
+                    "id": f"espa-congress-{j1}",
+                    "naam": f"{nummer}th European Congress for Paediatric Anaesthesiology",
+                    "organisatie": "ESPA (European Society for Paediatric Anaesthesiology)",
+                    "land": vertaal_land(land),
+                    "stad": stad.strip(),
+                    "datumStart": f"{j1}-{m1}-{d1}",
+                    "datumEind": f"{j2}-{m2}-{d2}",
+                    "onderwerp": ["kinderanesthesiologie"],
+                    "kosten": "Nog niet gepubliceerd",
+                    "bron": url,
+                }]
+
+    warn("ESPA", f"geen congresregel gevonden/gewijzigd op {url}.")
+    return []
+
+
+SCRAPERS = [
+    scrape_euroanaesthesia, scrape_esra_congress, scrape_painweek, scrape_asra,
+    scrape_nva_anesthesiologendagen, scrape_espa,
+]
 
 
 def laad_handmatige_entries():
@@ -325,7 +433,7 @@ HEADER = """// Congresdataset. Dit bestand wordt automatisch gegenereerd door
 // scripts/scrape_congressen.py -- pas het dus niet direct handmatig aan.
 //
 // - Automatisch gescrapete congressen komen uit de bekende bronnen (ESAIC,
-//   ESRA, PAINWeek, ASRA); zie het bron-veld per congres.
+//   ESRA, PAINWeek, ASRA, NVA, ESPA); zie het bron-veld per congres.
 // - Congressen die niet automatisch te scrapen zijn (geblokkeerd door de
 //   site, of expliciet verboden in de sitevoorwaarden) staan handmatig in
 //   data/congressen.manual.json en worden hier ongewijzigd overgenomen.

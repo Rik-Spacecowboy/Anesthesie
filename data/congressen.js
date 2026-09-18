@@ -2,7 +2,7 @@
 // scripts/scrape_congressen.py -- pas het dus niet direct handmatig aan.
 //
 // - Automatisch gescrapete congressen komen uit de bekende bronnen (ESAIC,
-//   ESRA, PAINWeek, ASRA); zie het bron-veld per congres.
+//   ESRA, PAINWeek, ASRA, NVA, ESPA); zie het bron-veld per congres.
 // - Congressen die niet automatisch te scrapen zijn (geblokkeerd door de
 //   site, of expliciet verboden in de sitevoorwaarden) staan handmatig in
 //   data/congressen.manual.json en worden hier ongewijzigd overgenomen.
@@ -10,6 +10,18 @@
 //   gepubliceerd" betekent dus niet dat het gratis is.
 
 const CONGRESSEN = [
+  {
+    id: "espa-congress-2026",
+    naam: "16th European Congress for Paediatric Anaesthesiology",
+    organisatie: "ESPA (European Society for Paediatric Anaesthesiology)",
+    land: "Spanje",
+    stad: "Madrid",
+    datumStart: "2026-09-24",
+    datumEind: "2026-09-26",
+    onderwerp: ["kinderanesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://www.espacongress.com/"
+  },
   {
     id: "asa-anesthesiology-2026",
     naam: "ANESTHESIOLOGY 2026 (ASA Annual Meeting)",
@@ -49,6 +61,18 @@ const CONGRESSEN = [
     letOp: "Automatisch gevonden; ordinal (bv. '52nd') stond niet in de brontekst, controleer de exacte naam."
   },
   {
+    id: "nva-anesthesiologendagen-2027",
+    naam: "Anesthesiologendagen 2027",
+    organisatie: "NVA (Nederlandse Vereniging voor Anesthesiologie)",
+    land: "Nederland",
+    stad: "Nog niet bekend",
+    datumStart: "2027-05-27",
+    datumEind: "2027-05-28",
+    onderwerp: ["algemene anesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://www.anesthesiologie.nl/agenda/"
+  },
+  {
     id: "esra-congress-2027",
     naam: "44th ESRA Annual Congress",
     organisatie: "ESRA (European Society of Regional Anaesthesia and Pain Therapy)",
@@ -84,6 +108,18 @@ const CONGRESSEN = [
     kosten: "Nog niet gepubliceerd",
     bron: "https://www.asahq.org/annualmeeting/attend/futuredates",
     letOp: "Niet automatisch gescraped (zie asa-anesthesiology-2026). Datum/stad komt van ASA's eigen 'Future Dates'-pagina; kosten en programma nog niet gepubliceerd."
+  },
+  {
+    id: "nva-anesthesiologendagen-2028",
+    naam: "Anesthesiologendagen 2028",
+    organisatie: "NVA (Nederlandse Vereniging voor Anesthesiologie)",
+    land: "Nederland",
+    stad: "Nog niet bekend",
+    datumStart: "2028-05-18",
+    datumEind: "2028-05-19",
+    onderwerp: ["algemene anesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://www.anesthesiologie.nl/agenda/"
   },
   {
     id: "asa-anesthesiology-2028",

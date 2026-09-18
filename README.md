@@ -15,8 +15,8 @@ niet meer direct handmatig bewerkt. Een GitHub Action
 maandag automatisch en opent een pull request met de wijzigingen -- er wordt nooit direct naar `main` gepusht,
 zodat je alles even kunt checken voor het live gaat.
 
-Het script bezoekt de bekende bronnen (ESAIC, ESRA, PAINWeek, ASRA) en zoekt daarbij standaard meerdere jaren
-vooruit, niet alleen de komende editie.
+Het script bezoekt de bekende bronnen (ESAIC, ESRA, PAINWeek, ASRA, NVA, ESPA) en zoekt daarbij standaard
+meerdere jaren vooruit, niet alleen de komende editie.
 
 **Niet alles is automatisch te scrapen:**
 - ASA/ANESTHESIOLOGY staat handmatig in [`data/congressen.manual.json`](data/congressen.manual.json). De oude bron
@@ -24,6 +24,10 @@ vooruit, niet alleen de komende editie.
   sitevoorwaarden expliciet gebruik van hun content met AI/automatisering. Werk deze entry dus zelf bij.
 - Wanneer een bron een congres wel aankondigt maar de exacte datum nog niet publiceert (bv. Euroanaesthesia 2027+),
   slaat het script die editie over in plaats van te gokken. Dit verschijnt als waarschuwing in de scriptoutput.
+- Sommige congressen zijn bewust **niet** toegevoegd, zoals WSAC (World Surgery and Anesthesia Congress): dat
+  wordt georganiseerd door "Iris Scientific Group", een commerciële partij die tientallen bijna-identieke "World
+  [Vakgebied] Congress"-events host over totaal ongerelateerde vakgebieden -- een klassiek kenmerk van een
+  predatory conference. Nieuwe bronnen alleen toevoegen als het een erkende beroepsvereniging is.
 
 ### Zelf draaien
 
