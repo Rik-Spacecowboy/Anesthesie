@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anesthesie &amp; Pijn Congressen</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🩺</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primair: #0f766e;
+      --primair-donker: #0b5c56;
+      --accent: #f97362;
+      --tekst: #1f2937;
+      --tekst-zacht: #6b7280;
+      --achtergrond: #f6f7f5;
+      --kaart-bg: #ffffff;
+      --rand: #e5e7eb;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Inter', 'Segoe UI', sans-serif;
+      background: var(--achtergrond);
+      color: var(--tekst);
+      margin: 0;
+      padding: 0 0 60px;
+      line-height: 1.5;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primair), var(--primair-donker));
+      color: white;
+      padding: 32px 20px 28px;
+    }
+    header h1 { margin: 0 0 6px; font-size: 1.7rem; }
+    header p { margin: 0; opacity: 0.9; font-size: 0.95rem; max-width: 640px; }
+    main {
+      max-width: 960px;
+      margin: -20px auto 0;
+      padding: 0 20px;
+    }
+    .filters {
+      background: var(--kaart-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      padding: 18px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .filters .veld { display: flex; flex-direction: column; gap: 4px; }
+    .filters label { font-size: 12px; color: var(--tekst-zacht); font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; }
+    .filters input, .filters select {
+      font-family: inherit;
+      font-size: 14px;
+      padding: 8px 10px;
+      border: 1px solid var(--rand);
+      border-radius: 8px;
+      background: white;
+    }
+    .filters .zoekveld { grid-column: 1 / -1; }
+    .filters button {
+      border: none;
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-family: inherit;
+      font-size: 14px;
+      cursor: pointer;
+      background: var(--tekst-zacht);
+      color: white;
+      align-self: end;
+    }
+    #resultaatTeller { color: var(--tekst-zacht); font-size: 14px; margin: 0 0 12px; }
+    .congres-lijst { display: grid; gap: 14px; }
+    .congres-kaart {
+      background: var(--kaart-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      padding: 18px 20px;
+      border-left: 5px solid var(--primair);
+    }
+    .congres-kaart h2 { margin: 0 0 4px; font-size: 1.15rem; }
+    .congres-kaart .organisatie { color: var(--tekst-zacht); font-size: 13px; margin-bottom: 10px; }
+    .congres-info { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14px; margin-bottom: 10px; }
+    .congres-info span { display: flex; align-items: center; gap: 5px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+    .tag { background: #e6f4f2; color: var(--primair-donker); font-size: 12px; padding: 3px 9px; border-radius: 999px; }
+    .weekbadge { font-size: 12px; padding: 3px 9px; border-radius: 999px; font-weight: 600; }
+    .weekbadge.even { background: #e0edff; color: #1d4ed8; }
+    .weekbadge.oneven { background: #ffe9df; color: #c2410c; }
+    .congres-kaart .kosten { font-size: 13px; color: var(--tekst-zacht); margin-bottom: 8px; }
+    .congres-kaart a.bron { font-size: 13px; color: var(--primair-donker); text-decoration: none; }
+    .congres-kaart a.bron:hover { text-decoration: underline; }
+    .leeg-resultaat { text-align: center; color: var(--tekst-zacht); padding: 40px 20px; }
+    @media (max-width: 480px) {
+      header { padding: 24px 16px 22px; }
+      header h1 { font-size: 1.4rem; }
+      main { padding: 0 12px; }
+      .filters { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🩺 Anesthesie &amp; Pijn Congressen</h1>
+    <p>Overzicht van Europese en Amerikaanse congressen, conferenties en symposia voor anesthesiologie, regionale anesthesie en pijngeneeskunde.</p>
+  </header>
+
+  <main>
+    <div class="filters">
+      <div class="veld zoekveld">
+        <label for="zoek">Zoeken</label>
+        <input type="text" id="zoek" placeholder="Naam, organisatie, stad, onderwerp...">
+      </div>
+      <div class="veld">
+        <label for="filterLand">Land</label>
+        <select id="filterLand"><option value="">Alle landen</option></select>
+      </div>
+      <div class="veld">
+        <label for="filterStad">Stad</label>
+        <select id="filterStad"><option value="">Alle steden</option></select>
+      </div>
+      <div class="veld">
+        <label for="filterOnderwerp">Onderwerp</label>
+        <select id="filterOnderwerp"><option value="">Alle onderwerpen</option></select>
+      </div>
+      <div class="veld">
+        <label for="filterWeek">Weeknummer</label>
+        <select id="filterWeek">
+          <option value="">Even of oneven</option>
+          <option value="even">Even week</option>
+          <option value="oneven">Oneven week</option>
+        </select>
+      </div>
+      <div class="veld">
+        <label for="vanaf">Vanaf datum</label>
+        <input type="date" id="vanaf">
+      </div>
+      <div class="veld">
+        <label for="tot">Tot datum</label>
+        <input type="date" id="tot">
+      </div>
+      <div class="veld">
+        <label>&nbsp;</label>
+        <button type="button" id="resetFilters">Wis filters</button>
+      </div>
+    </div>
+
+    <p id="resultaatTeller"></p>
+    <div class="congres-lijst" id="congresLijst"></div>
+  </main>
+
+  <script src="data/congressen.js"></script>
+  <script>
+    // Bereken het ISO-weeknummer van een datum (standaardalgoritme, maandag = eerste dag).
+    function isoWeekNummer(datumString) {
+      const datum = new Date(datumString + 'T00:00:00');
+      const dagVanWeek = (datum.getUTCDay() + 6) % 7; // maandag = 0
+      datum.setUTCDate(datum.getUTCDate() - dagVanWeek + 3); // donderdag van deze week
+      const eersteDonderdag = new Date(Date.UTC(datum.getUTCFullYear(), 0, 4));
+      const dagVanEersteWeek = (eersteDonderdag.getUTCDay() + 6) % 7;
+      eersteDonderdag.setUTCDate(eersteDonderdag.getUTCDate() - dagVanEersteWeek + 3);
+      const verschilInWeken = Math.round((datum - eersteDonderdag) / (7 * 24 * 60 * 60 * 1000));
+      return verschilInWeken + 1;
+    }
+
+    function weekPariteit(datumString) {
+      return isoWeekNummer(datumString) % 2 === 0 ? 'even' : 'oneven';
+    }
+
+    function formatDatum(datumString) {
+      const datum = new Date(datumString + 'T00:00:00');
+      return datum.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
+    }
+
+    function formatPeriode(rij) {
+      if (rij.datumStart === rij.datumEind) return formatDatum(rij.datumStart);
+      const start = new Date(rij.datumStart + 'T00:00:00');
+      const eind = new Date(rij.datumEind + 'T00:00:00');
+      const zelfdeMaand = start.getMonth() === eind.getMonth() && start.getFullYear() === eind.getFullYear();
+      if (zelfdeMaand) {
+        return `${start.getDate()}-${formatDatum(rij.datumEind)}`;
+      }
+      return `${formatDatum(rij.datumStart)} t/m ${formatDatum(rij.datumEind)}`;
+    }
+
+    function vulFilterOpties() {
+      const landen = [...new Set(CONGRESSEN.map(r => r.land))].sort();
+      const steden = [...new Set(CONGRESSEN.map(r => r.stad))].sort();
+      const onderwerpen = [...new Set(CONGRESSEN.flatMap(r => r.onderwerp))].sort();
+
+      const vulSelect = (id, waarden) => {
+        const select = document.getElementById(id);
+        waarden.forEach(w => {
+          const optie = document.createElement('option');
+          optie.value = w;
+          optie.textContent = w;
+          select.appendChild(optie);
+        });
+      };
+      vulSelect('filterLand', landen);
+      vulSelect('filterStad', steden);
+      vulSelect('filterOnderwerp', onderwerpen);
+    }
+
+    function huidigeFilters() {
+      return {
+        zoek: document.getElementById('zoek').value.trim().toLowerCase(),
+        land: document.getElementById('filterLand').value,
+        stad: document.getElementById('filterStad').value,
+        onderwerp: document.getElementById('filterOnderwerp').value,
+        week: document.getElementById('filterWeek').value,
+        vanaf: document.getElementById('vanaf').value,
+        tot: document.getElementById('tot').value
+      };
+    }
+
+    function voldoetAanFilters(rij, filters) {
+      if (filters.land && rij.land !== filters.land) return false;
+      if (filters.stad && rij.stad !== filters.stad) return false;
+      if (filters.onderwerp && !rij.onderwerp.includes(filters.onderwerp)) return false;
+      if (filters.week && weekPariteit(rij.datumStart) !== filters.week) return false;
+      if (filters.vanaf && rij.datumEind < filters.vanaf) return false;
+      if (filters.tot && rij.datumStart > filters.tot) return false;
+      if (filters.zoek) {
+        const doorzoekbaar = [rij.naam, rij.organisatie, rij.land, rij.stad, ...rij.onderwerp].join(' ').toLowerCase();
+        if (!doorzoekbaar.includes(filters.zoek)) return false;
+      }
+      return true;
+    }
+
+    function renderCongres(rij) {
+      const pariteit = weekPariteit(rij.datumStart);
+      const weekNr = isoWeekNummer(rij.datumStart);
+      const div = document.createElement('div');
+      div.className = 'congres-kaart';
+      div.innerHTML = `
+        <h2>${rij.naam}</h2>
+        <div class="organisatie">${rij.organisatie}</div>
+        <div class="congres-info">
+          <span>📅 ${formatPeriode(rij)}</span>
+          <span>📍 ${rij.stad}, ${rij.land}</span>
+          <span class="weekbadge ${pariteit}">week ${weekNr} (${pariteit})</span>
+        </div>
+        <div class="tags">${rij.onderwerp.map(o => `<span class="tag">${o}</span>`).join('')}</div>
+        <div class="kosten">💶 ${rij.kosten}</div>
+        <a class="bron" href="${rij.bron}" target="_blank" rel="noopener">Bron / meer info &rarr;</a>
+      `;
+      return div;
+    }
+
+    function toonCongressen() {
+      const filters = huidigeFilters();
+      const gefilterd = CONGRESSEN
+        .filter(rij => voldoetAanFilters(rij, filters))
+        .sort((a, b) => a.datumStart.localeCompare(b.datumStart));
+
+      const lijst = document.getElementById('congresLijst');
+      lijst.innerHTML = '';
+      if (gefilterd.length === 0) {
+        lijst.innerHTML = '<div class="leeg-resultaat">Geen congressen gevonden met deze filters. Probeer iets breder te zoeken.</div>';
+      } else {
+        gefilterd.forEach(rij => lijst.appendChild(renderCongres(rij)));
+      }
+
+      const teller = document.getElementById('resultaatTeller');
+      teller.textContent = `${gefilterd.length} van de ${CONGRESSEN.length} congressen`;
+    }
+
+    ['zoek', 'filterLand', 'filterStad', 'filterOnderwerp', 'filterWeek', 'vanaf', 'tot'].forEach(id => {
+      document.getElementById(id).addEventListener('input', toonCongressen);
+    });
+    document.getElementById('resetFilters').addEventListener('click', () => {
+      ['zoek', 'vanaf', 'tot'].forEach(id => document.getElementById(id).value = '');
+      ['filterLand', 'filterStad', 'filterOnderwerp', 'filterWeek'].forEach(id => document.getElementById(id).value = '');
+      toonCongressen();
+    });
+
+    vulFilterOpties();
+    toonCongressen();
+  </script>
+</body>
+</html>
