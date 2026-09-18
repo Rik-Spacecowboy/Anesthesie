@@ -11,6 +11,18 @@
 
 const CONGRESSEN = [
   {
+    id: "euroanaesthesia-2026",
+    naam: "Euroanaesthesia 2026",
+    organisatie: "ESAIC (European Society of Anaesthesiology and Intensive Care)",
+    land: "Nederland",
+    stad: "Rotterdam",
+    datumStart: "2026-06-06",
+    datumEind: "2026-06-08",
+    onderwerp: ["algemene anesthesiologie", "intensive care"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://euroanaesthesia.org/2026/"
+  },
+  {
     id: "espa-congress-2026",
     naam: "16th European Congress for Paediatric Anaesthesiology",
     organisatie: "ESPA (European Society for Paediatric Anaesthesiology)",
@@ -73,6 +85,18 @@ const CONGRESSEN = [
     bron: "https://www.anesthesiologie.nl/agenda/"
   },
   {
+    id: "euroanaesthesia-2027",
+    naam: "Euroanaesthesia 2027",
+    organisatie: "ESAIC (European Society of Anaesthesiology and Intensive Care)",
+    land: "Denemarken",
+    stad: "Copenhagen",
+    datumStart: "2027-05-29",
+    datumEind: "2027-05-31",
+    onderwerp: ["algemene anesthesiologie", "intensive care"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://euroanaesthesia.org/2027/"
+  },
+  {
     id: "esra-congress-2027",
     naam: "44th ESRA Annual Congress",
     organisatie: "ESRA (European Society of Regional Anaesthesia and Pain Therapy)",
@@ -122,6 +146,18 @@ const CONGRESSEN = [
     bron: "https://www.anesthesiologie.nl/agenda/"
   },
   {
+    id: "euroanaesthesia-2028",
+    naam: "Euroanaesthesia 2028",
+    organisatie: "ESAIC (European Society of Anaesthesiology and Intensive Care)",
+    land: "Oostenrijk",
+    stad: "Vienna",
+    datumStart: "2028-05-20",
+    datumEind: "2028-05-22",
+    onderwerp: ["algemene anesthesiologie", "intensive care"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://euroanaesthesia.org/2028/"
+  },
+  {
     id: "asa-anesthesiology-2028",
     naam: "ANESTHESIOLOGY 2028 (ASA Annual Meeting)",
     organisatie: "American Society of Anesthesiologists (ASA)",
@@ -133,5 +169,17 @@ const CONGRESSEN = [
     kosten: "Nog niet gepubliceerd",
     bron: "https://www.asahq.org/annualmeeting/attend/futuredates",
     letOp: "Niet automatisch gescraped (zie asa-anesthesiology-2026). Datum/stad komt van ASA's eigen 'Future Dates'-pagina; kosten en programma nog niet gepubliceerd."
+  },
+  {
+    id: "euroanaesthesia-2029",
+    naam: "Euroanaesthesia 2029",
+    organisatie: "ESAIC (European Society of Anaesthesiology and Intensive Care)",
+    land: "Spanje",
+    stad: "Barcelona",
+    datumStart: "2029-05-26",
+    datumEind: "2029-05-28",
+    onderwerp: ["algemene anesthesiologie", "intensive care"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://euroanaesthesia.org/2029/"
   }
 ];

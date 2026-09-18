@@ -40,7 +40,8 @@ LANDEN_NL = {
     "italy": "Italië", "denmark": "Denemarken", "austria": "Oostenrijk",
     "spain": "Spanje", "portugal": "Portugal", "germany": "Duitsland",
     "france": "Frankrijk", "united kingdom": "Verenigd Koninkrijk",
-    "netherlands": "Nederland", "belgium": "België", "greece": "Griekenland",
+    "netherlands": "Nederland", "the netherlands": "Nederland",
+    "belgium": "België", "greece": "Griekenland",
 }
 
 
@@ -74,18 +75,32 @@ def maak_datum(jaar, maand_naam, dag):
     return f"{jaar}-{maand}-{int(dag):02d}"
 
 
+def parse_datumrange_engels(regel, jaar):
+    """Herkent Engelse datumrange-teksten als '6-8 June 2026' of
+    '30 April - 2 May 2026' en geeft (start, eind) als YYYY-MM-DD terug."""
+    m = re.match(r"(\d{1,2})\s*[-–]\s*(\d{1,2})\s+([A-Za-z]+)\s+(20\d{2})", regel)
+    if m and m.group(4) == str(jaar):
+        d1, d2, maand, _ = m.groups()
+        return maak_datum(jaar, maand, d1), maak_datum(jaar, maand, d2)
+    m = re.match(r"(\d{1,2})\s+([A-Za-z]+)\s*[-–]\s*(\d{1,2})\s+([A-Za-z]+)\s+(20\d{2})", regel)
+    if m and m.group(5) == str(jaar):
+        d1, maand1, d2, maand2, _ = m.groups()
+        return maak_datum(jaar, maand1, d1), maak_datum(jaar, maand2, d2)
+    return None, None
+
+
 def scrape_euroanaesthesia():
-    """ESAIC (Euroanaesthesia). Voor 2026 staat de exacte datum op de venue-pagina;
-    ESAIC's eigen homepage kondigt daarnaast al stad+jaar voor latere edities aan,
-    maar (nog) niet de exacte datum -- die edities worden overgeslagen tot de
-    datum bekend is, in plaats van met een geraden datum te werken."""
+    """ESAIC (Euroanaesthesia). De homepage kondigt aankomende edities aan
+    (stad + jaar); elke editie krijgt een eigen site op
+    euroanaesthesia.org/<jaar>/ zodra de exacte datum bekend is -- deze
+    blijkt in de praktijk al meerdere jaren vooruit te bestaan. Een editie
+    zonder vindbare datum wordt overgeslagen in plaats van gegokt."""
     bron_org = "https://esaic.org/"
-    entries = []
     try:
         org_lines = fetch_lines(bron_org)
     except requests.RequestException as e:
         warn("Euroanaesthesia", f"kon {bron_org} niet ophalen: {e}")
-        org_lines = []
+        return []
 
     aangekondigd = {}
     for regel in org_lines:
@@ -94,42 +109,41 @@ def scrape_euroanaesthesia():
             jaar, plaats = m.group(1), m.group(2).strip()
             aangekondigd[jaar] = plaats
 
-    bron_venue = "https://www.ahoy.nl/en/events/congress/euroanaesthesia-2026"
-    try:
-        venue_lines = fetch_lines(bron_venue)
-    except requests.RequestException as e:
-        warn("Euroanaesthesia", f"kon {bron_venue} niet ophalen: {e}")
-        venue_lines = []
+    entries = []
+    for jaar, plaats in aangekondigd.items():
+        jaar_url = f"https://euroanaesthesia.org/{jaar}/"
+        try:
+            jaar_lines = fetch_lines(jaar_url)
+        except requests.RequestException as e:
+            warn("Euroanaesthesia", f"kon {jaar_url} niet ophalen: {e}")
+            continue
 
-    datum_2026 = None
-    for regel in venue_lines:
-        m = re.search(r"(\d{1,2})\s*[-–]\s*(\d{1,2})\s+(June|Jun)\s+2026", regel, re.I)
-        if m:
-            datum_2026 = (maak_datum("2026", "jun", m.group(1)), maak_datum("2026", "jun", m.group(2)))
-            break
+        datum_start = datum_eind = None
+        for regel in jaar_lines:
+            datum_start, datum_eind = parse_datumrange_engels(regel, jaar)
+            if datum_start:
+                break
 
-    if "2026" in aangekondigd and datum_2026:
-        stad, _, land = aangekondigd["2026"].partition(",")
+        if not datum_start:
+            warn("Euroanaesthesia", f"{jaar}-editie aangekondigd ({plaats}) maar geen datum gevonden op {jaar_url} -- overgeslagen.")
+            continue
+
+        stad, _, land = plaats.partition(",")
         entries.append({
-            "id": "euroanaesthesia-2026",
-            "naam": "Euroanaesthesia 2026",
+            "id": f"euroanaesthesia-{jaar}",
+            "naam": f"Euroanaesthesia {jaar}",
             "organisatie": "ESAIC (European Society of Anaesthesiology and Intensive Care)",
-            "land": land.strip() or "Nederland",
+            "land": vertaal_land(land) if land else plaats,
             "stad": stad.strip(),
-            "datumStart": datum_2026[0],
-            "datumEind": datum_2026[1],
+            "datumStart": datum_start,
+            "datumEind": datum_eind,
             "onderwerp": ["algemene anesthesiologie", "intensive care"],
             "kosten": "Nog niet gepubliceerd",
-            "bron": bron_venue,
+            "bron": jaar_url,
         })
-    elif "2026" in aangekondigd:
-        warn("Euroanaesthesia", "2026-editie aangekondigd maar exacte datum niet gevonden op ahoy.nl -- entry overgeslagen.")
 
-    for jaar, plaats in aangekondigd.items():
-        if jaar == "2026":
-            continue
-        warn("Euroanaesthesia", f"{jaar}-editie al aangekondigd ({plaats.strip()}) maar zonder exacte datum -- nog niet toegevoegd, controleer {bron_org} handmatig.")
-
+    if not entries:
+        warn("Euroanaesthesia", "geen enkele editie met vindbare datum gevonden.")
     return entries
 
 
