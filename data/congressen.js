@@ -67,7 +67,7 @@ const CONGRESSEN = [
     land: "Verenigde Staten",
     stad: "Las Vegas",
     datumStart: "2027-09-07",
-    datumEind: "2027-09-11",
+    datumEind: "2027-09-10",
     onderwerp: ["pijnmanagement", "multidisciplinair"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://conference.painweek.org/"
