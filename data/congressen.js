@@ -71,5 +71,31 @@ const CONGRESSEN = [
     onderwerp: ["pijnmanagement", "multidisciplinair"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://conference.painweek.org/"
+  },
+  {
+    id: "asa-anesthesiology-2027",
+    naam: "ANESTHESIOLOGY 2027 (ASA Annual Meeting)",
+    organisatie: "American Society of Anesthesiologists (ASA)",
+    land: "Verenigde Staten",
+    stad: "Boston",
+    datumStart: "2027-10-15",
+    datumEind: "2027-10-19",
+    onderwerp: ["algemene anesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://www.asahq.org/annualmeeting/attend/futuredates",
+    letOp: "Niet automatisch gescraped (zie asa-anesthesiology-2026). Datum/stad komt van ASA's eigen 'Future Dates'-pagina; kosten en programma nog niet gepubliceerd."
+  },
+  {
+    id: "asa-anesthesiology-2028",
+    naam: "ANESTHESIOLOGY 2028 (ASA Annual Meeting)",
+    organisatie: "American Society of Anesthesiologists (ASA)",
+    land: "Verenigde Staten",
+    stad: "Chicago",
+    datumStart: "2028-10-20",
+    datumEind: "2028-10-24",
+    onderwerp: ["algemene anesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://www.asahq.org/annualmeeting/attend/futuredates",
+    letOp: "Niet automatisch gescraped (zie asa-anesthesiology-2026). Datum/stad komt van ASA's eigen 'Future Dates'-pagina; kosten en programma nog niet gepubliceerd."
   }
 ];
