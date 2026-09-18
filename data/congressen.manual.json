@@ -1,0 +1,15 @@
+[
+  {
+    "id": "asa-anesthesiology-2026",
+    "naam": "ANESTHESIOLOGY 2026 (ASA Annual Meeting)",
+    "organisatie": "American Society of Anesthesiologists (ASA)",
+    "land": "Verenigde Staten",
+    "stad": "San Diego",
+    "datumStart": "2026-10-16",
+    "datumEind": "2026-10-20",
+    "onderwerp": ["algemene anesthesiologie"],
+    "kosten": "Nog niet gepubliceerd",
+    "bron": "https://www.asahq.org/annualmeeting",
+    "letOp": "Niet automatisch gescraped: apsf.org (oude bron) blokkeert scrapers en asahq.org verbiedt in de site-voorwaarden expliciet gebruik van hun content met AI/automatisering. Handmatig controleren en bijwerken."
+  }
+]

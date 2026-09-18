@@ -1,0 +1,39 @@
+name: Congressen scrapen
+
+on:
+  schedule:
+    # Elke maandag 06:00 UTC
+    - cron: "0 6 * * 1"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Installeer dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Scrape bekende bronnen
+        run: python3 scripts/scrape_congressen.py
+
+      - name: Open pull request als er wijzigingen zijn
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "Congressen bijwerken via automatische scrape"
+          title: "Automatische update: congressendata"
+          body: |
+            Automatisch gegenereerd door `scripts/scrape_congressen.py` op basis van de bekende bronnen (ESAIC, ESRA, PAINWeek, ASRA).
+
+            Controleer de wijzigingen voordat je merget -- vooral entries met een `letOp`-veld verdienen een extra check.
+          branch: auto/scrape-congressen
+          delete-branch: true
