@@ -2,7 +2,8 @@
 // scripts/scrape_congressen.py -- pas het dus niet direct handmatig aan.
 //
 // - Automatisch gescrapete congressen komen uit de bekende bronnen (ESAIC,
-//   ESRA, PAINWeek, ASRA, NVA, ESPA); zie het bron-veld per congres.
+//   ESRA, PAINWeek, ASRA, NVA, ESPA, EFIC, WCA, SOAP, NYSORA, BAPA, Association
+//   of Anaesthetists, London Pain Forum); zie het bron-veld per congres.
 // - Congressen die niet automatisch te scrapen zijn (geblokkeerd door de
 //   site, of expliciet verboden in de sitevoorwaarden) staan handmatig in
 //   data/congressen.manual.json en worden hier ongewijzigd overgenomen.
@@ -60,6 +61,103 @@ const CONGRESSEN = [
     bron: "https://asra.com/events-education"
   },
   {
+    id: "bapa-annual-2026",
+    naam: "BAPA Annual Scientific Meeting 2026",
+    organisatie: "BAPA (Belgian Association for Paediatric Anaesthesiology)",
+    land: "België",
+    stad: "Brussel",
+    datumStart: "2026-11-21",
+    datumEind: "2026-11-21",
+    onderwerp: ["kinderanesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://www.bapanaesth.be/events/"
+  },
+  {
+    id: "pga-80-2026",
+    naam: "80th PostGraduate Assembly in Anesthesiology (PGA)",
+    organisatie: "NYSSA (New York State Society of Anesthesiologists)",
+    land: "Verenigde Staten",
+    stad: "New York",
+    datumStart: "2026-12-11",
+    datumEind: "2026-12-14",
+    onderwerp: ["algemene anesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://www.nyssa-pga.org/events/80th-postgraduate-assembly-in-anesthesiology-pga/",
+    letOp: "Handmatig toegevoegd (datums staan op nyssa-pga.org niet in doorzoekbare tekst op de 'Future PGA Dates'-pagina); locatie New York Marriott Marquis."
+  },
+  {
+    id: "nysora-kitzb-hel-2027",
+    naam: "NYSORA: Update on Regional Anesthesia and Pain Management",
+    organisatie: "NYSORA",
+    land: "Oostenrijk",
+    stad: "Kitzbühel",
+    datumStart: "2027-01-13",
+    datumEind: "2027-01-16",
+    onderwerp: ["regionale anesthesie", "pijngeneeskunde"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://nysora.com/events/conferences"
+  },
+  {
+    id: "association-of-anaesthetists-winter-scientific-meeting-2027",
+    naam: "Winter Scientific Meeting 2027",
+    organisatie: "Association of Anaesthetists (GB & Ierland)",
+    land: "Verenigd Koninkrijk",
+    stad: "London",
+    datumStart: "2027-01-14",
+    datumEind: "2027-01-15",
+    onderwerp: ["algemene anesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://anaesthetists.org/CPD-and-events/Book-an-event"
+  },
+  {
+    id: "winter-pain-symposium-2027",
+    naam: "13th Advances in Pain Medicine Winter Symposium",
+    organisatie: "London Pain Forum",
+    land: "Frankrijk",
+    stad: "Tignes",
+    datumStart: "2027-01-17",
+    datumEind: "2027-01-22",
+    onderwerp: ["pijngeneeskunde"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://www.winterpainsymposium.com/"
+  },
+  {
+    id: "nysora-val-d-isere-2027",
+    naam: "NYSORA: Anesthesia Review Conference",
+    organisatie: "NYSORA",
+    land: "Frankrijk",
+    stad: "Val D’Isere",
+    datumStart: "2027-02-08",
+    datumEind: "2027-02-11",
+    onderwerp: ["regionale anesthesie", "pijngeneeskunde"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://nysora.com/events/conferences"
+  },
+  {
+    id: "nysora-leuven-2027",
+    naam: "NYSORA: Masterclass: Ultrasound-Guided Joint Interventions & Denervation",
+    organisatie: "NYSORA",
+    land: "België",
+    stad: "Leuven",
+    datumStart: "2027-02-27",
+    datumEind: "2027-02-27",
+    onderwerp: ["regionale anesthesie", "pijngeneeskunde"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://nysora.com/events/conferences"
+  },
+  {
+    id: "efic-2027",
+    naam: "EFIC Congress 2027 (Pain in Europe)",
+    organisatie: "EFIC (European Pain Federation)",
+    land: "Verenigd Koninkrijk",
+    stad: "Glasgow",
+    datumStart: "2027-04-21",
+    datumEind: "2027-04-23",
+    onderwerp: ["pijngeneeskunde"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://europeanpainfederation.eu/efic2027/"
+  },
+  {
     id: "asra-regional-2027",
     naam: "Annual Regional Anesthesiology and Acute Pain Medicine Meeting",
     organisatie: "ASRA Pain Medicine",
@@ -71,6 +169,19 @@ const CONGRESSEN = [
     kosten: "Nog niet gepubliceerd",
     bron: "https://asra.com/events-education",
     letOp: "Automatisch gevonden; ordinal (bv. '52nd') stond niet in de brontekst, controleer de exacte naam."
+  },
+  {
+    id: "soap-2027",
+    naam: "SOAP 59th Annual Meeting",
+    organisatie: "SOAP (Society for Obstetric Anesthesia and Perinatology)",
+    land: "Verenigde Staten",
+    stad: "Palm Springs",
+    datumStart: "2027-05-20",
+    datumEind: "2027-05-23",
+    onderwerp: ["obstetrische anesthesie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://www.soap.org/future-meetings",
+    letOp: "Stad afgeleid uit de bron; exacte locatie: The Westin Rancho Mirage Golf Resort & Spa."
   },
   {
     id: "nva-anesthesiologendagen-2027",
@@ -121,6 +232,18 @@ const CONGRESSEN = [
     bron: "https://conference.painweek.org/"
   },
   {
+    id: "association-of-anaesthetists-gasfest-2027",
+    naam: "GasFest 2027",
+    organisatie: "Association of Anaesthetists (GB & Ierland)",
+    land: "Verenigd Koninkrijk",
+    stad: "Birmingham",
+    datumStart: "2027-09-22",
+    datumEind: "2027-09-24",
+    onderwerp: ["algemene anesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://anaesthetists.org/CPD-and-events/Book-an-event"
+  },
+  {
     id: "asa-anesthesiology-2027",
     naam: "ANESTHESIOLOGY 2027 (ASA Annual Meeting)",
     organisatie: "American Society of Anesthesiologists (ASA)",
@@ -132,6 +255,43 @@ const CONGRESSEN = [
     kosten: "Nog niet gepubliceerd",
     bron: "https://www.asahq.org/annualmeeting/attend/futuredates",
     letOp: "Niet automatisch gescraped (zie asa-anesthesiology-2026). Datum/stad komt van ASA's eigen 'Future Dates'-pagina; kosten en programma nog niet gepubliceerd."
+  },
+  {
+    id: "pga-81-2027",
+    naam: "81st PostGraduate Assembly in Anesthesiology (PGA)",
+    organisatie: "NYSSA (New York State Society of Anesthesiologists)",
+    land: "Verenigde Staten",
+    stad: "New York",
+    datumStart: "2027-12-10",
+    datumEind: "2027-12-13",
+    onderwerp: ["algemene anesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://www.nyssa-pga.org/pga-meeting/future-pga-dates/",
+    letOp: "Handmatig; datum komt van een derde partij (eMedEvents), nog niet bevestigd op de officiele NYSSA-site -- controleren."
+  },
+  {
+    id: "soap-2028",
+    naam: "SOAP 60th Annual Meeting",
+    organisatie: "SOAP (Society for Obstetric Anesthesia and Perinatology)",
+    land: "Puerto Rico",
+    stad: "Fajardo",
+    datumStart: "2028-04-27",
+    datumEind: "2028-04-30",
+    onderwerp: ["obstetrische anesthesie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://www.soap.org/future-meetings"
+  },
+  {
+    id: "wca-2028",
+    naam: "20th World Congress of Anaesthesiologists (WCA 2028)",
+    organisatie: "WFSA (World Federation of Societies of Anaesthesiologists)",
+    land: "Canada",
+    stad: "Vancouver",
+    datumStart: "2028-05-07",
+    datumEind: "2028-05-10",
+    onderwerp: ["algemene anesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://wfsahq.org/our-work/world-congress/"
   },
   {
     id: "nva-anesthesiologendagen-2028",

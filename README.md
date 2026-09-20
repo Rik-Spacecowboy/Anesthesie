@@ -15,8 +15,9 @@ niet meer direct handmatig bewerkt. Een GitHub Action
 maandag automatisch en opent een pull request met de wijzigingen -- er wordt nooit direct naar `main` gepusht,
 zodat je alles even kunt checken voor het live gaat.
 
-Het script bezoekt de bekende bronnen (ESAIC, ESRA, PAINWeek, ASRA, NVA, ESPA) en zoekt daarbij standaard
-meerdere jaren vooruit, niet alleen de komende editie.
+Het script bezoekt de bekende bronnen (ESAIC, ESRA, PAINWeek, ASRA, NVA, ESPA, EFIC, WCA/WFSA, SOAP, NYSORA,
+BAPA, Association of Anaesthetists, London Pain Forum) en zoekt daarbij standaard meerdere jaren vooruit, niet
+alleen de komende editie.
 
 **Niet alles is automatisch te scrapen:**
 - ASA/ANESTHESIOLOGY staat handmatig in [`data/congressen.manual.json`](data/congressen.manual.json). De oude bron
@@ -28,6 +29,12 @@ meerdere jaren vooruit, niet alleen de komende editie.
   wordt georganiseerd door "Iris Scientific Group", een commerciële partij die tientallen bijna-identieke "World
   [Vakgebied] Congress"-events host over totaal ongerelateerde vakgebieden -- een klassiek kenmerk van een
   predatory conference. Nieuwe bronnen alleen toevoegen als het een erkende beroepsvereniging is.
+
+- Bewust **niet** opgenomen of nog niet mogelijk: EACCM ('Euro Anesthesiology and Critical Care Congress') en de
+  'International Conference on Surgery and Anesthesia' (commerciele congresfabrieken); UF Ski Summit (robots.txt sluit
+  ClaudeBot uit, en nog geen 2027-datum); Holiday Seminars (robots.txt sluit alle bots uit); NWAS en SPA (alleen
+  buiten Europa); OAA en Northern Lights (site blokkeert scrapers); SSAI 2028, PROSA 2028 en het
+  Refresher Course Obstetrische Anesthesiologie (nog geen datum gepubliceerd).
 
 ### Zelf draaien
 

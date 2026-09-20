@@ -7,7 +7,9 @@
     "stad": "San Diego",
     "datumStart": "2026-10-16",
     "datumEind": "2026-10-20",
-    "onderwerp": ["algemene anesthesiologie"],
+    "onderwerp": [
+      "algemene anesthesiologie"
+    ],
     "kosten": "Nog niet gepubliceerd",
     "bron": "https://www.asahq.org/annualmeeting",
     "letOp": "Niet automatisch gescraped: apsf.org (oude bron) blokkeert scrapers en asahq.org verbiedt in de site-voorwaarden expliciet gebruik van hun content met AI/automatisering. Handmatig controleren en bijwerken."
@@ -20,7 +22,9 @@
     "stad": "Boston",
     "datumStart": "2027-10-15",
     "datumEind": "2027-10-19",
-    "onderwerp": ["algemene anesthesiologie"],
+    "onderwerp": [
+      "algemene anesthesiologie"
+    ],
     "kosten": "Nog niet gepubliceerd",
     "bron": "https://www.asahq.org/annualmeeting/attend/futuredates",
     "letOp": "Niet automatisch gescraped (zie asa-anesthesiology-2026). Datum/stad komt van ASA's eigen 'Future Dates'-pagina; kosten en programma nog niet gepubliceerd."
@@ -33,9 +37,41 @@
     "stad": "Chicago",
     "datumStart": "2028-10-20",
     "datumEind": "2028-10-24",
-    "onderwerp": ["algemene anesthesiologie"],
+    "onderwerp": [
+      "algemene anesthesiologie"
+    ],
     "kosten": "Nog niet gepubliceerd",
     "bron": "https://www.asahq.org/annualmeeting/attend/futuredates",
     "letOp": "Niet automatisch gescraped (zie asa-anesthesiology-2026). Datum/stad komt van ASA's eigen 'Future Dates'-pagina; kosten en programma nog niet gepubliceerd."
+  },
+  {
+    "id": "pga-80-2026",
+    "naam": "80th PostGraduate Assembly in Anesthesiology (PGA)",
+    "organisatie": "NYSSA (New York State Society of Anesthesiologists)",
+    "land": "Verenigde Staten",
+    "stad": "New York",
+    "datumStart": "2026-12-11",
+    "datumEind": "2026-12-14",
+    "onderwerp": [
+      "algemene anesthesiologie"
+    ],
+    "kosten": "Nog niet gepubliceerd",
+    "bron": "https://www.nyssa-pga.org/events/80th-postgraduate-assembly-in-anesthesiology-pga/",
+    "letOp": "Handmatig toegevoegd (datums staan op nyssa-pga.org niet in doorzoekbare tekst op de 'Future PGA Dates'-pagina); locatie New York Marriott Marquis."
+  },
+  {
+    "id": "pga-81-2027",
+    "naam": "81st PostGraduate Assembly in Anesthesiology (PGA)",
+    "organisatie": "NYSSA (New York State Society of Anesthesiologists)",
+    "land": "Verenigde Staten",
+    "stad": "New York",
+    "datumStart": "2027-12-10",
+    "datumEind": "2027-12-13",
+    "onderwerp": [
+      "algemene anesthesiologie"
+    ],
+    "kosten": "Nog niet gepubliceerd",
+    "bron": "https://www.nyssa-pga.org/pga-meeting/future-pga-dates/",
+    "letOp": "Handmatig; datum komt van een derde partij (eMedEvents), nog niet bevestigd op de officiele NYSSA-site -- controleren."
   }
 ]

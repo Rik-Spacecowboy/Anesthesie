@@ -10,6 +10,7 @@ Gebruik:
     python3 scripts/scrape_congressen.py            schrijft data/congressen.js
     python3 scripts/scrape_congressen.py --check     exit 1 als er wijzigingen zouden zijn
 """
+import datetime
 import json
 import re
 import sys
@@ -41,7 +42,18 @@ LANDEN_NL = {
     "spain": "Spanje", "portugal": "Portugal", "germany": "Duitsland",
     "france": "Frankrijk", "united kingdom": "Verenigd Koninkrijk",
     "netherlands": "Nederland", "the netherlands": "Nederland",
-    "belgium": "België", "greece": "Griekenland",
+    "belgium": "België", "greece": "Griekenland", "switzerland": "Zwitserland",
+    "sweden": "Zweden", "norway": "Noorwegen", "finland": "Finland",
+    "ireland": "Ierland", "iceland": "IJsland", "canada": "Canada",
+    "united states": "Verenigde Staten", "usa": "Verenigde Staten",
+}
+
+# Landen (Engelse namen) die binnen de scope van de site vallen: Europa + Noord-Amerika.
+SCOPE_LANDEN = {
+    "austria", "belgium", "denmark", "finland", "france", "germany", "greece",
+    "iceland", "ireland", "italy", "netherlands", "the netherlands", "norway",
+    "portugal", "spain", "sweden", "switzerland", "united kingdom", "uk",
+    "united states", "usa", "canada",
 }
 
 
@@ -61,7 +73,18 @@ def fetch_lines(url):
     resp.raise_for_status()
     soup = BeautifulSoup(resp.text, "html.parser")
     tekst = soup.get_text("\n")
-    return [regel.strip() for regel in tekst.split("\n") if regel.strip()]
+    schoon = (re.sub(r"\s+", " ", regel.replace("\xa0", " ")).strip() for regel in tekst.split("\n"))
+    return [regel for regel in schoon if regel]
+
+
+def fetch_lines_optional(url):
+    """Zoals fetch_lines, maar geeft None terug bij een 404 (pagina bestaat (nog) niet)."""
+    try:
+        return fetch_lines(url)
+    except requests.HTTPError as e:
+        if e.response is not None and e.response.status_code == 404:
+            return None
+        raise
 
 
 def maand_naar_nummer(naam):
@@ -415,9 +438,248 @@ def scrape_espa():
     return []
 
 
+def maak_entry(id_, naam, organisatie, land, stad, start, eind, onderwerp, bron, let_op=None):
+    entry = {
+        "id": id_, "naam": naam, "organisatie": organisatie, "land": land,
+        "stad": stad, "datumStart": start, "datumEind": eind,
+        "onderwerp": onderwerp, "kosten": "Nog niet gepubliceerd", "bron": bron,
+    }
+    if let_op:
+        entry["letOp"] = let_op
+    return entry
+
+
+def scrape_efic():
+    """EFIC (European Pain Federation): elke tweejaarlijkse editie heeft een eigen
+    pagina europeanpainfederation.eu/efic<jaar>/. We proberen de komende jaren."""
+    entries = []
+    dit_jaar = datetime.date.today().year
+    for jaar in range(dit_jaar, dit_jaar + 6):
+        url = f"https://europeanpainfederation.eu/efic{jaar}/"
+        try:
+            lines = fetch_lines_optional(url)
+        except requests.RequestException as e:
+            warn("EFIC", f"kon {url} niet ophalen: {e}")
+            continue
+        if not lines:
+            continue
+        stad = datum = None
+        for regel in lines:
+            m = re.match(rf"EFIC Congress {jaar} - (.+?), ([A-Za-z .]+)$", regel)
+            if m and not stad:
+                stad = m.group(2).strip()
+            m = re.fullmatch(r"(\d{1,2}) to (\d{1,2}) ([A-Za-z]+) (20\d{2})", regel)
+            if m and not datum and m.group(4) == str(jaar):
+                datum = (maak_datum(jaar, m.group(3), m.group(1)), maak_datum(jaar, m.group(3), m.group(2)))
+        if stad and datum and datum[0]:
+            land = "Verenigd Koninkrijk" if stad.lower() == "glasgow" else "Onbekend"
+            entries.append(maak_entry(
+                f"efic-{jaar}", f"EFIC Congress {jaar} (Pain in Europe)",
+                "EFIC (European Pain Federation)", land, stad, datum[0], datum[1],
+                ["pijngeneeskunde"], url,
+                None if land != "Onbekend" else "Land niet automatisch bepaald, aanvullen.",
+            ))
+        else:
+            warn("EFIC", f"pagina {url} bestaat maar stad/datum niet gevonden.")
+    return entries
+
+
+def scrape_wca():
+    """World Congress of Anaesthesiologists (WFSA): overzichtspagina met de
+    komende edities, o.a. '20th WCA 2028 – Vancouver, Canada, 7-10 May 2028'."""
+    url = "https://wfsahq.org/our-work/world-congress/"
+    try:
+        lines = fetch_lines(url)
+    except requests.RequestException as e:
+        warn("WCA", f"kon {url} niet ophalen: {e}")
+        return []
+    entries = []
+    for regel in lines:
+        m = re.match(
+            r"(\d+)\w{2} WCA (20\d{2}) [–-] ([^,]+), ([^,]+), (\d{1,2})[-–](\d{1,2}) ([A-Za-z]+) (20\d{2})", regel
+        )
+        if m:
+            nr, jaar, stad, land, d1, d2, maand, _ = m.groups()
+            entries.append(maak_entry(
+                f"wca-{jaar}", f"{nr}th World Congress of Anaesthesiologists (WCA {jaar})",
+                "WFSA (World Federation of Societies of Anaesthesiologists)", vertaal_land(land),
+                stad.strip(), maak_datum(jaar, maand, d1), maak_datum(jaar, maand, d2),
+                ["algemene anesthesiologie"], url,
+            ))
+        else:
+            m = re.match(r"(\d+)\w{2} WCA [–-] ([A-Za-z ]+), (20\d{2})$", regel)
+            if m:
+                warn("WCA", f"WCA {m.group(3)} ({m.group(2)}) aangekondigd maar zonder datum -- nog niet toegevoegd.")
+    if not entries:
+        warn("WCA", f"geen WCA-editie met datum gevonden op {url}.")
+    return entries
+
+
+def scrape_soap():
+    """SOAP (Society for Obstetric Anesthesia and Perinatology): 'Future Meetings'."""
+    url = "https://www.soap.org/future-meetings"
+    try:
+        lines = fetch_lines(url)
+    except requests.RequestException as e:
+        warn("SOAP", f"kon {url} niet ophalen: {e}")
+        return []
+    entries = []
+    for i, regel in enumerate(lines):
+        m = re.fullmatch(r"(20\d{2}) (\d+)\w{2} Annual Meeting", regel)
+        if not m or i + 3 >= len(lines):
+            continue
+        jaar, nr = m.groups()
+        md = re.fullmatch(r"([A-Za-z]+) (\d{1,2})-(\d{1,2}), (20\d{2})", lines[i + 1])
+        if not md or md.group(4) != jaar:
+            continue
+        venue = lines[i + 2]
+        stad, land, let_op = None, "Verenigde Staten", None
+        mc = re.fullmatch(r"([A-Za-z .]+), ([A-Za-z .]+)", lines[i + 3])
+        if mc:
+            stad, land = mc.group(1).strip(), vertaal_land(mc.group(2))
+        else:
+            for extra in lines[i + 3:i + 8]:
+                ma = re.search(r"activities in ([A-Za-z .]+?) -", extra)
+                if ma:
+                    stad = ma.group(1).strip()
+                    let_op = f"Stad afgeleid uit de bron; exacte locatie: {venue}."
+                    break
+        if stad:
+            entries.append(maak_entry(
+                f"soap-{jaar}", f"SOAP {nr}th Annual Meeting",
+                "SOAP (Society for Obstetric Anesthesia and Perinatology)", land, stad,
+                maak_datum(jaar, md.group(1), md.group(2)), maak_datum(jaar, md.group(1), md.group(3)),
+                ["obstetrische anesthesie"], url, let_op,
+            ))
+    if not entries:
+        warn("SOAP", f"geen Annual Meeting gevonden op {url}.")
+    return entries
+
+
+def scrape_winter_pain_symposium():
+    """London Pain Forum: Advances in Pain Medicine International Winter Symposium."""
+    url = "https://www.winterpainsymposium.com/"
+    try:
+        lines = fetch_lines(url)
+    except requests.RequestException as e:
+        warn("Winter Pain Symposium", f"kon {url} niet ophalen: {e}")
+        return []
+    for regel in lines:
+        m = re.match(
+            r"(\d{1,2})-(\d{1,2}) ([A-Za-z]{3}) (20\d{2}) - (\d+)\w{2} (Advances in Pain Medicine Winter Symposium), ([^,]+), (.+)$",
+            regel,
+        )
+        if m:
+            d1, d2, maand, jaar, nr, naam, stad, regio = m.groups()
+            return [maak_entry(
+                f"winter-pain-symposium-{jaar}", f"{nr}th {naam}",
+                "London Pain Forum", "Frankrijk" if "french" in regio.lower() else regio, stad.strip(),
+                maak_datum(jaar, maand, d1), maak_datum(jaar, maand, d2),
+                ["pijngeneeskunde"], url,
+            )]
+    warn("Winter Pain Symposium", f"geen symposiumregel gevonden op {url}.")
+    return []
+
+
+def scrape_nysora():
+    """NYSORA-conferenties in Europa/Noord-Amerika (workshops en boot camps
+    worden niet meegenomen, alleen de conferenties)."""
+    url = "https://nysora.com/events/conferences"
+    try:
+        lines = fetch_lines(url)
+    except requests.RequestException as e:
+        warn("NYSORA", f"kon {url} niet ophalen: {e}")
+        return []
+    entries = []
+    for i, regel in enumerate(lines):
+        m = re.fullmatch(
+            r"([^|]+), ([^,|]+) \| ([A-Za-z]{3}) (\d{1,2})(?: - ([A-Za-z]{3}) (\d{1,2}))?, (20\d{2})", regel
+        )
+        if not m or i == 0:
+            continue
+        stad, land, m1, d1, m2, d2, jaar = m.groups()
+        if land.strip().lower() not in SCOPE_LANDEN:
+            continue
+        titel = lines[i - 1]
+        start = maak_datum(jaar, m1, d1)
+        eind = maak_datum(jaar, m2 or m1, d2 or d1)
+        slug = re.sub(r"[^a-z0-9]+", "-", stad.lower()).strip("-")
+        entries.append(maak_entry(
+            f"nysora-{slug}-{jaar}", f"NYSORA: {titel}", "NYSORA", vertaal_land(land),
+            stad.strip(), start, eind, ["regionale anesthesie", "pijngeneeskunde"], url,
+        ))
+    if not entries:
+        warn("NYSORA", f"geen conferenties in Europa/Noord-Amerika gevonden op {url}.")
+    return entries
+
+
+def scrape_bapa():
+    """BAPA (Belgian Association for Paediatric Anaesthesiology): jaarlijkse Annual Scientific Meeting."""
+    url = "https://www.bapanaesth.be/events/"
+    try:
+        lines = fetch_lines(url)
+    except requests.RequestException as e:
+        warn("BAPA", f"kon {url} niet ophalen: {e}")
+        return []
+    entries, gezien = [], set()
+    for i, regel in enumerate(lines):
+        if not regel.startswith("BAPA Annual Scientific Meeting"):
+            continue
+        for j in range(i + 1, min(i + 4, len(lines))):
+            m = re.fullmatch(r"([A-Za-z]+) (\d{1,2}), (20\d{2})", lines[j])
+            if m and j + 2 < len(lines):
+                maand, dag, jaar = m.groups()
+                if jaar in gezien:
+                    break
+                gezien.add(jaar)
+                locatie = lines[j + 2]
+                stad = re.sub(r"^UZ\s+", "", locatie.split(" - ")[0]).strip()
+                datum = maak_datum(jaar, maand, dag)
+                entries.append(maak_entry(
+                    f"bapa-annual-{jaar}", f"BAPA Annual Scientific Meeting {jaar}",
+                    "BAPA (Belgian Association for Paediatric Anaesthesiology)", "België", stad,
+                    datum, datum, ["kinderanesthesiologie"], url,
+                ))
+                break
+    if not entries:
+        warn("BAPA", f"geen Annual Scientific Meeting gevonden op {url}.")
+    return entries
+
+
+def scrape_association_of_anaesthetists():
+    """Association of Anaesthetists (GB & Ierland): alleen de items van het type
+    'Conference' uit hun evenementenlijst (dus geen cursussen of webinars)."""
+    url = "https://anaesthetists.org/CPD-and-events/Book-an-event"
+    try:
+        lines = fetch_lines(url)
+    except requests.RequestException as e:
+        warn("Association of Anaesthetists", f"kon {url} niet ophalen: {e}")
+        return []
+    entries = []
+    for i, regel in enumerate(lines):
+        if regel not in ("Conference", "Hybrid Conference") or i + 3 >= len(lines):
+            continue
+        m = re.match(r"\w+ (\d{1,2}) ?- \w+ (\d{1,2}) ([A-Za-z]+) (20\d{2})$", lines[i + 1])
+        if not m:
+            continue
+        d1, d2, maand, jaar = m.groups()
+        naam, stad = lines[i + 2], lines[i + 3]
+        slug = re.sub(r"[^a-z0-9]+", "-", naam.lower()).strip("-")
+        entries.append(maak_entry(
+            f"association-of-anaesthetists-{slug}", naam,
+            "Association of Anaesthetists (GB & Ierland)", "Verenigd Koninkrijk", stad,
+            maak_datum(jaar, maand, d1), maak_datum(jaar, maand, d2),
+            ["algemene anesthesiologie"], url,
+        ))
+    if not entries:
+        warn("Association of Anaesthetists", f"geen conferenties gevonden op {url}.")
+    return entries
+
+
 SCRAPERS = [
     scrape_euroanaesthesia, scrape_esra_congress, scrape_painweek, scrape_asra,
-    scrape_nva_anesthesiologendagen, scrape_espa,
+    scrape_nva_anesthesiologendagen, scrape_espa, scrape_efic, scrape_wca, scrape_soap,
+    scrape_winter_pain_symposium, scrape_nysora, scrape_bapa, scrape_association_of_anaesthetists,
 ]
 
 
@@ -447,7 +709,8 @@ HEADER = """// Congresdataset. Dit bestand wordt automatisch gegenereerd door
 // scripts/scrape_congressen.py -- pas het dus niet direct handmatig aan.
 //
 // - Automatisch gescrapete congressen komen uit de bekende bronnen (ESAIC,
-//   ESRA, PAINWeek, ASRA, NVA, ESPA); zie het bron-veld per congres.
+//   ESRA, PAINWeek, ASRA, NVA, ESPA, EFIC, WCA, SOAP, NYSORA, BAPA, Association
+//   of Anaesthetists, London Pain Forum); zie het bron-veld per congres.
 // - Congressen die niet automatisch te scrapen zijn (geblokkeerd door de
 //   site, of expliciet verboden in de sitevoorwaarden) staan handmatig in
 //   data/congressen.manual.json en worden hier ongewijzigd overgenomen.
