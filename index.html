@@ -3,154 +3,336 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
   <title>Anesthesie &amp; Pijn Congressen</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🩺</text></svg>">
+  <link rel="icon" href="iphone/icon-180.png">
   <link rel="apple-touch-icon" href="iphone/icon-180.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Congressen">
-  <meta name="theme-color" content="#0f766e">
+  <meta name="theme-color" content="#0a0a0a">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primair: #0f766e;
-      --primair-donker: #0b5c56;
-      --accent: #f97362;
-      --tekst: #1f2937;
-      --tekst-zacht: #6b7280;
-      --achtergrond: #f6f7f5;
-      --kaart-bg: #ffffff;
-      --rand: #e5e7eb;
-      --radius: 12px;
+      --bg: #f3f3f0;
+      --surface: #ffffff;
+      --ink: #0a0a0a;
+      --ink-zacht: #5d5d58;
+      --lijn: #d9d9d3;
+      --accent: #ff5500;
+      --accent-tekst: #0a0a0a;
+      --hero-bg: #0a0a0a;
+      --hero-ink: #f5f5f2;
+      --hero-zacht: #a3a39c;
+      --ring: #262624;
+      --display: 'Barlow Condensed', 'Arial Narrow', 'Helvetica Neue', Arial, sans-serif;
+      --tekst: 'Barlow', 'Helvetica Neue', Arial, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0a0a0a;
+        --surface: #141414;
+        --ink: #f5f5f2;
+        --ink-zacht: #a3a39c;
+        --lijn: #2a2a28;
+        --hero-bg: #000000;
+        --ring: #232321;
+      }
     }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', 'Segoe UI', sans-serif;
-      background: var(--achtergrond);
-      color: var(--tekst);
       margin: 0;
-      padding: 0 0 60px;
-      line-height: 1.5;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--tekst);
+      font-size: 16px;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
     }
-    header {
-      background: linear-gradient(135deg, var(--primair), var(--primair-donker));
-      color: white;
-      padding: 32px 20px 28px;
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    /* ---------- topbalk ---------- */
+    .topbalk {
+      background: var(--hero-bg);
+      color: var(--hero-ink);
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 14px 20px;
+      font-family: var(--display); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 1rem;
     }
-    header h1 { margin: 0 0 6px; font-size: 1.7rem; }
-    header p { margin: 0; opacity: 0.9; font-size: 0.95rem; max-width: 640px; }
-    main {
-      max-width: 960px;
-      margin: -20px auto 0;
-      padding: 0 20px;
+    .topbalk .merk { display: flex; align-items: center; gap: 10px; }
+    .topbalk .merk i { width: 12px; height: 12px; background: var(--accent); border-radius: 50%; display: inline-block; }
+    .topbalk .teller-top { color: var(--hero-zacht); font-weight: 600; }
+
+    /* ---------- hero ---------- */
+    .hero {
+      background: var(--hero-bg);
+      color: var(--hero-ink);
+      overflow: hidden;
+      position: relative;
     }
-    .filters {
-      background: var(--kaart-bg);
-      border-radius: var(--radius);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-      padding: 18px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 12px;
-      margin-bottom: 24px;
+    .hero-binnen {
+      max-width: 1180px; margin: 0 auto;
+      padding: 28px 20px 0;
+      display: grid; grid-template-columns: 1.3fr 0.8fr; gap: 12px 32px; align-items: end;
     }
-    .filters .veld { display: flex; flex-direction: column; gap: 4px; }
-    .filters label { font-size: 12px; color: var(--tekst-zacht); font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; }
-    .filters input, .filters select {
-      font-family: inherit;
-      font-size: 14px;
-      padding: 8px 10px;
-      border: 1px solid var(--rand);
-      border-radius: 8px;
-      background: white;
+    .hero-tekst { padding-bottom: 40px; align-self: center; }
+    .eyebrow {
+      font-family: var(--display); font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em;
+      color: var(--accent); font-size: 1rem; margin: 0 0 10px;
     }
-    .filters .zoekveld { grid-column: 1 / -1; }
-    .filters button {
-      border: none;
-      border-radius: 8px;
-      padding: 8px 14px;
-      font-family: inherit;
-      font-size: 14px;
-      cursor: pointer;
-      background: var(--tekst-zacht);
-      color: white;
-      align-self: end;
+    .hero h1 {
+      font-family: var(--display); font-weight: 800; text-transform: uppercase;
+      font-size: clamp(3.2rem, 8.2vw, 6.2rem); line-height: 0.88; letter-spacing: -0.01em;
+      margin: 0 0 18px; text-wrap: balance;
     }
-    #resultaatTeller { color: var(--tekst-zacht); font-size: 14px; margin: 0 0 12px; }
-    .congres-lijst { display: grid; gap: 14px; }
+    .hero h1 em { font-style: normal; color: var(--accent); }
+    .hero .sub { color: var(--hero-zacht); max-width: 34ch; margin: 0 0 26px; font-size: 1.05rem; }
+    .volgend {
+      display: inline-flex; align-items: stretch; gap: 0; text-decoration: none;
+      background: var(--accent); color: var(--accent-tekst);
+      border-radius: 2px; max-width: 100%;
+    }
+    .volgend .dagen {
+      font-family: var(--display); font-weight: 800; line-height: 0.85; font-size: 3.6rem;
+      padding: 14px 16px 10px; background: var(--hero-ink); color: var(--hero-bg); text-align: center; min-width: 4.6rem;
+    }
+    .volgend .dagen small { display: block; font-size: 0.95rem; letter-spacing: 0.1em; margin-top: 6px; font-weight: 700; }
+    .volgend .waar { padding: 12px 18px; display: flex; flex-direction: column; justify-content: center; min-width: 0; }
+    .volgend .label { font-family: var(--display); text-transform: uppercase; font-weight: 700; letter-spacing: 0.12em; font-size: 0.9rem; }
+    .volgend .naam { font-family: var(--display); text-transform: uppercase; font-weight: 800; font-size: 1.5rem; line-height: 1; margin: 2px 0 4px; }
+    .volgend .plek { font-size: 0.95rem; font-weight: 500; }
+    .volgend:hover { filter: brightness(1.06); }
+
+    .hero-beeld { align-self: end; justify-self: center; width: min(100%, 470px); }
+    .hero-beeld svg { display: block; width: 100%; height: auto; }
+    .ecg { stroke-dasharray: 1400; stroke-dashoffset: 1400; animation: ecg 3.2s linear infinite; }
+    .ring-puls { transform-origin: 300px 330px; animation: puls 3.2s ease-in-out infinite; }
+    @keyframes ecg { 0% { stroke-dashoffset: 1400; } 70%, 100% { stroke-dashoffset: 0; } }
+    @keyframes puls { 0%, 100% { transform: scale(1); opacity: .55; } 50% { transform: scale(1.04); opacity: 1; } }
+
+    /* ---------- lopende band ---------- */
+    .band { background: var(--accent); color: var(--accent-tekst); overflow: hidden; white-space: nowrap; border-block: 2px solid var(--hero-bg); }
+    .band-spoor { display: inline-flex; animation: band 42s linear infinite; }
+    .band span {
+      font-family: var(--display); font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; font-size: 1.35rem;
+      padding: 8px 0;
+    }
+    .band span::after { content: "✚"; margin: 0 1.1rem; font-size: 1rem; vertical-align: 2px; }
+    @keyframes band { to { transform: translateX(-50%); } }
+
+    /* ---------- filters ---------- */
+    main { max-width: 1180px; margin: 0 auto; padding: 0 20px 80px; }
+    .toolbar {
+      position: sticky; top: 0; z-index: 20;
+      background: var(--bg);
+      padding: 16px 0 12px;
+      border-bottom: 1px solid var(--lijn);
+      margin-bottom: 8px;
+    }
+    .zoekrij { display: flex; gap: 10px; align-items: stretch; }
+    .zoek {
+      flex: 1; min-width: 0;
+      font: 600 1.15rem var(--tekst);
+      padding: 14px 16px;
+      background: var(--surface); color: var(--ink);
+      border: 2px solid var(--ink); border-radius: 2px;
+    }
+    .zoek::placeholder { color: var(--ink-zacht); font-weight: 500; }
+    .zoek:focus-visible { outline-offset: 0; border-color: var(--accent); }
+    .knop {
+      font: 700 1rem var(--display); letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0 18px; border-radius: 2px; cursor: pointer;
+      background: var(--ink); color: var(--bg); border: 2px solid var(--ink);
+    }
+    .knop:hover { background: var(--accent); border-color: var(--accent); color: var(--accent-tekst); }
+    .chips { display: flex; gap: 8px; overflow-x: auto; padding: 12px 0 4px; scrollbar-width: none; align-items: center; }
+    .chips::-webkit-scrollbar { display: none; }
+    .chip {
+      flex: none; cursor: pointer;
+      font: 700 0.95rem var(--display); text-transform: uppercase; letter-spacing: 0.07em;
+      padding: 7px 14px; border-radius: 999px;
+      background: transparent; color: var(--ink); border: 2px solid var(--lijn);
+    }
+    .chip:hover { border-color: var(--ink); }
+    .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-tekst); }
+    .chips .scheiding { flex: none; width: 2px; align-self: stretch; background: var(--lijn); margin: 4px 4px; }
+    details.meer { margin-top: 8px; }
+    details.meer summary {
+      cursor: pointer; list-style: none; display: inline-flex; gap: 8px; align-items: center;
+      font: 700 0.95rem var(--display); letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 0;
+    }
+    details.meer summary::-webkit-details-marker { display: none; }
+    details.meer summary::after { content: "+"; font-size: 1.3rem; line-height: 1; }
+    details.meer[open] summary::after { content: "–"; }
+    .meer-raster { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; padding: 10px 0 6px; }
+    .veld { display: flex; flex-direction: column; gap: 4px; }
+    .veld label { font: 700 0.8rem var(--display); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-zacht); }
+    .veld select, .veld input {
+      font: 500 1rem var(--tekst); padding: 10px 10px; background: var(--surface); color: var(--ink);
+      border: 2px solid var(--lijn); border-radius: 2px;
+    }
+    .veld select:focus-visible, .veld input:focus-visible { border-color: var(--accent); outline-offset: 0; }
+    #resultaatTeller { margin: 18px 0 0; font: 700 1rem var(--display); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-zacht); }
+
+    /* ---------- lijst ---------- */
+    .congres-lijst { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 16px; padding-top: 8px; }
+    .jaarkop {
+      grid-column: 1 / -1; margin: 26px 0 -4px;
+      font-family: var(--display); font-weight: 800; line-height: 0.85;
+      font-size: clamp(4rem, 14vw, 9rem); letter-spacing: -0.01em;
+      color: transparent; -webkit-text-stroke: 2px var(--ink);
+    }
     .congres-kaart {
-      background: var(--kaart-bg);
-      border-radius: var(--radius);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-      padding: 18px 20px;
-      border-left: 5px solid var(--primair);
+      background: var(--surface); border: 2px solid var(--ink); border-radius: 2px;
+      display: flex; flex-direction: column; overflow: hidden;
+      transition: transform .18s ease, box-shadow .18s ease;
+      animation: op 0.5s ease both; animation-delay: calc(var(--i, 0) * 30ms);
     }
-    .congres-kaart h2 { margin: 0 0 4px; font-size: 1.15rem; }
-    .congres-kaart .organisatie { color: var(--tekst-zacht); font-size: 13px; margin-bottom: 10px; }
-    .congres-info { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14px; margin-bottom: 10px; }
-    .congres-info span { display: flex; align-items: center; gap: 5px; }
-    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
-    .tag { background: #e6f4f2; color: var(--primair-donker); font-size: 12px; padding: 3px 9px; border-radius: 999px; }
-    .weekbadge { font-size: 12px; padding: 3px 9px; border-radius: 999px; font-weight: 600; }
-    .weekbadge.even { background: #e0edff; color: #1d4ed8; }
-    .weekbadge.oneven { background: #ffe9df; color: #c2410c; }
-    .congres-kaart .kosten { font-size: 13px; color: var(--tekst-zacht); margin-bottom: 8px; }
-    .congres-kaart a.bron { font-size: 13px; color: var(--primair-donker); text-decoration: none; }
-    .congres-kaart a.bron:hover { text-decoration: underline; }
-    .leeg-resultaat { text-align: center; color: var(--tekst-zacht); padding: 40px 20px; }
+    .congres-kaart:hover { transform: translate(-4px, -4px); box-shadow: 8px 8px 0 var(--accent); }
+    .kaart-datum {
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 12px;
+      padding: 16px 18px 12px; border-bottom: 2px solid var(--ink);
+      background: var(--hero-bg); color: var(--hero-ink);
+    }
+    .dagen-groot { font-family: var(--display); font-weight: 800; font-size: 3.6rem; line-height: 0.85; letter-spacing: -0.01em; }
+    .maand { font-family: var(--display); font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; font-size: 1.1rem; color: var(--accent); }
+    .kaart-datum .rechts { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+    .status { font: 700 0.8rem var(--display); letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+    .status.nu { background: var(--accent); color: var(--accent-tekst); }
+    .status.voorbij { background: transparent; border: 1px solid var(--hero-zacht); color: var(--hero-zacht); }
+    .weekbadge { font: 700 0.85rem var(--display); letter-spacing: 0.1em; text-transform: uppercase; color: var(--hero-zacht); }
+    .weekbadge b { color: var(--hero-ink); }
+    .weekbadge.even::before, .weekbadge.oneven::before { content: ""; display: inline-block; width: 9px; height: 9px; margin-right: 6px; border-radius: 50%; }
+    .weekbadge.even::before { background: var(--hero-ink); }
+    .weekbadge.oneven::before { background: var(--accent); }
+    .kaart-body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+    .congres-kaart h2 { margin: 0; font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: 1.75rem; line-height: 0.98; text-wrap: balance; }
+    .organisatie { color: var(--ink-zacht); font-size: 0.92rem; }
+    .kaart-body .plek { font-weight: 600; display: flex; gap: 8px; align-items: baseline; }
+    .kaart-body .plek::before { content: ""; flex: none; width: 10px; height: 10px; background: var(--accent); border-radius: 50% 50% 50% 0; transform: rotate(-45deg) translateY(1px); }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { font: 700 0.82rem var(--display); letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border: 1.5px solid var(--ink); border-radius: 999px; }
+    .kaart-voet { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-top: 8px; border-top: 1px solid var(--lijn); }
+    .kosten { color: var(--ink-zacht); font-size: 0.88rem; }
+    a.bron {
+      flex: none; font: 800 0.95rem var(--display); letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+      background: var(--ink); color: var(--bg); padding: 8px 14px; border-radius: 999px;
+    }
+    a.bron:hover { background: var(--accent); color: var(--accent-tekst); }
+    .congres-kaart.voorbij { opacity: .62; }
+    .congres-kaart.voorbij:hover { opacity: 1; }
+    .let-op { font-size: 0.85rem; color: var(--ink-zacht); border-left: 3px solid var(--accent); padding-left: 10px; }
+    .leeg-resultaat { grid-column: 1 / -1; text-align: center; padding: 60px 20px; font: 700 1.8rem var(--display); text-transform: uppercase; color: var(--ink-zacht); }
+    @keyframes op { from { transform: translateY(14px); } to { transform: none; } }
+
+    @media (max-width: 820px) {
+      .hero-binnen { grid-template-columns: 1fr; padding-top: 22px; }
+      .hero-beeld { order: -1; width: min(72%, 320px); margin-bottom: -6px; }
+      .hero-tekst { padding-bottom: 28px; }
+      .kaart-datum, .dagen-groot { }
+    }
     @media (max-width: 480px) {
-      header { padding: 24px 16px 22px; }
-      header h1 { font-size: 1.4rem; }
-      main { padding: 0 12px; }
-      .filters { grid-template-columns: 1fr 1fr; }
+      main, .hero-binnen, .topbalk { padding-left: 16px; padding-right: 16px; }
+      .zoek { font-size: 1rem; padding: 12px; }
+      .volgend .naam { font-size: 1.25rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .ecg, .ring-puls, .band-spoor, .congres-kaart { animation: none; }
+      .ecg { stroke-dashoffset: 0; }
+      .congres-kaart { transition: none; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>🩺 Anesthesie &amp; Pijn Congressen</h1>
-    <p>Overzicht van Europese en Amerikaanse congressen, conferenties en symposia voor anesthesiologie, regionale anesthesie en pijngeneeskunde.</p>
+  <div class="topbalk">
+    <div class="merk"><i></i> Anesthesie &amp; Pijn</div>
+    <div class="teller-top" id="tellerTop"></div>
+  </div>
+
+  <header class="hero">
+    <div class="hero-binnen">
+      <div class="hero-tekst">
+        <p class="eyebrow">Europa · Noord-Amerika · meerdere jaren vooruit</p>
+        <h1>Alle <em>congressen</em> voor anesthesie &amp; pijn</h1>
+        <p class="sub" id="heroSub">Filter op plek, datum, onderwerp en even/oneven week. Elke kaart heeft een bron.</p>
+        <a class="volgend" id="volgend" href="#lijst" hidden>
+          <span class="dagen"><span id="volgendDagen">0</span><small id="volgendEenheid">DAGEN</small></span>
+          <span class="waar">
+            <span class="label" id="volgendLabel">Volgend congres</span>
+            <span class="naam" id="volgendNaam"></span>
+            <span class="plek" id="volgendPlek"></span>
+          </span>
+        </a>
+      </div>
+      <div class="hero-beeld" aria-hidden="true">
+        <svg viewBox="0 0 600 700" role="img" focusable="false">
+          <circle class="ring-puls" cx="300" cy="330" r="268" fill="none" stroke="#ff5500" stroke-width="4"/>
+          <circle cx="300" cy="330" r="250" fill="#1b1b19"/>
+          <!-- schouders / scrubs -->
+          <path d="M40 700 C50 585 170 520 300 522 C430 520 550 585 560 700 Z" fill="#2c2c29"/>
+          <!-- hals -->
+          <path d="M262 420 L262 520 Q300 560 338 520 L338 420 Z" fill="#dcb7a1"/>
+          <!-- V-hals -->
+          <path d="M238 524 L300 618 L362 524 Q300 552 238 524 Z" fill="#dcb7a1"/>
+          <path d="M232 520 L300 626 L368 520" fill="none" stroke="#ff5500" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+          <!-- stethoscoop -->
+          <path d="M226 500 C206 600 246 660 300 664 C354 660 394 600 374 500" fill="none" stroke="#f5f5f2" stroke-width="8" stroke-linecap="round"/>
+          <circle cx="374" cy="640" r="26" fill="#f5f5f2"/><circle cx="374" cy="640" r="13" fill="#2c2c29"/>
+          <path d="M374 614 C374 570 350 560 350 540" fill="none" stroke="#f5f5f2" stroke-width="8" stroke-linecap="round"/>
+          <!-- oren -->
+          <ellipse cx="192" cy="330" rx="16" ry="30" fill="#e6c1ab"/><ellipse cx="408" cy="330" rx="16" ry="30" fill="#e6c1ab"/>
+          <!-- gezicht -->
+          <ellipse cx="300" cy="320" rx="108" ry="128" fill="#f0d0bb"/>
+          <!-- operatiemuts -->
+          <path d="M186 300 C176 150 424 150 414 300 C384 272 216 272 186 300 Z" fill="#ff5500"/>
+          <path d="M186 300 C216 272 384 272 414 300" fill="none" stroke="#0a0a0a" stroke-opacity=".25" stroke-width="6"/>
+          <path d="M240 190 C270 168 330 168 360 190" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="6" stroke-linecap="round"/>
+          <!-- bril -->
+          <rect x="222" y="292" width="68" height="46" rx="18" fill="#fff" fill-opacity=".12" stroke="#0a0a0a" stroke-width="6"/>
+          <rect x="310" y="292" width="68" height="46" rx="18" fill="#fff" fill-opacity=".12" stroke="#0a0a0a" stroke-width="6"/>
+          <path d="M290 312 H310" stroke="#0a0a0a" stroke-width="6"/>
+          <ellipse cx="256" cy="316" rx="9" ry="10" fill="#0a0a0a"/><ellipse cx="344" cy="316" rx="9" ry="10" fill="#0a0a0a"/>
+          <path d="M230 282 Q256 268 284 280 M316 280 Q344 268 370 282" fill="none" stroke="#7a5a48" stroke-width="7" stroke-linecap="round"/>
+          <!-- mondkapje -->
+          <path d="M196 356 L404 356 C410 420 372 470 300 474 C228 470 190 420 196 356 Z" fill="#f5f5f2"/>
+          <path d="M204 388 H396 M208 416 H392 M226 444 H374" stroke="#0a0a0a" stroke-opacity=".14" stroke-width="5" stroke-linecap="round"/>
+          <path d="M197 366 Q176 350 178 326 M403 366 Q424 350 422 326" fill="none" stroke="#f5f5f2" stroke-width="4" stroke-linecap="round"/>
+          <!-- hartslag -->
+          <path class="ecg" d="M0 590 H150 L182 590 L206 520 L238 660 L268 560 L288 590 H600" fill="none" stroke="#ff5500" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
   </header>
 
-  <main>
-    <div class="filters">
-      <div class="veld zoekveld">
-        <label for="zoek">Zoeken</label>
-        <input type="text" id="zoek" placeholder="Naam, organisatie, stad, onderwerp...">
+  <div class="band" aria-hidden="true"><div class="band-spoor" id="bandSpoor"></div></div>
+
+  <main id="lijst">
+    <div class="toolbar">
+      <div class="zoekrij">
+        <label for="zoek" class="visually-hidden" style="position:absolute;left:-9999px">Zoeken</label>
+        <input type="text" id="zoek" class="zoek" placeholder="Zoek op naam, organisatie, stad…" autocomplete="off">
+        <button type="button" id="resetFilters" class="knop">Wis</button>
       </div>
-      <div class="veld">
-        <label for="filterLand">Land</label>
-        <select id="filterLand"><option value="">Alle landen</option></select>
-      </div>
-      <div class="veld">
-        <label for="filterStad">Stad</label>
-        <select id="filterStad"><option value="">Alle steden</option></select>
-      </div>
-      <div class="veld">
-        <label for="filterOnderwerp">Onderwerp</label>
-        <select id="filterOnderwerp"><option value="">Alle onderwerpen</option></select>
-      </div>
-      <div class="veld">
-        <label for="filterWeek">Weeknummer</label>
-        <select id="filterWeek">
-          <option value="">Even of oneven</option>
-          <option value="even">Even week</option>
-          <option value="oneven">Oneven week</option>
-        </select>
-      </div>
-      <div class="veld">
-        <label for="vanaf">Vanaf datum</label>
-        <input type="date" id="vanaf">
-      </div>
-      <div class="veld">
-        <label for="tot">Tot datum</label>
-        <input type="date" id="tot">
-      </div>
-      <div class="veld">
-        <label>&nbsp;</label>
-        <button type="button" id="resetFilters">Wis filters</button>
-      </div>
+      <div class="chips" id="chipRij" role="group" aria-label="Snelfilters"></div>
+      <details class="meer">
+        <summary>Meer filters</summary>
+        <div class="meer-raster">
+          <div class="veld"><label for="filterLand">Land</label><select id="filterLand"><option value="">Alle landen</option></select></div>
+          <div class="veld"><label for="filterStad">Stad</label><select id="filterStad"><option value="">Alle steden</option></select></div>
+          <div class="veld"><label for="vanaf">Vanaf datum</label><input type="date" id="vanaf"></div>
+          <div class="veld"><label for="tot">Tot datum</label><input type="date" id="tot"></div>
+        </div>
+      </details>
+      <select id="filterOnderwerp" hidden><option value="">Alle onderwerpen</option></select>
+      <select id="filterWeek" hidden>
+        <option value="">Even of oneven</option>
+        <option value="even">Even week</option>
+        <option value="oneven">Oneven week</option>
+      </select>
     </div>
 
     <p id="resultaatTeller"></p>
@@ -175,20 +357,31 @@
       return isoWeekNummer(datumString) % 2 === 0 ? 'even' : 'oneven';
     }
 
+    function lokaleDatumString(d) {
+      const p = n => String(n).padStart(2, '0');
+      return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+    }
+    const VANDAAG = lokaleDatumString(new Date());
+
+    const MAANDEN_KORT = ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
+
     function formatDatum(datumString) {
       const datum = new Date(datumString + 'T00:00:00');
       return datum.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
     }
 
-    function formatPeriode(rij) {
-      if (rij.datumStart === rij.datumEind) return formatDatum(rij.datumStart);
+    function datumBlok(rij) {
       const start = new Date(rij.datumStart + 'T00:00:00');
       const eind = new Date(rij.datumEind + 'T00:00:00');
       const zelfdeMaand = start.getMonth() === eind.getMonth() && start.getFullYear() === eind.getFullYear();
-      if (zelfdeMaand) {
-        return `${start.getDate()}-${formatDatum(rij.datumEind)}`;
-      }
-      return `${formatDatum(rij.datumStart)} t/m ${formatDatum(rij.datumEind)}`;
+      const jaar = start.getFullYear();
+      if (rij.datumStart === rij.datumEind) return { dagen: String(start.getDate()), maand: MAANDEN_KORT[start.getMonth()], jaar };
+      if (zelfdeMaand) return { dagen: `${start.getDate()}–${eind.getDate()}`, maand: MAANDEN_KORT[start.getMonth()], jaar };
+      return { dagen: `${start.getDate()}–${eind.getDate()}`, maand: `${MAANDEN_KORT[start.getMonth()]}/${MAANDEN_KORT[eind.getMonth()]}`, jaar };
+    }
+
+    function esc(t) {
+      return String(t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
     }
 
     function vulFilterOpties() {
@@ -208,6 +401,50 @@
       vulSelect('filterLand', landen);
       vulSelect('filterStad', steden);
       vulSelect('filterOnderwerp', onderwerpen);
+    }
+
+    // Snelfilters (chips) sturen de bestaande selects aan, zodat de filterlogica ongewijzigd blijft.
+    function bouwChips() {
+      const rij = document.getElementById('chipRij');
+      const maak = (tekst, selectId, waarde) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'chip';
+        b.textContent = tekst;
+        b.dataset.select = selectId;
+        b.dataset.waarde = waarde;
+        b.addEventListener('click', () => {
+          const sel = document.getElementById(selectId);
+          sel.value = (sel.value === waarde) ? '' : waarde;
+          toonCongressen();
+        });
+        return b;
+      };
+      const komende = document.createElement('button');
+      komende.type = 'button';
+      komende.className = 'chip';
+      komende.textContent = 'Komende';
+      komende.dataset.select = 'vanaf';
+      komende.dataset.waarde = VANDAAG;
+      komende.addEventListener('click', () => {
+        const veld = document.getElementById('vanaf');
+        veld.value = (veld.value === VANDAAG) ? '' : VANDAAG;
+        toonCongressen();
+      });
+      rij.appendChild(komende);
+      rij.appendChild(maak('Even week', 'filterWeek', 'even'));
+      rij.appendChild(maak('Oneven week', 'filterWeek', 'oneven'));
+      const scheiding = document.createElement('span');
+      scheiding.className = 'scheiding';
+      rij.appendChild(scheiding);
+      [...new Set(CONGRESSEN.flatMap(r => r.onderwerp))].sort().forEach(o => rij.appendChild(maak(o, 'filterOnderwerp', o)));
+    }
+
+    function syncChips() {
+      document.querySelectorAll('#chipRij .chip').forEach(b => {
+        const actief = document.getElementById(b.dataset.select).value === b.dataset.waarde;
+        b.setAttribute('aria-pressed', actief ? 'true' : 'false');
+      });
     }
 
     function huidigeFilters() {
@@ -236,22 +473,37 @@
       return true;
     }
 
-    function renderCongres(rij) {
+    function renderCongres(rij, index) {
       const pariteit = weekPariteit(rij.datumStart);
       const weekNr = isoWeekNummer(rij.datumStart);
-      const div = document.createElement('div');
-      div.className = 'congres-kaart';
+      const blok = datumBlok(rij);
+      const voorbij = rij.datumEind < VANDAAG;
+      const nu = rij.datumStart <= VANDAAG && VANDAAG <= rij.datumEind;
+      const div = document.createElement('article');
+      div.className = 'congres-kaart' + (voorbij ? ' voorbij' : '');
+      div.style.setProperty('--i', Math.min(index, 12));
       div.innerHTML = `
-        <h2>${rij.naam}</h2>
-        <div class="organisatie">${rij.organisatie}</div>
-        <div class="congres-info">
-          <span>📅 ${formatPeriode(rij)}</span>
-          <span>📍 ${rij.stad}, ${rij.land}</span>
-          <span class="weekbadge ${pariteit}">week ${weekNr} (${pariteit})</span>
+        <div class="kaart-datum">
+          <div>
+            <div class="maand">${esc(blok.maand)} ${blok.jaar}</div>
+            <div class="dagen-groot">${esc(blok.dagen)}</div>
+          </div>
+          <div class="rechts">
+            ${nu ? '<span class="status nu">Nu bezig</span>' : ''}${voorbij ? '<span class="status voorbij">Afgelopen</span>' : ''}
+            <span class="weekbadge ${pariteit}">week <b>${weekNr}</b> · ${pariteit}</span>
+          </div>
         </div>
-        <div class="tags">${rij.onderwerp.map(o => `<span class="tag">${o}</span>`).join('')}</div>
-        <div class="kosten">💶 ${rij.kosten}</div>
-        <a class="bron" href="${rij.bron}" target="_blank" rel="noopener">Bron / meer info &rarr;</a>
+        <div class="kaart-body">
+          <h2>${esc(rij.naam)}</h2>
+          <div class="organisatie">${esc(rij.organisatie)}</div>
+          <div class="plek">${esc(rij.stad)}, ${esc(rij.land)}</div>
+          <div class="tags">${rij.onderwerp.map(o => `<span class="tag">${esc(o)}</span>`).join('')}</div>
+          ${rij.letOp ? `<div class="let-op">${esc(rij.letOp)}</div>` : ''}
+          <div class="kaart-voet">
+            <span class="kosten">${esc(rij.kosten)}</span>
+            <a class="bron" href="${esc(rij.bron)}" target="_blank" rel="noopener">Bron →</a>
+          </div>
+        </div>
       `;
       return div;
     }
@@ -265,13 +517,47 @@
       const lijst = document.getElementById('congresLijst');
       lijst.innerHTML = '';
       if (gefilterd.length === 0) {
-        lijst.innerHTML = '<div class="leeg-resultaat">Geen congressen gevonden met deze filters. Probeer iets breder te zoeken.</div>';
+        lijst.innerHTML = '<div class="leeg-resultaat">Niets gevonden — probeer het breder</div>';
       } else {
-        gefilterd.forEach(rij => lijst.appendChild(renderCongres(rij)));
+        let huidigJaar = null;
+        gefilterd.forEach((rij, i) => {
+          const jaar = rij.datumStart.slice(0, 4);
+          if (jaar !== huidigJaar) {
+            huidigJaar = jaar;
+            const kop = document.createElement('h2');
+            kop.className = 'jaarkop';
+            kop.textContent = jaar;
+            lijst.appendChild(kop);
+          }
+          lijst.appendChild(renderCongres(rij, i));
+        });
       }
 
-      const teller = document.getElementById('resultaatTeller');
-      teller.textContent = `${gefilterd.length} van de ${CONGRESSEN.length} congressen`;
+      document.getElementById('resultaatTeller').textContent = `${gefilterd.length} van de ${CONGRESSEN.length} congressen`;
+      syncChips();
+    }
+
+    function bouwHero() {
+      document.getElementById('tellerTop').textContent = `${CONGRESSEN.length} congressen`;
+      document.getElementById('heroSub').textContent =
+        `${CONGRESSEN.length} edities, meerdere jaren vooruit. Filter op plek, datum, onderwerp en even/oneven week; elke kaart heeft een bron.`;
+
+      const komend = CONGRESSEN.filter(r => r.datumEind >= VANDAAG).sort((a, b) => a.datumStart.localeCompare(b.datumStart))[0];
+      if (komend) {
+        const knop = document.getElementById('volgend');
+        const nu = komend.datumStart <= VANDAAG;
+        const dagen = Math.max(0, Math.round((new Date(komend.datumStart + 'T00:00:00') - new Date(VANDAAG + 'T00:00:00')) / 86400000));
+        document.getElementById('volgendDagen').textContent = nu ? '•' : dagen;
+        document.getElementById('volgendEenheid').textContent = nu ? 'NU' : (dagen === 1 ? 'DAG' : 'DAGEN');
+        document.getElementById('volgendLabel').textContent = nu ? 'Nu bezig' : 'Volgend congres';
+        document.getElementById('volgendNaam').textContent = komend.naam.length > 42 ? komend.naam.slice(0, 40) + '…' : komend.naam;
+        document.getElementById('volgendPlek').textContent = `${komend.stad}, ${komend.land} · ${formatDatum(komend.datumStart)}`;
+        knop.hidden = false;
+      }
+
+      const organisaties = [...new Set(CONGRESSEN.map(r => r.organisatie.split(' (')[0].replace(/^American Society of Anesthesiologists$/, 'ASA')))];
+      const html = organisaties.map(o => `<span>${esc(o)}</span>`).join('');
+      document.getElementById('bandSpoor').innerHTML = html + html;
     }
 
     ['zoek', 'filterLand', 'filterStad', 'filterOnderwerp', 'filterWeek', 'vanaf', 'tot'].forEach(id => {
@@ -284,6 +570,9 @@
     });
 
     vulFilterOpties();
+    bouwChips();
+    bouwHero();
+    document.getElementById('vanaf').value = VANDAAG; // standaard alleen komende congressen
     toonCongressen();
   </script>
 </body>
