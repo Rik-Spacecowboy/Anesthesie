@@ -43,3 +43,11 @@ pip install -r scripts/requirements.txt
 python3 scripts/scrape_congressen.py            # schrijft data/congressen.js
 python3 scripts/scrape_congressen.py --check    # exit 1 als er wijzigingen zouden zijn, schrijft niets
 ```
+
+## Tegel op je iPhone
+
+Twee manieren:
+- **Via Safari:** open [de site](https://rik-spacecowboy.github.io/Anesthesie/) → deelknop → "Zet op beginscherm".
+- **Via profielbestand:** [`iphone/Anesthesie-Congressen.mobileconfig`](iphone/Anesthesie-Congressen.mobileconfig)
+  op je iPhone zetten (bv. AirDrop of mail naar jezelf) en openen → Instellingen → "Profiel gedownload" → Installeer.
+  Het profiel is niet ondertekend, dus iOS toont daar een waarschuwing; het bevat alleen de tegel (URL + icoon).
