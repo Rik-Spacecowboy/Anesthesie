@@ -66,6 +66,17 @@
     .topbalk .merk i { width: 12px; height: 12px; background: var(--accent); border-radius: 50%; display: inline-block; }
     .topbalk .teller-top { color: var(--hero-zacht); font-weight: 600; }
 
+
+    /* ---------- notitie: wat ontbreekt ---------- */
+    .notitie { background: var(--hero-bg); color: var(--hero-zacht); border-top: 1px solid #1f1f1d; font-size: 0.82rem; }
+    .notitie-binnen { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+    .notitie summary { cursor: pointer; padding: 8px 0; list-style: none; }
+    .notitie summary::-webkit-details-marker { display: none; }
+    .notitie summary u { text-decoration-color: var(--accent); text-underline-offset: 3px; color: var(--hero-ink); }
+    .notitie-inhoud { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px 28px; padding: 6px 0 18px; }
+    .notitie-inhoud h3 { margin: 0 0 4px; font: 700 0.8rem var(--display); letter-spacing: 0.12em; text-transform: uppercase; color: var(--hero-ink); }
+    .notitie-inhoud p { margin: 0; line-height: 1.4; }
+
     /* ---------- hero ---------- */
     .hero {
       background: var(--hero-bg);
@@ -251,6 +262,22 @@
   <div class="topbalk">
     <div class="merk"><i></i> Anesthesie &amp; Pijn</div>
     <div class="teller-top" id="tellerTop"></div>
+  </div>
+
+  <div class="notitie">
+    <div class="notitie-binnen">
+      <details>
+        <summary>Niet elke organisatie staat volledig in de lijst. <u>Bekijk wat ontbreekt en waarom</u></summary>
+        <div class="notitie-inhoud">
+          <div><h3>Handmatig bijgehouden</h3><p>ASA (ANESTHESIOLOGY), NWAS en PGA. Hun voorwaarden of site staan geautomatiseerd ophalen niet toe, dus deze worden met de hand bijgewerkt en kunnen achterlopen.</p></div>
+          <div><h3>Niet opgenomen: niet toegestaan</h3><p>UF Spring Anesthesia Ski Summit en Holiday Seminars sluiten bots uit in hun robots.txt.</p></div>
+          <div><h3>Niet opgenomen: geblokkeerd</h3><p>OAA (UK) en Northern Lights Anaesthetics blokkeren geautomatiseerde toegang; er is ook nog geen datum voor 2027 bekend.</p></div>
+          <div><h3>Nog geen datum bekend</h3><p>SSAI 2028, PROSA 2028 en de Refresher Course Obstetrische Anesthesiologie. Zodra er een datum is, kunnen ze erbij.</p></div>
+          <div><h3>Bewust weggelaten</h3><p>EACCM, de International Conference on Surgery and Anesthesia en WSAC: commerciële congresfabrieken, geen erkende beroepsverenigingen.</p></div>
+          <div><h3>Nog niet gevonden</h3><p>IPME, Doctors Updates en de School/Academy for Integrative Medicine: onduidelijk welke organisatie bedoeld is.</p></div>
+        </div>
+      </details>
+    </div>
   </div>
 
   <header class="hero">
