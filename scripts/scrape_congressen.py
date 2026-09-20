@@ -46,6 +46,7 @@ LANDEN_NL = {
     "sweden": "Zweden", "norway": "Noorwegen", "finland": "Finland",
     "ireland": "Ierland", "iceland": "IJsland", "canada": "Canada",
     "united states": "Verenigde Staten", "usa": "Verenigde Staten",
+    "bahamas": "Bahama's",
 }
 
 # Landen (Engelse namen) die binnen de scope van de site vallen: Europa + Noord-Amerika.
@@ -55,6 +56,13 @@ SCOPE_LANDEN = {
     "portugal", "spain", "sweden", "switzerland", "united kingdom", "uk",
     "united states", "usa", "canada",
 }
+
+
+def ordinaal(n):
+    n = int(n)
+    if 10 <= n % 100 <= 20:
+        return f"{n}th"
+    return f"{n}" + {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th")
 
 
 def vertaal_land(land):
@@ -293,7 +301,7 @@ def scrape_asra():
         if datum_start and datum_eind:
             entries.append({
                 "id": f"asra-pain-medicine-{jaar}",
-                "naam": f"{nummer}th Annual Pain Medicine Meeting",
+                "naam": f"{ordinaal(nummer)} Annual Pain Medicine Meeting",
                 "organisatie": "ASRA Pain Medicine",
                 "land": "Verenigde Staten",
                 "stad": stad.strip(),
@@ -501,7 +509,7 @@ def scrape_wca():
         if m:
             nr, jaar, stad, land, d1, d2, maand, _ = m.groups()
             entries.append(maak_entry(
-                f"wca-{jaar}", f"{nr}th World Congress of Anaesthesiologists (WCA {jaar})",
+                f"wca-{jaar}", f"{ordinaal(nr)} World Congress of Anaesthesiologists (WCA {jaar})",
                 "WFSA (World Federation of Societies of Anaesthesiologists)", vertaal_land(land),
                 stad.strip(), maak_datum(jaar, maand, d1), maak_datum(jaar, maand, d2),
                 ["algemene anesthesiologie"], url,
@@ -546,7 +554,7 @@ def scrape_soap():
                     break
         if stad:
             entries.append(maak_entry(
-                f"soap-{jaar}", f"SOAP {nr}th Annual Meeting",
+                f"soap-{jaar}", f"SOAP {ordinaal(nr)} Annual Meeting",
                 "SOAP (Society for Obstetric Anesthesia and Perinatology)", land, stad,
                 maak_datum(jaar, md.group(1), md.group(2)), maak_datum(jaar, md.group(1), md.group(3)),
                 ["obstetrische anesthesie"], url, let_op,
@@ -572,7 +580,7 @@ def scrape_winter_pain_symposium():
         if m:
             d1, d2, maand, jaar, nr, naam, stad, regio = m.groups()
             return [maak_entry(
-                f"winter-pain-symposium-{jaar}", f"{nr}th {naam}",
+                f"winter-pain-symposium-{jaar}", f"{ordinaal(nr)} {naam}",
                 "London Pain Forum", "Frankrijk" if "french" in regio.lower() else regio, stad.strip(),
                 maak_datum(jaar, maand, d1), maak_datum(jaar, maand, d2),
                 ["pijngeneeskunde"], url,
@@ -676,10 +684,53 @@ def scrape_association_of_anaesthetists():
     return entries
 
 
+def scrape_spa():
+    """SPA (Society for Pediatric Anesthesia): 'Future Meetings' met de Annual
+    Meeting en de gezamenlijke SPA-AAP-bijeenkomst (ook buiten Europa)."""
+    url = "https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/"
+    try:
+        lines = fetch_lines(url)
+    except requests.RequestException as e:
+        warn("SPA", f"kon {url} niet ophalen: {e}")
+        return []
+    entries = []
+    for i, regel in enumerate(lines):
+        m = re.fullmatch(r"SPA (\d+)\w{2} Annual Meeting", regel) or re.fullmatch(
+            r"(SPA-AAP Pediatric Anesthesiology) (20\d{2})", regel
+        )
+        if not m or i + 3 >= len(lines):
+            continue
+        md = re.fullmatch(r"([A-Za-z]+) (\d{1,2})(?:-(\d{1,2}))?, ?(20\d{2})", lines[i + 1])
+        if not md:
+            continue
+        maand, d1, d2, jaar = md.groups()
+        stad = land = None
+        for extra in lines[i + 2:i + 4]:
+            mc = re.fullmatch(r"([A-Za-z .]+), ([A-Za-z .]+)", extra)
+            if mc:
+                stad = mc.group(1).strip()
+                land = "Verenigde Staten" if re.fullmatch(r"[A-Z]{2}", mc.group(2)) else vertaal_land(mc.group(2))
+                break
+        if not stad:
+            continue
+        if "Annual Meeting" in regel:
+            naam, id_ = f"SPA {ordinaal(m.group(1))} Annual Meeting", f"spa-annual-{jaar}"
+        else:
+            naam, id_ = f"SPA-AAP Pediatric Anesthesiology {jaar}", f"spa-aap-{jaar}"
+        entries.append(maak_entry(
+            id_, naam, "SPA (Society for Pediatric Anesthesia)", land, stad,
+            maak_datum(jaar, maand, d1), maak_datum(jaar, maand, d2 or d1),
+            ["kinderanesthesiologie"], url,
+        ))
+    if not entries:
+        warn("SPA", f"geen meetings gevonden op {url}.")
+    return entries
+
+
 SCRAPERS = [
     scrape_euroanaesthesia, scrape_esra_congress, scrape_painweek, scrape_asra,
     scrape_nva_anesthesiologendagen, scrape_espa, scrape_efic, scrape_wca, scrape_soap,
-    scrape_winter_pain_symposium, scrape_nysora, scrape_bapa, scrape_association_of_anaesthetists,
+    scrape_winter_pain_symposium, scrape_nysora, scrape_bapa, scrape_association_of_anaesthetists, scrape_spa,
 ]
 
 
@@ -710,7 +761,7 @@ HEADER = """// Congresdataset. Dit bestand wordt automatisch gegenereerd door
 //
 // - Automatisch gescrapete congressen komen uit de bekende bronnen (ESAIC,
 //   ESRA, PAINWeek, ASRA, NVA, ESPA, EFIC, WCA, SOAP, NYSORA, BAPA, Association
-//   of Anaesthetists, London Pain Forum); zie het bron-veld per congres.
+//   of Anaesthetists, London Pain Forum, SPA); zie het bron-veld per congres.
 // - Congressen die niet automatisch te scrapen zijn (geblokkeerd door de
 //   site, of expliciet verboden in de sitevoorwaarden) staan handmatig in
 //   data/congressen.manual.json en worden hier ongewijzigd overgenomen.

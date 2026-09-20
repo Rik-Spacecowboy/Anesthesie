@@ -3,7 +3,7 @@
 //
 // - Automatisch gescrapete congressen komen uit de bekende bronnen (ESAIC,
 //   ESRA, PAINWeek, ASRA, NVA, ESPA, EFIC, WCA, SOAP, NYSORA, BAPA, Association
-//   of Anaesthetists, London Pain Forum); zie het bron-veld per congres.
+//   of Anaesthetists, London Pain Forum, SPA); zie het bron-veld per congres.
 // - Congressen die niet automatisch te scrapen zijn (geblokkeerd door de
 //   site, of expliciet verboden in de sitevoorwaarden) staan handmatig in
 //   data/congressen.manual.json en worden hier ongewijzigd overgenomen.
@@ -34,6 +34,18 @@ const CONGRESSEN = [
     onderwerp: ["kinderanesthesiologie"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://www.espacongress.com/"
+  },
+  {
+    id: "spa-annual-2026",
+    naam: "SPA 40th Annual Meeting",
+    organisatie: "SPA (Society for Pediatric Anesthesia)",
+    land: "Verenigde Staten",
+    stad: "San Diego",
+    datumStart: "2026-10-16",
+    datumEind: "2026-10-16",
+    onderwerp: ["kinderanesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/"
   },
   {
     id: "asa-anesthesiology-2026",
@@ -110,6 +122,19 @@ const CONGRESSEN = [
     bron: "https://anaesthetists.org/CPD-and-events/Book-an-event"
   },
   {
+    id: "nwas-topics-sarasota-2027",
+    naam: "Topics in Anesthesia",
+    organisatie: "NWAS (Northwest Anesthesia Seminars)",
+    land: "Verenigde Staten",
+    stad: "Sarasota",
+    datumStart: "2027-01-14",
+    datumEind: "2027-01-17",
+    onderwerp: ["algemene anesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://nwas2.northwestseminars.com/conference/list",
+    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand."
+  },
+  {
     id: "winter-pain-symposium-2027",
     naam: "13th Advances in Pain Medicine Winter Symposium",
     organisatie: "London Pain Forum",
@@ -120,6 +145,19 @@ const CONGRESSEN = [
     onderwerp: ["pijngeneeskunde"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://www.winterpainsymposium.com/"
+  },
+  {
+    id: "nwas-current-topics-curacao-2027",
+    naam: "Current Topics in Anesthesia",
+    organisatie: "NWAS (Northwest Anesthesia Seminars)",
+    land: "Curaçao",
+    stad: "Willemstad",
+    datumStart: "2027-01-18",
+    datumEind: "2027-01-22",
+    onderwerp: ["algemene anesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://nwas2.northwestseminars.com/conference/list",
+    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand."
   },
   {
     id: "nysora-val-d-isere-2027",
@@ -134,6 +172,45 @@ const CONGRESSEN = [
     bron: "https://nysora.com/events/conferences"
   },
   {
+    id: "nwas-new-horizons-cruise-2027",
+    naam: "New Horizons in Anesthesia (cruise)",
+    organisatie: "NWAS (Northwest Anesthesia Seminars)",
+    land: "Cruise",
+    stad: "Cruise Singapore - Hongkong",
+    datumStart: "2027-02-08",
+    datumEind: "2027-02-18",
+    onderwerp: ["algemene anesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://nwas2.northwestseminars.com/conference/list",
+    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand. Twaalfdaagse cruise door Thailand en Vietnam (Celebrity Solstice)."
+  },
+  {
+    id: "nwas-anesthesia-update-orlando-2027",
+    naam: "Anesthesia Update",
+    organisatie: "NWAS (Northwest Anesthesia Seminars)",
+    land: "Verenigde Staten",
+    stad: "Orlando",
+    datumStart: "2027-02-16",
+    datumEind: "2027-02-19",
+    onderwerp: ["algemene anesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://nwas2.northwestseminars.com/conference/list",
+    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand."
+  },
+  {
+    id: "nwas-obstetric-park-city-2027",
+    naam: "Topics in Obstetric Anesthesia",
+    organisatie: "NWAS (Northwest Anesthesia Seminars)",
+    land: "Verenigde Staten",
+    stad: "Park City",
+    datumStart: "2027-02-22",
+    datumEind: "2027-02-26",
+    onderwerp: ["algemene anesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://nwas2.northwestseminars.com/conference/list",
+    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand."
+  },
+  {
     id: "nysora-leuven-2027",
     naam: "NYSORA: Masterclass: Ultrasound-Guided Joint Interventions & Denervation",
     organisatie: "NYSORA",
@@ -144,6 +221,44 @@ const CONGRESSEN = [
     onderwerp: ["regionale anesthesie", "pijngeneeskunde"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://nysora.com/events/conferences"
+  },
+  {
+    id: "spa-aap-2027",
+    naam: "SPA-AAP Pediatric Anesthesiology 2027",
+    organisatie: "SPA (Society for Pediatric Anesthesia)",
+    land: "Bahama's",
+    stad: "Nassau",
+    datumStart: "2027-03-05",
+    datumEind: "2027-03-07",
+    onderwerp: ["kinderanesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/"
+  },
+  {
+    id: "nwas-fresh-tracks-breckenridge-2027",
+    naam: "Fresh Tracks in Anesthesia",
+    organisatie: "NWAS (Northwest Anesthesia Seminars)",
+    land: "Verenigde Staten",
+    stad: "Breckenridge",
+    datumStart: "2027-03-15",
+    datumEind: "2027-03-19",
+    onderwerp: ["algemene anesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://nwas2.northwestseminars.com/conference/list",
+    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand."
+  },
+  {
+    id: "nwas-topics-anaheim-2027",
+    naam: "Topics in Anesthesia (Disneyland Resort)",
+    organisatie: "NWAS (Northwest Anesthesia Seminars)",
+    land: "Verenigde Staten",
+    stad: "Anaheim",
+    datumStart: "2027-03-30",
+    datumEind: "2027-04-02",
+    onderwerp: ["algemene anesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://nwas2.northwestseminars.com/conference/list",
+    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand."
   },
   {
     id: "efic-2027",
@@ -196,6 +311,19 @@ const CONGRESSEN = [
     bron: "https://www.anesthesiologie.nl/agenda/"
   },
   {
+    id: "nwas-pediatric-chicago-2027",
+    naam: "Topics in Pediatric Anesthesia",
+    organisatie: "NWAS (Northwest Anesthesia Seminars)",
+    land: "Verenigde Staten",
+    stad: "Chicago",
+    datumStart: "2027-05-27",
+    datumEind: "2027-05-30",
+    onderwerp: ["algemene anesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://nwas2.northwestseminars.com/conference/list",
+    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand."
+  },
+  {
     id: "euroanaesthesia-2027",
     naam: "Euroanaesthesia 2027",
     organisatie: "ESAIC (European Society of Anaesthesiology and Intensive Care)",
@@ -206,6 +334,19 @@ const CONGRESSEN = [
     onderwerp: ["algemene anesthesiologie", "intensive care"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://euroanaesthesia.org/2027/"
+  },
+  {
+    id: "nwas-anesthesia-updates-oceanside-2027",
+    naam: "Anesthesia Updates",
+    organisatie: "NWAS (Northwest Anesthesia Seminars)",
+    land: "Verenigde Staten",
+    stad: "Oceanside",
+    datumStart: "2027-08-24",
+    datumEind: "2027-08-27",
+    onderwerp: ["algemene anesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://nwas2.northwestseminars.com/conference/list",
+    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand."
   },
   {
     id: "esra-congress-2027",
@@ -244,6 +385,18 @@ const CONGRESSEN = [
     bron: "https://anaesthetists.org/CPD-and-events/Book-an-event"
   },
   {
+    id: "spa-annual-2027",
+    naam: "SPA 41st Annual Meeting",
+    organisatie: "SPA (Society for Pediatric Anesthesia)",
+    land: "Verenigde Staten",
+    stad: "Boston",
+    datumStart: "2027-10-15",
+    datumEind: "2027-10-15",
+    onderwerp: ["kinderanesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/"
+  },
+  {
     id: "asa-anesthesiology-2027",
     naam: "ANESTHESIOLOGY 2027 (ASA Annual Meeting)",
     organisatie: "American Society of Anesthesiologists (ASA)",
@@ -257,6 +410,19 @@ const CONGRESSEN = [
     letOp: "Niet automatisch gescraped (zie asa-anesthesiology-2026). Datum/stad komt van ASA's eigen 'Future Dates'-pagina; kosten en programma nog niet gepubliceerd."
   },
   {
+    id: "nwas-current-topics-maui-2027",
+    naam: "Current Topics in Anesthesia",
+    organisatie: "NWAS (Northwest Anesthesia Seminars)",
+    land: "Verenigde Staten",
+    stad: "Maui",
+    datumStart: "2027-11-15",
+    datumEind: "2027-11-19",
+    onderwerp: ["algemene anesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://nwas2.northwestseminars.com/conference/list",
+    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand."
+  },
+  {
     id: "pga-81-2027",
     naam: "81st PostGraduate Assembly in Anesthesiology (PGA)",
     organisatie: "NYSSA (New York State Society of Anesthesiologists)",
@@ -268,6 +434,18 @@ const CONGRESSEN = [
     kosten: "Nog niet gepubliceerd",
     bron: "https://www.nyssa-pga.org/pga-meeting/future-pga-dates/",
     letOp: "Handmatig; datum komt van een derde partij (eMedEvents), nog niet bevestigd op de officiele NYSSA-site -- controleren."
+  },
+  {
+    id: "spa-aap-2028",
+    naam: "SPA-AAP Pediatric Anesthesiology 2028",
+    organisatie: "SPA (Society for Pediatric Anesthesia)",
+    land: "Verenigde Staten",
+    stad: "Oxon Hill",
+    datumStart: "2028-03-16",
+    datumEind: "2028-03-20",
+    onderwerp: ["kinderanesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/"
   },
   {
     id: "soap-2028",
@@ -316,6 +494,18 @@ const CONGRESSEN = [
     onderwerp: ["algemene anesthesiologie", "intensive care"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://euroanaesthesia.org/2028/"
+  },
+  {
+    id: "spa-annual-2028",
+    naam: "SPA 42nd Annual Meeting",
+    organisatie: "SPA (Society for Pediatric Anesthesia)",
+    land: "Verenigde Staten",
+    stad: "Chicago",
+    datumStart: "2028-10-20",
+    datumEind: "2028-10-20",
+    onderwerp: ["kinderanesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/"
   },
   {
     id: "asa-anesthesiology-2028",

@@ -16,7 +16,7 @@ maandag automatisch en opent een pull request met de wijzigingen -- er wordt noo
 zodat je alles even kunt checken voor het live gaat.
 
 Het script bezoekt de bekende bronnen (ESAIC, ESRA, PAINWeek, ASRA, NVA, ESPA, EFIC, WCA/WFSA, SOAP, NYSORA,
-BAPA, Association of Anaesthetists, London Pain Forum) en zoekt daarbij standaard meerdere jaren vooruit, niet
+BAPA, Association of Anaesthetists, London Pain Forum, SPA) en zoekt daarbij standaard meerdere jaren vooruit, niet
 alleen de komende editie.
 
 **Niet alles is automatisch te scrapen:**
@@ -25,6 +25,8 @@ alleen de komende editie.
   sitevoorwaarden expliciet gebruik van hun content met AI/automatisering. Werk deze entry dus zelf bij.
 - Wanneer een bron een congres wel aankondigt maar de exacte datum nog niet publiceert (bv. Euroanaesthesia 2027+),
   slaat het script die editie over in plaats van te gokken. Dit verschijnt als waarschuwing in de scriptoutput.
+- NWAS (Northwest Anesthesia Seminars) staat handmatig in `data/congressen.manual.json`: hun voorwaarden verbieden
+  geautomatiseerd verzamelen. Alleen anesthesie-events in VS/Caraïben/cruises; hun Singapore-event valt buiten scope.
 - Sommige congressen zijn bewust **niet** toegevoegd, zoals WSAC (World Surgery and Anesthesia Congress): dat
   wordt georganiseerd door "Iris Scientific Group", een commerciële partij die tientallen bijna-identieke "World
   [Vakgebied] Congress"-events host over totaal ongerelateerde vakgebieden -- een klassiek kenmerk van een
@@ -32,8 +34,7 @@ alleen de komende editie.
 
 - Bewust **niet** opgenomen of nog niet mogelijk: EACCM ('Euro Anesthesiology and Critical Care Congress') en de
   'International Conference on Surgery and Anesthesia' (commerciele congresfabrieken); UF Ski Summit (robots.txt sluit
-  ClaudeBot uit, en nog geen 2027-datum); Holiday Seminars (robots.txt sluit alle bots uit); NWAS en SPA (alleen
-  buiten Europa); OAA en Northern Lights (site blokkeert scrapers); SSAI 2028, PROSA 2028 en het
+  ClaudeBot uit, en nog geen 2027-datum); Holiday Seminars (robots.txt sluit alle bots uit); OAA en Northern Lights (site blokkeert scrapers); SSAI 2028, PROSA 2028 en het
   Refresher Course Obstetrische Anesthesiologie (nog geen datum gepubliceerd).
 
 ### Zelf draaien
