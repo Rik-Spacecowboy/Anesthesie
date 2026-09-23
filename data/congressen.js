@@ -27,13 +27,26 @@ const CONGRESSEN = [
     id: "espa-congress-2026",
     naam: "16th European Congress for Paediatric Anaesthesiology",
     organisatie: "ESPA (European Society for Paediatric Anaesthesiology)",
-    land: "Spanje",
-    stad: "Madrid",
+    land: "Onbekend",
+    stad: "Nog niet bekend",
     datumStart: "2026-09-24",
     datumEind: "2026-09-26",
     onderwerp: ["kinderanesthesiologie"],
     kosten: "Nog niet gepubliceerd",
-    bron: "https://www.espacongress.com/"
+    bron: "https://www.euroespa.com/",
+    letOp: "Stad/land niet gevonden -- https://www.espacongress.com/ toonde een laadscherm i.p.v. de congrespagina, dit komt van de terugval-bron. Controleer handmatig."
+  },
+  {
+    id: "spa-annual-2026",
+    naam: "SPA 40th Annual Meeting",
+    organisatie: "SPA (Society for Pediatric Anesthesia)",
+    land: "Verenigde Staten",
+    stad: "San Diego",
+    datumStart: "2026-10-16",
+    datumEind: "2026-10-16",
+    onderwerp: ["kinderanesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/"
   },
   {
     id: "spa-annual-2026",
@@ -59,6 +72,32 @@ const CONGRESSEN = [
     kosten: "Nog niet gepubliceerd",
     bron: "https://www.asahq.org/annualmeeting",
     letOp: "Niet automatisch gescraped: apsf.org (oude bron) blokkeert scrapers en asahq.org verbiedt in de site-voorwaarden expliciet gebruik van hun content met AI/automatisering. Handmatig controleren en bijwerken."
+  },
+  {
+    id: "eaccm-2026",
+    naam: "V Euro Anesthesiology and Critical Care Congress (EACCM 26)",
+    organisatie: "Plenareno",
+    land: "Duitsland",
+    stad: "Berlijn",
+    datumStart: "2026-10-19",
+    datumEind: "2026-10-20",
+    onderwerp: ["algemene anesthesiologie", "pijnmanagement", "intensive care"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://anesthesiology.plenareno.com/",
+    letOp: "Commercieel georganiseerd congres (Plenareno), geen erkende beroepsvereniging. Op uitdrukkelijk verzoek toegevoegd; handmatig bijgehouden."
+  },
+  {
+    id: "iasp-world-congress-2026",
+    naam: "IASP World Congress on Pain 2026",
+    organisatie: "IASP (International Association for the Study of Pain)",
+    land: "Thailand",
+    stad: "Bangkok",
+    datumStart: "2026-10-26",
+    datumEind: "2026-10-30",
+    onderwerp: ["pijngeneeskunde"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://www.iasp-pain.org/world-congress-on-pain/",
+    letOp: "Handmatig toegevoegd, nog geen scraper voor deze bron. Buiten Europa/Noord-Amerika, maar het belangrijkste wereldwijde pijncongres."
   },
   {
     id: "asra-pain-medicine-2026",
@@ -160,6 +199,19 @@ const CONGRESSEN = [
     letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand."
   },
   {
+    id: "nans-annual-2027",
+    naam: "NANS 2027 Annual Meeting (30th)",
+    organisatie: "NANS (North American Neuromodulation Society)",
+    land: "Verenigde Staten",
+    stad: "Las Vegas",
+    datumStart: "2027-01-21",
+    datumEind: "2027-01-24",
+    onderwerp: ["pijngeneeskunde"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://www.neuromodulation.org/annual-meeting.html",
+    letOp: "Handmatig toegevoegd, nog geen scraper voor deze bron."
+  },
+  {
     id: "nysora-val-d-isere-2027",
     naam: "NYSORA: Anesthesia Review Conference",
     organisatie: "NYSORA",
@@ -223,16 +275,17 @@ const CONGRESSEN = [
     bron: "https://nysora.com/events/conferences"
   },
   {
-    id: "spa-aap-2027",
-    naam: "SPA-AAP Pediatric Anesthesiology 2027",
-    organisatie: "SPA (Society for Pediatric Anesthesia)",
-    land: "Bahama's",
-    stad: "Nassau",
-    datumStart: "2027-03-05",
-    datumEind: "2027-03-07",
-    onderwerp: ["kinderanesthesiologie"],
+    id: "wsac-2027",
+    naam: "World Surgery and Anesthesia Congress (WSAC 2027)",
+    organisatie: "Iris Scientific Group",
+    land: "Singapore",
+    stad: "Singapore",
+    datumStart: "2027-03-11",
+    datumEind: "2027-03-13",
+    onderwerp: ["algemene anesthesiologie"],
     kosten: "Nog niet gepubliceerd",
-    bron: "https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/"
+    bron: "https://surgeryanesthesiacongress.com/",
+    letOp: "Commercieel georganiseerd congres (Iris Scientific Group, host van tientallen vergelijkbare \"World [Vakgebied] Congress\"-events), geen erkende beroepsvereniging. Op uitdrukkelijk verzoek toegevoegd; handmatig bijgehouden."
   },
   {
     id: "nwas-fresh-tracks-breckenridge-2027",
@@ -248,6 +301,19 @@ const CONGRESSEN = [
     letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand."
   },
   {
+    id: "aapm-painconnect-2027",
+    naam: "AAPM PainConnect 2027 (43rd Annual Meeting)",
+    organisatie: "AAPM (American Academy of Pain Medicine)",
+    land: "Verenigde Staten",
+    stad: "Orlando",
+    datumStart: "2027-03-18",
+    datumEind: "2027-03-21",
+    onderwerp: ["pijngeneeskunde"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://painconnect.org/",
+    letOp: "Handmatig toegevoegd, nog geen scraper voor deze bron."
+  },
+  {
     id: "nwas-topics-anaheim-2027",
     naam: "Topics in Anesthesia (Disneyland Resort)",
     organisatie: "NWAS (Northwest Anesthesia Seminars)",
@@ -259,6 +325,19 @@ const CONGRESSEN = [
     kosten: "Nog niet gepubliceerd",
     bron: "https://nwas2.northwestseminars.com/conference/list",
     letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand."
+  },
+  {
+    id: "icsa-2027",
+    naam: "2nd International Conference on Surgery and Anesthesia",
+    organisatie: "Inovine Conferences",
+    land: "Zwitserland",
+    stad: "Zürich",
+    datumStart: "2027-04-09",
+    datumEind: "2027-04-10",
+    onderwerp: ["algemene anesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://surgery.inovineconferences.com/",
+    letOp: "Commercieel georganiseerd congres (Inovine Conferences), geen erkende beroepsvereniging. Op uitdrukkelijk verzoek toegevoegd; handmatig bijgehouden."
   },
   {
     id: "efic-2027",

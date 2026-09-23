@@ -46,7 +46,7 @@ LANDEN_NL = {
     "sweden": "Zweden", "norway": "Noorwegen", "finland": "Finland",
     "ireland": "Ierland", "iceland": "IJsland", "canada": "Canada",
     "united states": "Verenigde Staten", "usa": "Verenigde Staten",
-    "bahamas": "Bahama's",
+    "bahamas": "Bahama's", "thailand": "Thailand", "singapore": "Singapore",
 }
 
 # Landen (Engelse namen) die binnen de scope van de site vallen: Europa + Noord-Amerika.
@@ -412,13 +412,16 @@ def scrape_espa():
     """ESPA (European Society for Paediatric Anaesthesiology): de jaarlijkse
     congressite toont de actuele editie in een enkele titelregel. Toekomstige
     edities staan pas op een nieuwe site zodra die gepubliceerd wordt, dus
-    verder dan het lopende/eerstvolgende jaar kijkt dit (nog) niet."""
+    verder dan het lopende/eerstvolgende jaar kijkt dit (nog) niet. Vlak voor
+    en tijdens het congres toont de site vaak alleen nog een laadscherm voor
+    het congresplatform -- dan valt dit terug op de "Future Events"-widget
+    van de officiele ESPA-site (euroespa.com), die geen stad vermeldt."""
     url = "https://www.espacongress.com/"
     try:
         lines = fetch_lines(url)
     except requests.RequestException as e:
         warn("ESPA", f"kon {url} niet ophalen: {e}")
-        return []
+        lines = []
 
     for regel in lines:
         m = re.search(
@@ -442,7 +445,34 @@ def scrape_espa():
                     "bron": url,
                 }]
 
-    warn("ESPA", f"geen congresregel gevonden/gewijzigd op {url}.")
+    fallback_url = "https://www.euroespa.com/"
+    try:
+        fb_lines = fetch_lines(fallback_url)
+    except requests.RequestException as e:
+        warn("ESPA", f"kon {url} niet parsen en {fallback_url} niet ophalen: {e}")
+        return []
+
+    for i, regel in enumerate(fb_lines):
+        m = re.fullmatch(r"The (\d+)\w{2} ESPA Congress", regel)
+        if m and i + 1 < len(fb_lines):
+            md = re.fullmatch(r"([A-Za-z]+) (\d{1,2})\s*-\s*(\d{1,2}),?\s*(20\d{2})", fb_lines[i + 1])
+            if md:
+                maand, d1, d2, jaar = md.groups()
+                return [{
+                    "id": f"espa-congress-{jaar}",
+                    "naam": f"{ordinaal(m.group(1))} European Congress for Paediatric Anaesthesiology",
+                    "organisatie": "ESPA (European Society for Paediatric Anaesthesiology)",
+                    "land": "Onbekend",
+                    "stad": "Nog niet bekend",
+                    "datumStart": maak_datum(jaar, maand, d1),
+                    "datumEind": maak_datum(jaar, maand, d2),
+                    "onderwerp": ["kinderanesthesiologie"],
+                    "kosten": "Nog niet gepubliceerd",
+                    "bron": fallback_url,
+                    "letOp": f"Stad/land niet gevonden -- {url} toonde een laadscherm i.p.v. de congrespagina, dit komt van de terugval-bron. Controleer handmatig.",
+                }]
+
+    warn("ESPA", f"geen congresregel gevonden/gewijzigd op {url} of {fallback_url}.")
     return []
 
 

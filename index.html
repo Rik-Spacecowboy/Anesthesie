@@ -273,7 +273,7 @@
           <div><h3>Niet opgenomen: niet toegestaan</h3><p>UF Spring Anesthesia Ski Summit en Holiday Seminars sluiten bots uit in hun robots.txt.</p></div>
           <div><h3>Niet opgenomen: geblokkeerd</h3><p>OAA (UK) en Northern Lights Anaesthetics blokkeren geautomatiseerde toegang; er is ook nog geen datum voor 2027 bekend.</p></div>
           <div><h3>Nog geen datum bekend</h3><p>SSAI 2028, PROSA 2028 en de Refresher Course Obstetrische Anesthesiologie. Zodra er een datum is, kunnen ze erbij.</p></div>
-          <div><h3>Bewust weggelaten</h3><p>EACCM, de International Conference on Surgery and Anesthesia en WSAC: commerciële congresfabrieken, geen erkende beroepsverenigingen.</p></div>
+          <div><h3>Commercieel, op verzoek toegevoegd</h3><p>EACCM (Plenareno), WSAC en de International Conference on Surgery and Anesthesia zijn congresfabrieken, geen erkende beroepsverenigingen -- toegevoegd op uitdrukkelijk verzoek, met een label op de kaart zelf.</p></div>
           <div><h3>Nog niet gevonden</h3><p>IPME, Doctors Updates en de School/Academy for Integrative Medicine: onduidelijk welke organisatie bedoeld is.</p></div>
         </div>
       </details>
@@ -350,6 +350,7 @@
         <div class="meer-raster">
           <div class="veld"><label for="filterLand">Land</label><select id="filterLand"><option value="">Alle landen</option></select></div>
           <div class="veld"><label for="filterStad">Stad</label><select id="filterStad"><option value="">Alle steden</option></select></div>
+          <div class="veld"><label for="filterContinent">Continent</label><select id="filterContinent"><option value="">Alle continenten</option></select></div>
           <div class="veld"><label for="vanaf">Vanaf datum</label><input type="date" id="vanaf"></div>
           <div class="veld"><label for="tot">Tot datum</label><input type="date" id="tot"></div>
         </div>
@@ -368,20 +369,46 @@
 
   <script src="data/congressen.js"></script>
   <script>
-    // Bereken het ISO-weeknummer van een datum (standaardalgoritme, maandag = eerste dag).
-    function isoWeekNummer(datumString) {
-      const datum = new Date(datumString + 'T00:00:00');
-      const dagVanWeek = (datum.getUTCDay() + 6) % 7; // maandag = 0
-      datum.setUTCDate(datum.getUTCDate() - dagVanWeek + 3); // donderdag van deze week
-      const eersteDonderdag = new Date(Date.UTC(datum.getUTCFullYear(), 0, 4));
+    // Bereken ISO-weekinfo voor een datum (standaardalgoritme, maandag = eerste dag).
+    // Werkt volledig in UTC: een kalenderdatum als "2027-01-18" moet overal hetzelfde
+    // weeknummer geven, ongeacht de tijdzone van de bezoeker. Een eerdere versie parste
+    // de datum als lokale tijd maar las 'm terug met UTC-methodes -- dat schoof in
+    // tijdzones vóór UTC (zoals Nederland) soms een kalenderdag terug en kon zo een
+    // maandag-start per ongeluk aan de vorige (oneven/even) week toekennen.
+    function isoWeekInfo(datum) {
+      const kopie = new Date(datum.getTime());
+      const dagVanWeek = (kopie.getUTCDay() + 6) % 7; // maandag = 0
+      kopie.setUTCDate(kopie.getUTCDate() - dagVanWeek + 3); // donderdag van deze week
+      const eersteDonderdag = new Date(Date.UTC(kopie.getUTCFullYear(), 0, 4));
       const dagVanEersteWeek = (eersteDonderdag.getUTCDay() + 6) % 7;
       eersteDonderdag.setUTCDate(eersteDonderdag.getUTCDate() - dagVanEersteWeek + 3);
-      const verschilInWeken = Math.round((datum - eersteDonderdag) / (7 * 24 * 60 * 60 * 1000));
-      return verschilInWeken + 1;
+      const verschilInWeken = Math.round((kopie - eersteDonderdag) / (7 * 24 * 60 * 60 * 1000));
+      return { jaar: kopie.getUTCFullYear(), week: verschilInWeken + 1 };
     }
 
-    function weekPariteit(datumString) {
-      return isoWeekNummer(datumString) % 2 === 0 ? 'even' : 'oneven';
+    function isoWeekNummer(datumString) {
+      return isoWeekInfo(new Date(datumString + 'T00:00:00Z')).week;
+    }
+
+    // De week (en dus even/oneven) van een congres wordt bepaald door de week waarin de
+    // MEESTE dagen van het congres vallen, niet simpelweg de week van de startdatum. Bij
+    // een gelijke verdeling wint de week van de startdatum.
+    function meerderheidsWeek(rij) {
+      const start = new Date(rij.datumStart + 'T00:00:00Z');
+      const eind = new Date(rij.datumEind + 'T00:00:00Z');
+      const tellingen = new Map();
+      for (let t = start.getTime(); t <= eind.getTime(); t += 86400000) {
+        const info = isoWeekInfo(new Date(t));
+        const sleutel = `${info.jaar}-${info.week}`;
+        const entry = tellingen.get(sleutel) || { week: info.week, aantal: 0 };
+        entry.aantal += 1;
+        tellingen.set(sleutel, entry);
+      }
+      let beste = null;
+      tellingen.forEach(entry => {
+        if (!beste || entry.aantal > beste.aantal) beste = entry;
+      });
+      return { week: beste.week, pariteit: beste.week % 2 === 0 ? 'even' : 'oneven' };
     }
 
     function lokaleDatumString(d) {
@@ -407,6 +434,19 @@
       return { dagen: `${start.getDate()}–${eind.getDate()}`, maand: `${MAANDEN_KORT[start.getMonth()]}/${MAANDEN_KORT[eind.getMonth()]}`, jaar };
     }
 
+    const CONTINENT_VAN_LAND = {
+      'Nederland': 'Europa', 'Spanje': 'Europa', 'België': 'Europa', 'Denemarken': 'Europa',
+      'Oostenrijk': 'Europa', 'Italië': 'Europa', 'Frankrijk': 'Europa', 'Verenigd Koninkrijk': 'Europa',
+      'Duitsland': 'Europa', 'Zwitserland': 'Europa', 'Zweden': 'Europa', 'Noorwegen': 'Europa',
+      'Finland': 'Europa', 'Ierland': 'Europa', 'IJsland': 'Europa', 'Griekenland': 'Europa', 'Portugal': 'Europa',
+      'Verenigde Staten': 'Noord-Amerika', 'Canada': 'Noord-Amerika', 'Curaçao': 'Noord-Amerika',
+      "Bahama's": 'Noord-Amerika', 'Puerto Rico': 'Noord-Amerika',
+      'Thailand': 'Azië', 'Singapore': 'Azië',
+    };
+    function continentVan(land) {
+      return CONTINENT_VAN_LAND[land] || 'Overig';
+    }
+
     function esc(t) {
       return String(t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
     }
@@ -425,8 +465,10 @@
           select.appendChild(optie);
         });
       };
+      const continenten = [...new Set(CONGRESSEN.map(r => continentVan(r.land)))].sort();
       vulSelect('filterLand', landen);
       vulSelect('filterStad', steden);
+      vulSelect('filterContinent', continenten);
       vulSelect('filterOnderwerp', onderwerpen);
     }
 
@@ -482,7 +524,8 @@
         onderwerp: document.getElementById('filterOnderwerp').value,
         week: document.getElementById('filterWeek').value,
         vanaf: document.getElementById('vanaf').value,
-        tot: document.getElementById('tot').value
+        tot: document.getElementById('tot').value,
+        continent: document.getElementById('filterContinent').value
       };
     }
 
@@ -490,7 +533,8 @@
       if (filters.land && rij.land !== filters.land) return false;
       if (filters.stad && rij.stad !== filters.stad) return false;
       if (filters.onderwerp && !rij.onderwerp.includes(filters.onderwerp)) return false;
-      if (filters.week && weekPariteit(rij.datumStart) !== filters.week) return false;
+      if (filters.week && meerderheidsWeek(rij).pariteit !== filters.week) return false;
+      if (filters.continent && continentVan(rij.land) !== filters.continent) return false;
       if (filters.vanaf && rij.datumEind < filters.vanaf) return false;
       if (filters.tot && rij.datumStart > filters.tot) return false;
       if (filters.zoek) {
@@ -501,8 +545,7 @@
     }
 
     function renderCongres(rij, index) {
-      const pariteit = weekPariteit(rij.datumStart);
-      const weekNr = isoWeekNummer(rij.datumStart);
+      const { week: weekNr, pariteit } = meerderheidsWeek(rij);
       const blok = datumBlok(rij);
       const voorbij = rij.datumEind < VANDAAG;
       const nu = rij.datumStart <= VANDAAG && VANDAAG <= rij.datumEind;

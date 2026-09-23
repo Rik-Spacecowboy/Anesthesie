@@ -26,16 +26,17 @@ alleen de komende editie.
 - Wanneer een bron een congres wel aankondigt maar de exacte datum nog niet publiceert (bv. Euroanaesthesia 2027+),
   slaat het script die editie over in plaats van te gokken. Dit verschijnt als waarschuwing in de scriptoutput.
 - NWAS (Northwest Anesthesia Seminars) staat handmatig in `data/congressen.manual.json`: hun voorwaarden verbieden
-  geautomatiseerd verzamelen. Alleen anesthesie-events in VS/Caraïben/cruises; hun Singapore-event valt buiten scope.
-- Sommige congressen zijn bewust **niet** toegevoegd, zoals WSAC (World Surgery and Anesthesia Congress): dat
-  wordt georganiseerd door "Iris Scientific Group", een commerciële partij die tientallen bijna-identieke "World
-  [Vakgebied] Congress"-events host over totaal ongerelateerde vakgebieden -- een klassiek kenmerk van een
-  predatory conference. Nieuwe bronnen alleen toevoegen als het een erkende beroepsvereniging is.
-
-- Bewust **niet** opgenomen of nog niet mogelijk: EACCM ('Euro Anesthesiology and Critical Care Congress') en de
-  'International Conference on Surgery and Anesthesia' (commerciele congresfabrieken); UF Ski Summit (robots.txt sluit
-  ClaudeBot uit, en nog geen 2027-datum); Holiday Seminars (robots.txt sluit alle bots uit); OAA en Northern Lights (site blokkeert scrapers); SSAI 2028, PROSA 2028 en het
-  Refresher Course Obstetrische Anesthesiologie (nog geen datum gepubliceerd).
+  geautomatiseerd verzamelen.
+- WSAC, EACCM (Plenareno) en de International Conference on Surgery and Anesthesia (Inovine) zijn commerciele
+  congresfabrieken, geen erkende beroepsverenigingen -- op uitdrukkelijk verzoek toegevoegd, handmatig bijgehouden
+  en gelabeld met een `letOp` op de kaart. Zie ook het inklapbare infoblok bovenaan de site.
+- Enkele pijncongressen (AAPM PainConnect, NANS, IASP World Congress on Pain) staan er ook handmatig bij, nog
+  zonder scraper.
+- Nog niet opgenomen: UF Ski Summit (robots.txt sluit ClaudeBot uit, en nog geen 2027-datum); Holiday Seminars
+  (robots.txt sluit alle bots uit); OAA en Northern Lights (site blokkeert scrapers); SSAI 2028, PROSA 2028,
+  British Pain Society 2027, WIP World Congress 2027 en het Refresher Course Obstetrische Anesthesiologie
+  (nog geen datum gepubliceerd); IPME, Doctors Updates en de School/Academy for Integrative Medicine (onduidelijk
+  welke organisatie precies bedoeld is).
 
 ### Zelf draaien
 

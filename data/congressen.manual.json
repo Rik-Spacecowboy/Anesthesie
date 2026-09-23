@@ -223,5 +223,97 @@
     "kosten": "Nog niet gepubliceerd",
     "bron": "https://nwas2.northwestseminars.com/conference/list",
     "letOp": "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand."
+  },
+  {
+    "id": "aapm-painconnect-2027",
+    "naam": "AAPM PainConnect 2027 (43rd Annual Meeting)",
+    "organisatie": "AAPM (American Academy of Pain Medicine)",
+    "land": "Verenigde Staten",
+    "stad": "Orlando",
+    "datumStart": "2027-03-18",
+    "datumEind": "2027-03-21",
+    "onderwerp": [
+      "pijngeneeskunde"
+    ],
+    "kosten": "Nog niet gepubliceerd",
+    "bron": "https://painconnect.org/",
+    "letOp": "Handmatig toegevoegd, nog geen scraper voor deze bron."
+  },
+  {
+    "id": "nans-annual-2027",
+    "naam": "NANS 2027 Annual Meeting (30th)",
+    "organisatie": "NANS (North American Neuromodulation Society)",
+    "land": "Verenigde Staten",
+    "stad": "Las Vegas",
+    "datumStart": "2027-01-21",
+    "datumEind": "2027-01-24",
+    "onderwerp": [
+      "pijngeneeskunde"
+    ],
+    "kosten": "Nog niet gepubliceerd",
+    "bron": "https://www.neuromodulation.org/annual-meeting.html",
+    "letOp": "Handmatig toegevoegd, nog geen scraper voor deze bron."
+  },
+  {
+    "id": "iasp-world-congress-2026",
+    "naam": "IASP World Congress on Pain 2026",
+    "organisatie": "IASP (International Association for the Study of Pain)",
+    "land": "Thailand",
+    "stad": "Bangkok",
+    "datumStart": "2026-10-26",
+    "datumEind": "2026-10-30",
+    "onderwerp": [
+      "pijngeneeskunde"
+    ],
+    "kosten": "Nog niet gepubliceerd",
+    "bron": "https://www.iasp-pain.org/world-congress-on-pain/",
+    "letOp": "Handmatig toegevoegd, nog geen scraper voor deze bron. Buiten Europa/Noord-Amerika, maar het belangrijkste wereldwijde pijncongres."
+  },
+  {
+    "id": "eaccm-2026",
+    "naam": "V Euro Anesthesiology and Critical Care Congress (EACCM 26)",
+    "organisatie": "Plenareno",
+    "land": "Duitsland",
+    "stad": "Berlijn",
+    "datumStart": "2026-10-19",
+    "datumEind": "2026-10-20",
+    "onderwerp": [
+      "algemene anesthesiologie",
+      "pijnmanagement",
+      "intensive care"
+    ],
+    "kosten": "Nog niet gepubliceerd",
+    "bron": "https://anesthesiology.plenareno.com/",
+    "letOp": "Commercieel georganiseerd congres (Plenareno), geen erkende beroepsvereniging. Op uitdrukkelijk verzoek toegevoegd; handmatig bijgehouden."
+  },
+  {
+    "id": "wsac-2027",
+    "naam": "World Surgery and Anesthesia Congress (WSAC 2027)",
+    "organisatie": "Iris Scientific Group",
+    "land": "Singapore",
+    "stad": "Singapore",
+    "datumStart": "2027-03-11",
+    "datumEind": "2027-03-13",
+    "onderwerp": [
+      "algemene anesthesiologie"
+    ],
+    "kosten": "Nog niet gepubliceerd",
+    "bron": "https://surgeryanesthesiacongress.com/",
+    "letOp": "Commercieel georganiseerd congres (Iris Scientific Group, host van tientallen vergelijkbare \"World [Vakgebied] Congress\"-events), geen erkende beroepsvereniging. Op uitdrukkelijk verzoek toegevoegd; handmatig bijgehouden."
+  },
+  {
+    "id": "icsa-2027",
+    "naam": "2nd International Conference on Surgery and Anesthesia",
+    "organisatie": "Inovine Conferences",
+    "land": "Zwitserland",
+    "stad": "Zürich",
+    "datumStart": "2027-04-09",
+    "datumEind": "2027-04-10",
+    "onderwerp": [
+      "algemene anesthesiologie"
+    ],
+    "kosten": "Nog niet gepubliceerd",
+    "bron": "https://surgery.inovineconferences.com/",
+    "letOp": "Commercieel georganiseerd congres (Inovine Conferences), geen erkende beroepsvereniging. Op uitdrukkelijk verzoek toegevoegd; handmatig bijgehouden."
   }
 ]
