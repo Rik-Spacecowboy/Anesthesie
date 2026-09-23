@@ -20,7 +20,7 @@ const CONGRESSEN = [
     datumStart: "2026-06-06",
     datumEind: "2026-06-08",
     onderwerp: ["algemene anesthesiologie", "intensive care"],
-    kosten: "Nog niet gepubliceerd",
+    kosten: "€870–€985 (niet-lid, excl. btw)",
     bron: "https://euroanaesthesia.org/2026/"
   },
   {
@@ -34,19 +34,8 @@ const CONGRESSEN = [
     onderwerp: ["kinderanesthesiologie"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://www.euroespa.com/",
-    letOp: "Stad/land niet gevonden -- https://www.espacongress.com/ toonde een laadscherm i.p.v. de congrespagina, dit komt van de terugval-bron. Controleer handmatig."
-  },
-  {
-    id: "spa-annual-2026",
-    naam: "SPA 40th Annual Meeting",
-    organisatie: "SPA (Society for Pediatric Anesthesia)",
-    land: "Verenigde Staten",
-    stad: "San Diego",
-    datumStart: "2026-10-16",
-    datumEind: "2026-10-16",
-    onderwerp: ["kinderanesthesiologie"],
-    kosten: "Nog niet gepubliceerd",
-    bron: "https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/"
+    letOp: "Stad/land niet gevonden -- https://www.espacongress.com/ toonde een laadscherm i.p.v. de congrespagina, dit komt van de terugval-bron. Controleer handmatig.",
+    letOpType: "data"
   },
   {
     id: "spa-annual-2026",
@@ -69,9 +58,10 @@ const CONGRESSEN = [
     datumStart: "2026-10-16",
     datumEind: "2026-10-20",
     onderwerp: ["algemene anesthesiologie"],
-    kosten: "Nog niet gepubliceerd",
+    kosten: "$2.099–$2.599 (niet-lid) · $699–$1.099 (lid)",
     bron: "https://www.asahq.org/annualmeeting",
-    letOp: "Niet automatisch gescraped: apsf.org (oude bron) blokkeert scrapers en asahq.org verbiedt in de site-voorwaarden expliciet gebruik van hun content met AI/automatisering. Handmatig controleren en bijwerken."
+    letOp: "Niet automatisch gescraped: apsf.org (oude bron) blokkeert scrapers en asahq.org verbiedt in de site-voorwaarden expliciet gebruik van hun content met AI/automatisering. Handmatig controleren en bijwerken.",
+    letOpType: "data"
   },
   {
     id: "eaccm-2026",
@@ -82,9 +72,10 @@ const CONGRESSEN = [
     datumStart: "2026-10-19",
     datumEind: "2026-10-20",
     onderwerp: ["algemene anesthesiologie", "pijnmanagement", "intensive care"],
-    kosten: "Nog niet gepubliceerd",
+    kosten: "Vanaf €199/$199 (student/internist); meerdere tarieven, zie bron",
     bron: "https://anesthesiology.plenareno.com/",
-    letOp: "Commercieel georganiseerd congres (Plenareno), geen erkende beroepsvereniging. Op uitdrukkelijk verzoek toegevoegd; handmatig bijgehouden."
+    letOp: "Commercieel georganiseerd congres (Plenareno), geen erkende beroepsvereniging. Op uitdrukkelijk verzoek toegevoegd; handmatig bijgehouden.",
+    letOpType: "commercieel"
   },
   {
     id: "iasp-world-congress-2026",
@@ -97,7 +88,8 @@ const CONGRESSEN = [
     onderwerp: ["pijngeneeskunde"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://www.iasp-pain.org/world-congress-on-pain/",
-    letOp: "Handmatig toegevoegd, nog geen scraper voor deze bron. Buiten Europa/Noord-Amerika, maar het belangrijkste wereldwijde pijncongres."
+    letOp: "Handmatig toegevoegd, nog geen scraper voor deze bron. Buiten Europa/Noord-Amerika, maar het belangrijkste wereldwijde pijncongres.",
+    letOpType: "data"
   },
   {
     id: "asra-pain-medicine-2026",
@@ -108,7 +100,7 @@ const CONGRESSEN = [
     datumStart: "2026-11-05",
     datumEind: "2026-11-07",
     onderwerp: ["pijngeneeskunde"],
-    kosten: "Nog niet gepubliceerd",
+    kosten: "$295–$1770 (afhankelijk van lidmaatschap/categorie)",
     bron: "https://asra.com/events-education"
   },
   {
@@ -134,7 +126,8 @@ const CONGRESSEN = [
     onderwerp: ["algemene anesthesiologie"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://www.nyssa-pga.org/events/80th-postgraduate-assembly-in-anesthesiology-pga/",
-    letOp: "Handmatig toegevoegd (datums staan op nyssa-pga.org niet in doorzoekbare tekst op de 'Future PGA Dates'-pagina); locatie New York Marriott Marquis."
+    letOp: "Handmatig toegevoegd (datums staan op nyssa-pga.org niet in doorzoekbare tekst op de 'Future PGA Dates'-pagina); locatie New York Marriott Marquis.",
+    letOpType: "data"
   },
   {
     id: "nysora-kitzb-hel-2027",
@@ -171,7 +164,8 @@ const CONGRESSEN = [
     onderwerp: ["algemene anesthesiologie"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://nwas2.northwestseminars.com/conference/list",
-    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand."
+    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand.",
+    letOpType: "data"
   },
   {
     id: "winter-pain-symposium-2027",
@@ -182,7 +176,7 @@ const CONGRESSEN = [
     datumStart: "2027-01-17",
     datumEind: "2027-01-22",
     onderwerp: ["pijngeneeskunde"],
-    kosten: "Nog niet gepubliceerd",
+    kosten: "Vanaf £400 (excl. verblijf)",
     bron: "https://www.winterpainsymposium.com/"
   },
   {
@@ -196,7 +190,8 @@ const CONGRESSEN = [
     onderwerp: ["algemene anesthesiologie"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://nwas2.northwestseminars.com/conference/list",
-    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand."
+    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand.",
+    letOpType: "data"
   },
   {
     id: "nans-annual-2027",
@@ -207,9 +202,10 @@ const CONGRESSEN = [
     datumStart: "2027-01-21",
     datumEind: "2027-01-24",
     onderwerp: ["pijngeneeskunde"],
-    kosten: "Nog niet gepubliceerd",
+    kosten: "Vanaf $200 (student/trainee-lid); niet-lid (fysicus) $885–$985, zie bron voor volledige tabel",
     bron: "https://www.neuromodulation.org/annual-meeting.html",
-    letOp: "Handmatig toegevoegd, nog geen scraper voor deze bron."
+    letOp: "Handmatig toegevoegd, nog geen scraper voor deze bron.",
+    letOpType: "data"
   },
   {
     id: "nysora-val-d-isere-2027",
@@ -234,7 +230,8 @@ const CONGRESSEN = [
     onderwerp: ["algemene anesthesiologie"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://nwas2.northwestseminars.com/conference/list",
-    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand. Twaalfdaagse cruise door Thailand en Vietnam (Celebrity Solstice)."
+    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand. Twaalfdaagse cruise door Thailand en Vietnam (Celebrity Solstice).",
+    letOpType: "data"
   },
   {
     id: "nwas-anesthesia-update-orlando-2027",
@@ -247,7 +244,8 @@ const CONGRESSEN = [
     onderwerp: ["algemene anesthesiologie"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://nwas2.northwestseminars.com/conference/list",
-    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand."
+    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand.",
+    letOpType: "data"
   },
   {
     id: "nwas-obstetric-park-city-2027",
@@ -260,7 +258,8 @@ const CONGRESSEN = [
     onderwerp: ["algemene anesthesiologie"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://nwas2.northwestseminars.com/conference/list",
-    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand."
+    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand.",
+    letOpType: "data"
   },
   {
     id: "nysora-leuven-2027",
@@ -283,9 +282,10 @@ const CONGRESSEN = [
     datumStart: "2027-03-11",
     datumEind: "2027-03-13",
     onderwerp: ["algemene anesthesiologie"],
-    kosten: "Nog niet gepubliceerd",
+    kosten: "Vanaf $399 (virtueel); vanaf $699 fysiek; meerdere tarieven, zie bron",
     bron: "https://surgeryanesthesiacongress.com/",
-    letOp: "Commercieel georganiseerd congres (Iris Scientific Group, host van tientallen vergelijkbare \"World [Vakgebied] Congress\"-events), geen erkende beroepsvereniging. Op uitdrukkelijk verzoek toegevoegd; handmatig bijgehouden."
+    letOp: "Commercieel georganiseerd congres (Iris Scientific Group, host van tientallen vergelijkbare \"World [Vakgebied] Congress\"-events), geen erkende beroepsvereniging. Op uitdrukkelijk verzoek toegevoegd; handmatig bijgehouden.",
+    letOpType: "commercieel"
   },
   {
     id: "nwas-fresh-tracks-breckenridge-2027",
@@ -298,7 +298,8 @@ const CONGRESSEN = [
     onderwerp: ["algemene anesthesiologie"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://nwas2.northwestseminars.com/conference/list",
-    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand."
+    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand.",
+    letOpType: "data"
   },
   {
     id: "aapm-painconnect-2027",
@@ -309,9 +310,10 @@ const CONGRESSEN = [
     datumStart: "2027-03-18",
     datumEind: "2027-03-21",
     onderwerp: ["pijngeneeskunde"],
-    kosten: "Nog niet gepubliceerd",
+    kosten: "Vanaf $188 (student/trainee-lid); meerdere tarieven o.b.v. lidmaatschap/categorie, zie bron",
     bron: "https://painconnect.org/",
-    letOp: "Handmatig toegevoegd, nog geen scraper voor deze bron."
+    letOp: "Handmatig toegevoegd, nog geen scraper voor deze bron.",
+    letOpType: "data"
   },
   {
     id: "nwas-topics-anaheim-2027",
@@ -324,7 +326,8 @@ const CONGRESSEN = [
     onderwerp: ["algemene anesthesiologie"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://nwas2.northwestseminars.com/conference/list",
-    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand."
+    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand.",
+    letOpType: "data"
   },
   {
     id: "icsa-2027",
@@ -337,7 +340,8 @@ const CONGRESSEN = [
     onderwerp: ["algemene anesthesiologie"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://surgery.inovineconferences.com/",
-    letOp: "Commercieel georganiseerd congres (Inovine Conferences), geen erkende beroepsvereniging. Op uitdrukkelijk verzoek toegevoegd; handmatig bijgehouden."
+    letOp: "Commercieel georganiseerd congres (Inovine Conferences), geen erkende beroepsvereniging. Op uitdrukkelijk verzoek toegevoegd; handmatig bijgehouden.",
+    letOpType: "commercieel"
   },
   {
     id: "efic-2027",
@@ -348,7 +352,7 @@ const CONGRESSEN = [
     datumStart: "2027-04-21",
     datumEind: "2027-04-23",
     onderwerp: ["pijngeneeskunde"],
-    kosten: "Nog niet gepubliceerd",
+    kosten: "€940–€1192 (niet-lid)",
     bron: "https://europeanpainfederation.eu/efic2027/"
   },
   {
@@ -362,7 +366,8 @@ const CONGRESSEN = [
     onderwerp: ["regionale anesthesie", "acute pijn"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://asra.com/events-education",
-    letOp: "Automatisch gevonden; ordinal (bv. '52nd') stond niet in de brontekst, controleer de exacte naam."
+    letOp: "Automatisch gevonden; ordinal (bv. '52nd') stond niet in de brontekst, controleer de exacte naam.",
+    letOpType: "data"
   },
   {
     id: "soap-2027",
@@ -375,7 +380,8 @@ const CONGRESSEN = [
     onderwerp: ["obstetrische anesthesie"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://www.soap.org/future-meetings",
-    letOp: "Stad afgeleid uit de bron; exacte locatie: The Westin Rancho Mirage Golf Resort & Spa."
+    letOp: "Stad afgeleid uit de bron; exacte locatie: The Westin Rancho Mirage Golf Resort & Spa.",
+    letOpType: "data"
   },
   {
     id: "nva-anesthesiologendagen-2027",
@@ -400,7 +406,8 @@ const CONGRESSEN = [
     onderwerp: ["algemene anesthesiologie"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://nwas2.northwestseminars.com/conference/list",
-    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand."
+    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand.",
+    letOpType: "data"
   },
   {
     id: "euroanaesthesia-2027",
@@ -425,7 +432,8 @@ const CONGRESSEN = [
     onderwerp: ["algemene anesthesiologie"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://nwas2.northwestseminars.com/conference/list",
-    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand."
+    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand.",
+    letOpType: "data"
   },
   {
     id: "esra-congress-2027",
@@ -486,7 +494,8 @@ const CONGRESSEN = [
     onderwerp: ["algemene anesthesiologie"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://www.asahq.org/annualmeeting/attend/futuredates",
-    letOp: "Niet automatisch gescraped (zie asa-anesthesiology-2026). Datum/stad komt van ASA's eigen 'Future Dates'-pagina; kosten en programma nog niet gepubliceerd."
+    letOp: "Niet automatisch gescraped (zie asa-anesthesiology-2026). Datum/stad komt van ASA's eigen 'Future Dates'-pagina; kosten en programma nog niet gepubliceerd.",
+    letOpType: "data"
   },
   {
     id: "nwas-current-topics-maui-2027",
@@ -499,7 +508,8 @@ const CONGRESSEN = [
     onderwerp: ["algemene anesthesiologie"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://nwas2.northwestseminars.com/conference/list",
-    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand."
+    letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand.",
+    letOpType: "data"
   },
   {
     id: "pga-81-2027",
@@ -512,7 +522,8 @@ const CONGRESSEN = [
     onderwerp: ["algemene anesthesiologie"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://www.nyssa-pga.org/pga-meeting/future-pga-dates/",
-    letOp: "Handmatig; datum komt van een derde partij (eMedEvents), nog niet bevestigd op de officiele NYSSA-site -- controleren."
+    letOp: "Handmatig; datum komt van een derde partij (eMedEvents), nog niet bevestigd op de officiele NYSSA-site -- controleren.",
+    letOpType: "data"
   },
   {
     id: "spa-aap-2028",
@@ -597,7 +608,8 @@ const CONGRESSEN = [
     onderwerp: ["algemene anesthesiologie"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://www.asahq.org/annualmeeting/attend/futuredates",
-    letOp: "Niet automatisch gescraped (zie asa-anesthesiology-2026). Datum/stad komt van ASA's eigen 'Future Dates'-pagina; kosten en programma nog niet gepubliceerd."
+    letOp: "Niet automatisch gescraped (zie asa-anesthesiology-2026). Datum/stad komt van ASA's eigen 'Future Dates'-pagina; kosten en programma nog niet gepubliceerd.",
+    letOpType: "data"
   },
   {
     id: "euroanaesthesia-2029",

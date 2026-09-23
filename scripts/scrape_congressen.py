@@ -95,6 +95,79 @@ def fetch_lines_optional(url):
         raise
 
 
+PRIJS_RE = re.compile(
+    r"(?P<munt1>[€£$])\s?(?P<bedrag1>\d{1,3}(?:[.,]\d{3})*)(?:[.,]\d{2})?"
+    r"|(?P<bedrag2>\d{1,3}(?:[.,]\d{3})*)(?:[.,]\d{2})?\s?(?P<munt2>EUR|USD|GBP|[€£$])",
+)
+
+MUNTTEKEN = {"EUR": "€", "USD": "$", "GBP": "£"}
+
+
+def _prijs_uit_match(m):
+    munt = m.group("munt1") or MUNTTEKEN.get(m.group("munt2"), m.group("munt2"))
+    bedrag = (m.group("bedrag1") or m.group("bedrag2")).replace(".", "").replace(",", "")
+    return munt, int(bedrag)
+
+
+def vind_prijsrange_na_label(regels, label_patroon, aantal=3, max_afstand=6):
+    """Zoekt de regel die op label_patroon matcht en pakt de eerstvolgende
+    'aantal' bedragen erna (binnen max_afstand regels) als prijsrange.
+    Geeft (laagste, hoogste, muntteken) terug, of None als niets gevonden is."""
+    for i, regel in enumerate(regels):
+        if re.search(label_patroon, regel, re.I):
+            bedragen = []
+            for j in range(i + 1, min(i + 1 + max_afstand, len(regels))):
+                m = PRIJS_RE.search(regels[j])
+                if m:
+                    bedragen.append(_prijs_uit_match(m))
+                    if len(bedragen) >= aantal:
+                        break
+            if bedragen:
+                munt = bedragen[0][0]
+                waarden = [b for _, b in bedragen]
+                return min(waarden), max(waarden), munt
+    return None
+
+
+def formatteer_prijsrange(laag, hoog, munt, suffix=""):
+    kern = f"{munt}{laag}" if laag == hoog else f"{munt}{laag}–{munt}{hoog}"
+    return f"{kern}{suffix}"
+
+
+def vind_prijsrange_tussen(regels, start_patroon, eind_patroon=None, min_bedrag=50, max_bedrag=3000):
+    """Verzamelt alle bedragen tussen de regel die start_patroon matcht en de
+    eerstvolgende regel die eind_patroon matcht (of het einde van de lijst).
+    Bedragen buiten [min_bedrag, max_bedrag] worden genegeerd -- dat filtert
+    dingen als overnachtingsprijzen per nacht of annuleringskosten eruit.
+    Geeft (laagste, hoogste, muntteken) terug, of None als niets bruikbaars
+    gevonden is."""
+    start = None
+    for i, regel in enumerate(regels):
+        if re.search(start_patroon, regel, re.I):
+            start = i
+            break
+    if start is None:
+        return None
+    eind = len(regels)
+    if eind_patroon:
+        for i in range(start + 1, len(regels)):
+            if re.search(eind_patroon, regels[i], re.I):
+                eind = i
+                break
+    bedragen = []
+    for regel in regels[start:eind]:
+        m = PRIJS_RE.search(regel)
+        if m:
+            munt, bedrag = _prijs_uit_match(m)
+            if min_bedrag <= bedrag <= max_bedrag:
+                bedragen.append((munt, bedrag))
+    if not bedragen:
+        return None
+    munt = bedragen[0][0]
+    waarden = [b for _, b in bedragen]
+    return min(waarden), max(waarden), munt
+
+
 def maand_naar_nummer(naam):
     return MAANDEN.get(naam[:3].lower())
 
@@ -159,6 +232,17 @@ def scrape_euroanaesthesia():
             warn("Euroanaesthesia", f"{jaar}-editie aangekondigd ({plaats}) maar geen datum gevonden op {jaar_url} -- overgeslagen.")
             continue
 
+        kosten = "Nog niet gepubliceerd"
+        try:
+            reg_lines = fetch_lines(jaar_url + "registration/")
+            bereik = vind_prijsrange_tussen(
+                reg_lines, r"^Onsite Congress \(excluding", r"^Virtual Congress"
+            )
+            if bereik:
+                kosten = formatteer_prijsrange(*bereik[:2], bereik[2], " (niet-lid, excl. btw)")
+        except requests.RequestException:
+            pass
+
         stad, _, land = plaats.partition(",")
         entries.append({
             "id": f"euroanaesthesia-{jaar}",
@@ -169,7 +253,7 @@ def scrape_euroanaesthesia():
             "datumStart": datum_start,
             "datumEind": datum_eind,
             "onderwerp": ["algemene anesthesiologie", "intensive care"],
-            "kosten": "Nog niet gepubliceerd",
+            "kosten": kosten,
             "bron": jaar_url,
         })
 
@@ -299,6 +383,16 @@ def scrape_asra():
         stad, staat, nummer, maand, dag_start, dag_eind, jaar = m.groups()
         datum_start, datum_eind = maak_datum(jaar, maand, dag_start), maak_datum(jaar, maand, dag_eind)
         if datum_start and datum_eind:
+            kosten = "Nog niet gepubliceerd"
+            try:
+                reg_lines = fetch_lines(f"{url}/pain-medicine-meeting/register")
+                bereik = vind_prijsrange_tussen(
+                    reg_lines, r"Physician Member of ASRA Pain Medicine", r"Additional Exhibitor Badge"
+                )
+                if bereik:
+                    kosten = formatteer_prijsrange(*bereik[:2], bereik[2], " (afhankelijk van lidmaatschap/categorie)")
+            except requests.RequestException:
+                pass
             entries.append({
                 "id": f"asra-pain-medicine-{jaar}",
                 "naam": f"{ordinaal(nummer)} Annual Pain Medicine Meeting",
@@ -308,7 +402,7 @@ def scrape_asra():
                 "datumStart": datum_start,
                 "datumEind": datum_eind,
                 "onderwerp": ["pijngeneeskunde"],
-                "kosten": "Nog niet gepubliceerd",
+                "kosten": kosten,
                 "bron": url,
             })
     else:
@@ -336,6 +430,7 @@ def scrape_asra():
                 "kosten": "Nog niet gepubliceerd",
                 "bron": url,
                 "letOp": "Automatisch gevonden; ordinal (bv. '52nd') stond niet in de brontekst, controleer de exacte naam.",
+                "letOpType": "data",
             })
     else:
         warn("ASRA", "Regional Anesthesiology meeting-zin niet gevonden/gewijzigd op events-education pagina.")
@@ -387,6 +482,22 @@ def scrape_nva_anesthesiologendagen():
                         and lines[i + 3] not in ("Congres", "Opleiding")
                     ):
                         locatie = lines[i + 3]
+                    kosten = "Nog niet gepubliceerd"
+                    try:
+                        event_url = f"https://www.anesthesiologie.nl/agenda/anesthesiologendagen-{huidig_jaar}"
+                        event_lines = fetch_lines_optional(event_url) or []
+                        for j, eregel in enumerate(event_lines):
+                            if re.match(r"Gewoon lid", eregel) and j + 1 < len(event_lines):
+                                pm = re.search(
+                                    r"€\s?(\d+)\s*\(gehele congres\).*?€\s?(\d+)\s*\(1 dag\)",
+                                    event_lines[j + 1],
+                                )
+                                if pm:
+                                    laag, hoog = sorted(int(x) for x in pm.groups())
+                                    kosten = formatteer_prijsrange(laag, hoog, "€", " (leden-tarief, 1 dag t/m hele congres)")
+                                break
+                    except requests.RequestException:
+                        pass
                     entries.append({
                         "id": f"nva-anesthesiologendagen-{huidig_jaar}",
                         "naam": naam,
@@ -396,7 +507,7 @@ def scrape_nva_anesthesiologendagen():
                         "datumStart": datum_start,
                         "datumEind": datum_eind,
                         "onderwerp": ["algemene anesthesiologie"],
-                        "kosten": "Nog niet gepubliceerd",
+                        "kosten": kosten,
                         "bron": url,
                     })
             i += 2
@@ -432,6 +543,14 @@ def scrape_espa():
         if m:
             nummer, stad, land, d1, m1, j1, d2, m2, j2 = m.groups()
             if m1 == m2 and j1 == j2:
+                kosten = "Nog niet gepubliceerd"
+                try:
+                    reg_lines = fetch_lines(url + "registration/")
+                    bereik = vind_prijsrange_tussen(reg_lines, r"ESPA Non-Member", r"^Reduced Fee$")
+                    if bereik:
+                        kosten = formatteer_prijsrange(*bereik[:2], bereik[2], " (niet-lid)")
+                except requests.RequestException:
+                    pass
                 return [{
                     "id": f"espa-congress-{j1}",
                     "naam": f"{nummer}th European Congress for Paediatric Anaesthesiology",
@@ -441,7 +560,7 @@ def scrape_espa():
                     "datumStart": f"{j1}-{m1}-{d1}",
                     "datumEind": f"{j2}-{m2}-{d2}",
                     "onderwerp": ["kinderanesthesiologie"],
-                    "kosten": "Nog niet gepubliceerd",
+                    "kosten": kosten,
                     "bron": url,
                 }]
 
@@ -470,20 +589,22 @@ def scrape_espa():
                     "kosten": "Nog niet gepubliceerd",
                     "bron": fallback_url,
                     "letOp": f"Stad/land niet gevonden -- {url} toonde een laadscherm i.p.v. de congrespagina, dit komt van de terugval-bron. Controleer handmatig.",
+                    "letOpType": "data",
                 }]
 
     warn("ESPA", f"geen congresregel gevonden/gewijzigd op {url} of {fallback_url}.")
     return []
 
 
-def maak_entry(id_, naam, organisatie, land, stad, start, eind, onderwerp, bron, let_op=None):
+def maak_entry(id_, naam, organisatie, land, stad, start, eind, onderwerp, bron, let_op=None, kosten=None, let_op_type="data"):
     entry = {
         "id": id_, "naam": naam, "organisatie": organisatie, "land": land,
         "stad": stad, "datumStart": start, "datumEind": eind,
-        "onderwerp": onderwerp, "kosten": "Nog niet gepubliceerd", "bron": bron,
+        "onderwerp": onderwerp, "kosten": kosten or "Nog niet gepubliceerd", "bron": bron,
     }
     if let_op:
         entry["letOp"] = let_op
+        entry["letOpType"] = let_op_type
     return entry
 
 
@@ -511,11 +632,20 @@ def scrape_efic():
                 datum = (maak_datum(jaar, m.group(3), m.group(1)), maak_datum(jaar, m.group(3), m.group(2)))
         if stad and datum and datum[0]:
             land = "Verenigd Koninkrijk" if stad.lower() == "glasgow" else "Onbekend"
+            kosten = None
+            try:
+                reg_lines = fetch_lines(url + "registration/")
+                bereik = vind_prijsrange_tussen(reg_lines, r"^Non-Member$", r"^Supported Countries$")
+                if bereik:
+                    kosten = formatteer_prijsrange(*bereik[:2], bereik[2], " (niet-lid)")
+            except requests.RequestException:
+                pass
             entries.append(maak_entry(
                 f"efic-{jaar}", f"EFIC Congress {jaar} (Pain in Europe)",
                 "EFIC (European Pain Federation)", land, stad, datum[0], datum[1],
                 ["pijngeneeskunde"], url,
                 None if land != "Onbekend" else "Land niet automatisch bepaald, aanvullen.",
+                kosten=kosten,
             ))
         else:
             warn("EFIC", f"pagina {url} bestaat maar stad/datum niet gevonden.")
@@ -609,11 +739,17 @@ def scrape_winter_pain_symposium():
         )
         if m:
             d1, d2, maand, jaar, nr, naam, stad, regio = m.groups()
+            kosten = None
+            for regel2 in lines:
+                pm = re.search(r"Early Bird Registration Fee:\s*([€£$])\s?([\d.]+)", regel2)
+                if pm:
+                    kosten = f"Vanaf {pm.group(1)}{int(float(pm.group(2)))} (excl. verblijf)"
+                    break
             return [maak_entry(
                 f"winter-pain-symposium-{jaar}", f"{ordinaal(nr)} {naam}",
                 "London Pain Forum", "Frankrijk" if "french" in regio.lower() else regio, stad.strip(),
                 maak_datum(jaar, maand, d1), maak_datum(jaar, maand, d2),
-                ["pijngeneeskunde"], url,
+                ["pijngeneeskunde"], url, kosten=kosten,
             )]
     warn("Winter Pain Symposium", f"geen symposiumregel gevonden op {url}.")
     return []
@@ -778,6 +914,8 @@ def render_entry(entry):
     velden = ["id", "naam", "organisatie", "land", "stad", "datumStart", "datumEind", "onderwerp", "kosten", "bron"]
     if "letOp" in entry:
         velden.append("letOp")
+        if "letOpType" in entry:
+            velden.append("letOpType")
     regels = ["  {"]
     for idx, veld in enumerate(velden):
         komma = "," if idx < len(velden) - 1 else ""
@@ -817,7 +955,14 @@ def main():
             warn(scraper.__name__, f"onverwachte fout: {e}")
 
     handmatig = laad_handmatige_entries()
-    alle_entries = gescraped + handmatig
+    alle_entries = []
+    geziene_ids = set()
+    for entry in gescraped + handmatig:
+        if entry["id"] in geziene_ids:
+            warn(entry["id"], "dubbele id gevonden (bron toonde dezelfde editie waarschijnlijk twee keer op de pagina) -- tweede exemplaar overgeslagen.")
+            continue
+        geziene_ids.add(entry["id"])
+        alle_entries.append(entry)
 
     if not alle_entries:
         print("Geen enkele bron leverde data op, bestaand data/congressen.js blijft ongewijzigd.", file=sys.stderr)

@@ -38,6 +38,22 @@ alleen de komende editie.
   (nog geen datum gepubliceerd); IPME, Doctors Updates en de School/Academy for Integrative Medicine (onduidelijk
   welke organisatie precies bedoeld is).
 
+### Kosten
+
+Voor Euroanaesthesia, EFIC, ASRA Pain Medicine, NVA, Winter Pain Symposium en de handmatige entries haalt/heeft het
+script een echt tarief op (meestal "vanaf X" of een range, want de meeste bronnen werken met meerdere tarieven
+naargelang lidmaatschap/categorie -- de kaart zelf verwijst naar de bron voor de volledige tabel). Voor de overige
+bronnen (ESRA, PAINWeek, WCA, SOAP, NYSORA, BAPA, Association of Anaesthetists, SPA, ICSA, PGA) is nog geen
+betrouwbare, voorspelbare prijspagina gevonden; die tonen "Nog niet gepubliceerd" totdat dat lukt.
+
+### `letOp`: twee soorten
+
+Een kaart kan een `letOp`-label tonen, in twee smaken:
+- **Grijs ("Let op")** -- een beperking in de data zelf (bv. stad niet gevonden, ordinal onzeker, bron blokkeert
+  scrapers dus handmatig bijgehouden).
+- **Oranje ("Commercieel congres")** -- geen datakwaliteitsprobleem, maar een waarschuwing dat de organisator een
+  commerciële partij is (congresfabriek), geen erkende beroepsvereniging.
+
 ### Zelf draaien
 
 ```bash

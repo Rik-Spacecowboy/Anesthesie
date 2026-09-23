@@ -235,7 +235,12 @@
     a.bron:hover { background: var(--accent); color: var(--accent-tekst); }
     .congres-kaart.voorbij { opacity: .62; }
     .congres-kaart.voorbij:hover { opacity: 1; }
-    .let-op { font-size: 0.85rem; color: var(--ink-zacht); border-left: 3px solid var(--accent); padding-left: 10px; }
+    .let-op { font-size: 0.85rem; color: var(--ink-zacht); border-left: 3px solid var(--lijn); padding-left: 10px; }
+    .let-op .let-op-label { display: block; font: 700 0.72rem var(--display); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2px; }
+    .let-op.data { border-left-color: var(--ink-zacht); }
+    .let-op.data .let-op-label { color: var(--ink-zacht); }
+    .let-op.commercieel { border-left-color: var(--accent); color: var(--ink); }
+    .let-op.commercieel .let-op-label { color: var(--accent); }
     .leeg-resultaat { grid-column: 1 / -1; text-align: center; padding: 60px 20px; font: 700 1.8rem var(--display); text-transform: uppercase; color: var(--ink-zacht); }
     @keyframes op { from { transform: translateY(14px); } to { transform: none; } }
 
@@ -273,7 +278,7 @@
           <div><h3>Niet opgenomen: niet toegestaan</h3><p>UF Spring Anesthesia Ski Summit en Holiday Seminars sluiten bots uit in hun robots.txt.</p></div>
           <div><h3>Niet opgenomen: geblokkeerd</h3><p>OAA (UK) en Northern Lights Anaesthetics blokkeren geautomatiseerde toegang; er is ook nog geen datum voor 2027 bekend.</p></div>
           <div><h3>Nog geen datum bekend</h3><p>SSAI 2028, PROSA 2028 en de Refresher Course Obstetrische Anesthesiologie. Zodra er een datum is, kunnen ze erbij.</p></div>
-          <div><h3>Commercieel, op verzoek toegevoegd</h3><p>EACCM (Plenareno), WSAC en de International Conference on Surgery and Anesthesia zijn congresfabrieken, geen erkende beroepsverenigingen -- toegevoegd op uitdrukkelijk verzoek, met een label op de kaart zelf.</p></div>
+          <div><h3>Commercieel, op verzoek toegevoegd</h3><p>EACCM (Plenareno), WSAC en de International Conference on Surgery and Anesthesia zijn congresfabrieken, geen erkende beroepsverenigingen -- toegevoegd op uitdrukkelijk verzoek. Herkenbaar aan het oranje "Commercieel congres"-label op de kaart, los van het grijze "Let op"-label voor ontbrekende data.</p></div>
           <div><h3>Nog niet gevonden</h3><p>IPME, Doctors Updates en de School/Academy for Integrative Medicine: onduidelijk welke organisatie bedoeld is.</p></div>
         </div>
       </details>
@@ -568,7 +573,7 @@
           <div class="organisatie">${esc(rij.organisatie)}</div>
           <div class="plek">${esc(rij.stad)}, ${esc(rij.land)}</div>
           <div class="tags">${rij.onderwerp.map(o => `<span class="tag">${esc(o)}</span>`).join('')}</div>
-          ${rij.letOp ? `<div class="let-op">${esc(rij.letOp)}</div>` : ''}
+          ${rij.letOp ? `<div class="let-op ${rij.letOpType === 'commercieel' ? 'commercieel' : 'data'}"><span class="let-op-label">${rij.letOpType === 'commercieel' ? 'Commercieel congres' : 'Let op'}</span>${esc(rij.letOp)}</div>` : ''}
           <div class="kaart-voet">
             <span class="kosten">${esc(rij.kosten)}</span>
             <a class="bron" href="${esc(rij.bron)}" target="_blank" rel="noopener">Bron →</a>
