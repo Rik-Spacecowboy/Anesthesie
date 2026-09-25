@@ -578,14 +578,47 @@ def scrape_nva_anesthesiologendagen():
     return entries
 
 
+def espa_volledige_registratie(regels):
+    """De ESPA-tarieftabel heeft kolommen "Early/Late/On-site registration"
+    gevolgd door "One Day Registration for ..."; per rij (ESPA Member,
+    ESPA Non-Member, Reduced Fee) staan de bedragen in die kolomvolgorde.
+    Geeft de range van de niet-lid-tarieven voor het volledige congres terug
+    (dagkaarten niet meegerekend), als (laagste, hoogste, muntteken)."""
+    try:
+        kop = next(i for i, r in enumerate(regels) if re.fullmatch(r"Registration fees", r, re.I))
+        lid = next(i for i in range(kop, len(regels)) if re.fullmatch(r"ESPA Member", regels[i], re.I))
+        niet_lid = next(i for i in range(lid, len(regels)) if re.fullmatch(r"ESPA Non-Member", regels[i], re.I))
+    except StopIteration:
+        return None
+    kolommen = [r for r in regels[kop + 1:lid] if re.search(r"registration", r, re.I)]
+    aantal_volledig = sum(1 for k in kolommen if not re.match(r"One Day", k, re.I))
+    if not aantal_volledig:
+        return None
+    bedragen = []
+    for regel in regels[niet_lid + 1:]:
+        m = PRIJS_RE.fullmatch(regel)
+        if not m:
+            break
+        bedragen.append(_prijs_uit_match(m))
+    volledig = bedragen[:aantal_volledig]
+    if len(volledig) < aantal_volledig:
+        return None
+    waarden = [b for _, b in volledig]
+    return min(waarden), max(waarden), volledig[0][0]
+
+
 def scrape_espa():
     """ESPA (European Society for Paediatric Anaesthesiology): de jaarlijkse
-    congressite toont de actuele editie in een enkele titelregel. Toekomstige
+    congressite toont de actuele editie in een titelregel ("16th European
+    Congress for Paediatric Anaesthesiology, Madrid, Spain 24/09/2026 -
+    26/09/2026") of, rond het congres, alleen in het welkomstwoord van de
+    president ("... 16th European Congress for Paediatric Anaesthesiology
+    taking place on 24–26 September 2026 in Madrid, Spain."). Toekomstige
     edities staan pas op een nieuwe site zodra die gepubliceerd wordt, dus
-    verder dan het lopende/eerstvolgende jaar kijkt dit (nog) niet. Vlak voor
-    en tijdens het congres toont de site vaak alleen nog een laadscherm voor
-    het congresplatform -- dan valt dit terug op de "Future Events"-widget
-    van de officiele ESPA-site (euroespa.com), die geen stad vermeldt."""
+    verder dan het lopende/eerstvolgende jaar kijkt dit (nog) niet. Staat geen
+    van beide op de site (bv. alleen een laadscherm), dan valt dit terug op de
+    "Future Events"-widget van de officiele ESPA-site (euroespa.com), die geen
+    stad vermeldt."""
     url = "https://www.espacongress.com/"
     try:
         lines = fetch_lines(url)
@@ -593,6 +626,7 @@ def scrape_espa():
         warn("ESPA", f"kon {url} niet ophalen: {e}")
         lines = []
 
+    gevonden = None
     for regel in lines:
         m = re.search(
             r"(\d+)\w{2} European [Cc]ongress for Paediatric Anaesthesiology,\s*"
@@ -602,26 +636,42 @@ def scrape_espa():
         if m:
             nummer, stad, land, d1, m1, j1, d2, m2, j2 = m.groups()
             if m1 == m2 and j1 == j2:
-                kosten = "Nog niet gepubliceerd"
-                try:
-                    reg_lines = fetch_lines(url + "registration/")
-                    bereik = vind_prijsrange_tussen(reg_lines, r"ESPA Non-Member", r"^Reduced Fee$")
-                    if bereik:
-                        kosten = formatteer_prijsrange(*bereik[:2], bereik[2], " (niet-lid)")
-                except requests.RequestException:
-                    pass
-                return [{
-                    "id": f"espa-congress-{j1}",
-                    "naam": f"{nummer}th European Congress for Paediatric Anaesthesiology",
-                    "organisatie": "ESPA (European Society for Paediatric Anaesthesiology)",
-                    "land": vertaal_land(land),
-                    "stad": stad.strip(),
-                    "datumStart": f"{j1}-{m1}-{d1}",
-                    "datumEind": f"{j2}-{m2}-{d2}",
-                    "onderwerp": ["kinderanesthesiologie"],
-                    "kosten": kosten,
-                    "bron": url,
-                }]
+                gevonden = (nummer, stad, land, f"{j1}-{m1}-{d1}", f"{j2}-{m2}-{d2}", j1)
+                break
+        m = re.search(
+            r"(\d+)\w{2} European [Cc]ongress for Paediatric Anaesthesiology,? taking place on\s+"
+            r"(\d{1,2})\s*[-–]\s*(\d{1,2})\s+([A-Za-z]+)\s+(20\d{2})\s+in\s+([A-Za-z .]+?),\s*([A-Za-z .]+?)\s*[.,]",
+            regel,
+        )
+        if m:
+            nummer, d1, d2, maand, jaar, stad, land = m.groups()
+            start, eind = maak_datum(jaar, maand, d1), maak_datum(jaar, maand, d2)
+            if start and eind:
+                gevonden = (nummer, stad, land, start, eind, jaar)
+                break
+
+    if gevonden:
+        nummer, stad, land, start, eind, jaar = gevonden
+        kosten = "Nog niet gepubliceerd"
+        try:
+            reg_lines = fetch_lines(url + "registration/")
+            bereik = espa_volledige_registratie(reg_lines)
+            if bereik:
+                kosten = formatteer_prijsrange(*bereik[:2], bereik[2], " (niet-lid)")
+        except requests.RequestException:
+            pass
+        return [{
+            "id": f"espa-congress-{jaar}",
+            "naam": f"{ordinaal(nummer)} European Congress for Paediatric Anaesthesiology",
+            "organisatie": "ESPA (European Society for Paediatric Anaesthesiology)",
+            "land": vertaal_land(land),
+            "stad": stad.strip(),
+            "datumStart": start,
+            "datumEind": eind,
+            "onderwerp": ["kinderanesthesiologie"],
+            "kosten": kosten,
+            "bron": url,
+        }]
 
     fallback_url = "https://www.euroespa.com/"
     try:
