@@ -1,5 +1,14 @@
 # Anesthesie Congres Tracker
 
+## Live zetten: altijd deze drie stappen
+
+Rik's vaste instructie: elke live-gang omvat altijd alle drie, zonder dat hij erom hoeft te vragen.
+
+1. **Lokaal testen**: `python3 -m http.server 8080` en de wijziging in de browser (Playwright/Chromium) controleren.
+2. **GitHub**: via een PR naar `main`; GitHub Pages publiceert dan vanzelf. Controleer dat de run
+   "pages build and deployment" voor die commit geslaagd is.
+3. **Artifact**: direct daarna opnieuw publiceren, zie hieronder.
+
 ## Artifact altijd bijwerken (zonder te vragen)
 
 De site bestaat op twee plekken:
