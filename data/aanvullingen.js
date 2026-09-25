@@ -63,6 +63,8 @@ const AANVULLINGEN = {
   "pga-80-2026": {
     kosten: "Niet-lid arts $995 (was $895 t/m 30 sep) · resident $175–$225, zie bron",
     kostenBron: "https://www.pga.nyc/registration--session-fees.html",
+    punten: "max. 39,25 AMA PRA Category 1",
+    puntenBron: "https://www.pga.nyc/faqs.html",
     gecontroleerd: "2026-09-25"
   },
   "nysora-kitzb-hel-2027": {
@@ -113,6 +115,56 @@ const AANVULLINGEN = {
   "association-of-anaesthetists-gasfest-2027": {
     punten: "5 CPD per dag",
     puntenBron: "https://anaesthetists.org/Events/Event-Details.aspx?eventDateId=1076",
+    gecontroleerd: "2026-09-25"
+  },
+  "espa-congress-2026": {
+    kosten: "€330–€880 (trainee t/m niet-lid, incl. btw) · verpleegkundige/student €180",
+    kostenBron: "https://www.espacongress.com/registration/",
+    gecontroleerd: "2026-09-25"
+  },
+  "esra-winter-week-conference-2027": {
+    kostenIndicatie: "2026: €830–€1.160 (trainee-lid t/m niet-lid)",
+    kostenBron: "https://esraeurope.org/meeting/20th-esra-winter-week-conference/",
+    puntenIndicatie: "2026: 20 ECMEC (EACCME)",
+    puntenBron: "https://esraeurope.org/meeting/20th-esra-winter-week-conference/",
+    gecontroleerd: "2026-09-25"
+  },
+  "esra-pain-cadaver-workshop-2027": {
+    kostenIndicatie: "2026: €630–€930 (combi met RA-workshop €1.055–€1.655)",
+    kostenBron: "https://esraeurope.org/meeting/15th-esra-pain-cadaver-workshop/",
+    puntenIndicatie: "2026: 9 ECMEC (EACCME)",
+    puntenBron: "https://esraeurope.org/meeting/15th-esra-pain-cadaver-workshop/",
+    gecontroleerd: "2026-09-25"
+  },
+  "esra-ra-cadaver-workshop-2027": {
+    kostenIndicatie: "2026: €695–€995 (trainee-lid t/m niet-lid)",
+    kostenBron: "https://esraeurope.org/meeting/39th-esra-ra-cadaver-workshop/",
+    puntenIndicatie: "2026: 15,5 ECMEC (EACCME)",
+    puntenBron: "https://esraeurope.org/meeting/39th-esra-ra-cadaver-workshop/",
+    gecontroleerd: "2026-09-25"
+  },
+  "esra-residents-trainees-workshop-2027": {
+    kostenIndicatie: "2026: €350 (trainee-lid) / €680 (lid)",
+    kostenBron: "https://esraeurope.org/meeting/8th-esra-residents-trainees-workshop/",
+    puntenIndicatie: "2026: 14 ECMEC (EACCME)",
+    puntenBron: "https://esraeurope.org/meeting/8th-esra-residents-trainees-workshop/",
+    gecontroleerd: "2026-09-25"
+  },
+  "asra-regional-2027": {
+    kostenIndicatie: "2026: lid $940–$1.175, niet-lid $1.440–$1.745 (fysiek); livestream $150–$475",
+    kostenBron: "https://asra.com/events-education/past-events/past-ra-acute-pain-medicine-meetings/51st-annual-regional-anesthesiology-and-acute-pain-medicine-meeting/register",
+    puntenIndicatie: "2026: max. 21,75 AMA PRA Category 1",
+    puntenBron: "https://asra.com/events-education/past-events/past-ra-acute-pain-medicine-meetings/51st-annual-regional-anesthesiology-and-acute-pain-medicine-meeting/cme-cpd",
+    gecontroleerd: "2026-09-25"
+  },
+  "esra-congress-2027": {
+    puntenIndicatie: "2026: max. 20,5 ECMEC (EACCME)",
+    puntenBron: "https://esracongress.com/cme-accreditation/",
+    gecontroleerd: "2026-09-25"
+  },
+  "nva-anesthesiologendagen-2028": {
+    kostenIndicatie: "2026: lid €435 (hele congres) / €320 (1 dag); aios €305 / €240",
+    kostenBron: "https://www.anesthesiologie.nl/agenda/anesthesiologendagen-2026/",
     gecontroleerd: "2026-09-25"
   }
 };
