@@ -37,25 +37,35 @@ MAANDEN = {
     "mrt": "03", "mei": "05", "okt": "10",
 }
 
-LANDEN_NL = {
-    "italy": "Italië", "denmark": "Denemarken", "austria": "Oostenrijk",
-    "spain": "Spanje", "portugal": "Portugal", "germany": "Duitsland",
-    "france": "Frankrijk", "united kingdom": "Verenigd Koninkrijk",
+EUROPESE_LANDEN_NL = {
+    "albania": "Albanië", "andorra": "Andorra", "austria": "Oostenrijk",
+    "belarus": "Wit-Rusland", "belgium": "België",
+    "bosnia and herzegovina": "Bosnië en Herzegovina", "bulgaria": "Bulgarije",
+    "croatia": "Kroatië", "cyprus": "Cyprus", "czech republic": "Tsjechië",
+    "czechia": "Tsjechië", "denmark": "Denemarken", "estonia": "Estland",
+    "finland": "Finland", "france": "Frankrijk", "germany": "Duitsland",
+    "greece": "Griekenland", "hungary": "Hongarije", "iceland": "IJsland",
+    "ireland": "Ierland", "italy": "Italië", "latvia": "Letland",
+    "liechtenstein": "Liechtenstein", "lithuania": "Litouwen", "luxembourg": "Luxemburg",
+    "malta": "Malta", "moldova": "Moldavië", "monaco": "Monaco", "montenegro": "Montenegro",
     "netherlands": "Nederland", "the netherlands": "Nederland",
-    "belgium": "België", "greece": "Griekenland", "switzerland": "Zwitserland",
-    "sweden": "Zweden", "norway": "Noorwegen", "finland": "Finland",
-    "ireland": "Ierland", "iceland": "IJsland", "canada": "Canada",
-    "united states": "Verenigde Staten", "usa": "Verenigde Staten",
+    "north macedonia": "Noord-Macedonië", "norway": "Noorwegen", "poland": "Polen",
+    "portugal": "Portugal", "romania": "Roemenië", "russia": "Rusland", "serbia": "Servië",
+    "slovakia": "Slowakije", "slovenia": "Slovenië", "spain": "Spanje", "sweden": "Zweden",
+    "switzerland": "Zwitserland", "turkey": "Turkije", "türkiye": "Turkije",
+    "ukraine": "Oekraïne", "united kingdom": "Verenigd Koninkrijk",
+    "uk": "Verenigd Koninkrijk", "england": "Verenigd Koninkrijk",
+    "scotland": "Verenigd Koninkrijk", "wales": "Verenigd Koninkrijk",
+}
+
+LANDEN_NL = {
+    **EUROPESE_LANDEN_NL,
+    "united states": "Verenigde Staten", "usa": "Verenigde Staten", "canada": "Canada",
     "bahamas": "Bahama's", "thailand": "Thailand", "singapore": "Singapore",
 }
 
 # Landen (Engelse namen) die binnen de scope van de site vallen: Europa + Noord-Amerika.
-SCOPE_LANDEN = {
-    "austria", "belgium", "denmark", "finland", "france", "germany", "greece",
-    "iceland", "ireland", "italy", "netherlands", "the netherlands", "norway",
-    "portugal", "spain", "sweden", "switzerland", "united kingdom", "uk",
-    "united states", "usa", "canada",
-}
+SCOPE_LANDEN = set(EUROPESE_LANDEN_NL) | {"united states", "usa", "canada"}
 
 
 def ordinaal(n):
@@ -262,9 +272,22 @@ def scrape_euroanaesthesia():
     return entries
 
 
+ESRA_DAG_RE = re.compile(r"(\d{1,2})(?:\s*[-–]\s*(\d{1,2}))?")
+ESRA_DAG_MAAND_RE = re.compile(r"(\d{1,2})(?:\s*[-–]\s*(\d{1,2}))?\s*([A-Za-z]{3})")
+ESRA_MAAND_RE = re.compile(r"[A-Za-z]{3}")
+
+
+def _esra_slug(naam):
+    zonder_ordinaal = re.sub(r"^(\d+(st|nd|rd|th)|[IVXL]+)\s+", "", naam.strip())
+    slug = re.sub(r"[^a-z0-9]+", "-", zonder_ordinaal.lower()).strip("-")
+    return slug[len("esra-"):] if slug.startswith("esra-") else slug
+
+
 def scrape_esra_congress():
-    """ESRA Europe events-kalender: jaartal-koppen gevolgd door groepjes van
-    (dagrange, maand, naam, locatie). We filteren op de jaarlijkse Annual Congress."""
+    """ESRA Europe events-kalender (alle ESRA-events, niet alleen het Annual Congress):
+    jaartal-koppen gevolgd door blokjes van (dagrange, maand, naam, locatie).
+    Online events worden bewust overgeslagen; events zonder leesbare locatie of
+    buiten de scope worden NIET stilzwijgend overgeslagen maar als warning gemeld."""
     url = "https://esraeurope.org/meetings/?meeting_type=esra-events"
     try:
         lines = fetch_lines(url)
@@ -273,43 +296,79 @@ def scrape_esra_congress():
         return []
 
     entries = []
+    gebruikte_ids = set()
     huidig_jaar = None
     i = 0
     while i < len(lines):
         regel = lines[i]
         if re.fullmatch(r"20\d{2}", regel):
-            huidig_jaar = regel
+            huidig_jaar = int(regel)
             i += 1
             continue
-        m = re.fullmatch(r"(\d{1,2})\s*-\s*(\d{1,2})", regel)
-        if m and huidig_jaar and i + 2 < len(lines):
-            dag_start, dag_eind = m.group(1), m.group(2)
-            maand_naam = lines[i + 1]
-            naam = lines[i + 2]
-            locatie = lines[i + 3] if i + 3 < len(lines) else ""
-            if "annual congress" in naam.lower() and re.match(r"^[A-Za-z]{3}$", maand_naam):
-                datum_start = maak_datum(huidig_jaar, maand_naam, dag_start)
-                datum_eind = maak_datum(huidig_jaar, maand_naam, dag_eind)
-                stad, _, land = locatie.partition(",")
-                if datum_start and datum_eind:
-                    entries.append({
-                        "id": f"esra-congress-{huidig_jaar}",
-                        "naam": naam,
-                        "organisatie": "ESRA (European Society of Regional Anaesthesia and Pain Therapy)",
-                        "land": vertaal_land(land) if land else locatie.strip(),
-                        "stad": stad.strip(),
-                        "datumStart": datum_start,
-                        "datumEind": datum_eind,
-                        "onderwerp": ["regionale anesthesie", "pijntherapie"],
-                        "kosten": "Nog niet gepubliceerd",
-                        "bron": url,
-                    })
-            i += 4
+        if not huidig_jaar:
+            i += 1
             continue
-        i += 1
+
+        # Datumblok: "17 - 22" + "Jan" op aparte regels, of samengevoegd ("17 - 22Jan").
+        m = ESRA_DAG_RE.fullmatch(regel)
+        if m and i + 2 < len(lines) and ESRA_MAAND_RE.fullmatch(lines[i + 1]):
+            d1, d2, maand, volgende = m.group(1), m.group(2), lines[i + 1], i + 2
+        else:
+            m = ESRA_DAG_MAAND_RE.fullmatch(regel)
+            if m and i + 1 < len(lines):
+                d1, d2, maand, volgende = m.group(1), m.group(2), m.group(3), i + 1
+            else:
+                i += 1
+                continue
+
+        naam = lines[volgende]
+        kandidaat = lines[volgende + 1] if volgende + 1 < len(lines) else ""
+        is_locatie = bool(kandidaat) and not ESRA_DAG_RE.fullmatch(kandidaat) and (
+            "," in kandidaat or kandidaat.lower() in {"online", "virtual", "webinar"}
+        )
+        locatie = kandidaat if is_locatie else ""
+        i = volgende + (2 if is_locatie else 1)
+
+        start = maak_datum(huidig_jaar, maand, d1)
+        eind = maak_datum(huidig_jaar, maand, d2 or d1)
+        if not start or not eind:
+            warn("ESRA", f"datum niet te lezen voor '{naam}' ({d1}-{d2} {maand} {huidig_jaar}) -- niet toegevoegd, graag controleren.")
+            continue
+        if locatie.lower() in {"online", "virtual", "webinar"}:
+            continue  # bewuste keuze (Rik, 23-09-2026): geen online events op de site
+        if not locatie:
+            warn("ESRA", f"'{naam}' ({start}) heeft geen locatie op de pagina -- niet toegevoegd, graag controleren.")
+            continue
+
+        stad, _, land = locatie.rpartition(",")
+        stad, land = stad.strip(), land.strip()
+        if land.lower() not in SCOPE_LANDEN:
+            warn("ESRA", f"'{naam}' in {locatie} valt buiten de scope (Europa + Noord-Amerika) -- niet toegevoegd.")
+            continue
+
+        if "annual congress" in naam.lower():
+            id_ = f"esra-congress-{huidig_jaar}"
+        else:
+            id_ = f"esra-{_esra_slug(naam)}-{huidig_jaar}"
+        if id_ in gebruikte_ids:
+            id_ = f"{id_}-{start}"
+        gebruikte_ids.add(id_)
+
+        entries.append({
+            "id": id_,
+            "naam": naam,
+            "organisatie": "ESRA (European Society of Regional Anaesthesia and Pain Therapy)",
+            "land": vertaal_land(land),
+            "stad": stad,
+            "datumStart": start,
+            "datumEind": eind,
+            "onderwerp": ["regionale anesthesie", "pijntherapie"],
+            "kosten": "Nog niet gepubliceerd",
+            "bron": url,
+        })
 
     if not entries:
-        warn("ESRA", f"geen 'Annual Congress' gevonden op {url} -- pagina-structuur mogelijk gewijzigd.")
+        warn("ESRA", f"geen enkel ESRA-event gevonden op {url} -- pagina-structuur mogelijk gewijzigd.")
     return entries
 
 

@@ -38,6 +38,18 @@ const CONGRESSEN = [
     letOpType: "data"
   },
   {
+    id: "esra-sunny-autumn-meeting-2026",
+    naam: "10th ESRA Sunny Autumn Meeting",
+    organisatie: "ESRA (European Society of Regional Anaesthesia and Pain Therapy)",
+    land: "Portugal",
+    stad: "Quinta do Lago, Algarve",
+    datumStart: "2026-10-05",
+    datumEind: "2026-10-09",
+    onderwerp: ["regionale anesthesie", "pijntherapie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://esraeurope.org/meetings/?meeting_type=esra-events"
+  },
+  {
     id: "spa-annual-2026",
     naam: "SPA 40th Annual Meeting",
     organisatie: "SPA (Society for Pediatric Anesthesia)",
@@ -78,6 +90,18 @@ const CONGRESSEN = [
     letOpType: "commercieel"
   },
   {
+    id: "esra-eastern-european-cadaver-workshop-2026",
+    naam: "XXIII ESRA Eastern European Cadaver Workshop",
+    organisatie: "ESRA (European Society of Regional Anaesthesia and Pain Therapy)",
+    land: "Hongarije",
+    stad: "Budapest",
+    datumStart: "2026-10-23",
+    datumEind: "2026-10-25",
+    onderwerp: ["regionale anesthesie", "pijntherapie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://esraeurope.org/meetings/?meeting_type=esra-events"
+  },
+  {
     id: "iasp-world-congress-2026",
     naam: "IASP World Congress on Pain 2026",
     organisatie: "IASP (International Association for the Study of Pain)",
@@ -104,6 +128,18 @@ const CONGRESSEN = [
     bron: "https://asra.com/events-education"
   },
   {
+    id: "esra-pocus-workshop-2026",
+    naam: "1st ESRA PoCUS Workshop",
+    organisatie: "ESRA (European Society of Regional Anaesthesia and Pain Therapy)",
+    land: "Nederland",
+    stad: "Amsterdam",
+    datumStart: "2026-11-20",
+    datumEind: "2026-11-21",
+    onderwerp: ["regionale anesthesie", "pijntherapie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://esraeurope.org/meetings/?meeting_type=esra-events"
+  },
+  {
     id: "bapa-annual-2026",
     naam: "BAPA Annual Scientific Meeting 2026",
     organisatie: "BAPA (Belgian Association for Paediatric Anaesthesiology)",
@@ -114,6 +150,18 @@ const CONGRESSEN = [
     onderwerp: ["kinderanesthesiologie"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://www.bapanaesth.be/events/"
+  },
+  {
+    id: "esra-instructor-course-2026",
+    naam: "7th ESRA Instructor Course",
+    organisatie: "ESRA (European Society of Regional Anaesthesia and Pain Therapy)",
+    land: "België",
+    stad: "Antwerp",
+    datumStart: "2026-12-11",
+    datumEind: "2026-12-12",
+    onderwerp: ["regionale anesthesie", "pijntherapie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://esraeurope.org/meetings/?meeting_type=esra-events"
   },
   {
     id: "pga-80-2026",
@@ -166,6 +214,18 @@ const CONGRESSEN = [
     bron: "https://nwas2.northwestseminars.com/conference/list",
     letOp: "Handmatig: NWAS verbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/locaties zijn met de hand overgenomen van nwas2.northwestseminars.com; controleer daar de actuele stand.",
     letOpType: "data"
+  },
+  {
+    id: "esra-winter-week-conference-2027",
+    naam: "21st ESRA Winter Week Conference",
+    organisatie: "ESRA (European Society of Regional Anaesthesia and Pain Therapy)",
+    land: "Oostenrijk",
+    stad: "Längenfeld",
+    datumStart: "2027-01-17",
+    datumEind: "2027-01-22",
+    onderwerp: ["regionale anesthesie", "pijntherapie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://esraeurope.org/meetings/?meeting_type=esra-events"
   },
   {
     id: "winter-pain-symposium-2027",
@@ -262,6 +322,30 @@ const CONGRESSEN = [
     letOpType: "data"
   },
   {
+    id: "esra-pain-cadaver-workshop-2027",
+    naam: "16th ESRA Pain Cadaver Workshop",
+    organisatie: "ESRA (European Society of Regional Anaesthesia and Pain Therapy)",
+    land: "Oostenrijk",
+    stad: "Innsbruck",
+    datumStart: "2027-02-24",
+    datumEind: "2027-02-25",
+    onderwerp: ["regionale anesthesie", "pijntherapie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://esraeurope.org/meetings/?meeting_type=esra-events"
+  },
+  {
+    id: "esra-ra-cadaver-workshop-2027",
+    naam: "40th ESRA RA Cadaver Workshop",
+    organisatie: "ESRA (European Society of Regional Anaesthesia and Pain Therapy)",
+    land: "Oostenrijk",
+    stad: "Innsbruck",
+    datumStart: "2027-02-26",
+    datumEind: "2027-02-27",
+    onderwerp: ["regionale anesthesie", "pijntherapie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://esraeurope.org/meetings/?meeting_type=esra-events"
+  },
+  {
     id: "nysora-leuven-2027",
     naam: "NYSORA: Masterclass: Ultrasound-Guided Joint Interventions & Denervation",
     organisatie: "NYSORA",
@@ -354,6 +438,18 @@ const CONGRESSEN = [
     onderwerp: ["pijngeneeskunde"],
     kosten: "€940–€1192 (niet-lid)",
     bron: "https://europeanpainfederation.eu/efic2027/"
+  },
+  {
+    id: "esra-residents-trainees-workshop-2027",
+    naam: "9th ESRA Residents & Trainees Workshop",
+    organisatie: "ESRA (European Society of Regional Anaesthesia and Pain Therapy)",
+    land: "Portugal",
+    stad: "Porto",
+    datumStart: "2027-05-06",
+    datumEind: "2027-05-07",
+    onderwerp: ["regionale anesthesie", "pijntherapie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://esraeurope.org/meetings/?meeting_type=esra-events"
   },
   {
     id: "asra-regional-2027",
