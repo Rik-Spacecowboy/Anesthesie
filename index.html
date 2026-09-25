@@ -233,6 +233,25 @@
       background: var(--ink); color: var(--bg); padding: 8px 14px; border-radius: 999px;
     }
     a.bron:hover { background: var(--accent); color: var(--accent-tekst); }
+    .kaart-acties { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    .actie {
+      flex: none; cursor: pointer; font: 800 0.85rem var(--display); letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+      background: transparent; color: var(--ink); border: 2px solid var(--lijn); padding: 6px 11px; border-radius: 999px;
+    }
+    .actie:hover { border-color: var(--ink); }
+    .ster {
+      cursor: pointer; background: transparent; border: 0; padding: 0 2px; line-height: 1;
+      font-size: 1.7rem; color: var(--hero-zacht);
+    }
+    .ster:hover { color: var(--hero-ink); }
+    .ster[aria-pressed="true"] { color: var(--accent); }
+    .teller-rij { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-top: 18px; }
+    .teller-rij #resultaatTeller { margin: 0; }
+    .melding {
+      position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 50;
+      background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: 2px;
+      font: 700 0.95rem var(--display); letter-spacing: 0.08em; text-transform: uppercase;
+    }
     .congres-kaart.voorbij { opacity: .62; }
     .congres-kaart.voorbij:hover { opacity: 1; }
     .let-op { font-size: 0.85rem; color: var(--ink-zacht); border-left: 3px solid var(--lijn); padding-left: 10px; }
@@ -253,6 +272,7 @@
     @media (max-width: 480px) {
       main, .hero-binnen, .topbalk { padding-left: 16px; padding-right: 16px; }
       .zoek { font-size: 1rem; padding: 12px; }
+      .zoekrij .knop { padding: 0 12px; }
       .volgend .naam { font-size: 1.25rem; }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -348,6 +368,7 @@
         <label for="zoek" class="visually-hidden" style="position:absolute;left:-9999px">Zoeken</label>
         <input type="text" id="zoek" class="zoek" placeholder="Zoek op naam, organisatie, stad…" autocomplete="off">
         <button type="button" id="resetFilters" class="knop">Wis</button>
+        <button type="button" id="deelFilters" class="knop" title="Kopieer een link naar deze selectie">Deel</button>
       </div>
       <div class="chips" id="chipRij" role="group" aria-label="Snelfilters"></div>
       <details class="meer">
@@ -368,7 +389,11 @@
       </select>
     </div>
 
-    <p id="resultaatTeller"></p>
+    <div class="teller-rij">
+      <p id="resultaatTeller"></p>
+      <button type="button" id="exportBewaard" class="actie" hidden>Bewaarde in agenda (.ics)</button>
+    </div>
+    <div class="melding" id="melding" role="status" hidden></div>
     <div class="congres-lijst" id="congresLijst"></div>
   </main>
 
@@ -463,6 +488,153 @@
       return String(t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
     }
 
+    function toonMelding(tekst) {
+      const el = document.getElementById('melding');
+      el.textContent = tekst;
+      el.hidden = false;
+      clearTimeout(toonMelding.timer);
+      toonMelding.timer = setTimeout(() => { el.hidden = true; }, 2200);
+    }
+
+    // ---------- bewaarde congressen ----------
+    // Alleen in deze browser (localStorage), dus niet gesynchroniseerd tussen apparaten.
+    // localStorage kan ontbreken of gooien (privévenster, geblokkeerde sitedata): dan werkt
+    // bewaren alleen voor deze sessie.
+    const BEWAARD_SLEUTEL = 'bewaardeCongressen';
+    const bewaard = new Set((() => {
+      try { return JSON.parse(localStorage.getItem(BEWAARD_SLEUTEL)) || []; } catch { return []; }
+    })());
+    let alleenBewaard = false;
+
+    function wisselBewaard(id) {
+      if (bewaard.has(id)) bewaard.delete(id); else bewaard.add(id);
+      try { localStorage.setItem(BEWAARD_SLEUTEL, JSON.stringify([...bewaard])); } catch { /* alleen deze sessie */ }
+    }
+
+    // ---------- agenda-export ----------
+    // Congressen zijn hele-dag-afspraken; DTEND is in iCalendar exclusief, dus einddatum + 1 dag.
+    function dagErna(datumString) {
+      const d = new Date(datumString + 'T00:00:00Z');
+      d.setUTCDate(d.getUTCDate() + 1);
+      return d.toISOString().slice(0, 10);
+    }
+    const compact = datumString => datumString.replace(/-/g, '');
+
+    function agendaLocatie(rij) {
+      return [rij.stad, rij.land].filter(w => w && !/^(nog niet bekend|onbekend)$/i.test(w)).join(', ');
+    }
+    function agendaOmschrijving(rij) {
+      return [rij.organisatie, rij.letOp ? `Let op: ${rij.letOp}` : '', `Kosten: ${rij.kosten}`, `Bron: ${rij.bron}`].filter(Boolean).join('\n');
+    }
+
+    function icsTekst(t) {
+      return String(t).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\r?\n/g, '\\n');
+    }
+    // RFC 5545: regels langer dan 75 octets vouwen (vervolgregel begint met een spatie).
+    function vouw(regel) {
+      const bytes = new TextEncoder();
+      const delen = [];
+      let huidig = '';
+      for (const teken of regel) {
+        if (bytes.encode(huidig + teken).length > (delen.length ? 74 : 75)) { delen.push(huidig); huidig = ''; }
+        huidig += teken;
+      }
+      delen.push(huidig);
+      return delen.join('\r\n ');
+    }
+
+    function icsBestand(rijen) {
+      const stempel = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+/, '');
+      const regels = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Anesthesie en Pijn Congressen//NL', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH'];
+      rijen.forEach(rij => {
+        regels.push(
+          'BEGIN:VEVENT',
+          `UID:${rij.id}@rik-spacecowboy.github.io`,
+          `DTSTAMP:${stempel}`,
+          `DTSTART;VALUE=DATE:${compact(rij.datumStart)}`,
+          `DTEND;VALUE=DATE:${compact(dagErna(rij.datumEind))}`,
+          `SUMMARY:${icsTekst(rij.naam)}`,
+          `LOCATION:${icsTekst(agendaLocatie(rij))}`,
+          `DESCRIPTION:${icsTekst(agendaOmschrijving(rij))}`,
+          `URL:${rij.bron}`,
+          'TRANSP:TRANSPARENT',
+          'END:VEVENT'
+        );
+      });
+      regels.push('END:VCALENDAR');
+      return regels.map(vouw).join('\r\n') + '\r\n';
+    }
+
+    function downloadIcs(rijen, bestandsnaam) {
+      const blob = new Blob([icsBestand(rijen)], { type: 'text/calendar;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = bestandsnaam;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+
+    function googleAgendaUrl(rij) {
+      const params = new URLSearchParams({
+        action: 'TEMPLATE',
+        text: rij.naam,
+        dates: `${compact(rij.datumStart)}/${compact(dagErna(rij.datumEind))}`,
+        location: agendaLocatie(rij),
+        details: agendaOmschrijving(rij)
+      });
+      return `https://calendar.google.com/calendar/render?${params}`;
+    }
+
+    // ---------- filters in de URL ----------
+    // Zo is elke selectie te delen of te bookmarken. "vanaf" is standaard vandaag en staat dan
+    // niet in de URL, zodat een gedeelde link bij de ontvanger ook "vanaf vandaag" betekent.
+    // Een bewust leeg "vanaf" (ook afgelopen congressen tonen) wordt vanaf=alles.
+    const URL_VELDEN = { zoek: 'q', filterLand: 'land', filterStad: 'stad', filterContinent: 'continent',
+      filterOnderwerp: 'onderwerp', filterWeek: 'week', tot: 'tot' };
+
+    function filtersUitUrl() {
+      const params = new URLSearchParams(location.search);
+      Object.entries(URL_VELDEN).forEach(([id, sleutel]) => {
+        const el = document.getElementById(id);
+        const waarde = params.get(sleutel);
+        if (waarde === null) return;
+        el.value = waarde;
+        if (el.value !== waarde) el.value = ''; // onbekende optie in een select (bv. verouderde link)
+      });
+      const vanaf = params.get('vanaf');
+      document.getElementById('vanaf').value =
+        vanaf === null ? VANDAAG : vanaf === 'alles' ? '' : (/^\d{4}-\d{2}-\d{2}$/.test(vanaf) ? vanaf : VANDAAG);
+    }
+
+    function filtersNaarUrl() {
+      const params = new URLSearchParams();
+      Object.entries(URL_VELDEN).forEach(([id, sleutel]) => {
+        const waarde = document.getElementById(id).value.trim();
+        if (waarde) params.set(sleutel, waarde);
+      });
+      const vanaf = document.getElementById('vanaf').value;
+      if (!vanaf) params.set('vanaf', 'alles');
+      else if (vanaf !== VANDAAG) params.set('vanaf', vanaf);
+      const query = params.toString();
+      history.replaceState(null, '', location.pathname + (query ? `?${query}` : '') + location.hash);
+    }
+
+    async function deelFilters() {
+      const url = location.href;
+      if (navigator.share && matchMedia('(pointer: coarse)').matches) {
+        try { await navigator.share({ title: document.title, url }); return; } catch (e) { if (e.name === 'AbortError') return; }
+      }
+      try {
+        await navigator.clipboard.writeText(url);
+        toonMelding('Link gekopieerd');
+      } catch {
+        prompt('Kopieer deze link:', url);
+      }
+    }
+
     function vulFilterOpties() {
       const landen = [...new Set(CONGRESSEN.map(r => r.land))].sort();
       const steden = [...new Set(CONGRESSEN.map(r => r.stad))].sort();
@@ -513,6 +685,15 @@
         toonCongressen();
       });
       rij.appendChild(komende);
+      const bewaardChip = document.createElement('button');
+      bewaardChip.type = 'button';
+      bewaardChip.className = 'chip';
+      bewaardChip.id = 'bewaardChip';
+      bewaardChip.addEventListener('click', () => {
+        alleenBewaard = !alleenBewaard;
+        toonCongressen();
+      });
+      rij.appendChild(bewaardChip);
       rij.appendChild(maak('Even week', 'filterWeek', 'even'));
       rij.appendChild(maak('Oneven week', 'filterWeek', 'oneven'));
       const scheiding = document.createElement('span');
@@ -522,10 +703,13 @@
     }
 
     function syncChips() {
-      document.querySelectorAll('#chipRij .chip').forEach(b => {
+      document.querySelectorAll('#chipRij .chip[data-select]').forEach(b => {
         const actief = document.getElementById(b.dataset.select).value === b.dataset.waarde;
         b.setAttribute('aria-pressed', actief ? 'true' : 'false');
       });
+      const bewaardChip = document.getElementById('bewaardChip');
+      bewaardChip.textContent = `★ Bewaard (${bewaard.size})`;
+      bewaardChip.setAttribute('aria-pressed', alleenBewaard ? 'true' : 'false');
     }
 
     function huidigeFilters() {
@@ -542,6 +726,7 @@
     }
 
     function voldoetAanFilters(rij, filters) {
+      if (alleenBewaard && !bewaard.has(rij.id)) return false;
       if (filters.land && rij.land !== filters.land) return false;
       if (filters.stad && rij.stad !== filters.stad) return false;
       if (filters.onderwerp && !rij.onderwerp.includes(filters.onderwerp)) return false;
@@ -571,6 +756,7 @@
             <div class="dagen-groot">${esc(blok.dagen)}</div>
           </div>
           <div class="rechts">
+            <button type="button" class="ster" aria-pressed="${bewaard.has(rij.id)}" aria-label="Bewaar ${esc(rij.naam)}" title="Bewaren">★</button>
             ${nu ? '<span class="status nu">Nu bezig</span>' : ''}${voorbij ? '<span class="status voorbij">Afgelopen</span>' : ''}
             <span class="weekbadge ${pariteit}">week <b>${weekNr}</b> · ${pariteit}</span>
           </div>
@@ -583,10 +769,21 @@
           ${rij.letOp ? `<div class="let-op ${rij.letOpType === 'commercieel' ? 'commercieel' : 'data'}"><span class="let-op-label">${rij.letOpType === 'commercieel' ? 'Commercieel congres' : 'Let op'}</span>${esc(rij.letOp)}</div>` : ''}
           <div class="kaart-voet">
             <span class="kosten">${esc(rij.kosten)}</span>
-            <a class="bron" href="${esc(rij.bron)}" target="_blank" rel="noopener">Bron →</a>
+            <div class="kaart-acties">
+              <button type="button" class="actie ics" title="Voor Apple Agenda, Outlook en andere agenda-apps">+ Agenda</button>
+              <a class="actie" href="${esc(googleAgendaUrl(rij))}" target="_blank" rel="noopener" title="Toevoegen aan Google Agenda">Google</a>
+              <a class="bron" href="${esc(rij.bron)}" target="_blank" rel="noopener">Bron →</a>
+            </div>
           </div>
         </div>
       `;
+      div.querySelector('.ics').addEventListener('click', () => downloadIcs([rij], `${rij.id}.ics`));
+      div.querySelector('.ster').addEventListener('click', e => {
+        wisselBewaard(rij.id);
+        e.currentTarget.setAttribute('aria-pressed', bewaard.has(rij.id) ? 'true' : 'false');
+        // In de bewaard-weergave verdwijnt een ontsterde kaart meteen; anders alleen tellers bijwerken.
+        if (alleenBewaard) toonCongressen(); else { syncChips(); syncExportKnop(); }
+      });
       return div;
     }
 
@@ -599,7 +796,9 @@
       const lijst = document.getElementById('congresLijst');
       lijst.innerHTML = '';
       if (gefilterd.length === 0) {
-        lijst.innerHTML = '<div class="leeg-resultaat">Niets gevonden — probeer het breder</div>';
+        lijst.innerHTML = alleenBewaard && bewaard.size === 0
+          ? '<div class="leeg-resultaat">Nog niets bewaard — tik op ★ bij een congres</div>'
+          : '<div class="leeg-resultaat">Niets gevonden — probeer het breder</div>';
       } else {
         let huidigJaar = null;
         gefilterd.forEach((rij, i) => {
@@ -617,6 +816,19 @@
 
       document.getElementById('resultaatTeller').textContent = `${gefilterd.length} van de ${CONGRESSEN.length} congressen`;
       syncChips();
+      syncExportKnop();
+      filtersNaarUrl();
+    }
+
+    // Exporteert alle bewaarde congressen (ongeacht de actieve filters) als één .ics-bestand.
+    function bewaardeRijen() {
+      return CONGRESSEN.filter(r => bewaard.has(r.id)).sort((a, b) => a.datumStart.localeCompare(b.datumStart));
+    }
+    function syncExportKnop() {
+      const knop = document.getElementById('exportBewaard');
+      const aantal = bewaardeRijen().length;
+      knop.hidden = aantal === 0;
+      knop.textContent = `${aantal} bewaarde in agenda (.ics)`;
     }
 
     function bouwHero() {
@@ -642,19 +854,27 @@
       document.getElementById('bandSpoor').innerHTML = html + html;
     }
 
-    ['zoek', 'filterLand', 'filterStad', 'filterOnderwerp', 'filterWeek', 'vanaf', 'tot'].forEach(id => {
+    ['zoek', 'filterLand', 'filterStad', 'filterContinent', 'filterOnderwerp', 'filterWeek', 'vanaf', 'tot'].forEach(id => {
       document.getElementById(id).addEventListener('input', toonCongressen);
     });
     document.getElementById('resetFilters').addEventListener('click', () => {
       ['zoek', 'vanaf', 'tot'].forEach(id => document.getElementById(id).value = '');
-      ['filterLand', 'filterStad', 'filterOnderwerp', 'filterWeek'].forEach(id => document.getElementById(id).value = '');
+      ['filterLand', 'filterStad', 'filterContinent', 'filterOnderwerp', 'filterWeek'].forEach(id => document.getElementById(id).value = '');
+      alleenBewaard = false;
       toonCongressen();
     });
+    document.getElementById('deelFilters').addEventListener('click', deelFilters);
+    document.getElementById('exportBewaard').addEventListener('click', () => downloadIcs(bewaardeRijen(), 'bewaarde-congressen.ics'));
 
     vulFilterOpties();
     bouwChips();
     bouwHero();
-    document.getElementById('vanaf').value = VANDAAG; // standaard alleen komende congressen
+    filtersUitUrl(); // zonder parameters: standaard alleen komende congressen
+    // Filters uit een gedeelde link die in "Meer filters" zitten: klap dat blok open zodat ze zichtbaar zijn.
+    if (['filterLand', 'filterStad', 'filterContinent', 'tot'].some(id => document.getElementById(id).value)
+        || document.getElementById('vanaf').value !== VANDAAG) {
+      document.querySelector('details.meer').open = true;
+    }
     toonCongressen();
   </script>
 </body>
