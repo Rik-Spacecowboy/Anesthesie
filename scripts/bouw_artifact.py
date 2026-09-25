@@ -14,7 +14,7 @@ Aanpassingen t.o.v. de GitHub Pages-versie, omdat het artifact-frame dit afdwing
 
 Gebruik:
     python3 scripts/bouw_artifact.py [uitvoermap]    # standaard: build/artifact
-Schrijft <uitvoermap>/index.html en <uitvoermap>/data/congressen.js.
+Schrijft <uitvoermap>/index.html en <uitvoermap>/data/*.js (zie DATABESTANDEN).
 """
 import re
 import shutil
@@ -22,6 +22,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+# Alle databestanden die index.html laadt; publiceer ze allemaal mee (zie CLAUDE.md).
+DATABESTANDEN = ["congressen.js", "aanvullingen.js"]
 
 
 def vervang(tekst, oud, nieuw):
@@ -61,7 +63,8 @@ def main():
     uit = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "build" / "artifact"
     (uit / "data").mkdir(parents=True, exist_ok=True)
     (uit / "index.html").write_text(bouw((ROOT / "index.html").read_text(encoding="utf-8")), encoding="utf-8")
-    shutil.copyfile(ROOT / "data" / "congressen.js", uit / "data" / "congressen.js")
+    for naam in DATABESTANDEN:
+        shutil.copyfile(ROOT / "data" / naam, uit / "data" / naam)
     print(f"Artifact gebouwd in {uit}")
 
 

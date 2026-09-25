@@ -16,14 +16,23 @@ De site bestaat op twee plekken:
 - een claude.ai-artifact: https://claude.ai/artifact/M6EVEsBU4KFehuVqLgvhPn. **De tegel op Rik's iPhone opent
   deze artifact**, en die werkt niet vanzelf bij.
 
-Zodra een wijziging aan `index.html` of `data/congressen.js` op `main` staat, publiceer je de artifact meteen
+Zodra een wijziging aan `index.html` of een bestand in `data/` op `main` staat, publiceer je de artifact meteen
 opnieuw, zonder het eerst te vragen:
 
-1. `python3 scripts/bouw_artifact.py` (schrijft `build/artifact/index.html` + `build/artifact/data/congressen.js`);
-2. lees de artifact eerst (Artifact-tool, `action: "read"` op de URL hierboven, plus de file `data/congressen.js`);
+1. `python3 scripts/bouw_artifact.py` (schrijft `build/artifact/index.html` + alle databestanden in `build/artifact/data/`);
+2. lees de artifact eerst (Artifact-tool, `action: "read"` op de URL hierboven, plus elk bestand in `data/`);
 3. publiceer met de Artifact-tool: `url` = de URL hierboven, `file_path` = `build/artifact/index.html`,
-   `files` = `{"data/congressen.js": "build/artifact/data/congressen.js"}`. Geen `icon` meegeven.
+   `files` = één entry per bestand in `build/artifact/data/`, bv.
+   `{"data/congressen.js": "build/artifact/data/congressen.js", "data/aanvullingen.js": "build/artifact/data/aanvullingen.js"}`.
+   Geen `icon` meegeven.
 
 Faalt het bouwscript (index.html is zo veranderd dat een aanpassing niet meer past), pas dan het script aan
 in plaats van het over te slaan. Daarnaast checkt een geplande Routine twee keer per dag of de artifact
 achterloopt op `main` (vangt bv. scraper-PR's op die in GitHub zelf gemerged worden).
+
+## Kosten en nascholingspunten
+
+`data/congressen.js` komt uit de scraper; bewerk het niet met de hand. Kosten die de scraper niet vindt en
+nascholingspunten staan in `data/aanvullingen.js` (handmatig, per congres-id, altijd met bron en
+`gecontroleerd`-datum). Neem alleen bedragen en punten over die letterlijk bij de organisator staan; nooit
+schatten. ASA en NWAS niet onderzoeken (hun voorwaarden verbieden AI/geautomatiseerd verzamelen).

@@ -228,6 +228,10 @@
     .tag { font: 700 0.82rem var(--display); letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border: 1.5px solid var(--ink); border-radius: 999px; }
     .kaart-voet { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-top: 8px; border-top: 1px solid var(--lijn); }
     .kosten { color: var(--ink-zacht); font-size: 0.88rem; }
+    .indicatie { display: block; font-size: 0.8rem; font-style: italic; }
+    .punten { font-size: 0.9rem; display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: baseline; }
+    .punten-label { font: 700 0.72rem var(--display); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-zacht); }
+    .punten .indicatie { display: inline; color: var(--ink-zacht); }
     a.bron {
       flex: none; font: 800 0.95rem var(--display); letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
       background: var(--ink); color: var(--bg); padding: 8px 14px; border-radius: 999px;
@@ -299,6 +303,8 @@
           <div><h3>Niet opgenomen: geblokkeerd</h3><p>OAA (UK) en Northern Lights Anaesthetics blokkeren geautomatiseerde toegang; er is ook nog geen datum voor 2027 bekend.</p></div>
           <div><h3>Nog geen datum bekend</h3><p>SSAI 2028, PROSA 2028 en de Refresher Course Obstetrische Anesthesiologie. Zodra er een datum is, kunnen ze erbij.</p></div>
           <div><h3>Commercieel, op verzoek toegevoegd</h3><p>EACCM (Plenareno), WSAC en de International Conference on Surgery and Anesthesia zijn congresfabrieken, geen erkende beroepsverenigingen -- toegevoegd op uitdrukkelijk verzoek. Herkenbaar aan het oranje "Commercieel congres"-label op de kaart, los van het grijze "Let op"-label voor ontbrekende data.</p></div>
+          <div><h3>Nascholingspunten</h3><p>ECMEC-punten (EACCME, 1 punt per uur) kun je in Nederland laten meetellen voor herregistratie via GAIA; de NVA bepaalt per congres of ze gelden voor anesthesiologie of pijngeneeskunde. Voor Amerikaanse AMA PRA-punten vraag je zelf accreditatie aan in GAIA.</p></div>
+          <div><h3>"Vorige editie"</h3><p>Staan de prijs of punten van een editie nog niet online, dan tonen we die van de vorige editie als indicatie. Geen toezegging: tarieven stijgen meestal.</p></div>
           <div><h3>Nog niet gevonden</h3><p>IPME, Doctors Updates en de School/Academy for Integrative Medicine: onduidelijk welke organisatie bedoeld is.</p></div>
         </div>
       </details>
@@ -398,6 +404,7 @@
   </main>
 
   <script src="data/congressen.js"></script>
+  <script src="data/aanvullingen.js"></script>
   <script>
     // Bereken ISO-weekinfo voor een datum (standaardalgoritme, maandag = eerste dag).
     // Werkt volledig in UTC: een kalenderdatum als "2027-01-18" moet overal hetzelfde
@@ -484,6 +491,30 @@
       return CONTINENT_VAN_LAND[land] || 'Overig';
     }
 
+    // Handmatige aanvullingen (data/aanvullingen.js): kosten die de scraper niet vindt en
+    // nascholingspunten. Waar prijs of punten nog onbekend zijn, tonen we die van de vorige
+    // editie in dezelfde reeks als indicatie (reeks = id zonder editie-/jaarnummer).
+    const ONBEKEND = 'Nog niet gepubliceerd';
+    const reeksVan = id => id.replace(/(-\d+)?-\d{4}$/, '');
+    (function pasAanvullingenToe() {
+      const aanvullingen = typeof AANVULLINGEN === 'undefined' ? {} : AANVULLINGEN;
+      CONGRESSEN.forEach(r => {
+        const a = aanvullingen[r.id];
+        if (!a) return;
+        if (a.kosten && r.kosten === ONBEKEND) r.kosten = a.kosten;
+        ['punten', 'kostenIndicatie', 'puntenIndicatie'].forEach(v => { if (a[v]) r[v] = a[v]; });
+      });
+      CONGRESSEN.forEach(r => {
+        const eerder = CONGRESSEN
+          .filter(o => o !== r && reeksVan(o.id) === reeksVan(r.id) && o.datumStart < r.datumStart)
+          .sort((a, b) => b.datumStart.localeCompare(a.datumStart));
+        const vorigeKosten = eerder.find(o => o.kosten !== ONBEKEND);
+        const vorigePunten = eerder.find(o => o.punten);
+        if (r.kosten === ONBEKEND && !r.kostenIndicatie && vorigeKosten) r.kostenIndicatie = `${vorigeKosten.datumStart.slice(0, 4)}: ${vorigeKosten.kosten}`;
+        if (!r.punten && !r.puntenIndicatie && vorigePunten) r.puntenIndicatie = `${vorigePunten.datumStart.slice(0, 4)}: ${vorigePunten.punten}`;
+      });
+    })();
+
     function esc(t) {
       return String(t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
     }
@@ -524,7 +555,7 @@
       return [rij.stad, rij.land].filter(w => w && !/^(nog niet bekend|onbekend)$/i.test(w)).join(', ');
     }
     function agendaOmschrijving(rij) {
-      return [rij.organisatie, rij.letOp ? `Let op: ${rij.letOp}` : '', `Kosten: ${rij.kosten}`, `Bron: ${rij.bron}`].filter(Boolean).join('\n');
+      return [rij.organisatie, rij.letOp ? `Let op: ${rij.letOp}` : '', `Kosten: ${rij.kosten}`, rij.punten ? `Nascholing: ${rij.punten}` : '', `Bron: ${rij.bron}`].filter(Boolean).join('\n');
     }
 
     function icsTekst(t) {
@@ -736,7 +767,7 @@
       if (filters.vanaf && rij.datumEind < filters.vanaf) return false;
       if (filters.tot && rij.datumStart > filters.tot) return false;
       if (filters.zoek) {
-        const doorzoekbaar = [rij.naam, rij.organisatie, rij.land, rij.stad, ...rij.onderwerp].join(' ').toLowerCase();
+        const doorzoekbaar = [rij.naam, rij.organisatie, rij.land, rij.stad, rij.punten || '', ...rij.onderwerp].join(' ').toLowerCase();
         if (!doorzoekbaar.includes(filters.zoek)) return false;
       }
       return true;
@@ -768,8 +799,9 @@
           <div class="plek">${esc(rij.stad)}, ${esc(rij.land)}</div>
           <div class="tags">${rij.onderwerp.map(o => `<span class="tag">${esc(o)}</span>`).join('')}</div>
           ${rij.letOp ? `<div class="let-op ${rij.letOpType === 'commercieel' ? 'commercieel' : 'data'}"><span class="let-op-label">${rij.letOpType === 'commercieel' ? 'Commercieel congres' : 'Let op'}</span>${esc(rij.letOp)}</div>` : ''}
+          ${rij.punten || rij.puntenIndicatie ? `<div class="punten"><span class="punten-label">Nascholing</span>${rij.punten ? esc(rij.punten) : `<span class="indicatie">vorige editie ${esc(rij.puntenIndicatie)}</span>`}</div>` : ''}
           <div class="kaart-voet">
-            <span class="kosten">${esc(rij.kosten)}</span>
+            <span class="kosten">${esc(rij.kosten)}${rij.kostenIndicatie && rij.kosten === ONBEKEND ? `<span class="indicatie">vorige editie ${esc(rij.kostenIndicatie)}</span>` : ''}</span>
             <div class="kaart-acties">
               <button type="button" class="actie ics" title="Voor Apple Agenda, Outlook en andere agenda-apps">+ Agenda</button>
               <a class="actie" href="${esc(googleAgendaUrl(rij))}" target="_blank" rel="noopener" title="Toevoegen aan Google Agenda">Google</a>
