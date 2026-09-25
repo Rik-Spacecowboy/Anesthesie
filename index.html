@@ -605,8 +605,9 @@
         if (el.value !== waarde) el.value = ''; // onbekende optie in een select (bv. verouderde link)
       });
       const vanaf = params.get('vanaf');
-      document.getElementById('vanaf').value =
-        vanaf === null ? VANDAAG : vanaf === 'alles' ? '' : (/^\d{4}-\d{2}-\d{2}$/.test(vanaf) ? vanaf : VANDAAG);
+      const vanafVeld = document.getElementById('vanaf');
+      vanafVeld.value = vanaf === null ? VANDAAG : vanaf === 'alles' ? '' : vanaf;
+      if (vanaf !== 'alles' && !vanafVeld.value) vanafVeld.value = VANDAAG; // ongeldige datum in de link
     }
 
     function filtersNaarUrl() {
@@ -708,7 +709,7 @@
         b.setAttribute('aria-pressed', actief ? 'true' : 'false');
       });
       const bewaardChip = document.getElementById('bewaardChip');
-      bewaardChip.textContent = `★ Bewaard (${bewaard.size})`;
+      bewaardChip.textContent = `★ Bewaard (${bewaardeRijen().length})`;
       bewaardChip.setAttribute('aria-pressed', alleenBewaard ? 'true' : 'false');
     }
 
@@ -796,7 +797,7 @@
       const lijst = document.getElementById('congresLijst');
       lijst.innerHTML = '';
       if (gefilterd.length === 0) {
-        lijst.innerHTML = alleenBewaard && bewaard.size === 0
+        lijst.innerHTML = alleenBewaard && bewaardeRijen().length === 0
           ? '<div class="leeg-resultaat">Nog niets bewaard — tik op ★ bij een congres</div>'
           : '<div class="leeg-resultaat">Niets gevonden — probeer het breder</div>';
       } else {
@@ -820,7 +821,8 @@
       filtersNaarUrl();
     }
 
-    // Exporteert alle bewaarde congressen (ongeacht de actieve filters) als één .ics-bestand.
+    // Bewaarde congressen die nog in de data staan (een id kan verdwijnen na een scraper-run).
+    // De export pakt ze allemaal, ongeacht de actieve filters.
     function bewaardeRijen() {
       return CONGRESSEN.filter(r => bewaard.has(r.id)).sort((a, b) => a.datumStart.localeCompare(b.datumStart));
     }

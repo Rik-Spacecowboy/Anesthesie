@@ -7,6 +7,11 @@ locatie, datum, weeknummer en onderwerp.
 
 Gebouwd als leerproject met Claude, met pure HTML/CSS/JS (geen framework).
 
+Verder per congres: toevoegen aan je agenda (`.ics` voor Apple Agenda/Outlook, of Google Agenda), en bewaren
+met de ster. Bewaarde congressen staan alleen in de browser waarin je ze bewaart (`localStorage`); de iPhone-tegel
+op je beginscherm telt daarbij als een aparte browser. Alle filters staan in de URL, dus een selectie is te delen
+of te bookmarken via de "Deel"-knop.
+
 ## Congresdata: automatisch gescraped
 
 `data/congressen.js` wordt gegenereerd door [`scripts/scrape_congressen.py`](scripts/scrape_congressen.py) en dus
