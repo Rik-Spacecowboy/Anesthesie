@@ -12,6 +12,23 @@ met de ster. Bewaarde congressen staan alleen in de browser waarin je ze bewaart
 op je beginscherm telt daarbij als een aparte browser. Alle filters staan in de URL, dus een selectie is te delen
 of te bookmarken via de "Deel"-knop.
 
+Afgelopen congressen zijn standaard verborgen; de chip "Ook afgelopen" toont ze weer ("Wis" zet alles terug naar
+alleen komende congressen). Elke kaart linkt naar de vorige en volgende editie van dezelfde reeks.
+
+### Deadlines en agenda-abonnement
+
+Deadlines (einde early-bird, abstracts indienen, inschrijving sluit, annuleren met terugbetaling) staan per congres
+in [`data/aanvullingen.js`](data/aanvullingen.js), handmatig en alleen letterlijk overgenomen van de organisator.
+De kaart toont de komende deadlines met het aantal dagen dat nog rest; de chip "Deadline binnenkort" filtert op
+deadlines binnen 30 dagen.
+
+[`agenda.ics`](agenda.ics) is een agenda-abonnement met alle congressen en deadlines (deadlines met een herinnering
+een week van tevoren). Abonneren: knop "Agenda-abonnement" op de site, of
+`webcal://rik-spacecowboy.github.io/Anesthesie/agenda.ics`. Het bestand wordt gebouwd door
+[`scripts/bouw_agenda.py`](scripts/bouw_agenda.py) uit de twee databestanden: draai dat na elke wijziging van
+`data/`. De scrape-workflow doet het zelf; de workflow [Controle](.github/workflows/controle.yml) faalt als
+`agenda.ics` achterloopt.
+
 ## Congresdata: automatisch gescraped
 
 `data/congressen.js` wordt gegenereerd door [`scripts/scrape_congressen.py`](scripts/scrape_congressen.py) en dus
@@ -65,7 +82,11 @@ Een kaart kan een `letOp`-label tonen, in twee smaken:
 pip install -r scripts/requirements.txt
 python3 scripts/scrape_congressen.py            # schrijft data/congressen.js
 python3 scripts/scrape_congressen.py --check    # exit 1 als er wijzigingen zouden zijn, schrijft niets
+python3 scripts/bouw_agenda.py                  # schrijft agenda.ics (--check: exit 1 als die achterloopt)
 ```
+
+Afgelopen congressen die een bron niet meer toont, blijven in `data/congressen.js` staan als archief (vorige
+edities); een toekomstig congres dat uit de bron verdwijnt, verdwijnt wel.
 
 ## Tegel op je iPhone
 
