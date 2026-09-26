@@ -65,14 +65,26 @@
     .topbalk .merk { display: flex; align-items: center; gap: 10px; }
     .topbalk .merk i { width: 12px; height: 12px; background: var(--accent); border-radius: 50%; display: inline-block; }
     .topbalk .teller-top { color: var(--hero-zacht); font-weight: 600; }
+    .topbalk-rechts { display: flex; align-items: center; gap: 16px; }
+    .info-knop {
+      display: inline-flex; align-items: center; gap: 7px; cursor: pointer;
+      background: transparent; color: var(--hero-ink); border: 1.5px solid #3a3a37; border-radius: 999px;
+      padding: 4px 12px 4px 5px; font: 700 0.85rem var(--display); letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .info-knop:hover, .info-knop[aria-expanded="true"] { border-color: var(--accent); }
+    .info-knop .i {
+      width: 20px; height: 20px; border-radius: 50%; background: var(--accent); color: var(--accent-tekst);
+      display: inline-grid; place-items: center; font: 800 0.8rem/1 Georgia, serif; text-transform: none; letter-spacing: 0;
+    }
 
 
     /* ---------- notitie: wat ontbreekt ---------- */
     .notitie { background: var(--hero-bg); color: var(--hero-zacht); border-top: 1px solid #1f1f1d; font-size: 0.82rem; }
     .notitie-binnen { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
-    .notitie summary { cursor: pointer; padding: 8px 0; list-style: none; }
-    .notitie summary::-webkit-details-marker { display: none; }
-    .notitie summary u { text-decoration-color: var(--accent); text-underline-offset: 3px; color: var(--hero-ink); }
+    .notitie-kop { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 14px 0 4px; }
+    .notitie-kop h2 { margin: 0; font: 800 1.05rem var(--display); letter-spacing: 0.08em; text-transform: uppercase; color: var(--hero-ink); }
+    .notitie-sluit { background: none; border: 0; cursor: pointer; color: var(--hero-zacht); font: 700 0.85rem var(--display); letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 0; }
+    .notitie-sluit:hover { color: var(--hero-ink); }
     .notitie-inhoud { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px 28px; padding: 6px 0 18px; }
     .notitie-inhoud h3 { margin: 0 0 4px; font: 700 0.8rem var(--display); letter-spacing: 0.12em; text-transform: uppercase; color: var(--hero-ink); }
     .notitie-inhoud p { margin: 0; line-height: 1.4; }
@@ -84,40 +96,43 @@
       overflow: hidden;
       position: relative;
     }
+    /* Compacte kop: titel en illustratie naast elkaar, zodat zoekbalk en congressen snel in beeld zijn. */
     .hero-binnen {
       max-width: 1180px; margin: 0 auto;
-      padding: 28px 20px 0;
-      display: grid; grid-template-columns: 1.3fr 0.8fr; gap: 12px 32px; align-items: end;
+      padding: 22px 20px 0;
+      display: grid; grid-template-columns: 1fr auto; grid-template-areas: "tekst beeld" "extra beeld";
+      gap: 0 28px; align-items: end;
     }
-    .hero-tekst { padding-bottom: 40px; align-self: center; }
+    .hero-tekst { grid-area: tekst; align-self: end; }
+    .hero-extra { grid-area: extra; padding-bottom: 24px; }
     .eyebrow {
       font-family: var(--display); font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em;
       color: var(--accent); font-size: 1rem; margin: 0 0 10px;
     }
     .hero h1 {
       font-family: var(--display); font-weight: 800; text-transform: uppercase;
-      font-size: clamp(3.2rem, 8.2vw, 6.2rem); line-height: 0.88; letter-spacing: -0.01em;
-      margin: 0 0 18px; text-wrap: balance;
+      font-size: clamp(2.3rem, 5.6vw, 4.4rem); line-height: 0.9; letter-spacing: -0.01em;
+      margin: 0 0 12px; text-wrap: balance;
     }
     .hero h1 em { font-style: normal; color: var(--accent); }
-    .hero .sub { color: var(--hero-zacht); max-width: 34ch; margin: 0 0 26px; font-size: 1.05rem; }
+    .hero .sub { color: var(--hero-zacht); max-width: 52ch; margin: 0 0 16px; font-size: 1rem; }
     .volgend {
       display: inline-flex; align-items: stretch; gap: 0; text-decoration: none;
       background: var(--accent); color: var(--accent-tekst);
       border-radius: 2px; max-width: 100%;
     }
     .volgend .dagen {
-      font-family: var(--display); font-weight: 800; line-height: 0.85; font-size: 3.6rem;
-      padding: 14px 16px 10px; background: var(--hero-ink); color: var(--hero-bg); text-align: center; min-width: 4.6rem;
+      font-family: var(--display); font-weight: 800; line-height: 0.85; font-size: 2.8rem;
+      padding: 10px 14px 8px; background: var(--hero-ink); color: var(--hero-bg); text-align: center; min-width: 4.6rem;
     }
     .volgend .dagen small { display: block; font-size: 0.95rem; letter-spacing: 0.1em; margin-top: 6px; font-weight: 700; }
-    .volgend .waar { padding: 12px 18px; display: flex; flex-direction: column; justify-content: center; min-width: 0; }
+    .volgend .waar { padding: 8px 16px; display: flex; flex-direction: column; justify-content: center; min-width: 0; }
     .volgend .label { font-family: var(--display); text-transform: uppercase; font-weight: 700; letter-spacing: 0.12em; font-size: 0.9rem; }
-    .volgend .naam { font-family: var(--display); text-transform: uppercase; font-weight: 800; font-size: 1.5rem; line-height: 1; margin: 2px 0 4px; }
+    .volgend .naam { font-family: var(--display); text-transform: uppercase; font-weight: 800; font-size: 1.3rem; line-height: 1; margin: 2px 0 4px; }
     .volgend .plek { font-size: 0.95rem; font-weight: 500; }
     .volgend:hover { filter: brightness(1.06); }
 
-    .hero-beeld { align-self: end; justify-self: center; width: min(100%, 470px); }
+    .hero-beeld { grid-area: beeld; align-self: end; width: clamp(96px, 22vw, 250px); }
     .hero-beeld svg { display: block; width: 100%; height: auto; }
     .ecg { stroke-dasharray: 1400; stroke-dashoffset: 1400; animation: ecg 3.2s linear infinite; }
     .ring-puls { transform-origin: 300px 330px; animation: puls 3.2s ease-in-out infinite; }
@@ -161,6 +176,13 @@
     .knop:hover { background: var(--accent); border-color: var(--accent); color: var(--accent-tekst); }
     .chips { display: flex; gap: 8px; overflow-x: auto; padding: 12px 0 4px; scrollbar-width: none; align-items: center; }
     .chips::-webkit-scrollbar { display: none; }
+    /* Vervagende rand waar nog chips buiten beeld staan (rij scrollt horizontaal). */
+    .chips.rand-rechts { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 56px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 56px), transparent); }
+    .chips.rand-links { -webkit-mask-image: linear-gradient(to right, transparent, #000 56px); mask-image: linear-gradient(to right, transparent, #000 56px); }
+    .chips.rand-links.rand-rechts {
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 56px, #000 calc(100% - 56px), transparent);
+      mask-image: linear-gradient(to right, transparent, #000 56px, #000 calc(100% - 56px), transparent);
+    }
     .chip {
       flex: none; cursor: pointer;
       font: 700 0.95rem var(--display); text-transform: uppercase; letter-spacing: 0.07em;
@@ -209,6 +231,7 @@
       background: var(--hero-bg); color: var(--hero-ink);
     }
     .dagen-groot { font-family: var(--display); font-weight: 800; font-size: 3.6rem; line-height: 0.85; letter-spacing: -0.01em; }
+    .weekdagen { font: 600 0.85rem var(--tekst); color: var(--hero-zacht); margin-top: 7px; }
     .maand { font-family: var(--display); font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; font-size: 1.1rem; color: var(--accent); }
     .kaart-datum .rechts { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
     .status { font: 700 0.8rem var(--display); letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
@@ -226,8 +249,12 @@
     .kaart-body .plek::before { content: ""; flex: none; width: 10px; height: 10px; background: var(--accent); border-radius: 50% 50% 50% 0; transform: rotate(-45deg) translateY(1px); }
     .tags { display: flex; flex-wrap: wrap; gap: 6px; }
     .tag { font: 700 0.82rem var(--display); letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border: 1.5px solid var(--ink); border-radius: 999px; }
-    .kaart-voet { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-top: 8px; border-top: 1px solid var(--lijn); }
-    .kosten { color: var(--ink-zacht); font-size: 0.88rem; }
+    .kaart-voet { margin-top: auto; display: flex; align-items: center; justify-content: flex-end; gap: 10px; padding-top: 8px; border-top: 1px solid var(--lijn); }
+    .kosten { display: flex; flex-direction: column; gap: 1px; }
+    .kosten-hoofd { font-weight: 700; font-size: 1.05rem; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; }
+    .kosten-hoofd.onbekend { font-weight: 500; font-size: 0.92rem; color: var(--ink-zacht); }
+    .kosten-detail { color: var(--ink-zacht); font-size: 0.85rem; line-height: 1.35; }
+    .volgeboekt { font: 700 0.72rem var(--display); letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 7px; border-radius: 2px; background: var(--ink); color: var(--bg); }
     .indicatie { display: block; font-size: 0.8rem; font-style: italic; }
     .punten { font-size: 0.9rem; display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: baseline; }
     .punten-label { font: 700 0.72rem var(--display); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-zacht); }
@@ -298,16 +325,22 @@
     @keyframes op { from { transform: translateY(14px); } to { transform: none; } }
 
     @media (max-width: 820px) {
-      .hero-binnen { grid-template-columns: 1fr; padding-top: 22px; }
-      .hero-beeld { order: -1; width: min(72%, 320px); margin-bottom: -6px; }
-      .hero-tekst { padding-bottom: 28px; }
+      .hero-binnen { grid-template-areas: "tekst beeld" "extra extra"; padding-top: 16px; gap: 0 14px; }
+      .hero-tekst { padding-bottom: 12px; }
+      .hero-beeld { align-self: center; margin-bottom: 12px; }
+      .hero-extra { padding-bottom: 20px; }
       .kaart-datum, .dagen-groot { }
     }
     @media (max-width: 480px) {
-      main, .hero-binnen, .topbalk { padding-left: 16px; padding-right: 16px; }
+      main, .hero-binnen, .topbalk, .notitie-binnen { padding-left: 16px; padding-right: 16px; }
+      .topbalk .teller-top { display: none; }
       .zoek { font-size: 1rem; padding: 12px; }
       .zoekrij .knop { padding: 0 12px; }
-      .volgend .naam { font-size: 1.25rem; }
+      .volgend .naam { font-size: 1.15rem; }
+      .eyebrow { font-size: 0.82rem; letter-spacing: 0.1em; }
+      .hero h1 { font-size: 1.95rem; }
+      .hero-beeld { width: 84px; }
+      .hero .sub { font-size: 0.92rem; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -320,13 +353,18 @@
 <body>
   <div class="topbalk">
     <div class="merk"><i></i> Anesthesie &amp; Pijn</div>
-    <div class="teller-top" id="tellerTop"></div>
+    <div class="topbalk-rechts">
+      <button type="button" class="info-knop" id="infoKnop" aria-expanded="false" aria-controls="notitie"><span class="i" aria-hidden="true">i</span>Wat ontbreekt?</button>
+      <div class="teller-top" id="tellerTop"></div>
+    </div>
   </div>
 
-  <div class="notitie">
+  <div class="notitie" id="notitie" hidden>
     <div class="notitie-binnen">
-      <details>
-        <summary>Niet elke organisatie staat volledig in de lijst. <u>Bekijk wat ontbreekt en waarom</u></summary>
+        <div class="notitie-kop">
+          <h2>Niet elke organisatie staat (volledig) in de lijst</h2>
+          <button type="button" class="notitie-sluit" id="infoSluit">Sluiten ✕</button>
+        </div>
         <div class="notitie-inhoud">
           <div><h3>Handmatig bijgehouden</h3><p>ASA (ANESTHESIOLOGY), NWAS en PGA. Hun voorwaarden of site staan geautomatiseerd ophalen niet toe, dus deze worden met de hand bijgewerkt en kunnen achterlopen.</p></div>
           <div><h3>Niet opgenomen: niet toegestaan</h3><p>UF Spring Anesthesia Ski Summit en Holiday Seminars sluiten bots uit in hun robots.txt.</p></div>
@@ -337,7 +375,6 @@
           <div><h3>"Vorige editie"</h3><p>Staan de prijs of punten van een editie nog niet online, dan tonen we die van de vorige editie als indicatie. Geen toezegging: tarieven stijgen meestal.</p></div>
           <div><h3>Nog niet gevonden</h3><p>IPME, Doctors Updates en de School/Academy for Integrative Medicine: onduidelijk welke organisatie bedoeld is.</p></div>
         </div>
-      </details>
     </div>
   </div>
 
@@ -346,6 +383,8 @@
       <div class="hero-tekst">
         <p class="eyebrow">Europa · Noord-Amerika · meerdere jaren vooruit</p>
         <h1>Alle <em>congressen</em> voor anesthesie &amp; pijn</h1>
+      </div>
+      <div class="hero-extra">
         <p class="sub" id="heroSub">Filter op plek, datum, onderwerp en even/oneven week. Elke kaart heeft een bron.</p>
         <a class="volgend" id="volgend" href="#lijst" hidden>
           <span class="dagen"><span id="volgendDagen">0</span><small id="volgendEenheid">DAGEN</small></span>
@@ -503,7 +542,17 @@
 
     function formatDatum(datumString) {
       const datum = new Date(datumString + 'T00:00:00');
-      return datum.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
+      return datum.toLocaleDateString('nl-NL', { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric' });
+    }
+
+    // "do – za · 3 dagen": handig voor het aanvragen van vrije dagen.
+    const WEEKDAGEN_KORT = ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'];
+    function weekdagen(rij) {
+      const start = new Date(rij.datumStart + 'T00:00:00Z');
+      const eind = new Date(rij.datumEind + 'T00:00:00Z');
+      const aantal = Math.round((eind - start) / 86400000) + 1;
+      const dagen = aantal === 1 ? WEEKDAGEN_KORT[start.getUTCDay()] : `${WEEKDAGEN_KORT[start.getUTCDay()]} – ${WEEKDAGEN_KORT[eind.getUTCDay()]}`;
+      return `${dagen} · ${aantal} ${aantal === 1 ? 'dag' : 'dagen'}`;
     }
 
     function datumBlok(rij) {
@@ -580,6 +629,36 @@
     // Agenda-abonnement op agenda.ics (gebouwd door scripts/bouw_agenda.py, gehost op GitHub Pages).
     const AGENDA_URL = 'https://rik-spacecowboy.github.io/Anesthesie/agenda.ics';
     const AGENDA_WEBCAL = AGENDA_URL.replace(/^https:/, 'webcal:');
+
+    // Kostentekst (vrije tekst uit scraper/aanvullingen) opsplitsen in een duidelijk bedrag en
+    // de toelichting: "€790–€880 (niet-lid) · volgeboekt" -> hoofd "€790–€880", detail "niet-lid".
+    function splitsKosten(tekst) {
+      const delen = [];
+      let diepte = 0, huidig = '';
+      for (let i = 0; i < tekst.length; i++) {
+        const c = tekst[i];
+        if (c === '(') diepte++;
+        if (c === ')') diepte--;
+        const scheiding = diepte === 0 && (tekst.startsWith(' · ', i) || tekst.startsWith('; ', i));
+        if (scheiding) { delen.push(huidig); huidig = ''; i += tekst[i] === ' ' ? 2 : 1; continue; }
+        huidig += c;
+      }
+      delen.push(huidig);
+      const [eerste, ...rest] = delen.map(d => d.trim()).filter(Boolean);
+      const haakjes = eerste.match(/\s*\(([^()]*(?:\([^()]*\)[^()]*)*)\)/);
+      const hoofd = haakjes ? eerste.replace(haakjes[0], '').trim() : eerste;
+      const detail = [haakjes ? haakjes[1] : '', ...rest].filter(Boolean);
+      const volgeboekt = detail.some(d => /^volgeboekt$/i.test(d));
+      return { hoofd, detail: detail.filter(d => !/^volgeboekt$/i.test(d)).join(' · '), volgeboekt };
+    }
+
+    function kostenHtml(rij) {
+      if (rij.kosten === ONBEKEND) {
+        return `<div class="kosten"><span class="punten-label">Kosten</span><span class="kosten-hoofd onbekend">Nog niet gepubliceerd</span>${rij.kostenIndicatie ? `<span class="kosten-detail indicatie">vorige editie ${esc(rij.kostenIndicatie)}</span>` : ''}</div>`;
+      }
+      const k = splitsKosten(rij.kosten);
+      return `<div class="kosten"><span class="punten-label">Kosten</span><span class="kosten-hoofd">${esc(k.hoofd)}${k.volgeboekt ? '<span class="volgeboekt">Volgeboekt</span>' : ''}</span>${k.detail ? `<span class="kosten-detail">${esc(k.detail)}</span>` : ''}</div>`;
+    }
 
     function esc(t) {
       return String(t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -813,6 +892,12 @@
       [...new Set(CONGRESSEN.flatMap(r => r.onderwerp))].sort().forEach(o => rij.appendChild(maak(o, 'filterOnderwerp', o)));
     }
 
+    function syncChipRanden() {
+      const rij = document.getElementById('chipRij');
+      rij.classList.toggle('rand-links', rij.scrollLeft > 2);
+      rij.classList.toggle('rand-rechts', rij.scrollLeft + rij.clientWidth < rij.scrollWidth - 2);
+    }
+
     function syncChips() {
       document.querySelectorAll('#chipRij .chip[data-select]').forEach(b => {
         const actief = document.getElementById(b.dataset.select).value === b.dataset.waarde;
@@ -824,6 +909,7 @@
       const deadlineChip = document.getElementById('deadlineChip');
       deadlineChip.textContent = `Deadline binnenkort (${CONGRESSEN.filter(heeftDeadlineBinnenkort).length})`;
       deadlineChip.setAttribute('aria-pressed', alleenDeadline ? 'true' : 'false');
+      syncChipRanden();
     }
 
     function huidigeFilters() {
@@ -883,6 +969,7 @@
           <div>
             <div class="maand">${esc(blok.maand)} ${blok.jaar}</div>
             <div class="dagen-groot">${esc(blok.dagen)}</div>
+            <div class="weekdagen">${esc(weekdagen(rij))}</div>
           </div>
           <div class="rechts">
             <button type="button" class="ster" aria-pressed="${bewaard.has(rij.id)}" aria-label="Bewaar ${esc(rij.naam)}" title="Bewaren">★</button>
@@ -899,8 +986,8 @@
           ${rij.punten || rij.puntenIndicatie ? `<div class="punten"><span class="punten-label">Nascholing</span>${rij.punten ? esc(rij.punten) : `<span class="indicatie">vorige editie ${esc(rij.puntenIndicatie)}</span>`}</div>` : ''}
           ${deadlines ? `<div class="deadlines"><span class="punten-label">Deadlines</span>${deadlines}</div>` : ''}
           ${editiesHtml}
+          ${kostenHtml(rij)}
           <div class="kaart-voet">
-            <span class="kosten">${esc(rij.kosten)}${rij.kostenIndicatie && rij.kosten === ONBEKEND ? `<span class="indicatie">vorige editie ${esc(rij.kostenIndicatie)}</span>` : ''}</span>
             <div class="kaart-acties">
               <button type="button" class="actie ics" title="Voor Apple Agenda, Outlook en andere agenda-apps">+ Agenda</button>
               <a class="actie" href="${esc(googleAgendaUrl(rij))}" target="_blank" rel="noopener" title="Toevoegen aan Google Agenda">Google</a>
@@ -1024,6 +1111,19 @@
       kaart.classList.add('uitgelicht');
       setTimeout(() => kaart.classList.remove('uitgelicht'), 1600);
     }
+
+    document.getElementById('chipRij').addEventListener('scroll', syncChipRanden, { passive: true });
+    window.addEventListener('resize', syncChipRanden);
+    document.fonts?.ready.then(syncChipRanden); // breedte van de chips verandert als het webfont laadt
+
+    // Info-knop "Wat ontbreekt?" klapt de uitleg onder de topbalk open en dicht.
+    function zetInfo(open) {
+      document.getElementById('notitie').hidden = !open;
+      document.getElementById('infoKnop').setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    document.getElementById('infoKnop').addEventListener('click', () => zetInfo(document.getElementById('notitie').hidden));
+    document.getElementById('infoSluit').addEventListener('click', () => { zetInfo(false); document.getElementById('infoKnop').focus(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !document.getElementById('notitie').hidden) zetInfo(false); });
 
     document.getElementById('abonneerWebcal').href = AGENDA_WEBCAL;
     document.getElementById('abonneerGoogle').href = `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(AGENDA_WEBCAL)}`;

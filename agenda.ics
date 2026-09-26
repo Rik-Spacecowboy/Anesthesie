@@ -124,9 +124,9 @@ DTSTART;VALUE=DATE:20261105
 DTEND;VALUE=DATE:20261108
 SUMMARY:25th Annual Pain Medicine Meeting
 LOCATION:Tampa\, Verenigde Staten
-DESCRIPTION:ASRA Pain Medicine\nKosten: $295–$1770 (afhankelijk van lidma
- atschap/categorie)\nNascholing: max. 24\,25 AMA PRA Category 1 (ook EACCME
- -erkend)\nBron: https://asra.com/events-education
+DESCRIPTION:ASRA Pain Medicine\nKosten: $295–$1.770 (afhankelijk van lidm
+ aatschap/categorie)\nNascholing: max. 24\,25 AMA PRA Category 1 (ook EACCM
+ E-erkend)\nBron: https://asra.com/events-education
 URL:https://asra.com/events-education
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -290,8 +290,8 @@ DTEND;VALUE=DATE:20270117
 SUMMARY:NYSORA: Update on Regional Anesthesia and Pain Management
 LOCATION:Kitzbühel\, Oostenrijk
 DESCRIPTION:NYSORA\nKosten: €1.075 (early bird\, inschrijven vóór 13 de
- c 2026)\, daarna €1.175\nLaatste dag early-bird: 2026-12-12\nBron: https
- ://nysora.com/events/conferences
+ c 2026) · daarna €1.175\nLaatste dag early-bird: 2026-12-12\nBron: http
+ s://nysora.com/events/conferences
 URL:https://nysora.com/events/conferences
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -482,8 +482,8 @@ DTEND;VALUE=DATE:20270212
 SUMMARY:NYSORA: Anesthesia Review Conference
 LOCATION:Val d'Isère\, Frankrijk
 DESCRIPTION:NYSORA\nKosten: €1.075 (early bird\, inschrijven vóór 8 jan
-  2027)\, daarna €1.175\nLaatste dag early-bird: 2027-01-07\nBron: https:
- //nysora.com/events/conferences
+  2027) · daarna €1.175\nLaatste dag early-bird: 2027-01-07\nBron: https
+ ://nysora.com/events/conferences
 URL:https://nysora.com/events/conferences
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -674,10 +674,10 @@ DTSTART;VALUE=DATE:20270421
 DTEND;VALUE=DATE:20270424
 SUMMARY:EFIC Congress 2027 (Pain in Europe)
 LOCATION:Glasgow\, Verenigd Koninkrijk
-DESCRIPTION:EFIC (European Pain Federation)\nKosten: €940–€1192 (niet
- -lid)\nLaatste dag abstracts indienen: 2026-09-30\nLaatste dag early-bird:
-  2026-12-14\nLaatste dag inschrijven: 2027-03-22\nBron: https://europeanpa
- infederation.eu/efic2027/
+DESCRIPTION:EFIC (European Pain Federation)\nKosten: €940–€1.192 (nie
+ t-lid)\nLaatste dag abstracts indienen: 2026-09-30\nLaatste dag early-bird
+ : 2026-12-14\nLaatste dag inschrijven: 2027-03-22\nBron: https://europeanp
+ ainfederation.eu/efic2027/
 URL:https://europeanpainfederation.eu/efic2027/
 TRANSP:TRANSPARENT
 END:VEVENT

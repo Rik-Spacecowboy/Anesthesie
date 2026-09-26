@@ -45,7 +45,7 @@ const CONGRESSEN = [
     stad: "Quinta do Lago, Algarve",
     datumStart: "2026-10-05",
     datumEind: "2026-10-09",
-    onderwerp: ["regionale anesthesie", "pijntherapie"],
+    onderwerp: ["regionale anesthesie", "pijngeneeskunde"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://esraeurope.org/meetings/?meeting_type=esra-events"
   },
@@ -83,7 +83,7 @@ const CONGRESSEN = [
     stad: "Berlijn",
     datumStart: "2026-10-19",
     datumEind: "2026-10-20",
-    onderwerp: ["algemene anesthesiologie", "pijnmanagement", "intensive care"],
+    onderwerp: ["algemene anesthesiologie", "pijngeneeskunde", "intensive care"],
     kosten: "Vanaf €199/$199 (student/internist); meerdere tarieven, zie bron",
     bron: "https://anesthesiology.plenareno.com/",
     letOp: "Commercieel georganiseerd congres (Plenareno), geen erkende beroepsvereniging. Op uitdrukkelijk verzoek toegevoegd; handmatig bijgehouden.",
@@ -97,7 +97,7 @@ const CONGRESSEN = [
     stad: "Budapest",
     datumStart: "2026-10-23",
     datumEind: "2026-10-25",
-    onderwerp: ["regionale anesthesie", "pijntherapie"],
+    onderwerp: ["regionale anesthesie", "pijngeneeskunde"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://esraeurope.org/meetings/?meeting_type=esra-events"
   },
@@ -124,7 +124,7 @@ const CONGRESSEN = [
     datumStart: "2026-11-05",
     datumEind: "2026-11-07",
     onderwerp: ["pijngeneeskunde"],
-    kosten: "$295–$1770 (afhankelijk van lidmaatschap/categorie)",
+    kosten: "$295–$1.770 (afhankelijk van lidmaatschap/categorie)",
     bron: "https://asra.com/events-education"
   },
   {
@@ -135,7 +135,7 @@ const CONGRESSEN = [
     stad: "Amsterdam",
     datumStart: "2026-11-20",
     datumEind: "2026-11-21",
-    onderwerp: ["regionale anesthesie", "pijntherapie"],
+    onderwerp: ["regionale anesthesie", "pijngeneeskunde"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://esraeurope.org/meetings/?meeting_type=esra-events"
   },
@@ -159,7 +159,7 @@ const CONGRESSEN = [
     stad: "Antwerpen",
     datumStart: "2026-12-11",
     datumEind: "2026-12-12",
-    onderwerp: ["regionale anesthesie", "pijntherapie"],
+    onderwerp: ["regionale anesthesie", "pijngeneeskunde"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://esraeurope.org/meetings/?meeting_type=esra-events"
   },
@@ -223,7 +223,7 @@ const CONGRESSEN = [
     stad: "Längenfeld",
     datumStart: "2027-01-17",
     datumEind: "2027-01-22",
-    onderwerp: ["regionale anesthesie", "pijntherapie"],
+    onderwerp: ["regionale anesthesie", "pijngeneeskunde"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://esraeurope.org/meetings/?meeting_type=esra-events"
   },
@@ -329,7 +329,7 @@ const CONGRESSEN = [
     stad: "Innsbruck",
     datumStart: "2027-02-24",
     datumEind: "2027-02-25",
-    onderwerp: ["regionale anesthesie", "pijntherapie"],
+    onderwerp: ["regionale anesthesie", "pijngeneeskunde"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://esraeurope.org/meetings/?meeting_type=esra-events"
   },
@@ -341,7 +341,7 @@ const CONGRESSEN = [
     stad: "Innsbruck",
     datumStart: "2027-02-26",
     datumEind: "2027-02-27",
-    onderwerp: ["regionale anesthesie", "pijntherapie"],
+    onderwerp: ["regionale anesthesie", "pijngeneeskunde"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://esraeurope.org/meetings/?meeting_type=esra-events"
   },
@@ -436,7 +436,7 @@ const CONGRESSEN = [
     datumStart: "2027-04-21",
     datumEind: "2027-04-23",
     onderwerp: ["pijngeneeskunde"],
-    kosten: "€940–€1192 (niet-lid)",
+    kosten: "€940–€1.192 (niet-lid)",
     bron: "https://europeanpainfederation.eu/efic2027/"
   },
   {
@@ -447,7 +447,7 @@ const CONGRESSEN = [
     stad: "Porto",
     datumStart: "2027-05-06",
     datumEind: "2027-05-07",
-    onderwerp: ["regionale anesthesie", "pijntherapie"],
+    onderwerp: ["regionale anesthesie", "pijngeneeskunde"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://esraeurope.org/meetings/?meeting_type=esra-events"
   },
@@ -459,7 +459,7 @@ const CONGRESSEN = [
     stad: "Houston",
     datumStart: "2027-05-13",
     datumEind: "2027-05-15",
-    onderwerp: ["regionale anesthesie", "acute pijn"],
+    onderwerp: ["regionale anesthesie", "pijngeneeskunde"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://asra.com/events-education",
     letOp: "Automatisch gevonden; ordinal (bv. '52nd') stond niet in de brontekst, controleer de exacte naam.",
@@ -539,7 +539,7 @@ const CONGRESSEN = [
     stad: "Bologna",
     datumStart: "2027-09-01",
     datumEind: "2027-09-04",
-    onderwerp: ["regionale anesthesie", "pijntherapie"],
+    onderwerp: ["regionale anesthesie", "pijngeneeskunde"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://esraeurope.org/meetings/?meeting_type=esra-events"
   },
@@ -551,7 +551,7 @@ const CONGRESSEN = [
     stad: "Las Vegas",
     datumStart: "2027-09-07",
     datumEind: "2027-09-10",
-    onderwerp: ["pijnmanagement", "multidisciplinair"],
+    onderwerp: ["pijngeneeskunde"],
     kosten: "Nog niet gepubliceerd",
     bron: "https://conference.painweek.org/"
   },
