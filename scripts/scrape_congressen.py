@@ -70,6 +70,26 @@ LANDEN_NL = {
 SCOPE_LANDEN = set(EUROPESE_LANDEN_NL) | {"united states", "usa", "canada"}
 
 
+# Europese steden met een eigen Nederlandse naam (Engelse schrijfwijze -> Nederlands). De site is
+# Nederlandstalig; bronnen schrijven meestal Engels. Steden zonder Nederlandse naam blijven zoals ze zijn.
+STEDEN_NL = {
+    "vienna": "Wenen", "copenhagen": "Kopenhagen", "london": "Londen", "antwerp": "Antwerpen",
+    "brussels": "Brussel", "bruges": "Brugge", "ghent": "Gent", "liege": "Luik", "liège": "Luik",
+    "berlin": "Berlijn", "munich": "München", "cologne": "Keulen", "hanover": "Hannover",
+    "paris": "Parijs", "strasbourg": "Straatsburg", "lisbon": "Lissabon", "seville": "Sevilla",
+    "milan": "Milaan", "venice": "Venetië", "naples": "Napels", "turin": "Turijn", "genoa": "Genua",
+    "florence": "Florence", "rome": "Rome", "athens": "Athene", "prague": "Praag", "warsaw": "Warschau",
+    "krakow": "Krakau", "cracow": "Krakau", "bucharest": "Boekarest", "belgrade": "Belgrado",
+    "moscow": "Moskou", "geneva": "Genève", "basel": "Bazel", "zurich": "Zürich", "lucerne": "Luzern",
+    "gothenburg": "Göteborg", "the hague": "Den Haag", "val d'isere": "Val d'Isère",
+}
+
+
+def vertaal_stad(stad):
+    sleutel = stad.strip().lower().replace("’", "'")
+    return STEDEN_NL.get(sleutel, stad.strip())
+
+
 def ordinaal(n):
     n = int(n)
     if 10 <= n % 100 <= 20:
@@ -1094,6 +1114,8 @@ def main():
         return 1
 
     alle_entries.extend(archief(geziene_ids))
+    for entry in alle_entries:
+        entry["stad"] = vertaal_stad(entry["stad"])
 
     nieuwe_inhoud = bouw_bestand(alle_entries)
     bestaande_inhoud = DATA_FILE.read_text() if DATA_FILE.exists() else ""
