@@ -675,6 +675,7 @@
   <script src="data/congressen.js"></script>
   <script src="data/aanvullingen.js"></script>
   <script src="data/steden.js"></script>
+  <script src="data/kaartlanden.js" defer></script>
   <script>
     // Bereken ISO-weekinfo voor een datum (standaardalgoritme, maandag = eerste dag).
     // Werkt volledig in UTC: een kalenderdatum als "2027-01-18" moet overal hetzelfde
@@ -1367,30 +1368,54 @@
     }
 
     // ---------- kaartweergave ----------
-    // D3 en TopoJSON worden pas geladen als iemand de kaart opent; de landsgrenzen komen uit
-    // world-atlas (Natural Earth, 1:50m). Stippen tonen de congressen die door de filters komen.
-    let kaartBibliotheken = null;
-    function laadScript(src) {
-      return new Promise((ok, fout) => {
-        const el = document.createElement('script');
-        el.src = src; el.onload = ok; el.onerror = () => fout(new Error(src));
-        document.head.appendChild(el);
-      });
+    // Alles zit in de site zelf (geen externe bibliotheken of kaartdata), zodat de kaart ook in de
+    // claude.ai-artifact werkt: landsgrenzen uit data/kaartlanden.js (afgeleid van world-atlas / Natural
+    // Earth) en twee eenvoudige projecties hieronder. Stippen tonen de congressen die door de filters komen.
+    function kaartLanden() {
+      if (typeof KAARTLANDEN !== 'undefined') return Promise.resolve(KAARTLANDEN.features);
+      // data/kaartlanden.js laadt met "defer"; wacht daarop als de kaart al bij het openen van de pagina getoond wordt.
+      return new Promise((ok, fout) => document.addEventListener('DOMContentLoaded', () =>
+        typeof KAARTLANDEN !== 'undefined' ? ok(KAARTLANDEN.features) : fout(new Error('kaartlanden ontbreekt')), { once: true }));
     }
-    function laadKaartBibliotheken() {
-      kaartBibliotheken ??= laadScript('https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js')
-        .then(() => laadScript('https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js'))
-        .then(() => fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json'))
-        .then(r => r.json())
-        .then(topo => topojson.feature(topo, topo.objects.countries).features)
-        .catch(fout => { kaartBibliotheken = null; throw fout; });
-      return kaartBibliotheken;
+    const RAD = Math.PI / 180;
+    // Azimutale equivalente projectie rond (lon0, lat0): Europa zonder vertekening in oppervlakte.
+    function azimutaal(lon0, lat0) {
+      const s0 = Math.sin(lat0 * RAD), c0 = Math.cos(lat0 * RAD);
+      return ([lon, lat]) => {
+        const l = (lon - lon0) * RAD, f = lat * RAD, cf = Math.cos(f), cl = Math.cos(l);
+        const k = Math.sqrt(2 / Math.max(1e-9, 1 + s0 * Math.sin(f) + c0 * cf * cl));
+        return [k * cf * Math.sin(l), -k * (c0 * Math.sin(f) - s0 * cf * cl)];
+      };
+    }
+    // Kegelprojectie van Albers (standaardparallellen p1, p2), de gangbare kaart van Noord-Amerika.
+    function kegel(lon0, p1, p2) {
+      const s1 = Math.sin(p1 * RAD), n = (s1 + Math.sin(p2 * RAD)) / 2, C = Math.cos(p1 * RAD) ** 2 + 2 * n * s1, r0 = Math.sqrt(C) / n;
+      return ([lon, lat]) => {
+        const dl = ((lon - lon0 + 540) % 360) - 180;
+        const r = Math.sqrt(Math.max(0, C - 2 * n * Math.sin(lat * RAD))) / n, t = n * dl * RAD;
+        return [r * Math.sin(t), -(r0 - r * Math.cos(t))];
+      };
+    }
+    // Schaal en verschuif zo dat de hoekpunten van de regio precies in het vlak (met marge) passen.
+    function pasIn(ruw, hoeken, W, H, marge) {
+      const pts = hoeken.map(ruw), xs = pts.map(p => p[0]), ys = pts.map(p => p[1]);
+      const [x0, x1, y0, y1] = [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)];
+      const k = Math.min((W - 2 * marge) / (x1 - x0), (H - 2 * marge) / (y1 - y0));
+      const tx = W / 2 - k * (x0 + x1) / 2, ty = H / 2 - k * (y0 + y1) / 2;
+      return p => { const [x, y] = ruw(p); return [tx + k * x, ty + k * y]; };
     }
     const KAART_REGIO = {
-      eu: { naam: 'Europa', hoeken: [[-11, 36], [26, 36], [-11, 60], [26, 60]], projectie: () => d3.geoAzimuthalEqualArea().rotate([-7, -49]) },
-      na: { naam: 'Noord-Amerika', hoeken: [[-125, 12], [-62, 12], [-125, 50], [-62, 50]], projectie: () => d3.geoConicEqualArea().parallels([20, 50]).rotate([96, 0]) }
+      eu: { naam: 'Europa', hoeken: [[-11, 36], [26, 36], [-11, 60], [26, 60]], projectie: () => azimutaal(7, 49) },
+      na: { naam: 'Noord-Amerika', hoeken: [[-125, 12], [-62, 12], [-125, 50], [-62, 50]], projectie: () => kegel(-96, 20, 50) }
     };
     let laatsteKaartRijen = [];
+    const SVG_NS = 'http://www.w3.org/2000/svg';
+    function svgEl(naam, attrs, ouder) {
+      const el = document.createElementNS(SVG_NS, naam);
+      Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+      if (ouder) ouder.appendChild(el);
+      return el;
+    }
 
     function toonKaart(rijen) {
       laatsteKaartRijen = rijen;
@@ -1414,9 +1439,9 @@
         eldersEl.querySelectorAll('button').forEach(b => b.addEventListener('click', () => toonPaneel({ titel: 'Niet op de kaart', rijen: [CONGRESSEN.find(r => r.id === b.dataset.id)] })));
       }
       if (rijen.length === 0) { document.getElementById('kaartPaneel').innerHTML = '<p class="kaart-hint">Niets gevonden — probeer het breder.</p>'; }
-      laadKaartBibliotheken().then(landen => tekenKaart(landen, rijen)).catch(() => {
+      kaartLanden().then(landen => tekenKaart(landen, rijen)).catch(() => {
         const laden = document.querySelector('#kaartVak .kaart-laden');
-        if (laden) laden.textContent = 'De kaart kon niet laden. Controleer je internetverbinding of kies Kaarten of Lijst.';
+        if (laden) laden.textContent = 'De kaart kon niet laden. Kies Kaarten of Lijst, of probeer het later opnieuw.';
       });
     }
     function CONGRESSEN_REGIO(rij) { return stadInfo(rij)?.regio || null; }
@@ -1427,13 +1452,17 @@
       const regio = KAART_REGIO[kaartRegio];
       const W = Math.max(300, vak.clientWidth), H = Math.round(W < 600 ? W * 0.95 : Math.min(W * 0.6, 620)); // telefoon: hoger, anders vallen stippen samen
       const basis = W < 600 ? 5.5 : 7;
-      const projectie = regio.projectie().fitExtent([[24, 24], [W - 24, H - 24]], { type: 'MultiPoint', coordinates: regio.hoeken });
-      const pad = d3.geoPath(projectie);
+      const projectie = pasIn(regio.projectie(), regio.hoeken, W, H, 24);
       vak.querySelector('svg')?.remove();
       vak.querySelector('.kaart-laden')?.remove();
-      const svg = d3.select(vak).insert('svg', '.kaart-tip').attr('viewBox', `0 0 ${W} ${H}`)
-        .attr('role', 'img').attr('aria-label', `Kaart van ${regio.naam} met de congressteden`);
-      svg.append('g').selectAll('path').data(landen).join('path').attr('class', 'land').attr('d', pad);
+      const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': `Kaart van ${regio.naam} met de congressteden` });
+      vak.insertBefore(svg, document.getElementById('kaartTip'));
+      const landenG = svgEl('g', {}, svg);
+      landen.forEach(f => {
+        const d = f.geometry.coordinates.map(poly => poly.map(ring =>
+          'M' + ring.map(p => projectie(p).map(v => v.toFixed(1)).join(',')).join('L') + 'Z').join('')).join('');
+        svgEl('path', { class: 'land', d, 'fill-rule': 'evenodd' }, landenG);
+      });
 
       // Steden groeperen; steden die op het scherm bijna samenvallen (bv. Tignes en Val d'Isère) worden één stip.
       const perStad = new Map();
@@ -1448,26 +1477,27 @@
       });
       const sleutel = g => g.steden.slice().sort().join('|');
       const tip = document.getElementById('kaartTip');
-      const g = svg.append('g');
+      const stippenG = svgEl('g', {}, svg);
       groepen.forEach(gr => {
         const n = gr.rijen.length, r = Math.min(basis + (n - 1) * 2.4, 20);
         const gekozen = kaartGekozen === sleutel(gr);
         const label = `${gr.steden.join(' / ')}: ${n} ${n === 1 ? 'congres' : 'congressen'}`;
-        const c = g.append('circle').attr('class', 'stip' + (gekozen ? ' gekozen' : '')).attr('cx', gr.xy[0]).attr('cy', gr.xy[1]).attr('r', r)
-          .attr('tabindex', 0).attr('role', 'button').attr('aria-label', label);
-        if (n > 1) g.append('text').attr('class', 'stip-getal' + (gekozen ? ' gekozen' : '')).attr('x', gr.xy[0]).attr('y', gr.xy[1] + 4).text(n);
-        c.on('mousemove', ev => {
+        const c = svgEl('circle', { class: 'stip' + (gekozen ? ' gekozen' : ''), cx: gr.xy[0].toFixed(1), cy: gr.xy[1].toFixed(1), r,
+          tabindex: 0, role: 'button', 'aria-label': label }, stippenG);
+        if (n > 1) svgEl('text', { class: 'stip-getal' + (gekozen ? ' gekozen' : ''), x: gr.xy[0].toFixed(1), y: (gr.xy[1] + 4).toFixed(1) }, stippenG).textContent = n;
+        c.addEventListener('mousemove', ev => {
           const box = vak.getBoundingClientRect();
           tip.hidden = false; tip.textContent = `${gr.steden.join(' / ')} · ${n}`;
           tip.style.left = `${Math.min(ev.clientX - box.left + 12, box.width - tip.offsetWidth - 6)}px`;
           tip.style.top = `${ev.clientY - box.top - 30}px`;
-        }).on('mouseleave', () => { tip.hidden = true; })
-          .on('click', () => kiesGroep(gr)).on('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); kiesGroep(gr); } });
+        });
+        c.addEventListener('mouseleave', () => { tip.hidden = true; });
+        c.addEventListener('click', () => kiesGroep(gr));
+        c.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); kiesGroep(gr); } });
       });
       function kiesGroep(gr) {
         kaartGekozen = sleutel(gr);
-        const land = stadInfo(gr.rijen[0]) ? gr.rijen[0].land : '';
-        toonPaneel({ titel: gr.steden.join(' / '), sub: land, rijen: gr.rijen });
+        toonPaneel({ titel: gr.steden.join(' / '), sub: gr.rijen[0].land, rijen: gr.rijen });
         tekenKaart(landen, laatsteKaartRijen);
       }
     }
@@ -1481,9 +1511,9 @@
     }
     let kaartResizeTimer;
     window.addEventListener('resize', () => {
-      if (weergave !== 'kaart' || !kaartBibliotheken) return;
+      if (weergave !== 'kaart') return;
       clearTimeout(kaartResizeTimer);
-      kaartResizeTimer = setTimeout(() => kaartBibliotheken.then(landen => tekenKaart(landen, laatsteKaartRijen)), 150);
+      kaartResizeTimer = setTimeout(() => kaartLanden().then(landen => tekenKaart(landen, laatsteKaartRijen)), 150);
     });
 
     // Bewaarde congressen die nog in de data staan (een id kan verdwijnen na een scraper-run).
