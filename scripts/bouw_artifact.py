@@ -10,7 +10,8 @@ Aanpassingen t.o.v. de GitHub Pages-versie, omdat het artifact-frame dit afdwing
 - donkere modus ook via data-theme (de thema-keuze van de viewer);
 - sticky filterbalk onder de safe area van de telefoon;
 - downloads, querystring en Web Share werken niet in een artifact, dus de .ics-knoppen
-  en "Deel" worden verborgen en de filters gaan niet naar de URL.
+  en "Deel" worden verborgen en de filters gaan niet naar de URL;
+- het meldformulier opent op GitHub Pages (versturen naar Web3Forms kan niet vanuit het frame).
 
 Gebruik:
     python3 scripts/bouw_artifact.py [uitvoermap]    # standaard: build/artifact
@@ -56,6 +57,9 @@ def bouw(bron):
     s = vervang(s, '<button type="button" class="actie ics"', '<button type="button" class="actie ics" hidden')
     s = vervang(s, "knop.hidden = aantal === 0;", "knop.hidden = true; // downloads werken niet in een artifact")
     s = vervang(s, "    function filtersNaarUrl() {\n", "    function filtersNaarUrl() {\n      return; // in een artifact komt de querystring niet door\n")
+    # Versturen naar de formulierdienst mag vanuit het artifact-frame niet; open het meldformulier
+    # daarom op GitHub Pages.
+    s = vervang(s, "const MELDEN_EXTERN = '';", "const MELDEN_EXTERN = 'https://rik-spacecowboy.github.io/Anesthesie/';")
     return s
 
 

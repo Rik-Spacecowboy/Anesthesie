@@ -12,6 +12,17 @@ met de ster. Bewaarde congressen staan alleen in de browser waarin je ze bewaart
 op je beginscherm telt daarbij als een aparte browser. Alle filters staan in de URL, dus een selectie is te delen
 of te bookmarken via de "Deel"-knop.
 
+Weergave als kaarten of als compacte lijst (een regel per congres; klik voor de volledige kaart). Sorteren kan
+op datum of prijs, en er is een maximumprijs; prijzen in $ en £ worden daarvoor omgerekend tegen een vaste koers
+(alleen voor sorteren/filteren, getoond worden altijd de bedragen van de organisator). Wie congressen bewaart,
+ziet bovenaan het aftellen naar het eigen eerstvolgende congres en een jaaroverzicht (congressen, landen,
+nascholingspunten).
+
+**Meldingen** ("Meld het" onderaan, "Klopt er iets niet?" per kaart) gaan via de formulierdienst Web3Forms naar de
+beheerder; er staat geen e-mailadres op de site en melders hebben geen account nodig. De (openbare) sleutel staat
+in `index.html` als `WEB3FORMS_SLEUTEL`; zolang die leeg is, is de meldfunctie verborgen. In de claude.ai-artifact
+opent het formulier op GitHub Pages.
+
 Afgelopen congressen zijn standaard verborgen; de chip "Ook afgelopen" toont ze weer ("Wis" zet alles terug naar
 alleen komende congressen). Elke kaart linkt naar de vorige en volgende editie van dezelfde reeks.
 
