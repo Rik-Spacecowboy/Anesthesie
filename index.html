@@ -26,6 +26,10 @@
       --hero-ink: #f5f5f2;
       --hero-zacht: #a3a39c;
       --ring: #262624;
+      --kaart-land: #e6e4dd;
+      --land-tekst: 72%;
+      --land-vlak: 15%;
+      --land-rand: 100%;
       --display: 'Barlow Condensed', 'Arial Narrow', 'Helvetica Neue', Arial, sans-serif;
       --tekst: 'Barlow', 'Helvetica Neue', Arial, sans-serif;
     }
@@ -38,6 +42,10 @@
         --lijn: #2a2a28;
         --hero-bg: #000000;
         --ring: #232321;
+        --kaart-land: #2e2e2b;
+        --land-tekst: 42%;
+        --land-vlak: 30%;
+        --land-rand: 70%;
       }
     }
     * { box-sizing: border-box; }
@@ -219,7 +227,7 @@
       color: transparent; -webkit-text-stroke: 2px var(--ink);
     }
     .congres-kaart {
-      background: var(--surface); border: 2px solid var(--ink); border-radius: 2px;
+      background: var(--surface); border: 2px solid var(--ink); border-left: 8px solid color-mix(in srgb, var(--landkleur, var(--ink)) var(--land-rand), var(--ink)); border-radius: 2px;
       display: flex; flex-direction: column; overflow: hidden;
       transition: transform .18s ease, box-shadow .18s ease;
       animation: op 0.5s ease both; animation-delay: calc(var(--i, 0) * 30ms);
@@ -233,6 +241,27 @@
     .dagen-groot { font-family: var(--display); font-weight: 800; font-size: 3.6rem; line-height: 0.85; letter-spacing: -0.01em; }
     .weekdagen { font: 600 0.85rem var(--tekst); color: var(--hero-zacht); margin-top: 7px; }
     .maand { font-family: var(--display); font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; font-size: 1.1rem; color: var(--accent); }
+    /* Stadsfoto als kop (data/steden.js), met verloop zodat datum en week leesbaar blijven. */
+    .kaart-datum { position: relative; overflow: hidden; }
+    .kaart-datum.met-foto { min-height: 150px; }
+    .kaart-datum.met-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.82), rgba(0,0,0,.05) 72%); }
+    .kaart-datum > div { position: relative; z-index: 1; }
+    .kop-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .met-foto .maand, .met-foto .dagen-groot { text-shadow: 0 1px 3px rgba(0,0,0,.55); }
+    .met-foto .weekdagen, .met-foto .weekbadge { color: #e4e4de; }
+    .foto-credit {
+      position: absolute; top: 8px; left: 10px; z-index: 2; max-width: calc(100% - 64px);
+      font: 500 0.66rem var(--tekst); color: #fff; background: rgba(0,0,0,.45); padding: 1px 6px; border-radius: 2px;
+      text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .foto-credit:hover { text-decoration: underline; }
+    .plek-regel { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+    .landchip {
+      display: inline-flex; align-items: center; gap: 6px; border-radius: 999px; padding: 2px 9px;
+      font: 700 0.75rem var(--display); letter-spacing: 0.08em; text-transform: uppercase;
+      background: color-mix(in srgb, var(--landkleur) var(--land-vlak), var(--surface)); color: color-mix(in srgb, var(--landkleur) var(--land-tekst), var(--ink));
+    }
+    .landchip i { width: 8px; height: 8px; border-radius: 50%; background: var(--landkleur); display: inline-block; }
     .kaart-datum .rechts { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
     .status { font: 700 0.8rem var(--display); letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
     .status.nu { background: var(--accent); color: var(--accent-tekst); }
@@ -304,7 +333,7 @@
     /* ---------- lijstweergave ---------- */
     .congres-lijst.als-lijst { display: block; }
     .als-lijst .jaarkop { font-size: clamp(2.6rem, 8vw, 4.5rem); margin: 22px 0 6px; }
-    .lijst-rij { border-bottom: 1px solid var(--lijn); display: grid; grid-template-columns: 1fr auto; align-items: center; }
+    .lijst-rij { border-left: 4px solid color-mix(in srgb, var(--landkleur, transparent) var(--land-rand), var(--ink)); padding-left: 6px; border-bottom: 1px solid var(--lijn); display: grid; grid-template-columns: 1fr auto; align-items: center; }
     .lijst-rij.voorbij { opacity: .62; }
     .rij-hoofd {
       all: unset; box-sizing: border-box; cursor: pointer; padding: 11px 6px;
@@ -334,6 +363,30 @@
       .rij-meta { display: block; grid-column: 2; font-size: 0.82rem; color: var(--ink-zacht); }
       .rij-datum b { font-size: 1.05rem; }
     }
+
+    /* ---------- kaartweergave ---------- */
+    .congres-lijst.als-kaart { display: block; }
+    .regio-keuze { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 12px 0 10px; }
+    .regio-keuze .regio-teller { font: 700 0.9rem var(--display); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-zacht); margin-left: 4px; }
+    .kaart-vak { position: relative; background: var(--surface); border: 2px solid var(--ink); border-radius: 2px; overflow: hidden; min-height: 200px; }
+    .kaart-vak svg { display: block; width: 100%; height: auto; }
+    .kaart-vak .land { fill: var(--kaart-land); stroke: var(--surface); stroke-width: .7; }
+    .stip { fill: var(--accent); stroke: var(--ink); stroke-width: 1.3; cursor: pointer; }
+    .stip:hover, .stip:focus-visible, .stip.gekozen { fill: var(--ink); stroke: var(--accent); stroke-width: 3; outline: none; }
+    .stip-getal { font: 800 12px var(--display); fill: #0a0a0a; text-anchor: middle; pointer-events: none; }
+    .stip-getal.gekozen { fill: var(--bg); }
+    .kaart-tip {
+      position: absolute; pointer-events: none; background: var(--ink); color: var(--bg); padding: 3px 9px; border-radius: 2px;
+      font: 700 0.8rem var(--display); letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap;
+    }
+    .kaart-laden { padding: 80px 16px; text-align: center; color: var(--ink-zacht); }
+    .kaart-paneel { margin-top: 14px; }
+    .kaart-paneel h3 { margin: 0 0 10px; font: 800 1.5rem var(--display); text-transform: uppercase; }
+    .kaart-paneel h3 small { font: 500 0.95rem var(--tekst); text-transform: none; color: var(--ink-zacht); margin-left: 8px; }
+    .kaart-paneel .paneel-kaarten { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 16px; }
+    .kaart-hint { margin: 0; color: var(--ink-zacht); }
+    .kaart-elders { margin: 14px 0 0; font-size: 0.9rem; color: var(--ink-zacht); }
+    .kaart-elders button { background: none; border: 0; padding: 0; font: inherit; color: var(--ink); cursor: pointer; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
 
     /* ---------- persoonlijk: jaaroverzicht ---------- */
     .jaaroverzicht { margin: 12px 0 0; font-size: 0.9rem; color: var(--hero-zacht); display: flex; flex-direction: column; gap: 2px; }
@@ -559,6 +612,7 @@
         <div class="weergave" role="group" aria-label="Weergave">
           <button type="button" class="weergave-knop" data-weergave="kaarten" aria-pressed="true">Kaarten</button>
           <button type="button" class="weergave-knop" data-weergave="lijst" aria-pressed="false">Lijst</button>
+          <button type="button" class="weergave-knop" data-weergave="kaart" aria-pressed="false">Kaart</button>
         </div>
         <button type="button" id="exportBewaard" class="actie" hidden>Bewaarde in agenda (.ics)</button>
         <details class="abonnement">
@@ -620,6 +674,7 @@
 
   <script src="data/congressen.js"></script>
   <script src="data/aanvullingen.js"></script>
+  <script src="data/steden.js"></script>
   <script>
     // Bereken ISO-weekinfo voor een datum (standaardalgoritme, maandag = eerste dag).
     // Werkt volledig in UTC: een kalenderdatum als "2027-01-18" moet overal hetzelfde
@@ -807,6 +862,17 @@
       return `<div class="kosten"><span class="punten-label">Kosten</span><span class="kosten-hoofd">${esc(k.hoofd)}${k.volgeboekt ? '<span class="volgeboekt">Volgeboekt</span>' : ''}</span>${k.detail ? `<span class="kosten-detail">${esc(k.detail)}</span>` : ''}</div>`;
     }
 
+    // Landkleuren (gedempt, afgeleid van de vlag) voor de rand en het landlabel.
+    const LANDKLEUR = {
+      'Nederland': '#c4561d', 'België': '#a88414', 'Duitsland': '#5e5a52', 'Verenigd Koninkrijk': '#22386b', 'Frankrijk': '#2f5aa8',
+      'Spanje': '#b8321f', 'Portugal': '#1f6b45', 'Italië': '#3f8a5a', 'Oostenrijk': '#7d1b2e', 'Zwitserland': '#d23b3b',
+      'Denemarken': '#c8102e', 'Hongarije': '#4d7a3a', 'Verenigde Staten': '#1d3f7a', 'Canada': '#b0232a', 'Curaçao': '#0f6f8f',
+      'Puerto Rico': '#0f6f8f', 'Thailand': '#6b3fa0', 'Singapore': '#b83a5e'
+    };
+    const landkleur = land => LANDKLEUR[land] || '#7a7a74';
+    const STEDEN_DATA = typeof STEDEN === 'undefined' ? {} : STEDEN;
+    const stadInfo = rij => STEDEN_DATA[rij.stad] || null;
+
     function esc(t) {
       return String(t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
     }
@@ -829,7 +895,9 @@
     })());
     let alleenBewaard = false;
     let alleenDeadline = false;
-    let weergave = (() => { try { return localStorage.getItem('weergave') === 'lijst' ? 'lijst' : 'kaarten'; } catch { return 'kaarten'; } })();
+    let weergave = (() => { try { const w = localStorage.getItem('weergave'); return ['lijst', 'kaart'].includes(w) ? w : 'kaarten'; } catch { return 'kaarten'; } })();
+    let kaartRegio = 'eu';
+    let kaartGekozen = null;
 
     function wisselBewaard(id) {
       if (bewaard.has(id)) bewaard.delete(id); else bewaard.add(id);
@@ -1131,8 +1199,11 @@
         ? `<div class="edities">${vorige ? editieLink('Vorige editie', vorige) : ''}${volgende ? editieLink('Volgende editie', volgende) : ''}</div>`
         : '';
       div.style.setProperty('--i', Math.min(index, 12));
+      div.style.setProperty('--landkleur', landkleur(rij.land));
+      const foto = stadInfo(rij)?.foto;
       div.innerHTML = `
-        <div class="kaart-datum">
+        <div class="kaart-datum${foto ? ' met-foto' : ''}">
+          ${foto ? `<img class="kop-foto" src="${esc(foto.bestand)}" alt="" loading="lazy" decoding="async"><a class="foto-credit" href="${esc(foto.bron)}" target="_blank" rel="noopener" title="Foto: ${esc(foto.fotograaf)}, ${esc(foto.licentie)} (Wikimedia Commons)">Foto: ${esc(foto.fotograaf)} · ${esc(foto.licentie)}</a>` : ''}
           <div>
             <div class="maand">${esc(blok.maand)} ${blok.jaar}</div>
             <div class="dagen-groot">${esc(blok.dagen)}</div>
@@ -1147,7 +1218,7 @@
         <div class="kaart-body">
           <h2>${esc(rij.naam)}</h2>
           <div class="organisatie">${esc(rij.organisatie)}</div>
-          <div class="plek">${esc(rij.stad)}, ${esc(rij.land)}</div>
+          <div class="plek-regel"><span class="landchip"><i></i>${esc(rij.land)}</span><span class="plek">${esc(rij.stad === 'Nog niet bekend' ? 'Stad nog niet bekend' : rij.stad)}</span></div>
           <div class="tags">${rij.onderwerp.map(o => `<span class="tag">${esc(o)}</span>`).join('')}</div>
           ${rij.letOp ? `<div class="let-op ${rij.letOpType === 'commercieel' ? 'commercieel' : 'data'}"><span class="let-op-label">${rij.letOpType === 'commercieel' ? 'Commercieel congres' : 'Let op'}</span>${esc(rij.letOp)}</div>` : ''}
           ${rij.punten || rij.puntenIndicatie ? `<div class="punten"><span class="punten-label">Nascholing</span>${rij.punten ? esc(rij.punten) : `<span class="indicatie">vorige editie ${esc(rij.puntenIndicatie)}</span>`}</div>` : ''}
@@ -1201,6 +1272,7 @@
       const plek = agendaLocatie(rij) || 'Locatie nog niet bekend';
       const el = document.createElement('article');
       el.className = 'lijst-rij' + (voorbij ? ' voorbij' : '');
+      el.style.setProperty('--landkleur', landkleur(rij.land));
       el.dataset.id = rij.id;
       el.innerHTML = `
         <button type="button" class="rij-hoofd" aria-expanded="false">
@@ -1256,8 +1328,11 @@
 
       const lijst = document.getElementById('congresLijst');
       lijst.classList.toggle('als-lijst', weergave === 'lijst');
+      lijst.classList.toggle('als-kaart', weergave === 'kaart');
       lijst.innerHTML = '';
-      if (gefilterd.length === 0) {
+      if (weergave === 'kaart') {
+        toonKaart(gefilterd);
+      } else if (gefilterd.length === 0) {
         lijst.innerHTML = alleenBewaard && bewaardeRijen().length === 0
           ? '<div class="leeg-resultaat">Nog niets bewaard — tik op ★ bij een congres</div>'
           : '<div class="leeg-resultaat">Niets gevonden — probeer het breder</div>';
@@ -1290,6 +1365,126 @@
       syncExportKnop();
       filtersNaarUrl();
     }
+
+    // ---------- kaartweergave ----------
+    // D3 en TopoJSON worden pas geladen als iemand de kaart opent; de landsgrenzen komen uit
+    // world-atlas (Natural Earth, 1:50m). Stippen tonen de congressen die door de filters komen.
+    let kaartBibliotheken = null;
+    function laadScript(src) {
+      return new Promise((ok, fout) => {
+        const el = document.createElement('script');
+        el.src = src; el.onload = ok; el.onerror = () => fout(new Error(src));
+        document.head.appendChild(el);
+      });
+    }
+    function laadKaartBibliotheken() {
+      kaartBibliotheken ??= laadScript('https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js')
+        .then(() => laadScript('https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js'))
+        .then(() => fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json'))
+        .then(r => r.json())
+        .then(topo => topojson.feature(topo, topo.objects.countries).features)
+        .catch(fout => { kaartBibliotheken = null; throw fout; });
+      return kaartBibliotheken;
+    }
+    const KAART_REGIO = {
+      eu: { naam: 'Europa', hoeken: [[-11, 36], [26, 36], [-11, 60], [26, 60]], projectie: () => d3.geoAzimuthalEqualArea().rotate([-7, -49]) },
+      na: { naam: 'Noord-Amerika', hoeken: [[-125, 12], [-62, 12], [-125, 50], [-62, 50]], projectie: () => d3.geoConicEqualArea().parallels([20, 50]).rotate([96, 0]) }
+    };
+    let laatsteKaartRijen = [];
+
+    function toonKaart(rijen) {
+      laatsteKaartRijen = rijen;
+      const lijst = document.getElementById('congresLijst');
+      const perRegio = r => CONGRESSEN_REGIO(r);
+      const aantal = regio => rijen.filter(r => perRegio(r) === regio).length;
+      lijst.innerHTML = `
+        <div class="regio-keuze" role="group" aria-label="Regio">
+          ${Object.entries(KAART_REGIO).map(([k, v]) => `<button type="button" class="chip" data-regio="${k}" aria-pressed="${k === kaartRegio}">${v.naam} (${aantal(k)})</button>`).join('')}
+        </div>
+        <div class="kaart-vak" id="kaartVak"><div class="kaart-laden">Kaart laden…</div><div class="kaart-tip" id="kaartTip" hidden></div></div>
+        <div class="kaart-paneel" id="kaartPaneel"><p class="kaart-hint">Klik op een stip om de congressen in die stad te zien. Hoe groter de stip, hoe meer congressen.</p></div>
+        <p class="kaart-elders" id="kaartElders"></p>`;
+      lijst.querySelectorAll('[data-regio]').forEach(b => b.addEventListener('click', () => {
+        kaartRegio = b.dataset.regio; kaartGekozen = null; toonKaart(laatsteKaartRijen);
+      }));
+      const elders = rijen.filter(r => !perRegio(r));
+      const eldersEl = document.getElementById('kaartElders');
+      if (elders.length) {
+        eldersEl.innerHTML = 'Niet op deze kaart: ' + elders.map(r => `<button type="button" data-id="${esc(r.id)}">${esc(r.naam)}</button> (${esc(r.land === 'Cruise' ? r.stad : agendaLocatie(r) || r.land)})`).join(' · ');
+        eldersEl.querySelectorAll('button').forEach(b => b.addEventListener('click', () => toonPaneel({ titel: 'Niet op de kaart', rijen: [CONGRESSEN.find(r => r.id === b.dataset.id)] })));
+      }
+      if (rijen.length === 0) { document.getElementById('kaartPaneel').innerHTML = '<p class="kaart-hint">Niets gevonden — probeer het breder.</p>'; }
+      laadKaartBibliotheken().then(landen => tekenKaart(landen, rijen)).catch(() => {
+        const laden = document.querySelector('#kaartVak .kaart-laden');
+        if (laden) laden.textContent = 'De kaart kon niet laden. Controleer je internetverbinding of kies Kaarten of Lijst.';
+      });
+    }
+    function CONGRESSEN_REGIO(rij) { return stadInfo(rij)?.regio || null; }
+
+    function tekenKaart(landen, rijen) {
+      const vak = document.getElementById('kaartVak');
+      if (!vak || weergave !== 'kaart') return;
+      const regio = KAART_REGIO[kaartRegio];
+      const W = Math.max(300, vak.clientWidth), H = Math.round(W < 600 ? W * 0.95 : Math.min(W * 0.6, 620)); // telefoon: hoger, anders vallen stippen samen
+      const basis = W < 600 ? 5.5 : 7;
+      const projectie = regio.projectie().fitExtent([[24, 24], [W - 24, H - 24]], { type: 'MultiPoint', coordinates: regio.hoeken });
+      const pad = d3.geoPath(projectie);
+      vak.querySelector('svg')?.remove();
+      vak.querySelector('.kaart-laden')?.remove();
+      const svg = d3.select(vak).insert('svg', '.kaart-tip').attr('viewBox', `0 0 ${W} ${H}`)
+        .attr('role', 'img').attr('aria-label', `Kaart van ${regio.naam} met de congressteden`);
+      svg.append('g').selectAll('path').data(landen).join('path').attr('class', 'land').attr('d', pad);
+
+      // Steden groeperen; steden die op het scherm bijna samenvallen (bv. Tignes en Val d'Isère) worden één stip.
+      const perStad = new Map();
+      rijen.filter(r => CONGRESSEN_REGIO(r) === kaartRegio).forEach(r => {
+        if (!perStad.has(r.stad)) { const s = stadInfo(r); perStad.set(r.stad, { steden: [r.stad], rijen: [], xy: projectie([s.lon, s.lat]) }); }
+        perStad.get(r.stad).rijen.push(r);
+      });
+      const groepen = [];
+      [...perStad.values()].sort((a, b) => b.rijen.length - a.rijen.length).forEach(p => {
+        const buur = groepen.find(g => Math.hypot(g.xy[0] - p.xy[0], g.xy[1] - p.xy[1]) < 10);
+        if (buur) { buur.steden.push(...p.steden); buur.rijen.push(...p.rijen); } else groepen.push({ ...p, steden: [...p.steden], rijen: [...p.rijen] });
+      });
+      const sleutel = g => g.steden.slice().sort().join('|');
+      const tip = document.getElementById('kaartTip');
+      const g = svg.append('g');
+      groepen.forEach(gr => {
+        const n = gr.rijen.length, r = Math.min(basis + (n - 1) * 2.4, 20);
+        const gekozen = kaartGekozen === sleutel(gr);
+        const label = `${gr.steden.join(' / ')}: ${n} ${n === 1 ? 'congres' : 'congressen'}`;
+        const c = g.append('circle').attr('class', 'stip' + (gekozen ? ' gekozen' : '')).attr('cx', gr.xy[0]).attr('cy', gr.xy[1]).attr('r', r)
+          .attr('tabindex', 0).attr('role', 'button').attr('aria-label', label);
+        if (n > 1) g.append('text').attr('class', 'stip-getal' + (gekozen ? ' gekozen' : '')).attr('x', gr.xy[0]).attr('y', gr.xy[1] + 4).text(n);
+        c.on('mousemove', ev => {
+          const box = vak.getBoundingClientRect();
+          tip.hidden = false; tip.textContent = `${gr.steden.join(' / ')} · ${n}`;
+          tip.style.left = `${Math.min(ev.clientX - box.left + 12, box.width - tip.offsetWidth - 6)}px`;
+          tip.style.top = `${ev.clientY - box.top - 30}px`;
+        }).on('mouseleave', () => { tip.hidden = true; })
+          .on('click', () => kiesGroep(gr)).on('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); kiesGroep(gr); } });
+      });
+      function kiesGroep(gr) {
+        kaartGekozen = sleutel(gr);
+        const land = stadInfo(gr.rijen[0]) ? gr.rijen[0].land : '';
+        toonPaneel({ titel: gr.steden.join(' / '), sub: land, rijen: gr.rijen });
+        tekenKaart(landen, laatsteKaartRijen);
+      }
+    }
+
+    function toonPaneel({ titel, sub, rijen }) {
+      const paneel = document.getElementById('kaartPaneel');
+      paneel.innerHTML = `<h3>${esc(titel)}${sub ? `<small>${esc(sub)}</small>` : ''}</h3><div class="paneel-kaarten"></div>`;
+      const vak = paneel.querySelector('.paneel-kaarten');
+      rijen.slice().sort((a, b) => a.datumStart.localeCompare(b.datumStart)).forEach((r, i) => vak.appendChild(renderCongres(r, i)));
+      paneel.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'nearest' });
+    }
+    let kaartResizeTimer;
+    window.addEventListener('resize', () => {
+      if (weergave !== 'kaart' || !kaartBibliotheken) return;
+      clearTimeout(kaartResizeTimer);
+      kaartResizeTimer = setTimeout(() => kaartBibliotheken.then(landen => tekenKaart(landen, laatsteKaartRijen)), 150);
+    });
 
     // Bewaarde congressen die nog in de data staan (een id kan verdwijnen na een scraper-run).
     // De export pakt ze allemaal, ongeacht de actieve filters.
@@ -1398,6 +1593,7 @@
     // mee te tonen of (als andere filters hem verbergen) de filters te wissen.
     function gaNaarEditie(id) {
       const rij = CONGRESSEN.find(r => r.id === id);
+      if (weergave === 'kaart') zetWeergave('kaarten');
       if (!voldoetAanFilters(rij, huidigeFilters())) {
         const vanaf = document.getElementById('vanaf');
         if (vanaf.value && rij.datumEind < vanaf.value) vanaf.value = '';

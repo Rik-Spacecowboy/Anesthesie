@@ -12,6 +12,11 @@ met de ster. Bewaarde congressen staan alleen in de browser waarin je ze bewaart
 op je beginscherm telt daarbij als een aparte browser. Alle filters staan in de URL, dus een selectie is te delen
 of te bookmarken via de "Deel"-knop.
 
+Elke congreskaart heeft een stadsfoto als kop (Wikimedia Commons, vrije licentie, fotograaf vermeld op de foto;
+zie `data/steden.js` en `img/steden/`) en een rand plus label in de kleur van het land. De weergave **Kaart** toont
+de congressen als stippen op een kaart van Europa of Noord-Amerika (D3 + Natural Earth via world-atlas, pas geladen
+als je de kaart opent); klik op een stip voor de congressen in die stad(en).
+
 Weergave als kaarten of als compacte lijst (een regel per congres; klik voor de volledige kaart). Sorteren kan
 op datum of prijs, en er is een maximumprijs; prijzen in $ en £ worden daarvoor omgerekend tegen een vaste koers
 (alleen voor sorteren/filteren, getoond worden altijd de bedragen van de organisator). Wie congressen bewaart,
