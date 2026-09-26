@@ -24,7 +24,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 # Alle databestanden die index.html laadt; publiceer ze allemaal mee (zie CLAUDE.md).
-DATABESTANDEN = ["congressen.js", "aanvullingen.js", "steden.js"]
+DATABESTANDEN = ["congressen.js", "aanvullingen.js", "steden.js", "kaartlanden.js"]
 # Stadsfoto's (koppen van de congreskaarten); ook deze gaan mee als bestanden van de artifact.
 FOTOMAP = "img/steden"
 
