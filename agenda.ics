@@ -199,7 +199,7 @@ DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20261211
 DTEND;VALUE=DATE:20261213
 SUMMARY:7th ESRA Instructor Course
-LOCATION:Antwerp\, België
+LOCATION:Antwerpen\, België
 DESCRIPTION:ESRA (European Society of Regional Anaesthesia and Pain Therapy
  )\nKosten: €875 (alleen voor ESRA-leden)\nLaatste dag annuleren met teru
  gbetaling: 2026-10-08\nBron: https://esraeurope.org/meetings/?meeting_type
@@ -214,8 +214,8 @@ DTSTART;VALUE=DATE:20261008
 DTEND;VALUE=DATE:20261009
 SUMMARY:Laatste dag annuleren met terugbetaling: 7th ESRA Instructor Course
 DESCRIPTION:7th ESRA Instructor Course (2026-12-11 t/m 2026-12-12\, Antwerp
- \, België)\nBron: https://esraeurope.org/meeting/7th-esra-instructor-cour
- se/
+ en\, België)\nBron: https://esraeurope.org/meeting/7th-esra-instructor-co
+ urse/
 URL:https://esraeurope.org/meeting/7th-esra-instructor-course/
 TRANSP:TRANSPARENT
 BEGIN:VALARM
@@ -323,7 +323,7 @@ DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270114
 DTEND;VALUE=DATE:20270116
 SUMMARY:Winter Scientific Meeting 2027
-LOCATION:London\, Verenigd Koninkrijk
+LOCATION:Londen\, Verenigd Koninkrijk
 DESCRIPTION:Association of Anaesthetists (GB & Ierland)\nKosten: Lid £220
  –£610 (online/fysiek\, 1–2 dagen) · niet-lid £750–£1.025\nLaatst
  e dag early-bird: 2026-12-03\nLaatste dag annuleren met terugbetaling: 202
@@ -339,7 +339,7 @@ DTSTART;VALUE=DATE:20261203
 DTEND;VALUE=DATE:20261204
 SUMMARY:Laatste dag early-bird: Winter Scientific Meeting 2027
 DESCRIPTION:Winter Scientific Meeting 2027 (2027-01-14 t/m 2027-01-15\, Lon
- don\, Verenigd Koninkrijk)\nBron: https://anaesthetists.org/Home/Education
+ den\, Verenigd Koninkrijk)\nBron: https://anaesthetists.org/Home/Education
  -events/Winter-Scientific-Meeting/How-to-book
 URL:https://anaesthetists.org/Home/Education-events/Winter-Scientific-Meeti
  ng/How-to-book
@@ -359,7 +359,7 @@ DTEND;VALUE=DATE:20261216
 SUMMARY:Laatste dag annuleren met terugbetaling: Winter Scientific Meeting 
  2027
 DESCRIPTION:Winter Scientific Meeting 2027 (2027-01-14 t/m 2027-01-15\, Lon
- don\, Verenigd Koninkrijk)\nBron: https://anaesthetists.org/Home/Education
+ den\, Verenigd Koninkrijk)\nBron: https://anaesthetists.org/Home/Education
  -events/Winter-Scientific-Meeting/How-to-book
 URL:https://anaesthetists.org/Home/Education-events/Winter-Scientific-Meeti
  ng/How-to-book
@@ -480,7 +480,7 @@ DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270208
 DTEND;VALUE=DATE:20270212
 SUMMARY:NYSORA: Anesthesia Review Conference
-LOCATION:Val D’Isere\, Frankrijk
+LOCATION:Val d'Isère\, Frankrijk
 DESCRIPTION:NYSORA\nKosten: €1.075 (early bird\, inschrijven vóór 8 jan
   2027)\, daarna €1.175\nLaatste dag early-bird: 2027-01-07\nBron: https:
  //nysora.com/events/conferences
@@ -494,8 +494,8 @@ DTSTART;VALUE=DATE:20270107
 DTEND;VALUE=DATE:20270108
 SUMMARY:Laatste dag early-bird: NYSORA: Anesthesia Review Conference
 DESCRIPTION:NYSORA: Anesthesia Review Conference (2027-02-08 t/m 2027-02-11
- \, Val D’Isere\, Frankrijk)\nBron: https://nysora.com/event/conferences/
- anesthesia-review-conference-valdisere-2027/
+ \, Val d'Isère\, Frankrijk)\nBron: https://nysora.com/event/conferences/a
+ nesthesia-review-conference-valdisere-2027/
 URL:https://nysora.com/event/conferences/anesthesia-review-conference-valdi
  sere-2027/
 TRANSP:TRANSPARENT
@@ -806,7 +806,7 @@ DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270529
 DTEND;VALUE=DATE:20270601
 SUMMARY:Euroanaesthesia 2027
-LOCATION:Copenhagen\, Denemarken
+LOCATION:Kopenhagen\, Denemarken
 DESCRIPTION:ESAIC (European Society of Anaesthesiology and Intensive Care)\
  nKosten: Nog niet gepubliceerd\nLaatste dag abstracts indienen: 2026-12-05
  \nBron: https://euroanaesthesia.org/2027/
@@ -819,7 +819,7 @@ DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Laatste dag abstracts indienen: Euroanaesthesia 2027
-DESCRIPTION:Euroanaesthesia 2027 (2027-05-29 t/m 2027-05-31\, Copenhagen\, 
+DESCRIPTION:Euroanaesthesia 2027 (2027-05-29 t/m 2027-05-31\, Kopenhagen\, 
  Denemarken)\nBron: https://euroanaesthesia.org/2027/abstracts/
 URL:https://euroanaesthesia.org/2027/abstracts/
 TRANSP:TRANSPARENT
@@ -995,7 +995,7 @@ DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20280520
 DTEND;VALUE=DATE:20280523
 SUMMARY:Euroanaesthesia 2028
-LOCATION:Vienna\, Oostenrijk
+LOCATION:Wenen\, Oostenrijk
 DESCRIPTION:ESAIC (European Society of Anaesthesiology and Intensive Care)\
  nKosten: Nog niet gepubliceerd\nBron: https://euroanaesthesia.org/2028/
 URL:https://euroanaesthesia.org/2028/

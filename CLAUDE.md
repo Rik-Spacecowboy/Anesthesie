@@ -1,5 +1,9 @@
 # Anesthesie Congres Tracker
 
+De site is Nederlandstalig: steden en landen met een Nederlandse naam altijd in het Nederlands (Wenen, niet
+Vienna). De scraper vertaalt via `LANDEN_NL`/`STEDEN_NL` in `scripts/scrape_congressen.py`; vul die aan als er een
+Engelse naam doorheen glipt.
+
 ## Live zetten: altijd deze drie stappen
 
 Rik's vaste instructie: elke live-gang omvat altijd alle drie, zonder dat hij erom hoeft te vragen.
