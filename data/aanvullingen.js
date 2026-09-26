@@ -87,7 +87,7 @@ const AANVULLINGEN = {
     gecontroleerd: "2026-09-25"
   },
   "nysora-kitzb-hel-2027": {
-    kosten: "€1.075 (early bird, inschrijven vóór 13 dec 2026), daarna €1.175",
+    kosten: "€1.075 (early bird, inschrijven vóór 13 dec 2026) · daarna €1.175",
     kostenBron: "https://nysora.com/event/conferences/update-on-regional-anesthesia-and-pain-management-including-hands-on-scanning-practice/",
     deadlines: [
       { soort: "early-bird", datum: "2026-12-12", bron: "https://nysora.com/event/conferences/update-on-regional-anesthesia-and-pain-management-including-hands-on-scanning-practice/", gecontroleerd: "2026-09-26" }
@@ -112,7 +112,7 @@ const AANVULLINGEN = {
     gecontroleerd: "2026-09-25"
   },
   "nysora-val-d-isere-2027": {
-    kosten: "€1.075 (early bird, inschrijven vóór 8 jan 2027), daarna €1.175",
+    kosten: "€1.075 (early bird, inschrijven vóór 8 jan 2027) · daarna €1.175",
     kostenBron: "https://nysora.com/event/conferences/anesthesia-review-conference-valdisere-2027/",
     deadlines: [
       { soort: "early-bird", datum: "2027-01-07", bron: "https://nysora.com/event/conferences/anesthesia-review-conference-valdisere-2027/", gecontroleerd: "2026-09-26" }

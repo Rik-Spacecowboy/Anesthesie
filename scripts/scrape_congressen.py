@@ -85,6 +85,23 @@ STEDEN_NL = {
 }
 
 
+# Onderwerpen samenvoegen tot een kleine, niet-overlappende set filterchips op de site.
+# None = weglaten (te algemeen om op te filteren).
+ONDERWERPEN_SAMEN = {
+    "pijntherapie": "pijngeneeskunde", "pijnmanagement": "pijngeneeskunde", "acute pijn": "pijngeneeskunde",
+    "multidisciplinair": None,
+}
+
+
+def normaliseer_onderwerpen(onderwerpen):
+    uit = []
+    for o in onderwerpen:
+        o = ONDERWERPEN_SAMEN.get(o, o)
+        if o and o not in uit:
+            uit.append(o)
+    return uit
+
+
 def vertaal_stad(stad):
     sleutel = stad.strip().lower().replace("’", "'")
     return STEDEN_NL.get(sleutel, stad.strip())
@@ -161,8 +178,13 @@ def vind_prijsrange_na_label(regels, label_patroon, aantal=3, max_afstand=6):
     return None
 
 
+def bedrag_nl(n):
+    """1192 -> '1.192' (Nederlandse duizendpunt)."""
+    return f"{n:,}".replace(",", ".")
+
+
 def formatteer_prijsrange(laag, hoog, munt, suffix=""):
-    kern = f"{munt}{laag}" if laag == hoog else f"{munt}{laag}–{munt}{hoog}"
+    kern = f"{munt}{bedrag_nl(laag)}" if laag == hoog else f"{munt}{bedrag_nl(laag)}–{munt}{bedrag_nl(hoog)}"
     return f"{kern}{suffix}"
 
 
@@ -1116,6 +1138,7 @@ def main():
     alle_entries.extend(archief(geziene_ids))
     for entry in alle_entries:
         entry["stad"] = vertaal_stad(entry["stad"])
+        entry["onderwerp"] = normaliseer_onderwerpen(entry["onderwerp"])
 
     nieuwe_inhoud = bouw_bestand(alle_entries)
     bestaande_inhoud = DATA_FILE.read_text() if DATA_FILE.exists() else ""
