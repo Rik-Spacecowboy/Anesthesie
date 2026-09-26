@@ -34,6 +34,13 @@ Faalt het bouwscript (index.html is zo veranderd dat een aanpassing niet meer pa
 in plaats van het over te slaan. Daarnaast checkt een geplande Routine twee keer per dag of de artifact
 achterloopt op `main` (vangt bv. scraper-PR's op die in GitHub zelf gemerged worden).
 
+## PR's: Claude maakt én merget ze
+
+Rik doet zelf geen PR's, ook niet de wekelijkse scrape-PR (`auto/scrape-congressen`). Laat dus nooit een PR
+voor hem liggen: maak, controleer en merge hem zelf, en zet daarna live (zie hierboven). Elke maandag om 9:00
+(Amsterdam) handelt de routine "Anesthesie: maandag scrape-PR + deadlines" de scrape-PR af en zoekt hij nieuwe
+deadlines bij alle congressen (ook de commerciële; alleen ASA en NWAS niet).
+
 ## Agenda-feed (agenda.ics)
 
 `agenda.ics` wordt gebouwd uit `data/congressen.js` + `data/aanvullingen.js`. Na elke wijziging in `data/`:
