@@ -19,6 +19,8 @@ from pathlib import Path
 import requests
 from bs4 import BeautifulSoup
 
+from jsdata import lees_js_data
+
 ROOT = Path(__file__).resolve().parent.parent
 DATA_FILE = ROOT / "data" / "congressen.js"
 MANUAL_FILE = ROOT / "data" / "congressen.manual.json"
@@ -1042,9 +1044,23 @@ HEADER = """// Congresdataset. Dit bestand wordt automatisch gegenereerd door
 // - Congressen die niet automatisch te scrapen zijn (geblokkeerd door de
 //   site, of expliciet verboden in de sitevoorwaarden) staan handmatig in
 //   data/congressen.manual.json en worden hier ongewijzigd overgenomen.
+// - Afgelopen congressen blijven staan als archief (vorige edities), ook als
+//   de bron ze niet meer toont.
 // - Kosten zijn vaak nog niet gepubliceerd zo ver van tevoren -- "Nog niet
 //   gepubliceerd" betekent dus niet dat het gratis is.
 """
+
+
+def archief(geziene_ids):
+    """Afgelopen congressen die de bronnen niet meer tonen, blijven staan: de site laat
+    ze zien als vorige editie (en gebruikt hun kosten/punten als indicatie voor de
+    volgende). Alleen edities waarvan de einddatum voorbij is; een toekomstig congres
+    dat uit de bron verdwijnt, verdwijnt hier dus ook (bv. geannuleerd of verplaatst)."""
+    if not DATA_FILE.exists():
+        return []
+    vandaag = datetime.date.today().isoformat()
+    return [e for e in lees_js_data(DATA_FILE, "CONGRESSEN")
+            if e["id"] not in geziene_ids and e["datumEind"] < vandaag]
 
 
 def bouw_bestand(entries):
@@ -1076,6 +1092,8 @@ def main():
     if not alle_entries:
         print("Geen enkele bron leverde data op, bestaand data/congressen.js blijft ongewijzigd.", file=sys.stderr)
         return 1
+
+    alle_entries.extend(archief(geziene_ids))
 
     nieuwe_inhoud = bouw_bestand(alle_entries)
     bestaande_inhoud = DATA_FILE.read_text() if DATA_FILE.exists() else ""

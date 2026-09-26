@@ -26,6 +26,9 @@ jobs:
       - name: Scrape bekende bronnen
         run: python3 scripts/scrape_congressen.py
 
+      - name: Agenda-feed (agenda.ics) bijwerken
+        run: python3 scripts/bouw_agenda.py
+
       - name: Open pull request als er wijzigingen zijn
         uses: peter-evans/create-pull-request@v6
         with:

@@ -7,6 +7,8 @@
 // - Congressen die niet automatisch te scrapen zijn (geblokkeerd door de
 //   site, of expliciet verboden in de sitevoorwaarden) staan handmatig in
 //   data/congressen.manual.json en worden hier ongewijzigd overgenomen.
+// - Afgelopen congressen blijven staan als archief (vorige edities), ook als
+//   de bron ze niet meer toont.
 // - Kosten zijn vaak nog niet gepubliceerd zo ver van tevoren -- "Nog niet
 //   gepubliceerd" betekent dus niet dat het gratis is.
 

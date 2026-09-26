@@ -232,6 +232,19 @@
     .punten { font-size: 0.9rem; display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: baseline; }
     .punten-label { font: 700 0.72rem var(--display); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-zacht); }
     .punten .indicatie { display: inline; color: var(--ink-zacht); }
+    .deadlines { font-size: 0.9rem; display: flex; flex-direction: column; gap: 3px; }
+    .deadline { display: flex; flex-wrap: wrap; gap: 0 8px; align-items: baseline; }
+    .deadline a { text-decoration-color: var(--lijn); text-underline-offset: 3px; }
+    .deadline a:hover { text-decoration-color: var(--accent); }
+    .deadline .nog { color: var(--ink-zacht); font-size: 0.82rem; }
+    .deadline.dringend .nog { color: var(--ink); font-weight: 700; }
+    .deadline.dringend .nog::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 5px; border-radius: 50%; background: var(--accent); }
+    .edities { font-size: 0.85rem; color: var(--ink-zacht); display: flex; flex-wrap: wrap; gap: 2px 14px; }
+    .editie-link {
+      background: none; border: 0; padding: 0; cursor: pointer; font: inherit; color: var(--ink);
+      text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px;
+    }
+    .congres-kaart.uitgelicht { transform: translate(-4px, -4px); box-shadow: 8px 8px 0 var(--accent); }
     a.bron {
       flex: none; font: 800 0.95rem var(--display); letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
       background: var(--ink); color: var(--bg); padding: 8px 14px; border-radius: 999px;
@@ -251,6 +264,23 @@
     .ster[aria-pressed="true"] { color: var(--accent); }
     .teller-rij { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-top: 18px; }
     .teller-rij #resultaatTeller { margin: 0; }
+    .teller-acties { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .abonnement summary { list-style: none; display: inline-block; }
+    .abonnement summary::-webkit-details-marker { display: none; }
+    .abonnement[open] summary { border-color: var(--ink); }
+    .abonnement-paneel {
+      margin-top: 10px; padding: 14px 16px; background: var(--surface); border: 2px solid var(--ink); border-radius: 2px;
+      display: flex; flex-direction: column; gap: 10px; font-size: 0.92rem;
+    }
+    .abonnement-paneel p { margin: 0; }
+    .abonnement-knoppen { display: flex; flex-wrap: wrap; gap: 8px; }
+    .abonnement-paneel label { display: flex; flex-direction: column; gap: 4px; color: var(--ink-zacht); font-size: 0.85rem; }
+    .abonnement-paneel input {
+      font: 500 0.9rem var(--tekst); padding: 8px 10px; background: var(--bg); color: var(--ink);
+      border: 2px solid var(--lijn); border-radius: 2px; width: 100%;
+    }
+    .teller-rij:has(.abonnement[open]) .teller-acties { flex-basis: 100%; }
+    .abonnement[open] { flex-basis: 100%; }
     .melding {
       position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 50;
       background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: 2px;
@@ -397,7 +427,22 @@
 
     <div class="teller-rij">
       <p id="resultaatTeller"></p>
-      <button type="button" id="exportBewaard" class="actie" hidden>Bewaarde in agenda (.ics)</button>
+      <div class="teller-acties">
+        <button type="button" id="exportBewaard" class="actie" hidden>Bewaarde in agenda (.ics)</button>
+        <details class="abonnement">
+          <summary class="actie">Agenda-abonnement</summary>
+          <div class="abonnement-paneel">
+            <p>Alle congressen én hun deadlines (early-bird, abstracts, inschrijving) in je eigen agenda. Nieuwe congressen en gewijzigde data komen vanzelf door. Deadlines hebben een herinnering een week van tevoren (op de iPhone: zet bij het abonnement "Verwijder meldingen" uit).</p>
+            <div class="abonnement-knoppen">
+              <a class="actie" id="abonneerWebcal" href="#">iPhone, Mac, Outlook</a>
+              <a class="actie" id="abonneerGoogle" href="#" target="_blank" rel="noopener">Google Agenda</a>
+            </div>
+            <label>Werkt een knop niet? Voeg deze link toe als agenda-abonnement:
+              <input type="text" id="abonnementUrl" readonly>
+            </label>
+          </div>
+        </details>
+      </div>
     </div>
     <div class="melding" id="melding" role="status" hidden></div>
     <div class="congres-lijst" id="congresLijst"></div>
@@ -503,6 +548,7 @@
         if (!a) return;
         if (a.kosten && r.kosten === ONBEKEND) r.kosten = a.kosten;
         ['punten', 'kostenIndicatie', 'puntenIndicatie'].forEach(v => { if (a[v]) r[v] = a[v]; });
+        if (a.deadlines) r.deadlines = [...a.deadlines].sort((x, y) => x.datum.localeCompare(y.datum));
       });
       CONGRESSEN.forEach(r => {
         const eerder = CONGRESSEN
@@ -514,6 +560,26 @@
         if (!r.punten && !r.puntenIndicatie && vorigePunten) r.puntenIndicatie = `${vorigePunten.datumStart.slice(0, 4)}: ${vorigePunten.punten}`;
       });
     })();
+
+    // Deadlines (early-bird e.d.) uit aanvullingen.js; datum = laatste dag die nog telt.
+    const DEADLINE_LABEL = {
+      'early-bird': 'Early-bird t/m', 'abstracts': 'Abstracts indienen t/m',
+      'registratie': 'Inschrijven t/m', 'annuleren': 'Annuleren met terugbetaling t/m'
+    };
+    const DEADLINE_BINNENKORT = 30; // dagen, voor de chip "Deadline binnenkort"
+    const DEADLINE_DRINGEND = 14;   // dagen, extra nadruk op de kaart
+    const dagenTot = datum => Math.round((new Date(datum + 'T00:00:00') - new Date(VANDAAG + 'T00:00:00')) / 86400000);
+    const komendeDeadlines = rij => (rij.deadlines || []).filter(d => d.datum >= VANDAAG);
+    const heeftDeadlineBinnenkort = rij => komendeDeadlines(rij).some(d => dagenTot(d.datum) <= DEADLINE_BINNENKORT);
+
+    // Edities van dezelfde reeks (zelfde id zonder jaartal), op datum.
+    function edities(rij) {
+      return CONGRESSEN.filter(o => reeksVan(o.id) === reeksVan(rij.id)).sort((a, b) => a.datumStart.localeCompare(b.datumStart));
+    }
+
+    // Agenda-abonnement op agenda.ics (gebouwd door scripts/bouw_agenda.py, gehost op GitHub Pages).
+    const AGENDA_URL = 'https://rik-spacecowboy.github.io/Anesthesie/agenda.ics';
+    const AGENDA_WEBCAL = AGENDA_URL.replace(/^https:/, 'webcal:');
 
     function esc(t) {
       return String(t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -536,6 +602,7 @@
       try { return JSON.parse(localStorage.getItem(BEWAARD_SLEUTEL)) || []; } catch { return []; }
     })());
     let alleenBewaard = false;
+    let alleenDeadline = false;
 
     function wisselBewaard(id) {
       if (bewaard.has(id)) bewaard.delete(id); else bewaard.add(id);
@@ -555,7 +622,8 @@
       return [rij.stad, rij.land].filter(w => w && !/^(nog niet bekend|onbekend)$/i.test(w)).join(', ');
     }
     function agendaOmschrijving(rij) {
-      return [rij.organisatie, rij.letOp ? `Let op: ${rij.letOp}` : '', `Kosten: ${rij.kosten}`, rij.punten ? `Nascholing: ${rij.punten}` : '', `Bron: ${rij.bron}`].filter(Boolean).join('\n');
+      const deadlines = komendeDeadlines(rij).map(d => `${DEADLINE_LABEL[d.soort]} ${formatDatum(d.datum)}`);
+      return [rij.organisatie, rij.letOp ? `Let op: ${rij.letOp}` : '', `Kosten: ${rij.kosten}`, rij.punten ? `Nascholing: ${rij.punten}` : '', ...deadlines, `Bron: ${rij.bron}`].filter(Boolean).join('\n');
     }
 
     function icsTekst(t) {
@@ -705,18 +773,19 @@
         });
         return b;
       };
-      const komende = document.createElement('button');
-      komende.type = 'button';
-      komende.className = 'chip';
-      komende.textContent = 'Komende';
-      komende.dataset.select = 'vanaf';
-      komende.dataset.waarde = VANDAAG;
-      komende.addEventListener('click', () => {
+      // Afgelopen congressen zijn standaard verborgen (vanaf = vandaag); deze chip toont ze ook.
+      const afgelopen = document.createElement('button');
+      afgelopen.type = 'button';
+      afgelopen.className = 'chip';
+      afgelopen.textContent = 'Ook afgelopen';
+      afgelopen.dataset.select = 'vanaf';
+      afgelopen.dataset.waarde = '';
+      afgelopen.addEventListener('click', () => {
         const veld = document.getElementById('vanaf');
-        veld.value = (veld.value === VANDAAG) ? '' : VANDAAG;
+        veld.value = veld.value === '' ? VANDAAG : '';
         toonCongressen();
       });
-      rij.appendChild(komende);
+      rij.appendChild(afgelopen);
       const bewaardChip = document.createElement('button');
       bewaardChip.type = 'button';
       bewaardChip.className = 'chip';
@@ -726,6 +795,16 @@
         toonCongressen();
       });
       rij.appendChild(bewaardChip);
+      const deadlineChip = document.createElement('button');
+      deadlineChip.type = 'button';
+      deadlineChip.className = 'chip';
+      deadlineChip.id = 'deadlineChip';
+      deadlineChip.title = `Congressen met een deadline (early-bird, abstracts, inschrijving) binnen ${DEADLINE_BINNENKORT} dagen`;
+      deadlineChip.addEventListener('click', () => {
+        alleenDeadline = !alleenDeadline;
+        toonCongressen();
+      });
+      rij.appendChild(deadlineChip);
       rij.appendChild(maak('Even week', 'filterWeek', 'even'));
       rij.appendChild(maak('Oneven week', 'filterWeek', 'oneven'));
       const scheiding = document.createElement('span');
@@ -742,6 +821,9 @@
       const bewaardChip = document.getElementById('bewaardChip');
       bewaardChip.textContent = `★ Bewaard (${bewaardeRijen().length})`;
       bewaardChip.setAttribute('aria-pressed', alleenBewaard ? 'true' : 'false');
+      const deadlineChip = document.getElementById('deadlineChip');
+      deadlineChip.textContent = `Deadline binnenkort (${CONGRESSEN.filter(heeftDeadlineBinnenkort).length})`;
+      deadlineChip.setAttribute('aria-pressed', alleenDeadline ? 'true' : 'false');
     }
 
     function huidigeFilters() {
@@ -759,6 +841,7 @@
 
     function voldoetAanFilters(rij, filters) {
       if (alleenBewaard && !bewaard.has(rij.id)) return false;
+      if (alleenDeadline && !heeftDeadlineBinnenkort(rij)) return false;
       if (filters.land && rij.land !== filters.land) return false;
       if (filters.stad && rij.stad !== filters.stad) return false;
       if (filters.onderwerp && !rij.onderwerp.includes(filters.onderwerp)) return false;
@@ -780,6 +863,20 @@
       const nu = rij.datumStart <= VANDAAG && VANDAAG <= rij.datumEind;
       const div = document.createElement('article');
       div.className = 'congres-kaart' + (voorbij ? ' voorbij' : '');
+      div.dataset.id = rij.id;
+      const deadlines = komendeDeadlines(rij).map(d => {
+        const n = dagenTot(d.datum);
+        const nog = n === 0 ? 'vandaag' : n === 1 ? 'morgen' : `nog ${n} dagen`;
+        return `<div class="deadline${n <= DEADLINE_DRINGEND ? ' dringend' : ''}">${esc(DEADLINE_LABEL[d.soort])} <a href="${esc(d.bron)}" target="_blank" rel="noopener">${esc(formatDatum(d.datum))}</a><span class="nog">${nog}</span></div>`;
+      }).join('');
+      const reeks = edities(rij);
+      const plekVan = o => [o.datumStart.slice(0, 4), agendaLocatie(o)].filter(Boolean).join(', ');
+      const vorige = reeks[reeks.indexOf(rij) - 1];
+      const volgende = reeks[reeks.indexOf(rij) + 1];
+      const editieLink = (label, o) => `<span>${label}: <button type="button" class="editie-link" data-naar="${esc(o.id)}">${esc(plekVan(o))}</button></span>`;
+      const editiesHtml = vorige || volgende
+        ? `<div class="edities">${vorige ? editieLink('Vorige editie', vorige) : ''}${volgende ? editieLink('Volgende editie', volgende) : ''}</div>`
+        : '';
       div.style.setProperty('--i', Math.min(index, 12));
       div.innerHTML = `
         <div class="kaart-datum">
@@ -800,6 +897,8 @@
           <div class="tags">${rij.onderwerp.map(o => `<span class="tag">${esc(o)}</span>`).join('')}</div>
           ${rij.letOp ? `<div class="let-op ${rij.letOpType === 'commercieel' ? 'commercieel' : 'data'}"><span class="let-op-label">${rij.letOpType === 'commercieel' ? 'Commercieel congres' : 'Let op'}</span>${esc(rij.letOp)}</div>` : ''}
           ${rij.punten || rij.puntenIndicatie ? `<div class="punten"><span class="punten-label">Nascholing</span>${rij.punten ? esc(rij.punten) : `<span class="indicatie">vorige editie ${esc(rij.puntenIndicatie)}</span>`}</div>` : ''}
+          ${deadlines ? `<div class="deadlines"><span class="punten-label">Deadlines</span>${deadlines}</div>` : ''}
+          ${editiesHtml}
           <div class="kaart-voet">
             <span class="kosten">${esc(rij.kosten)}${rij.kostenIndicatie && rij.kosten === ONBEKEND ? `<span class="indicatie">vorige editie ${esc(rij.kostenIndicatie)}</span>` : ''}</span>
             <div class="kaart-acties">
@@ -811,6 +910,7 @@
         </div>
       `;
       div.querySelector('.ics').addEventListener('click', () => downloadIcs([rij], `${rij.id}.ics`));
+      div.querySelectorAll('.editie-link').forEach(b => b.addEventListener('click', () => gaNaarEditie(b.dataset.naar)));
       div.querySelector('.ster').addEventListener('click', e => {
         wisselBewaard(rij.id);
         e.currentTarget.setAttribute('aria-pressed', bewaard.has(rij.id) ? 'true' : 'false');
@@ -847,7 +947,9 @@
         });
       }
 
-      document.getElementById('resultaatTeller').textContent = `${gefilterd.length} van de ${CONGRESSEN.length} congressen`;
+      const verborgen = filters.vanaf === VANDAAG ? CONGRESSEN.filter(r => r.datumEind < VANDAAG).length : 0;
+      document.getElementById('resultaatTeller').textContent = `${gefilterd.length} van de ${CONGRESSEN.length} congressen`
+        + (verborgen ? ` · ${verborgen} afgelopen verborgen` : '');
       syncChips();
       syncExportKnop();
       filtersNaarUrl();
@@ -891,12 +993,43 @@
     ['zoek', 'filterLand', 'filterStad', 'filterContinent', 'filterOnderwerp', 'filterWeek', 'vanaf', 'tot'].forEach(id => {
       document.getElementById(id).addEventListener('input', toonCongressen);
     });
-    document.getElementById('resetFilters').addEventListener('click', () => {
-      ['zoek', 'vanaf', 'tot'].forEach(id => document.getElementById(id).value = '');
-      ['filterLand', 'filterStad', 'filterContinent', 'filterOnderwerp', 'filterWeek'].forEach(id => document.getElementById(id).value = '');
+    // "Wis" gaat terug naar de standaardweergave: alle komende congressen (afgelopen verborgen).
+    function wisFilters() {
+      ['zoek', 'tot', 'filterLand', 'filterStad', 'filterContinent', 'filterOnderwerp', 'filterWeek'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('vanaf').value = VANDAAG;
       alleenBewaard = false;
+      alleenDeadline = false;
+    }
+    document.getElementById('resetFilters').addEventListener('click', () => {
+      wisFilters();
       toonCongressen();
     });
+
+    // Klik op "vorige/volgende editie": toon die kaart, zo nodig door afgelopen congressen
+    // mee te tonen of (als andere filters hem verbergen) de filters te wissen.
+    function gaNaarEditie(id) {
+      const rij = CONGRESSEN.find(r => r.id === id);
+      if (!voldoetAanFilters(rij, huidigeFilters())) {
+        const vanaf = document.getElementById('vanaf');
+        if (vanaf.value && rij.datumEind < vanaf.value) vanaf.value = '';
+        if (!voldoetAanFilters(rij, huidigeFilters())) {
+          wisFilters();
+          if (rij.datumEind < VANDAAG) vanaf.value = '';
+        }
+        toonCongressen();
+      }
+      const kaart = [...document.querySelectorAll('.congres-kaart')].find(k => k.dataset.id === id);
+      if (!kaart) return;
+      kaart.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
+      kaart.classList.add('uitgelicht');
+      setTimeout(() => kaart.classList.remove('uitgelicht'), 1600);
+    }
+
+    document.getElementById('abonneerWebcal').href = AGENDA_WEBCAL;
+    document.getElementById('abonneerGoogle').href = `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(AGENDA_WEBCAL)}`;
+    const abonnementVeld = document.getElementById('abonnementUrl');
+    abonnementVeld.value = AGENDA_URL;
+    abonnementVeld.addEventListener('focus', () => abonnementVeld.select());
     document.getElementById('deelFilters').addEventListener('click', deelFilters);
     document.getElementById('exportBewaard').addEventListener('click', () => downloadIcs(bewaardeRijen(), 'bewaarde-congressen.ics'));
 

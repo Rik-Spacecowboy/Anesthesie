@@ -1,0 +1,24 @@
+name: Controle
+
+# agenda.ics wordt gebouwd uit data/congressen.js en data/aanvullingen.js; deze controle
+# faalt als iemand de data wijzigt zonder daarna scripts/bouw_agenda.py te draaien.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  agenda:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: agenda.ics is actueel
+        run: python3 scripts/bouw_agenda.py --check
+
+      - name: artifact-bouwscript past nog op index.html
+        run: python3 scripts/bouw_artifact.py

@@ -1,0 +1,1044 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Anesthesie en Pijn Congressen//NL
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Anesthesie & Pijn congressen
+X-WR-CALDESC:Congressen en deadlines (early-bird\, abstracts) van https://r
+ ik-spacecowboy.github.io/Anesthesie/
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:euroanaesthesia-2026@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260606
+DTEND;VALUE=DATE:20260609
+SUMMARY:Euroanaesthesia 2026
+LOCATION:Rotterdam\, Nederland
+DESCRIPTION:ESAIC (European Society of Anaesthesiology and Intensive Care)\
+ nKosten: €870–€985 (niet-lid\, excl. btw)\nNascholing: 18 ECMEC (EAC
+ CME)\nBron: https://euroanaesthesia.org/2026/
+URL:https://euroanaesthesia.org/2026/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:espa-congress-2026@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260924
+DTEND;VALUE=DATE:20260927
+SUMMARY:16th European Congress for Paediatric Anaesthesiology
+LOCATION:Madrid\, Spanje
+DESCRIPTION:ESPA (European Society for Paediatric Anaesthesiology)\nKosten:
+  €790–€880 (niet-lid)\nBron: https://www.espacongress.com/
+URL:https://www.espacongress.com/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:esra-sunny-autumn-meeting-2026@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261005
+DTEND;VALUE=DATE:20261010
+SUMMARY:10th ESRA Sunny Autumn Meeting
+LOCATION:Quinta do Lago\, Algarve\, Portugal
+DESCRIPTION:ESRA (European Society of Regional Anaesthesia and Pain Therapy
+ )\nKosten: €730–€1.070 (trainee-lid t/m niet-lid\, incl. diners/lunc
+ hes)\nBron: https://esraeurope.org/meetings/?meeting_type=esra-events
+URL:https://esraeurope.org/meetings/?meeting_type=esra-events
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:asa-anesthesiology-2026@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261016
+DTEND;VALUE=DATE:20261021
+SUMMARY:ANESTHESIOLOGY 2026 (ASA Annual Meeting)
+LOCATION:San Diego\, Verenigde Staten
+DESCRIPTION:American Society of Anesthesiologists (ASA)\nLet op: Niet autom
+ atisch gescraped: apsf.org (oude bron) blokkeert scrapers en asahq.org ver
+ biedt in de site-voorwaarden expliciet gebruik van hun content met AI/auto
+ matisering. Handmatig controleren en bijwerken.\nKosten: $2.099–$2.599 (
+ niet-lid) · $699–$1.099 (lid)\nBron: https://www.asahq.org/annualmeetin
+ g
+URL:https://www.asahq.org/annualmeeting
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:spa-annual-2026@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261016
+DTEND;VALUE=DATE:20261017
+SUMMARY:SPA 40th Annual Meeting
+LOCATION:San Diego\, Verenigde Staten
+DESCRIPTION:SPA (Society for Pediatric Anesthesia)\nKosten: Nog niet gepubl
+ iceerd\nNascholing: max. 7\,25 AMA PRA Category 1 (+ losse workshops)\nBro
+ n: https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/
+URL:https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:eaccm-2026@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261019
+DTEND;VALUE=DATE:20261021
+SUMMARY:V Euro Anesthesiology and Critical Care Congress (EACCM 26)
+LOCATION:Berlijn\, Duitsland
+DESCRIPTION:Plenareno\nLet op: Commercieel georganiseerd congres (Plenareno
+ )\, geen erkende beroepsvereniging. Op uitdrukkelijk verzoek toegevoegd\; 
+ handmatig bijgehouden.\nKosten: Vanaf €199/$199 (student/internist)\; me
+ erdere tarieven\, zie bron\nBron: https://anesthesiology.plenareno.com/
+URL:https://anesthesiology.plenareno.com/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:esra-eastern-european-cadaver-workshop-2026@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261023
+DTEND;VALUE=DATE:20261026
+SUMMARY:XXIII ESRA Eastern European Cadaver Workshop
+LOCATION:Budapest\, Hongarije
+DESCRIPTION:ESRA (European Society of Regional Anaesthesia and Pain Therapy
+ )\nKosten: €385–€835 (Oost-Europees lid t/m niet-lid elders) · volg
+ eboekt\nNascholing: 14\,5 ESRA-DRA (voor EDRA-diploma\; geen ECMEC)\nBron:
+  https://esraeurope.org/meetings/?meeting_type=esra-events
+URL:https://esraeurope.org/meetings/?meeting_type=esra-events
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:iasp-world-congress-2026@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261026
+DTEND;VALUE=DATE:20261031
+SUMMARY:IASP World Congress on Pain 2026
+LOCATION:Bangkok\, Thailand
+DESCRIPTION:IASP (International Association for the Study of Pain)\nLet op:
+  Handmatig toegevoegd\, nog geen scraper voor deze bron. Buiten Europa/Noo
+ rd-Amerika\, maar het belangrijkste wereldwijde pijncongres.\nKosten: Nog 
+ niet gepubliceerd\nBron: https://www.iasp-pain.org/world-congress-on-pain/
+URL:https://www.iasp-pain.org/world-congress-on-pain/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:asra-pain-medicine-2026@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261105
+DTEND;VALUE=DATE:20261108
+SUMMARY:25th Annual Pain Medicine Meeting
+LOCATION:Tampa\, Verenigde Staten
+DESCRIPTION:ASRA Pain Medicine\nKosten: $295–$1770 (afhankelijk van lidma
+ atschap/categorie)\nNascholing: max. 24\,25 AMA PRA Category 1 (ook EACCME
+ -erkend)\nBron: https://asra.com/events-education
+URL:https://asra.com/events-education
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:esra-pocus-workshop-2026@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261122
+SUMMARY:1st ESRA PoCUS Workshop
+LOCATION:Amsterdam\, Nederland
+DESCRIPTION:ESRA (European Society of Regional Anaesthesia and Pain Therapy
+ )\nKosten: €695–€995 (trainee-lid t/m niet-lid) · volgeboekt\nLaats
+ te dag annuleren met terugbetaling: 2026-09-27\nBron: https://esraeurope.o
+ rg/meetings/?meeting_type=esra-events
+URL:https://esraeurope.org/meetings/?meeting_type=esra-events
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:esra-pocus-workshop-2026-annuleren@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+SUMMARY:Laatste dag annuleren met terugbetaling: 1st ESRA PoCUS Workshop
+DESCRIPTION:1st ESRA PoCUS Workshop (2026-11-20 t/m 2026-11-21\, Amsterdam\
+ , Nederland)\nBron: https://esraeurope.org/meeting/1st-esra-pocus-workshop
+ /
+URL:https://esraeurope.org/meeting/1st-esra-pocus-workshop/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag annuleren met terugbetaling: 1st ESRA PoCUS Worksho
+ p
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bapa-annual-2026@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:BAPA Annual Scientific Meeting 2026
+LOCATION:Brussel\, België
+DESCRIPTION:BAPA (Belgian Association for Paediatric Anaesthesiology)\nKost
+ en: €125–€220 (aios/verpleegkundige lid t/m specialist niet-lid)\nLa
+ atste dag inschrijven: 2026-11-18\nBron: https://www.bapanaesth.be/events/
+URL:https://www.bapanaesth.be/events/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:bapa-annual-2026-registratie@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261118
+DTEND;VALUE=DATE:20261119
+SUMMARY:Laatste dag inschrijven: BAPA Annual Scientific Meeting 2026
+DESCRIPTION:BAPA Annual Scientific Meeting 2026 (2026-11-21 t/m 2026-11-21\
+ , Brussel\, België)\nBron: https://www.bapanaesth.be/events/bapa-annual-s
+ cientific-meeting-21st-of-november-2026/
+URL:https://www.bapanaesth.be/events/bapa-annual-scientific-meeting-21st-of
+ -november-2026/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag inschrijven: BAPA Annual Scientific Meeting 2026
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:esra-instructor-course-2026@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261211
+DTEND;VALUE=DATE:20261213
+SUMMARY:7th ESRA Instructor Course
+LOCATION:Antwerp\, België
+DESCRIPTION:ESRA (European Society of Regional Anaesthesia and Pain Therapy
+ )\nKosten: €875 (alleen voor ESRA-leden)\nLaatste dag annuleren met teru
+ gbetaling: 2026-10-08\nBron: https://esraeurope.org/meetings/?meeting_type
+ =esra-events
+URL:https://esraeurope.org/meetings/?meeting_type=esra-events
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:esra-instructor-course-2026-annuleren@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261008
+DTEND;VALUE=DATE:20261009
+SUMMARY:Laatste dag annuleren met terugbetaling: 7th ESRA Instructor Course
+DESCRIPTION:7th ESRA Instructor Course (2026-12-11 t/m 2026-12-12\, Antwerp
+ \, België)\nBron: https://esraeurope.org/meeting/7th-esra-instructor-cour
+ se/
+URL:https://esraeurope.org/meeting/7th-esra-instructor-course/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag annuleren met terugbetaling: 7th ESRA Instructor Co
+ urse
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pga-80-2026@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261211
+DTEND;VALUE=DATE:20261215
+SUMMARY:80th PostGraduate Assembly in Anesthesiology (PGA)
+LOCATION:New York\, Verenigde Staten
+DESCRIPTION:NYSSA (New York State Society of Anesthesiologists)\nLet op: Ha
+ ndmatig toegevoegd (datums staan op nyssa-pga.org niet in doorzoekbare tek
+ st op de 'Future PGA Dates'-pagina)\; locatie New York Marriott Marquis.\n
+ Kosten: Niet-lid arts $995 ($895 bij inschrijving vóór 30 sep) · reside
+ nt $175–$225\, zie bron\nNascholing: max. 39\,25 AMA PRA Category 1\nLaa
+ tste dag early-bird: 2026-09-29\nLaatste dag annuleren met terugbetaling: 
+ 2026-09-30\nBron: https://www.nyssa-pga.org/events/80th-postgraduate-assem
+ bly-in-anesthesiology-pga/
+URL:https://www.nyssa-pga.org/events/80th-postgraduate-assembly-in-anesthes
+ iology-pga/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:pga-80-2026-early-bird@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260929
+DTEND;VALUE=DATE:20260930
+SUMMARY:Laatste dag early-bird: 80th PostGraduate Assembly in Anesthesiolog
+ y (PGA)
+DESCRIPTION:80th PostGraduate Assembly in Anesthesiology (PGA) (2026-12-11 
+ t/m 2026-12-14\, New York\, Verenigde Staten)\nBron: https://www.pga.nyc/r
+ egistration--session-fees.html
+URL:https://www.pga.nyc/registration--session-fees.html
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag early-bird: 80th PostGraduate Assembly in Anesthesi
+ ology (PGA)
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pga-80-2026-annuleren@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260930
+DTEND;VALUE=DATE:20261001
+SUMMARY:Laatste dag annuleren met terugbetaling: 80th PostGraduate Assembly
+  in Anesthesiology (PGA)
+DESCRIPTION:80th PostGraduate Assembly in Anesthesiology (PGA) (2026-12-11 
+ t/m 2026-12-14\, New York\, Verenigde Staten)\nBron: https://www.pga.nyc/r
+ egistration--session-fees.html
+URL:https://www.pga.nyc/registration--session-fees.html
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag annuleren met terugbetaling: 80th PostGraduate Asse
+ mbly in Anesthesiology (PGA)
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:nysora-kitzb-hel-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270113
+DTEND;VALUE=DATE:20270117
+SUMMARY:NYSORA: Update on Regional Anesthesia and Pain Management
+LOCATION:Kitzbühel\, Oostenrijk
+DESCRIPTION:NYSORA\nKosten: €1.075 (early bird\, inschrijven vóór 13 de
+ c 2026)\, daarna €1.175\nLaatste dag early-bird: 2026-12-12\nBron: https
+ ://nysora.com/events/conferences
+URL:https://nysora.com/events/conferences
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:nysora-kitzb-hel-2027-early-bird@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+SUMMARY:Laatste dag early-bird: NYSORA: Update on Regional Anesthesia and P
+ ain Management
+DESCRIPTION:NYSORA: Update on Regional Anesthesia and Pain Management (2027
+ -01-13 t/m 2027-01-16\, Kitzbühel\, Oostenrijk)\nBron: https://nysora.com
+ /event/conferences/update-on-regional-anesthesia-and-pain-management-inclu
+ ding-hands-on-scanning-practice/
+URL:https://nysora.com/event/conferences/update-on-regional-anesthesia-and-
+ pain-management-including-hands-on-scanning-practice/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag early-bird: NYSORA: Update on Regional Anesthesia a
+ nd Pain Management
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:association-of-anaesthetists-winter-scientific-meeting-2027@rik-spaceco
+ wboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270114
+DTEND;VALUE=DATE:20270116
+SUMMARY:Winter Scientific Meeting 2027
+LOCATION:London\, Verenigd Koninkrijk
+DESCRIPTION:Association of Anaesthetists (GB & Ierland)\nKosten: Lid £220
+ –£610 (online/fysiek\, 1–2 dagen) · niet-lid £750–£1.025\nLaatst
+ e dag early-bird: 2026-12-03\nLaatste dag annuleren met terugbetaling: 202
+ 6-12-15\nBron: https://anaesthetists.org/CPD-and-events/Book-an-event
+URL:https://anaesthetists.org/CPD-and-events/Book-an-event
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:association-of-anaesthetists-winter-scientific-meeting-2027-early-bird@
+ rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261203
+DTEND;VALUE=DATE:20261204
+SUMMARY:Laatste dag early-bird: Winter Scientific Meeting 2027
+DESCRIPTION:Winter Scientific Meeting 2027 (2027-01-14 t/m 2027-01-15\, Lon
+ don\, Verenigd Koninkrijk)\nBron: https://anaesthetists.org/Home/Education
+ -events/Winter-Scientific-Meeting/How-to-book
+URL:https://anaesthetists.org/Home/Education-events/Winter-Scientific-Meeti
+ ng/How-to-book
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag early-bird: Winter Scientific Meeting 2027
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:association-of-anaesthetists-winter-scientific-meeting-2027-annuleren@r
+ ik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261215
+DTEND;VALUE=DATE:20261216
+SUMMARY:Laatste dag annuleren met terugbetaling: Winter Scientific Meeting 
+ 2027
+DESCRIPTION:Winter Scientific Meeting 2027 (2027-01-14 t/m 2027-01-15\, Lon
+ don\, Verenigd Koninkrijk)\nBron: https://anaesthetists.org/Home/Education
+ -events/Winter-Scientific-Meeting/How-to-book
+URL:https://anaesthetists.org/Home/Education-events/Winter-Scientific-Meeti
+ ng/How-to-book
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag annuleren met terugbetaling: Winter Scientific Meet
+ ing 2027
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:nwas-topics-sarasota-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270114
+DTEND;VALUE=DATE:20270118
+SUMMARY:Topics in Anesthesia
+LOCATION:Sarasota\, Verenigde Staten
+DESCRIPTION:NWAS (Northwest Anesthesia Seminars)\nLet op: Handmatig: NWAS v
+ erbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/lo
+ caties zijn met de hand overgenomen van nwas2.northwestseminars.com\; cont
+ roleer daar de actuele stand.\nKosten: Nog niet gepubliceerd\nBron: https:
+ //nwas2.northwestseminars.com/conference/list
+URL:https://nwas2.northwestseminars.com/conference/list
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:esra-winter-week-conference-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270117
+DTEND;VALUE=DATE:20270123
+SUMMARY:21st ESRA Winter Week Conference
+LOCATION:Längenfeld\, Oostenrijk
+DESCRIPTION:ESRA (European Society of Regional Anaesthesia and Pain Therapy
+ )\nKosten: Nog niet gepubliceerd\nBron: https://esraeurope.org/meetings/?m
+ eeting_type=esra-events
+URL:https://esraeurope.org/meetings/?meeting_type=esra-events
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:winter-pain-symposium-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270117
+DTEND;VALUE=DATE:20270123
+SUMMARY:13th Advances in Pain Medicine Winter Symposium
+LOCATION:Tignes\, Frankrijk
+DESCRIPTION:London Pain Forum\nKosten: Vanaf £400 (excl. verblijf)\nBron: 
+ https://www.winterpainsymposium.com/
+URL:https://www.winterpainsymposium.com/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:nwas-current-topics-curacao-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270118
+DTEND;VALUE=DATE:20270123
+SUMMARY:Current Topics in Anesthesia
+LOCATION:Willemstad\, Curaçao
+DESCRIPTION:NWAS (Northwest Anesthesia Seminars)\nLet op: Handmatig: NWAS v
+ erbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/lo
+ caties zijn met de hand overgenomen van nwas2.northwestseminars.com\; cont
+ roleer daar de actuele stand.\nKosten: Nog niet gepubliceerd\nBron: https:
+ //nwas2.northwestseminars.com/conference/list
+URL:https://nwas2.northwestseminars.com/conference/list
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:nans-annual-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270121
+DTEND;VALUE=DATE:20270125
+SUMMARY:NANS 2027 Annual Meeting (30th)
+LOCATION:Las Vegas\, Verenigde Staten
+DESCRIPTION:NANS (North American Neuromodulation Society)\nLet op: Handmati
+ g toegevoegd\, nog geen scraper voor deze bron.\nKosten: Vanaf $200 (stude
+ nt/trainee-lid)\; niet-lid (fysicus) $885–$985\, zie bron voor volledige
+  tabel\nLaatste dag early-bird: 2026-10-27\nBron: https://www.neuromodulat
+ ion.org/annual-meeting.html
+URL:https://www.neuromodulation.org/annual-meeting.html
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:nans-annual-2027-early-bird@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261027
+DTEND;VALUE=DATE:20261028
+SUMMARY:Laatste dag early-bird: NANS 2027 Annual Meeting (30th)
+DESCRIPTION:NANS 2027 Annual Meeting (30th) (2027-01-21 t/m 2027-01-24\, La
+ s Vegas\, Verenigde Staten)\nBron: https://www.nans.org/annual-meeting.htm
+ l
+URL:https://www.nans.org/annual-meeting.html
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag early-bird: NANS 2027 Annual Meeting (30th)
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:nwas-new-horizons-cruise-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270208
+DTEND;VALUE=DATE:20270219
+SUMMARY:New Horizons in Anesthesia (cruise)
+LOCATION:Cruise Singapore - Hongkong\, Cruise
+DESCRIPTION:NWAS (Northwest Anesthesia Seminars)\nLet op: Handmatig: NWAS v
+ erbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/lo
+ caties zijn met de hand overgenomen van nwas2.northwestseminars.com\; cont
+ roleer daar de actuele stand. Twaalfdaagse cruise door Thailand en Vietnam
+  (Celebrity Solstice).\nKosten: Nog niet gepubliceerd\nBron: https://nwas2
+ .northwestseminars.com/conference/list
+URL:https://nwas2.northwestseminars.com/conference/list
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:nysora-val-d-isere-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270208
+DTEND;VALUE=DATE:20270212
+SUMMARY:NYSORA: Anesthesia Review Conference
+LOCATION:Val D’Isere\, Frankrijk
+DESCRIPTION:NYSORA\nKosten: €1.075 (early bird\, inschrijven vóór 8 jan
+  2027)\, daarna €1.175\nLaatste dag early-bird: 2027-01-07\nBron: https:
+ //nysora.com/events/conferences
+URL:https://nysora.com/events/conferences
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:nysora-val-d-isere-2027-early-bird@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270107
+DTEND;VALUE=DATE:20270108
+SUMMARY:Laatste dag early-bird: NYSORA: Anesthesia Review Conference
+DESCRIPTION:NYSORA: Anesthesia Review Conference (2027-02-08 t/m 2027-02-11
+ \, Val D’Isere\, Frankrijk)\nBron: https://nysora.com/event/conferences/
+ anesthesia-review-conference-valdisere-2027/
+URL:https://nysora.com/event/conferences/anesthesia-review-conference-valdi
+ sere-2027/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag early-bird: NYSORA: Anesthesia Review Conference
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:nwas-anesthesia-update-orlando-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270216
+DTEND;VALUE=DATE:20270220
+SUMMARY:Anesthesia Update
+LOCATION:Orlando\, Verenigde Staten
+DESCRIPTION:NWAS (Northwest Anesthesia Seminars)\nLet op: Handmatig: NWAS v
+ erbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/lo
+ caties zijn met de hand overgenomen van nwas2.northwestseminars.com\; cont
+ roleer daar de actuele stand.\nKosten: Nog niet gepubliceerd\nBron: https:
+ //nwas2.northwestseminars.com/conference/list
+URL:https://nwas2.northwestseminars.com/conference/list
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:nwas-obstetric-park-city-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270222
+DTEND;VALUE=DATE:20270227
+SUMMARY:Topics in Obstetric Anesthesia
+LOCATION:Park City\, Verenigde Staten
+DESCRIPTION:NWAS (Northwest Anesthesia Seminars)\nLet op: Handmatig: NWAS v
+ erbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/lo
+ caties zijn met de hand overgenomen van nwas2.northwestseminars.com\; cont
+ roleer daar de actuele stand.\nKosten: Nog niet gepubliceerd\nBron: https:
+ //nwas2.northwestseminars.com/conference/list
+URL:https://nwas2.northwestseminars.com/conference/list
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:esra-pain-cadaver-workshop-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270224
+DTEND;VALUE=DATE:20270226
+SUMMARY:16th ESRA Pain Cadaver Workshop
+LOCATION:Innsbruck\, Oostenrijk
+DESCRIPTION:ESRA (European Society of Regional Anaesthesia and Pain Therapy
+ )\nKosten: Nog niet gepubliceerd\nBron: https://esraeurope.org/meetings/?m
+ eeting_type=esra-events
+URL:https://esraeurope.org/meetings/?meeting_type=esra-events
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:esra-ra-cadaver-workshop-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270226
+DTEND;VALUE=DATE:20270228
+SUMMARY:40th ESRA RA Cadaver Workshop
+LOCATION:Innsbruck\, Oostenrijk
+DESCRIPTION:ESRA (European Society of Regional Anaesthesia and Pain Therapy
+ )\nKosten: Nog niet gepubliceerd\nBron: https://esraeurope.org/meetings/?m
+ eeting_type=esra-events
+URL:https://esraeurope.org/meetings/?meeting_type=esra-events
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:nysora-leuven-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270227
+DTEND;VALUE=DATE:20270228
+SUMMARY:NYSORA: Masterclass: Ultrasound-Guided Joint Interventions & Denerv
+ ation
+LOCATION:Leuven\, België
+DESCRIPTION:NYSORA\nKosten: €695 (early bird)\nBron: https://nysora.com/e
+ vents/conferences
+URL:https://nysora.com/events/conferences
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:wsac-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270311
+DTEND;VALUE=DATE:20270314
+SUMMARY:World Surgery and Anesthesia Congress (WSAC 2027)
+LOCATION:Singapore\, Singapore
+DESCRIPTION:Iris Scientific Group\nLet op: Commercieel georganiseerd congre
+ s (Iris Scientific Group\, host van tientallen vergelijkbare "World [Vakge
+ bied] Congress"-events)\, geen erkende beroepsvereniging. Op uitdrukkelijk
+  verzoek toegevoegd\; handmatig bijgehouden.\nKosten: Vanaf $399 (virtueel
+ )\; vanaf $699 fysiek\; meerdere tarieven\, zie bron\nBron: https://surger
+ yanesthesiacongress.com/
+URL:https://surgeryanesthesiacongress.com/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:nwas-fresh-tracks-breckenridge-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270315
+DTEND;VALUE=DATE:20270320
+SUMMARY:Fresh Tracks in Anesthesia
+LOCATION:Breckenridge\, Verenigde Staten
+DESCRIPTION:NWAS (Northwest Anesthesia Seminars)\nLet op: Handmatig: NWAS v
+ erbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/lo
+ caties zijn met de hand overgenomen van nwas2.northwestseminars.com\; cont
+ roleer daar de actuele stand.\nKosten: Nog niet gepubliceerd\nBron: https:
+ //nwas2.northwestseminars.com/conference/list
+URL:https://nwas2.northwestseminars.com/conference/list
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:aapm-painconnect-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270318
+DTEND;VALUE=DATE:20270322
+SUMMARY:AAPM PainConnect 2027 (43rd Annual Meeting)
+LOCATION:Orlando\, Verenigde Staten
+DESCRIPTION:AAPM (American Academy of Pain Medicine)\nLet op: Handmatig toe
+ gevoegd\, nog geen scraper voor deze bron.\nKosten: Vanaf $188 (student/tr
+ ainee-lid)\; meerdere tarieven o.b.v. lidmaatschap/categorie\, zie bron\nL
+ aatste dag abstracts indienen: 2026-11-11\nBron: https://painconnect.org/
+URL:https://painconnect.org/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:aapm-painconnect-2027-abstracts@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261111
+DTEND;VALUE=DATE:20261112
+SUMMARY:Laatste dag abstracts indienen: AAPM PainConnect 2027 (43rd Annual 
+ Meeting)
+DESCRIPTION:AAPM PainConnect 2027 (43rd Annual Meeting) (2027-03-18 t/m 202
+ 7-03-21\, Orlando\, Verenigde Staten)\nBron: https://painconnect.org/
+URL:https://painconnect.org/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag abstracts indienen: AAPM PainConnect 2027 (43rd Ann
+ ual Meeting)
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:nwas-topics-anaheim-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270330
+DTEND;VALUE=DATE:20270403
+SUMMARY:Topics in Anesthesia (Disneyland Resort)
+LOCATION:Anaheim\, Verenigde Staten
+DESCRIPTION:NWAS (Northwest Anesthesia Seminars)\nLet op: Handmatig: NWAS v
+ erbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/lo
+ caties zijn met de hand overgenomen van nwas2.northwestseminars.com\; cont
+ roleer daar de actuele stand.\nKosten: Nog niet gepubliceerd\nBron: https:
+ //nwas2.northwestseminars.com/conference/list
+URL:https://nwas2.northwestseminars.com/conference/list
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:icsa-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270409
+DTEND;VALUE=DATE:20270411
+SUMMARY:2nd International Conference on Surgery and Anesthesia
+LOCATION:Zürich\, Zwitserland
+DESCRIPTION:Inovine Conferences\nLet op: Commercieel georganiseerd congres 
+ (Inovine Conferences)\, geen erkende beroepsvereniging. Op uitdrukkelijk v
+ erzoek toegevoegd\; handmatig bijgehouden.\nKosten: Nog niet gepubliceerd\
+ nNascholing: 16+ CPD (volgens organisator\; accrediterende instantie niet 
+ vermeld)\nBron: https://surgery.inovineconferences.com/
+URL:https://surgery.inovineconferences.com/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:efic-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270421
+DTEND;VALUE=DATE:20270424
+SUMMARY:EFIC Congress 2027 (Pain in Europe)
+LOCATION:Glasgow\, Verenigd Koninkrijk
+DESCRIPTION:EFIC (European Pain Federation)\nKosten: €940–€1192 (niet
+ -lid)\nLaatste dag abstracts indienen: 2026-09-30\nLaatste dag early-bird:
+  2026-12-14\nLaatste dag inschrijven: 2027-03-22\nBron: https://europeanpa
+ infederation.eu/efic2027/
+URL:https://europeanpainfederation.eu/efic2027/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:efic-2027-abstracts@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260930
+DTEND;VALUE=DATE:20261001
+SUMMARY:Laatste dag abstracts indienen: EFIC Congress 2027 (Pain in Europe)
+DESCRIPTION:EFIC Congress 2027 (Pain in Europe) (2027-04-21 t/m 2027-04-23\
+ , Glasgow\, Verenigd Koninkrijk)\nBron: https://europeanpainfederation.eu/
+ efic2027/
+URL:https://europeanpainfederation.eu/efic2027/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag abstracts indienen: EFIC Congress 2027 (Pain in Eur
+ ope)
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:efic-2027-early-bird@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261214
+DTEND;VALUE=DATE:20261215
+SUMMARY:Laatste dag early-bird: EFIC Congress 2027 (Pain in Europe)
+DESCRIPTION:EFIC Congress 2027 (Pain in Europe) (2027-04-21 t/m 2027-04-23\
+ , Glasgow\, Verenigd Koninkrijk)\nBron: https://europeanpainfederation.eu/
+ efic2027/
+URL:https://europeanpainfederation.eu/efic2027/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag early-bird: EFIC Congress 2027 (Pain in Europe)
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:efic-2027-registratie@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270322
+DTEND;VALUE=DATE:20270323
+SUMMARY:Laatste dag inschrijven: EFIC Congress 2027 (Pain in Europe)
+DESCRIPTION:EFIC Congress 2027 (Pain in Europe) (2027-04-21 t/m 2027-04-23\
+ , Glasgow\, Verenigd Koninkrijk)\nBron: https://europeanpainfederation.eu/
+ efic2027/
+URL:https://europeanpainfederation.eu/efic2027/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag inschrijven: EFIC Congress 2027 (Pain in Europe)
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:esra-residents-trainees-workshop-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270506
+DTEND;VALUE=DATE:20270508
+SUMMARY:9th ESRA Residents & Trainees Workshop
+LOCATION:Porto\, Portugal
+DESCRIPTION:ESRA (European Society of Regional Anaesthesia and Pain Therapy
+ )\nKosten: Nog niet gepubliceerd\nBron: https://esraeurope.org/meetings/?m
+ eeting_type=esra-events
+URL:https://esraeurope.org/meetings/?meeting_type=esra-events
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:asra-regional-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270513
+DTEND;VALUE=DATE:20270516
+SUMMARY:Annual Regional Anesthesiology and Acute Pain Medicine Meeting
+LOCATION:Houston\, Verenigde Staten
+DESCRIPTION:ASRA Pain Medicine\nLet op: Automatisch gevonden\; ordinal (bv.
+  '52nd') stond niet in de brontekst\, controleer de exacte naam.\nKosten: 
+ Nog niet gepubliceerd\nBron: https://asra.com/events-education
+URL:https://asra.com/events-education
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:soap-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270520
+DTEND;VALUE=DATE:20270524
+SUMMARY:SOAP 59th Annual Meeting
+LOCATION:Palm Springs\, Verenigde Staten
+DESCRIPTION:SOAP (Society for Obstetric Anesthesia and Perinatology)\nLet o
+ p: Stad afgeleid uit de bron\; exacte locatie: The Westin Rancho Mirage Go
+ lf Resort & Spa.\nKosten: Nog niet gepubliceerd\nBron: https://www.soap.or
+ g/future-meetings
+URL:https://www.soap.org/future-meetings
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:nva-anesthesiologendagen-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270527
+DTEND;VALUE=DATE:20270529
+SUMMARY:Anesthesiologendagen 2027
+LOCATION:Nederland
+DESCRIPTION:NVA (Nederlandse Vereniging voor Anesthesiologie)\nKosten: Nog 
+ niet gepubliceerd\nBron: https://www.anesthesiologie.nl/agenda/
+URL:https://www.anesthesiologie.nl/agenda/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:nwas-pediatric-chicago-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270527
+DTEND;VALUE=DATE:20270531
+SUMMARY:Topics in Pediatric Anesthesia
+LOCATION:Chicago\, Verenigde Staten
+DESCRIPTION:NWAS (Northwest Anesthesia Seminars)\nLet op: Handmatig: NWAS v
+ erbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/lo
+ caties zijn met de hand overgenomen van nwas2.northwestseminars.com\; cont
+ roleer daar de actuele stand.\nKosten: Nog niet gepubliceerd\nBron: https:
+ //nwas2.northwestseminars.com/conference/list
+URL:https://nwas2.northwestseminars.com/conference/list
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:euroanaesthesia-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270529
+DTEND;VALUE=DATE:20270601
+SUMMARY:Euroanaesthesia 2027
+LOCATION:Copenhagen\, Denemarken
+DESCRIPTION:ESAIC (European Society of Anaesthesiology and Intensive Care)\
+ nKosten: Nog niet gepubliceerd\nLaatste dag abstracts indienen: 2026-12-05
+ \nBron: https://euroanaesthesia.org/2027/
+URL:https://euroanaesthesia.org/2027/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:euroanaesthesia-2027-abstracts@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Laatste dag abstracts indienen: Euroanaesthesia 2027
+DESCRIPTION:Euroanaesthesia 2027 (2027-05-29 t/m 2027-05-31\, Copenhagen\, 
+ Denemarken)\nBron: https://euroanaesthesia.org/2027/abstracts/
+URL:https://euroanaesthesia.org/2027/abstracts/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag abstracts indienen: Euroanaesthesia 2027
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:nwas-anesthesia-updates-oceanside-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270824
+DTEND;VALUE=DATE:20270828
+SUMMARY:Anesthesia Updates
+LOCATION:Oceanside\, Verenigde Staten
+DESCRIPTION:NWAS (Northwest Anesthesia Seminars)\nLet op: Handmatig: NWAS v
+ erbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/lo
+ caties zijn met de hand overgenomen van nwas2.northwestseminars.com\; cont
+ roleer daar de actuele stand.\nKosten: Nog niet gepubliceerd\nBron: https:
+ //nwas2.northwestseminars.com/conference/list
+URL:https://nwas2.northwestseminars.com/conference/list
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:esra-congress-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270901
+DTEND;VALUE=DATE:20270905
+SUMMARY:44th ESRA Annual Congress
+LOCATION:Bologna\, Italië
+DESCRIPTION:ESRA (European Society of Regional Anaesthesia and Pain Therapy
+ )\nKosten: Nog niet gepubliceerd\nBron: https://esraeurope.org/meetings/?m
+ eeting_type=esra-events
+URL:https://esraeurope.org/meetings/?meeting_type=esra-events
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:painweek-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270907
+DTEND;VALUE=DATE:20270911
+SUMMARY:PAINWeek 2027
+LOCATION:Las Vegas\, Verenigde Staten
+DESCRIPTION:PAINWeek\nKosten: Nog niet gepubliceerd\nBron: https://conferen
+ ce.painweek.org/
+URL:https://conference.painweek.org/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:association-of-anaesthetists-gasfest-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270922
+DTEND;VALUE=DATE:20270925
+SUMMARY:GasFest 2027
+LOCATION:Birmingham\, Verenigd Koninkrijk
+DESCRIPTION:Association of Anaesthetists (GB & Ierland)\nKosten: Nog niet g
+ epubliceerd\nNascholing: 5 CPD per dag\nBron: https://anaesthetists.org/CP
+ D-and-events/Book-an-event
+URL:https://anaesthetists.org/CPD-and-events/Book-an-event
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:asa-anesthesiology-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271015
+DTEND;VALUE=DATE:20271020
+SUMMARY:ANESTHESIOLOGY 2027 (ASA Annual Meeting)
+LOCATION:Boston\, Verenigde Staten
+DESCRIPTION:American Society of Anesthesiologists (ASA)\nLet op: Niet autom
+ atisch gescraped (zie asa-anesthesiology-2026). Datum/stad komt van ASA's 
+ eigen 'Future Dates'-pagina\; kosten en programma nog niet gepubliceerd.\n
+ Kosten: Nog niet gepubliceerd\nBron: https://www.asahq.org/annualmeeting/a
+ ttend/futuredates
+URL:https://www.asahq.org/annualmeeting/attend/futuredates
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:spa-annual-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271015
+DTEND;VALUE=DATE:20271016
+SUMMARY:SPA 41st Annual Meeting
+LOCATION:Boston\, Verenigde Staten
+DESCRIPTION:SPA (Society for Pediatric Anesthesia)\nKosten: Nog niet gepubl
+ iceerd\nBron: https://pedsanesthesia.org/education-and-meetings/upcoming-m
+ eetings/
+URL:https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:nwas-current-topics-maui-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271115
+DTEND;VALUE=DATE:20271120
+SUMMARY:Current Topics in Anesthesia
+LOCATION:Maui\, Verenigde Staten
+DESCRIPTION:NWAS (Northwest Anesthesia Seminars)\nLet op: Handmatig: NWAS v
+ erbiedt in de voorwaarden geautomatiseerd verzamelen (scraping). Datums/lo
+ caties zijn met de hand overgenomen van nwas2.northwestseminars.com\; cont
+ roleer daar de actuele stand.\nKosten: Nog niet gepubliceerd\nBron: https:
+ //nwas2.northwestseminars.com/conference/list
+URL:https://nwas2.northwestseminars.com/conference/list
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:pga-81-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271210
+DTEND;VALUE=DATE:20271214
+SUMMARY:81st PostGraduate Assembly in Anesthesiology (PGA)
+LOCATION:New York\, Verenigde Staten
+DESCRIPTION:NYSSA (New York State Society of Anesthesiologists)\nLet op: Ha
+ ndmatig\; datum komt van een derde partij (eMedEvents)\, nog niet bevestig
+ d op de officiele NYSSA-site -- controleren.\nKosten: Nog niet gepubliceer
+ d\nBron: https://www.nyssa-pga.org/pga-meeting/future-pga-dates/
+URL:https://www.nyssa-pga.org/pga-meeting/future-pga-dates/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:spa-aap-2028@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280316
+DTEND;VALUE=DATE:20280321
+SUMMARY:SPA-AAP Pediatric Anesthesiology 2028
+LOCATION:Oxon Hill\, Verenigde Staten
+DESCRIPTION:SPA (Society for Pediatric Anesthesia)\nKosten: Nog niet gepubl
+ iceerd\nBron: https://pedsanesthesia.org/education-and-meetings/upcoming-m
+ eetings/
+URL:https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:soap-2028@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280427
+DTEND;VALUE=DATE:20280501
+SUMMARY:SOAP 60th Annual Meeting
+LOCATION:Fajardo\, Puerto Rico
+DESCRIPTION:SOAP (Society for Obstetric Anesthesia and Perinatology)\nKoste
+ n: Nog niet gepubliceerd\nBron: https://www.soap.org/future-meetings
+URL:https://www.soap.org/future-meetings
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:wca-2028@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280507
+DTEND;VALUE=DATE:20280511
+SUMMARY:20th World Congress of Anaesthesiologists (WCA 2028)
+LOCATION:Vancouver\, Canada
+DESCRIPTION:WFSA (World Federation of Societies of Anaesthesiologists)\nKos
+ ten: Nog niet gepubliceerd\nBron: https://wfsahq.org/our-work/world-congre
+ ss/
+URL:https://wfsahq.org/our-work/world-congress/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:nva-anesthesiologendagen-2028@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280518
+DTEND;VALUE=DATE:20280520
+SUMMARY:Anesthesiologendagen 2028
+LOCATION:Nederland
+DESCRIPTION:NVA (Nederlandse Vereniging voor Anesthesiologie)\nKosten: Nog 
+ niet gepubliceerd\nBron: https://www.anesthesiologie.nl/agenda/
+URL:https://www.anesthesiologie.nl/agenda/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:euroanaesthesia-2028@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20280520
+DTEND;VALUE=DATE:20280523
+SUMMARY:Euroanaesthesia 2028
+LOCATION:Vienna\, Oostenrijk
+DESCRIPTION:ESAIC (European Society of Anaesthesiology and Intensive Care)\
+ nKosten: Nog niet gepubliceerd\nBron: https://euroanaesthesia.org/2028/
+URL:https://euroanaesthesia.org/2028/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:asa-anesthesiology-2028@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20281020
+DTEND;VALUE=DATE:20281025
+SUMMARY:ANESTHESIOLOGY 2028 (ASA Annual Meeting)
+LOCATION:Chicago\, Verenigde Staten
+DESCRIPTION:American Society of Anesthesiologists (ASA)\nLet op: Niet autom
+ atisch gescraped (zie asa-anesthesiology-2026). Datum/stad komt van ASA's 
+ eigen 'Future Dates'-pagina\; kosten en programma nog niet gepubliceerd.\n
+ Kosten: Nog niet gepubliceerd\nBron: https://www.asahq.org/annualmeeting/a
+ ttend/futuredates
+URL:https://www.asahq.org/annualmeeting/attend/futuredates
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:spa-annual-2028@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20281020
+DTEND;VALUE=DATE:20281021
+SUMMARY:SPA 42nd Annual Meeting
+LOCATION:Chicago\, Verenigde Staten
+DESCRIPTION:SPA (Society for Pediatric Anesthesia)\nKosten: Nog niet gepubl
+ iceerd\nBron: https://pedsanesthesia.org/education-and-meetings/upcoming-m
+ eetings/
+URL:https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:euroanaesthesia-2029@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20290526
+DTEND;VALUE=DATE:20290529
+SUMMARY:Euroanaesthesia 2029
+LOCATION:Barcelona\, Spanje
+DESCRIPTION:ESAIC (European Society of Anaesthesiology and Intensive Care)\
+ nKosten: Nog niet gepubliceerd\nBron: https://euroanaesthesia.org/2029/
+URL:https://euroanaesthesia.org/2029/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR
