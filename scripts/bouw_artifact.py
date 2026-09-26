@@ -15,7 +15,7 @@ Aanpassingen t.o.v. de GitHub Pages-versie, omdat het artifact-frame dit afdwing
 
 Gebruik:
     python3 scripts/bouw_artifact.py [uitvoermap]    # standaard: build/artifact
-Schrijft <uitvoermap>/index.html en <uitvoermap>/data/*.js (zie DATABESTANDEN).
+Schrijft <uitvoermap>/index.html, <uitvoermap>/data/*.js (zie DATABESTANDEN) en <uitvoermap>/img/steden/*.jpg.
 """
 import re
 import shutil
@@ -24,7 +24,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 # Alle databestanden die index.html laadt; publiceer ze allemaal mee (zie CLAUDE.md).
-DATABESTANDEN = ["congressen.js", "aanvullingen.js"]
+DATABESTANDEN = ["congressen.js", "aanvullingen.js", "steden.js"]
+# Stadsfoto's (koppen van de congreskaarten); ook deze gaan mee als bestanden van de artifact.
+FOTOMAP = "img/steden"
 
 
 def vervang(tekst, oud, nieuw):
@@ -69,6 +71,8 @@ def main():
     (uit / "index.html").write_text(bouw((ROOT / "index.html").read_text(encoding="utf-8")), encoding="utf-8")
     for naam in DATABESTANDEN:
         shutil.copyfile(ROOT / "data" / naam, uit / "data" / naam)
+    shutil.rmtree(uit / FOTOMAP, ignore_errors=True)
+    shutil.copytree(ROOT / FOTOMAP, uit / FOTOMAP)
     print(f"Artifact gebouwd in {uit}")
 
 
