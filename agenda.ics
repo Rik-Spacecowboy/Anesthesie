@@ -163,37 +163,6 @@ TRIGGER:-P7D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:bapa-annual-2026@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261121
-DTEND;VALUE=DATE:20261122
-SUMMARY:BAPA Annual Scientific Meeting 2026
-LOCATION:Brussel\, België
-DESCRIPTION:BAPA (Belgian Association for Paediatric Anaesthesiology)\nKost
- en: €125–€220 (aios/verpleegkundige lid t/m specialist niet-lid)\nLa
- atste dag inschrijven: 2026-11-18\nBron: https://www.bapanaesth.be/events/
-URL:https://www.bapanaesth.be/events/
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:bapa-annual-2026-registratie@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261118
-DTEND;VALUE=DATE:20261119
-SUMMARY:Laatste dag inschrijven: BAPA Annual Scientific Meeting 2026
-DESCRIPTION:BAPA Annual Scientific Meeting 2026 (2026-11-21 t/m 2026-11-21\
- , Brussel\, België)\nBron: https://www.bapanaesth.be/events/bapa-annual-s
- cientific-meeting-21st-of-november-2026/
-URL:https://www.bapanaesth.be/events/bapa-annual-scientific-meeting-21st-of
- -november-2026/
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Laatste dag inschrijven: BAPA Annual Scientific Meeting 2026
-TRIGGER:-P7D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:esra-instructor-course-2026@rik-spacecowboy.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20261211
@@ -801,35 +770,6 @@ URL:https://nwas2.northwestseminars.com/conference/list
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:euroanaesthesia-2027@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20270529
-DTEND;VALUE=DATE:20270601
-SUMMARY:Euroanaesthesia 2027
-LOCATION:Kopenhagen\, Denemarken
-DESCRIPTION:ESAIC (European Society of Anaesthesiology and Intensive Care)\
- nKosten: Nog niet gepubliceerd\nLaatste dag abstracts indienen: 2026-12-05
- \nBron: https://euroanaesthesia.org/2027/
-URL:https://euroanaesthesia.org/2027/
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:euroanaesthesia-2027-abstracts@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261205
-DTEND;VALUE=DATE:20261206
-SUMMARY:Laatste dag abstracts indienen: Euroanaesthesia 2027
-DESCRIPTION:Euroanaesthesia 2027 (2027-05-29 t/m 2027-05-31\, Kopenhagen\, 
- Denemarken)\nBron: https://euroanaesthesia.org/2027/abstracts/
-URL:https://euroanaesthesia.org/2027/abstracts/
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Laatste dag abstracts indienen: Euroanaesthesia 2027
-TRIGGER:-P7D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:nwas-anesthesia-updates-oceanside-2027@rik-spacecowboy.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270824
@@ -990,18 +930,6 @@ URL:https://www.anesthesiologie.nl/agenda/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:euroanaesthesia-2028@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20280520
-DTEND;VALUE=DATE:20280523
-SUMMARY:Euroanaesthesia 2028
-LOCATION:Wenen\, Oostenrijk
-DESCRIPTION:ESAIC (European Society of Anaesthesiology and Intensive Care)\
- nKosten: Nog niet gepubliceerd\nBron: https://euroanaesthesia.org/2028/
-URL:https://euroanaesthesia.org/2028/
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:asa-anesthesiology-2028@rik-spacecowboy.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20281020
@@ -1027,18 +955,6 @@ DESCRIPTION:SPA (Society for Pediatric Anesthesia)\nKosten: Nog niet gepubl
  iceerd\nBron: https://pedsanesthesia.org/education-and-meetings/upcoming-m
  eetings/
 URL:https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:euroanaesthesia-2029@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20290526
-DTEND;VALUE=DATE:20290529
-SUMMARY:Euroanaesthesia 2029
-LOCATION:Barcelona\, Spanje
-DESCRIPTION:ESAIC (European Society of Anaesthesiology and Intensive Care)\
- nKosten: Nog niet gepubliceerd\nBron: https://euroanaesthesia.org/2029/
-URL:https://euroanaesthesia.org/2029/
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR
