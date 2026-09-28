@@ -55,7 +55,7 @@ const AANVULLINGEN = {
     kosten: "€695–€995 (trainee-lid t/m niet-lid) · volgeboekt",
     kostenBron: "https://esraeurope.org/meeting/1st-esra-pocus-workshop/",
     deadlines: [
-      { soort: "annuleren", datum: "2026-09-27", bron: "https://esraeurope.org/meeting/1st-esra-pocus-workshop/", gecontroleerd: "2026-09-26" }
+      { soort: "annuleren", datum: "2026-10-25", bron: "https://esraeurope.org/meeting/1st-esra-pocus-workshop/", gecontroleerd: "2026-09-28" }
     ],
     gecontroleerd: "2026-09-25"
   },
@@ -71,7 +71,7 @@ const AANVULLINGEN = {
     kosten: "€875 (alleen voor ESRA-leden)",
     kostenBron: "https://esraeurope.org/meeting/7th-esra-instructor-course/",
     deadlines: [
-      { soort: "annuleren", datum: "2026-10-08", bron: "https://esraeurope.org/meeting/7th-esra-instructor-course/", gecontroleerd: "2026-09-26" }
+      { soort: "annuleren", datum: "2026-11-12", bron: "https://esraeurope.org/meeting/7th-esra-instructor-course/", gecontroleerd: "2026-09-28" }
     ],
     gecontroleerd: "2026-09-25"
   },
@@ -211,5 +211,25 @@ const AANVULLINGEN = {
     deadlines: [
       { soort: "abstracts", datum: "2026-12-05", bron: "https://euroanaesthesia.org/2027/abstracts/", gecontroleerd: "2026-09-26" }
     ]
+  },
+  "wca-2028": {
+    deadlines: [
+      { soort: "abstracts", datum: "2027-10-20", bron: "https://wcacongress.org/abstracts/", gecontroleerd: "2026-09-28" }
+    ],
+    gecontroleerd: "2026-09-28"
+  },
+  "wsac-2027": {
+    deadlines: [
+      { soort: "abstracts", datum: "2026-09-28", bron: "https://surgeryanesthesiacongress.com/", gecontroleerd: "2026-09-28" },
+      { soort: "early-bird", datum: "2026-09-30", bron: "https://surgeryanesthesiacongress.com/", gecontroleerd: "2026-09-28" }
+    ],
+    gecontroleerd: "2026-09-28"
+  },
+  "icsa-2027": {
+    deadlines: [
+      { soort: "abstracts", datum: "2026-09-28", bron: "https://surgery.inovineconferences.com/", gecontroleerd: "2026-09-28" },
+      { soort: "early-bird", datum: "2026-09-30", bron: "https://surgery.inovineconferences.com/", gecontroleerd: "2026-09-28" }
+    ],
+    gecontroleerd: "2026-09-28"
   }
 };

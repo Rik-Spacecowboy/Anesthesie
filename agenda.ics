@@ -139,7 +139,7 @@ SUMMARY:1st ESRA PoCUS Workshop
 LOCATION:Amsterdam\, Nederland
 DESCRIPTION:ESRA (European Society of Regional Anaesthesia and Pain Therapy
  )\nKosten: €695–€995 (trainee-lid t/m niet-lid) · volgeboekt\nLaats
- te dag annuleren met terugbetaling: 2026-09-27\nBron: https://esraeurope.o
+ te dag annuleren met terugbetaling: 2026-10-25\nBron: https://esraeurope.o
  rg/meetings/?meeting_type=esra-events
 URL:https://esraeurope.org/meetings/?meeting_type=esra-events
 TRANSP:TRANSPARENT
@@ -147,8 +147,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:esra-pocus-workshop-2026-annuleren@rik-spacecowboy.github.io
 DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20260927
-DTEND;VALUE=DATE:20260928
+DTSTART;VALUE=DATE:20261025
+DTEND;VALUE=DATE:20261026
 SUMMARY:Laatste dag annuleren met terugbetaling: 1st ESRA PoCUS Workshop
 DESCRIPTION:1st ESRA PoCUS Workshop (2026-11-20 t/m 2026-11-21\, Amsterdam\
  , Nederland)\nBron: https://esraeurope.org/meeting/1st-esra-pocus-workshop
@@ -202,7 +202,7 @@ SUMMARY:7th ESRA Instructor Course
 LOCATION:Antwerpen\, België
 DESCRIPTION:ESRA (European Society of Regional Anaesthesia and Pain Therapy
  )\nKosten: €875 (alleen voor ESRA-leden)\nLaatste dag annuleren met teru
- gbetaling: 2026-10-08\nBron: https://esraeurope.org/meetings/?meeting_type
+ gbetaling: 2026-11-12\nBron: https://esraeurope.org/meetings/?meeting_type
  =esra-events
 URL:https://esraeurope.org/meetings/?meeting_type=esra-events
 TRANSP:TRANSPARENT
@@ -210,8 +210,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:esra-instructor-course-2026-annuleren@rik-spacecowboy.github.io
 DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261008
-DTEND;VALUE=DATE:20261009
+DTSTART;VALUE=DATE:20261112
+DTEND;VALUE=DATE:20261113
 SUMMARY:Laatste dag annuleren met terugbetaling: 7th ESRA Instructor Course
 DESCRIPTION:7th ESRA Instructor Course (2026-12-11 t/m 2026-12-12\, Antwerp
  en\, België)\nBron: https://esraeurope.org/meeting/7th-esra-instructor-co
@@ -585,10 +585,49 @@ DESCRIPTION:Iris Scientific Group\nLet op: Commercieel georganiseerd congre
  s (Iris Scientific Group\, host van tientallen vergelijkbare "World [Vakge
  bied] Congress"-events)\, geen erkende beroepsvereniging. Op uitdrukkelijk
   verzoek toegevoegd\; handmatig bijgehouden.\nKosten: Vanaf $399 (virtueel
- )\; vanaf $699 fysiek\; meerdere tarieven\, zie bron\nBron: https://surger
- yanesthesiacongress.com/
+ )\; vanaf $699 fysiek\; meerdere tarieven\, zie bron\nLaatste dag abstract
+ s indienen: 2026-09-28\nLaatste dag early-bird: 2026-09-30\nBron: https://
+ surgeryanesthesiacongress.com/
 URL:https://surgeryanesthesiacongress.com/
 TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:wsac-2027-abstracts@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260928
+DTEND;VALUE=DATE:20260929
+SUMMARY:Laatste dag abstracts indienen: World Surgery and Anesthesia Congre
+ ss (WSAC 2027)
+DESCRIPTION:World Surgery and Anesthesia Congress (WSAC 2027) (2027-03-11 t
+ /m 2027-03-13\, Singapore\, Singapore)\nBron: https://surgeryanesthesiacon
+ gress.com/
+URL:https://surgeryanesthesiacongress.com/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag abstracts indienen: World Surgery and Anesthesia Co
+ ngress (WSAC 2027)
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wsac-2027-early-bird@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260930
+DTEND;VALUE=DATE:20261001
+SUMMARY:Laatste dag early-bird: World Surgery and Anesthesia Congress (WSAC
+  2027)
+DESCRIPTION:World Surgery and Anesthesia Congress (WSAC 2027) (2027-03-11 t
+ /m 2027-03-13\, Singapore\, Singapore)\nBron: https://surgeryanesthesiacon
+ gress.com/
+URL:https://surgeryanesthesiacongress.com/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag early-bird: World Surgery and Anesthesia Congress (
+ WSAC 2027)
+TRIGGER:-P7D
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:nwas-fresh-tracks-breckenridge-2027@rik-spacecowboy.github.io
@@ -662,10 +701,48 @@ LOCATION:Zürich\, Zwitserland
 DESCRIPTION:Inovine Conferences\nLet op: Commercieel georganiseerd congres 
  (Inovine Conferences)\, geen erkende beroepsvereniging. Op uitdrukkelijk v
  erzoek toegevoegd\; handmatig bijgehouden.\nKosten: Nog niet gepubliceerd\
- nNascholing: 16+ CPD (volgens organisator\; accrediterende instantie niet 
- vermeld)\nBron: https://surgery.inovineconferences.com/
+ nLaatste dag abstracts indienen: 2026-09-28\nLaatste dag early-bird: 2026-
+ 09-30\nBron: https://surgery.inovineconferences.com/
 URL:https://surgery.inovineconferences.com/
 TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:icsa-2027-abstracts@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260928
+DTEND;VALUE=DATE:20260929
+SUMMARY:Laatste dag abstracts indienen: 2nd International Conference on Sur
+ gery and Anesthesia
+DESCRIPTION:2nd International Conference on Surgery and Anesthesia (2027-04
+ -09 t/m 2027-04-10\, Zürich\, Zwitserland)\nBron: https://surgery.inovine
+ conferences.com/
+URL:https://surgery.inovineconferences.com/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag abstracts indienen: 2nd International Conference on
+  Surgery and Anesthesia
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:icsa-2027-early-bird@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260930
+DTEND;VALUE=DATE:20261001
+SUMMARY:Laatste dag early-bird: 2nd International Conference on Surgery and
+  Anesthesia
+DESCRIPTION:2nd International Conference on Surgery and Anesthesia (2027-04
+ -09 t/m 2027-04-10\, Zürich\, Zwitserland)\nBron: https://surgery.inovine
+ conferences.com/
+URL:https://surgery.inovineconferences.com/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag early-bird: 2nd International Conference on Surgery
+  and Anesthesia
+TRIGGER:-P7D
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:efic-2027@rik-spacecowboy.github.io
@@ -972,10 +1049,29 @@ DTEND;VALUE=DATE:20280511
 SUMMARY:20th World Congress of Anaesthesiologists (WCA 2028)
 LOCATION:Vancouver\, Canada
 DESCRIPTION:WFSA (World Federation of Societies of Anaesthesiologists)\nKos
- ten: Nog niet gepubliceerd\nBron: https://wfsahq.org/our-work/world-congre
- ss/
+ ten: Nog niet gepubliceerd\nLaatste dag abstracts indienen: 2027-10-20\nBr
+ on: https://wfsahq.org/our-work/world-congress/
 URL:https://wfsahq.org/our-work/world-congress/
 TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:wca-2028-abstracts@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20271020
+DTEND;VALUE=DATE:20271021
+SUMMARY:Laatste dag abstracts indienen: 20th World Congress of Anaesthesiol
+ ogists (WCA 2028)
+DESCRIPTION:20th World Congress of Anaesthesiologists (WCA 2028) (2028-05-0
+ 7 t/m 2028-05-10\, Vancouver\, Canada)\nBron: https://wcacongress.org/abst
+ racts/
+URL:https://wcacongress.org/abstracts/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag abstracts indienen: 20th World Congress of Anaesthe
+ siologists (WCA 2028)
+TRIGGER:-P7D
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:nva-anesthesiologendagen-2028@rik-spacecowboy.github.io
