@@ -1093,16 +1093,24 @@ HEADER = """// Congresdataset. Dit bestand wordt automatisch gegenereerd door
 """
 
 
-def archief(geziene_ids):
+def bron_slug(naam):
+    return re.sub(r"[^a-z0-9]+", "-", naam.lower()).strip("-") + "-"
+
+
+def archief(geziene_ids, mislukte_bronnen=()):
     """Afgelopen congressen die de bronnen niet meer tonen, blijven staan: de site laat
     ze zien als vorige editie (en gebruikt hun kosten/punten als indicatie voor de
     volgende). Alleen edities waarvan de einddatum voorbij is; een toekomstig congres
-    dat uit de bron verdwijnt, verdwijnt hier dus ook (bv. geannuleerd of verplaatst)."""
+    dat uit de bron verdwijnt, verdwijnt hier dus ook (bv. geannuleerd of verplaatst).
+    Uitzondering: kon een bron niet worden opgehaald (netwerkfout, geblokkeerd), dan blijven
+    zijn toekomstige congressen ongewijzigd staan; anders zouden ze door een storing verdwijnen."""
     if not DATA_FILE.exists():
         return []
     vandaag = datetime.date.today().isoformat()
+    prefixen = tuple(bron_slug(b) for b in mislukte_bronnen)
     return [e for e in lees_js_data(DATA_FILE, "CONGRESSEN")
-            if e["id"] not in geziene_ids and e["datumEind"] < vandaag]
+            if e["id"] not in geziene_ids
+            and (e["datumEind"] < vandaag or (prefixen and e["id"].startswith(prefixen)))]
 
 
 def bouw_bestand(entries):
@@ -1115,11 +1123,17 @@ def main():
     check_only = "--check" in sys.argv
 
     gescraped = []
+    mislukte_bronnen = set()
     for scraper in SCRAPERS:
+        eerste = len(WARNINGS)
         try:
             gescraped.extend(scraper())
         except Exception as e:
-            warn(scraper.__name__, f"onverwachte fout: {e}")
+            warn(scraper.__name__.removeprefix("scrape_"), f"onverwachte fout: {e}")
+        for w in WARNINGS[eerste:]:
+            m = re.match(r"\[([^\]]+)\] (kon .* niet |onverwachte fout)", w)
+            if m:
+                mislukte_bronnen.add(m.group(1))
 
     handmatig = laad_handmatige_entries()
     alle_entries = []
@@ -1135,7 +1149,7 @@ def main():
         print("Geen enkele bron leverde data op, bestaand data/congressen.js blijft ongewijzigd.", file=sys.stderr)
         return 1
 
-    alle_entries.extend(archief(geziene_ids))
+    alle_entries.extend(archief(geziene_ids, mislukte_bronnen))
     for entry in alle_entries:
         entry["stad"] = vertaal_stad(entry["stad"])
         entry["onderwerp"] = normaliseer_onderwerpen(entry["onderwerp"])
