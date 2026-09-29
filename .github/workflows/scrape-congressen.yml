@@ -2,8 +2,8 @@ name: Congressen scrapen
 
 on:
   schedule:
-    # Elke maandag 06:00 UTC
-    - cron: "0 6 * * 1"
+    # Elke maandag en donderdag 06:00 UTC
+    - cron: "0 6 * * 1,4"
   workflow_dispatch: {}
 
 permissions:
