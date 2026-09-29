@@ -84,7 +84,7 @@ const CONGRESSEN = [
     datumStart: "2026-10-19",
     datumEind: "2026-10-20",
     onderwerp: ["algemene anesthesiologie", "pijngeneeskunde", "intensive care"],
-    kosten: "Vanaf €199/$199 (student/internist); meerdere tarieven, zie bron",
+    kosten: "€215–€349 (spottarief t/m 19 okt: student/e-poster €215, academic/business €349) · virtual €225",
     bron: "https://anesthesiology.plenareno.com/",
     letOp: "Commercieel georganiseerd congres (Plenareno), geen erkende beroepsvereniging. Op uitdrukkelijk verzoek toegevoegd; handmatig bijgehouden.",
     letOpType: "commercieel"

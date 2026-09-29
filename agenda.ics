@@ -103,9 +103,10 @@ SUMMARY:V Euro Anesthesiology and Critical Care Congress (EACCM 26)
 LOCATION:Berlijn\, Duitsland
 DESCRIPTION:Plenareno\nLet op: Commercieel georganiseerd congres (Plenareno
  )\, geen erkende beroepsvereniging. Op uitdrukkelijk verzoek toegevoegd\; 
- handmatig bijgehouden.\nKosten: Vanaf €199/$199 (student/internist)\; me
- erdere tarieven\, zie bron\nLaatste dag inschrijven: 2026-10-19\nBron: htt
- ps://anesthesiology.plenareno.com/
+ handmatig bijgehouden.\nKosten: €215–€349 (spottarief t/m 19 okt: st
+ udent/e-poster €215\, academic/business €349) · virtual €225\nLaats
+ te dag inschrijven: 2026-10-19\nBron: https://anesthesiology.plenareno.com
+ /
 URL:https://anesthesiology.plenareno.com/
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -645,15 +646,15 @@ DESCRIPTION:Iris Scientific Group\nLet op: Commercieel georganiseerd congre
  bied] Congress"-events)\, geen erkende beroepsvereniging. Op uitdrukkelijk
   verzoek toegevoegd\; handmatig bijgehouden.\nKosten: Vanaf $399 (virtueel
  )\; vanaf $699 fysiek\; meerdere tarieven\, zie bron\nLaatste dag early-bi
- rd: 2026-09-30\nBron: https://surgeryanesthesiacongress.com/
+ rd: 2026-09-29\nBron: https://surgeryanesthesiacongress.com/
 URL:https://surgeryanesthesiacongress.com/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:wsac-2027-early-bird@rik-spacecowboy.github.io
 DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20260930
-DTEND;VALUE=DATE:20261001
+DTSTART;VALUE=DATE:20260929
+DTEND;VALUE=DATE:20260930
 SUMMARY:Laatste dag early-bird: World Surgery and Anesthesia Congress (WSAC
   2027)
 DESCRIPTION:World Surgery and Anesthesia Congress (WSAC 2027) (2027-03-11 t
@@ -740,7 +741,7 @@ LOCATION:Zürich\, Zwitserland
 DESCRIPTION:Inovine Conferences\nLet op: Commercieel georganiseerd congres 
  (Inovine Conferences)\, geen erkende beroepsvereniging. Op uitdrukkelijk v
  erzoek toegevoegd\; handmatig bijgehouden.\nKosten: Nog niet gepubliceerd\
- nLaatste dag early-bird: 2026-09-30\nBron: https://surgery.inovineconferen
+ nLaatste dag early-bird: 2026-09-29\nBron: https://surgery.inovineconferen
  ces.com/
 URL:https://surgery.inovineconferences.com/
 TRANSP:TRANSPARENT
@@ -748,8 +749,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:icsa-2027-early-bird@rik-spacecowboy.github.io
 DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20260930
-DTEND;VALUE=DATE:20261001
+DTSTART;VALUE=DATE:20260929
+DTEND;VALUE=DATE:20260930
 SUMMARY:Laatste dag early-bird: 2nd International Conference on Surgery and
   Anesthesia
 DESCRIPTION:2nd International Conference on Surgery and Anesthesia (2027-04
