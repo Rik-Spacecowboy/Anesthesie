@@ -49,6 +49,12 @@ const AANVULLINGEN = {
     puntenBron: "https://esraeurope.org/meeting/xxiii-esra-eastern-european-cadaver-workshop/",
     gecontroleerd: "2026-09-25"
   },
+  "eaccm-2026": {
+    deadlines: [
+      { soort: "registratie", datum: "2026-10-19", bron: "https://anesthesiology.plenareno.com/", gecontroleerd: "2026-09-29" }
+    ],
+    gecontroleerd: "2026-09-29"
+  },
   "asra-pain-medicine-2026": {
     punten: "max. 24,25 AMA PRA Category 1 (ook EACCME-erkend)",
     puntenBron: "https://asra.com/events-education/pain-medicine-meeting/cme-cpd",
@@ -220,7 +226,7 @@ const AANVULLINGEN = {
   },
   "wca-2028": {
     deadlines: [
-      { soort: "abstracts", datum: "2027-10-20", bron: "https://wcacongress.org/abstracts/", gecontroleerd: "2026-09-28" }
+      { soort: "abstracts", datum: "2027-10-20", bron: "https://wcacongress.org/abstracts/", gecontroleerd: "2026-09-29" }
     ],
     gecontroleerd: "2026-09-28"
   },
