@@ -36,10 +36,11 @@ achterloopt op `main` (vangt bv. scraper-PR's op die in GitHub zelf gemerged wor
 
 ## PR's: Claude maakt én merget ze
 
-Rik doet zelf geen PR's, ook niet de wekelijkse scrape-PR (`auto/scrape-congressen`). Laat dus nooit een PR
-voor hem liggen: maak, controleer en merge hem zelf, en zet daarna live (zie hierboven). Elke maandag om 9:00
-(Amsterdam) handelt de routine "Anesthesie: maandag scrape-PR + deadlines" de scrape-PR af en zoekt hij nieuwe
-deadlines bij alle congressen (ook de commerciële; alleen ASA en NWAS niet).
+Rik doet zelf geen PR's, ook niet de scrape-PR (`auto/scrape-congressen`). Laat dus nooit een PR voor hem
+liggen: maak, controleer en merge hem zelf, en zet daarna live (zie hierboven). Elke maandag en donderdag om
+9:00 (Amsterdam) handelt de routine "Anesthesie: maandag scrape-PR + deadlines" de scrape-PR af en zoekt hij
+nieuwe deadlines bij alle congressen (ook de commerciële; alleen ASA en NWAS niet). De scraper zelf draait via
+GitHub Actions op hetzelfde schema (`.github/workflows/scrape-congressen.yml`).
 
 ## Steden: kaart en stadsfoto's
 
