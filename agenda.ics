@@ -70,10 +70,29 @@ DTEND;VALUE=DATE:20261017
 SUMMARY:SPA 40th Annual Meeting
 LOCATION:San Diego\, Verenigde Staten
 DESCRIPTION:SPA (Society for Pediatric Anesthesia)\nKosten: Nog niet gepubl
- iceerd\nNascholing: max. 7\,25 AMA PRA Category 1 (+ losse workshops)\nBro
- n: https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/
+ iceerd\nNascholing: max. 7\,25 AMA PRA Category 1 (+ losse workshops)\nLaa
+ tste dag inschrijven: 2026-10-16\nBron: https://pedsanesthesia.org/educati
+ on-and-meetings/upcoming-meetings/
 URL:https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/
 TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:spa-annual-2026-registratie@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261016
+DTEND;VALUE=DATE:20261017
+SUMMARY:Laatste dag inschrijven: SPA 40th Annual Meeting
+DESCRIPTION:SPA 40th Annual Meeting (2026-10-16 t/m 2026-10-16\, San Diego\
+ , Verenigde Staten)\nBron: https://www2.pedsanesthesia.org/meetings/2026an
+ nual/guide/info/general.iphtml
+URL:https://www2.pedsanesthesia.org/meetings/2026annual/guide/info/general.
+ iphtml
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag inschrijven: SPA 40th Annual Meeting
+TRIGGER:-P7D
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:eaccm-2026@rik-spacecowboy.github.io
@@ -126,9 +145,29 @@ SUMMARY:25th Annual Pain Medicine Meeting
 LOCATION:Tampa\, Verenigde Staten
 DESCRIPTION:ASRA Pain Medicine\nKosten: $295–$1.770 (afhankelijk van lidm
  aatschap/categorie)\nNascholing: max. 24\,25 AMA PRA Category 1 (ook EACCM
- E-erkend)\nBron: https://asra.com/events-education
+ E-erkend)\nLaatste dag abstracts indienen: 2026-09-30\nBron: https://asra.
+ com/events-education
 URL:https://asra.com/events-education
 TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:asra-pain-medicine-2026-abstracts@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260930
+DTEND;VALUE=DATE:20261001
+SUMMARY:Laatste dag abstracts indienen: 25th Annual Pain Medicine Meeting
+DESCRIPTION:25th Annual Pain Medicine Meeting (2026-11-05 t/m 2026-11-07\, 
+ Tampa\, Verenigde Staten)\nBron: https://asra.com/events-education/pain-me
+ dicine-meeting/abstracts---eposters
+URL:https://asra.com/events-education/pain-medicine-meeting/abstracts---epo
+ sters
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag abstracts indienen: 25th Annual Pain Medicine Meeti
+ ng
+TRIGGER:-P7D
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:esra-pocus-workshop-2026@rik-spacecowboy.github.io
@@ -585,30 +624,10 @@ DESCRIPTION:Iris Scientific Group\nLet op: Commercieel georganiseerd congre
  s (Iris Scientific Group\, host van tientallen vergelijkbare "World [Vakge
  bied] Congress"-events)\, geen erkende beroepsvereniging. Op uitdrukkelijk
   verzoek toegevoegd\; handmatig bijgehouden.\nKosten: Vanaf $399 (virtueel
- )\; vanaf $699 fysiek\; meerdere tarieven\, zie bron\nLaatste dag abstract
- s indienen: 2026-09-28\nLaatste dag early-bird: 2026-09-30\nBron: https://
- surgeryanesthesiacongress.com/
+ )\; vanaf $699 fysiek\; meerdere tarieven\, zie bron\nLaatste dag early-bi
+ rd: 2026-09-30\nBron: https://surgeryanesthesiacongress.com/
 URL:https://surgeryanesthesiacongress.com/
 TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:wsac-2027-abstracts@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20260928
-DTEND;VALUE=DATE:20260929
-SUMMARY:Laatste dag abstracts indienen: World Surgery and Anesthesia Congre
- ss (WSAC 2027)
-DESCRIPTION:World Surgery and Anesthesia Congress (WSAC 2027) (2027-03-11 t
- /m 2027-03-13\, Singapore\, Singapore)\nBron: https://surgeryanesthesiacon
- gress.com/
-URL:https://surgeryanesthesiacongress.com/
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Laatste dag abstracts indienen: World Surgery and Anesthesia Co
- ngress (WSAC 2027)
-TRIGGER:-P7D
-END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wsac-2027-early-bird@rik-spacecowboy.github.io
@@ -701,29 +720,10 @@ LOCATION:Zürich\, Zwitserland
 DESCRIPTION:Inovine Conferences\nLet op: Commercieel georganiseerd congres 
  (Inovine Conferences)\, geen erkende beroepsvereniging. Op uitdrukkelijk v
  erzoek toegevoegd\; handmatig bijgehouden.\nKosten: Nog niet gepubliceerd\
- nLaatste dag abstracts indienen: 2026-09-28\nLaatste dag early-bird: 2026-
- 09-30\nBron: https://surgery.inovineconferences.com/
+ nLaatste dag early-bird: 2026-09-30\nBron: https://surgery.inovineconferen
+ ces.com/
 URL:https://surgery.inovineconferences.com/
 TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:icsa-2027-abstracts@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20260928
-DTEND;VALUE=DATE:20260929
-SUMMARY:Laatste dag abstracts indienen: 2nd International Conference on Sur
- gery and Anesthesia
-DESCRIPTION:2nd International Conference on Surgery and Anesthesia (2027-04
- -09 t/m 2027-04-10\, Zürich\, Zwitserland)\nBron: https://surgery.inovine
- conferences.com/
-URL:https://surgery.inovineconferences.com/
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Laatste dag abstracts indienen: 2nd International Conference on
-  Surgery and Anesthesia
-TRIGGER:-P7D
-END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:icsa-2027-early-bird@rik-spacecowboy.github.io

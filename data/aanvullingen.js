@@ -32,6 +32,9 @@ const AANVULLINGEN = {
   "spa-annual-2026": {
     punten: "max. 7,25 AMA PRA Category 1 (+ losse workshops)",
     puntenBron: "https://www2.pedsanesthesia.org/meetings/2026annual/guide/info/general.iphtml",
+    deadlines: [
+      { soort: "registratie", datum: "2026-10-16", bron: "https://www2.pedsanesthesia.org/meetings/2026annual/guide/info/general.iphtml", gecontroleerd: "2026-09-29" }
+    ],
     gecontroleerd: "2026-09-25"
   },
   "esra-sunny-autumn-meeting-2026": {
@@ -49,6 +52,9 @@ const AANVULLINGEN = {
   "asra-pain-medicine-2026": {
     punten: "max. 24,25 AMA PRA Category 1 (ook EACCME-erkend)",
     puntenBron: "https://asra.com/events-education/pain-medicine-meeting/cme-cpd",
+    deadlines: [
+      { soort: "abstracts", datum: "2026-09-30", bron: "https://asra.com/events-education/pain-medicine-meeting/abstracts---eposters", gecontroleerd: "2026-09-29" }
+    ],
     gecontroleerd: "2026-09-25"
   },
   "esra-pocus-workshop-2026": {
@@ -220,14 +226,12 @@ const AANVULLINGEN = {
   },
   "wsac-2027": {
     deadlines: [
-      { soort: "abstracts", datum: "2026-09-28", bron: "https://surgeryanesthesiacongress.com/", gecontroleerd: "2026-09-28" },
       { soort: "early-bird", datum: "2026-09-30", bron: "https://surgeryanesthesiacongress.com/", gecontroleerd: "2026-09-28" }
     ],
     gecontroleerd: "2026-09-28"
   },
   "icsa-2027": {
     deadlines: [
-      { soort: "abstracts", datum: "2026-09-28", bron: "https://surgery.inovineconferences.com/", gecontroleerd: "2026-09-28" },
       { soort: "early-bird", datum: "2026-09-30", bron: "https://surgery.inovineconferences.com/", gecontroleerd: "2026-09-28" }
     ],
     gecontroleerd: "2026-09-28"
