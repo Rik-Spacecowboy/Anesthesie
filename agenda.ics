@@ -104,9 +104,29 @@ LOCATION:Berlijn\, Duitsland
 DESCRIPTION:Plenareno\nLet op: Commercieel georganiseerd congres (Plenareno
  )\, geen erkende beroepsvereniging. Op uitdrukkelijk verzoek toegevoegd\; 
  handmatig bijgehouden.\nKosten: Vanaf €199/$199 (student/internist)\; me
- erdere tarieven\, zie bron\nBron: https://anesthesiology.plenareno.com/
+ erdere tarieven\, zie bron\nLaatste dag inschrijven: 2026-10-19\nBron: htt
+ ps://anesthesiology.plenareno.com/
 URL:https://anesthesiology.plenareno.com/
 TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:eaccm-2026-registratie@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261019
+DTEND;VALUE=DATE:20261020
+SUMMARY:Laatste dag inschrijven: V Euro Anesthesiology and Critical Care Co
+ ngress (EACCM 26)
+DESCRIPTION:V Euro Anesthesiology and Critical Care Congress (EACCM 26) (20
+ 26-10-19 t/m 2026-10-20\, Berlijn\, Duitsland)\nBron: https://anesthesiolo
+ gy.plenareno.com/
+URL:https://anesthesiology.plenareno.com/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag inschrijven: V Euro Anesthesiology and Critical Car
+ e Congress (EACCM 26)
+TRIGGER:-P7D
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:esra-eastern-european-cadaver-workshop-2026@rik-spacecowboy.github.io
