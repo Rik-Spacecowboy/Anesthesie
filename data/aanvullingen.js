@@ -232,13 +232,13 @@ const AANVULLINGEN = {
   },
   "wsac-2027": {
     deadlines: [
-      { soort: "early-bird", datum: "2026-09-30", bron: "https://surgeryanesthesiacongress.com/", gecontroleerd: "2026-09-28" }
+      { soort: "early-bird", datum: "2026-09-29", bron: "https://surgeryanesthesiacongress.com/", gecontroleerd: "2026-09-29" }
     ],
     gecontroleerd: "2026-09-28"
   },
   "icsa-2027": {
     deadlines: [
-      { soort: "early-bird", datum: "2026-09-30", bron: "https://surgery.inovineconferences.com/", gecontroleerd: "2026-09-28" }
+      { soort: "early-bird", datum: "2026-09-29", bron: "https://surgery.inovineconferences.com/", gecontroleerd: "2026-09-29" }
     ],
     gecontroleerd: "2026-09-28"
   }
