@@ -162,27 +162,28 @@
     .toolbar {
       position: sticky; top: 0; z-index: 20;
       background: var(--bg);
-      padding: 16px 0 12px;
+      padding: 8px 0 6px;
       border-bottom: 1px solid var(--lijn);
-      margin-bottom: 8px;
+      margin-bottom: 4px;
+      max-height: 100vh; overflow-y: auto;
     }
     .zoekrij { display: flex; gap: 10px; align-items: stretch; }
     .zoek {
       flex: 1; min-width: 0;
-      font: 600 1.15rem var(--tekst);
-      padding: 14px 16px;
+      font: 600 1rem var(--tekst);
+      padding: 8px 14px;
       background: var(--surface); color: var(--ink);
       border: 2px solid var(--ink); border-radius: 2px;
     }
     .zoek::placeholder { color: var(--ink-zacht); font-weight: 500; }
     .zoek:focus-visible { outline-offset: 0; border-color: var(--accent); }
     .knop {
-      font: 700 1rem var(--display); letter-spacing: 0.08em; text-transform: uppercase;
-      padding: 0 18px; border-radius: 2px; cursor: pointer;
+      font: 700 0.9rem var(--display); letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0 16px; border-radius: 2px; cursor: pointer;
       background: var(--ink); color: var(--bg); border: 2px solid var(--ink);
     }
     .knop:hover { background: var(--accent); border-color: var(--accent); color: var(--accent-tekst); }
-    .chips { display: flex; gap: 8px; overflow-x: auto; padding: 12px 0 4px; scrollbar-width: none; align-items: center; }
+    .chips { display: flex; gap: 8px; overflow-x: auto; padding: 8px 0 2px; scrollbar-width: none; align-items: center; }
     .chips::-webkit-scrollbar { display: none; }
     /* Vervagende rand waar nog chips buiten beeld staan (rij scrollt horizontaal). */
     .chips.rand-rechts { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 56px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 56px), transparent); }
@@ -193,17 +194,17 @@
     }
     .chip {
       flex: none; cursor: pointer;
-      font: 700 0.95rem var(--display); text-transform: uppercase; letter-spacing: 0.07em;
-      padding: 7px 14px; border-radius: 999px;
+      font: 700 0.85rem var(--display); text-transform: uppercase; letter-spacing: 0.07em;
+      padding: 4px 11px; border-radius: 999px;
       background: transparent; color: var(--ink); border: 2px solid var(--lijn);
     }
     .chip:hover { border-color: var(--ink); }
     .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-tekst); }
     .chips .scheiding { flex: none; width: 2px; align-self: stretch; background: var(--lijn); margin: 4px 4px; }
-    details.meer { margin-top: 8px; }
+    details.meer { margin-top: 2px; }
     details.meer summary {
       cursor: pointer; list-style: none; display: inline-flex; gap: 8px; align-items: center;
-      font: 700 0.95rem var(--display); letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 0;
+      font: 700 0.85rem var(--display); letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 0;
     }
     details.meer summary::-webkit-details-marker { display: none; }
     details.meer summary::after { content: "+"; font-size: 1.3rem; line-height: 1; }
