@@ -58,9 +58,6 @@ const AANVULLINGEN = {
   "asra-pain-medicine-2026": {
     punten: "max. 24,25 AMA PRA Category 1 (ook EACCME-erkend)",
     puntenBron: "https://asra.com/events-education/pain-medicine-meeting/cme-cpd",
-    deadlines: [
-      { soort: "abstracts", datum: "2026-09-30", bron: "https://asra.com/events-education/pain-medicine-meeting/abstracts---eposters", gecontroleerd: "2026-09-29" }
-    ],
     gecontroleerd: "2026-09-25"
   },
   "esra-pocus-workshop-2026": {
@@ -92,10 +89,6 @@ const AANVULLINGEN = {
     kostenBron: "https://www.pga.nyc/registration--session-fees.html",
     punten: "max. 39,25 AMA PRA Category 1",
     puntenBron: "https://www.pga.nyc/faqs.html",
-    deadlines: [
-      { soort: "early-bird", datum: "2026-09-29", bron: "https://www.pga.nyc/registration--session-fees.html", gecontroleerd: "2026-09-26" },
-      { soort: "annuleren", datum: "2026-09-30", bron: "https://www.pga.nyc/registration--session-fees.html", gecontroleerd: "2026-09-26" }
-    ],
     gecontroleerd: "2026-09-25"
   },
   "nysora-kitzb-hel-2027": {
@@ -119,7 +112,8 @@ const AANVULLINGEN = {
     puntenIndicatie: "2026: max. 23,5 AMA PRA Category 1",
     puntenBron: "https://www.nans.org/cmeaccreditation/",
     deadlines: [
-      { soort: "early-bird", datum: "2026-10-27", bron: "https://www.nans.org/annual-meeting.html", gecontroleerd: "2026-09-26" }
+      { soort: "early-bird", datum: "2026-10-27", bron: "https://www.nans.org/annual-meeting.html", gecontroleerd: "2026-10-05" },
+      { soort: "abstracts", datum: "2026-11-01", bron: "https://www.nans.org/abstracts/", gecontroleerd: "2026-10-05" }
     ],
     gecontroleerd: "2026-09-25"
   },
@@ -142,11 +136,6 @@ const AANVULLINGEN = {
     deadlines: [
       { soort: "abstracts", datum: "2026-11-11", bron: "https://painconnect.org/", gecontroleerd: "2026-09-26" }
     ],
-    gecontroleerd: "2026-09-25"
-  },
-  "icsa-2027": {
-    punten: "16+ CPD (volgens organisator; accrediterende instantie niet vermeld)",
-    puntenBron: "https://surgery.inovineconferences.com/",
     gecontroleerd: "2026-09-25"
   },
   "efic-2027": {
@@ -232,13 +221,17 @@ const AANVULLINGEN = {
   },
   "wsac-2027": {
     deadlines: [
-      { soort: "early-bird", datum: "2026-09-29", bron: "https://surgeryanesthesiacongress.com/", gecontroleerd: "2026-09-29" }
+      { soort: "abstracts", datum: "2026-10-15", bron: "https://surgeryanesthesiacongress.com/", gecontroleerd: "2026-10-05" },
+      { soort: "early-bird", datum: "2026-10-15", bron: "https://surgeryanesthesiacongress.com/", gecontroleerd: "2026-10-05" }
     ],
     gecontroleerd: "2026-09-28"
   },
   "icsa-2027": {
+    punten: "16+ CPD (volgens organisator; accrediterende instantie niet vermeld)",
+    puntenBron: "https://surgery.inovineconferences.com/",
     deadlines: [
-      { soort: "early-bird", datum: "2026-09-29", bron: "https://surgery.inovineconferences.com/", gecontroleerd: "2026-09-29" }
+      { soort: "abstracts", datum: "2026-10-12", bron: "https://surgery.inovineconferences.com/", gecontroleerd: "2026-10-05" },
+      { soort: "early-bird", datum: "2026-10-14", bron: "https://surgery.inovineconferences.com/", gecontroleerd: "2026-10-05" }
     ],
     gecontroleerd: "2026-09-28"
   }

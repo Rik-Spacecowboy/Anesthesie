@@ -166,29 +166,9 @@ SUMMARY:25th Annual Pain Medicine Meeting
 LOCATION:Tampa\, Verenigde Staten
 DESCRIPTION:ASRA Pain Medicine\nKosten: $295–$1.770 (afhankelijk van lidm
  aatschap/categorie)\nNascholing: max. 24\,25 AMA PRA Category 1 (ook EACCM
- E-erkend)\nLaatste dag abstracts indienen: 2026-09-30\nBron: https://asra.
- com/events-education
+ E-erkend)\nBron: https://asra.com/events-education
 URL:https://asra.com/events-education
 TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:asra-pain-medicine-2026-abstracts@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20260930
-DTEND;VALUE=DATE:20261001
-SUMMARY:Laatste dag abstracts indienen: 25th Annual Pain Medicine Meeting
-DESCRIPTION:25th Annual Pain Medicine Meeting (2026-11-05 t/m 2026-11-07\, 
- Tampa\, Verenigde Staten)\nBron: https://asra.com/events-education/pain-me
- dicine-meeting/abstracts---eposters
-URL:https://asra.com/events-education/pain-medicine-meeting/abstracts---epo
- sters
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Laatste dag abstracts indienen: 25th Annual Pain Medicine Meeti
- ng
-TRIGGER:-P7D
-END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:esra-pocus-workshop-2026@rik-spacecowboy.github.io
@@ -296,51 +276,12 @@ DESCRIPTION:NYSSA (New York State Society of Anesthesiologists)\nLet op: Ha
  ndmatig toegevoegd (datums staan op nyssa-pga.org niet in doorzoekbare tek
  st op de 'Future PGA Dates'-pagina)\; locatie New York Marriott Marquis.\n
  Kosten: Niet-lid arts $995 ($895 bij inschrijving vóór 30 sep) · reside
- nt $175–$225\, zie bron\nNascholing: max. 39\,25 AMA PRA Category 1\nLaa
- tste dag early-bird: 2026-09-29\nLaatste dag annuleren met terugbetaling: 
- 2026-09-30\nBron: https://www.nyssa-pga.org/events/80th-postgraduate-assem
- bly-in-anesthesiology-pga/
+ nt $175–$225\, zie bron\nNascholing: max. 39\,25 AMA PRA Category 1\nBro
+ n: https://www.nyssa-pga.org/events/80th-postgraduate-assembly-in-anesthes
+ iology-pga/
 URL:https://www.nyssa-pga.org/events/80th-postgraduate-assembly-in-anesthes
  iology-pga/
 TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:pga-80-2026-early-bird@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20260929
-DTEND;VALUE=DATE:20260930
-SUMMARY:Laatste dag early-bird: 80th PostGraduate Assembly in Anesthesiolog
- y (PGA)
-DESCRIPTION:80th PostGraduate Assembly in Anesthesiology (PGA) (2026-12-11 
- t/m 2026-12-14\, New York\, Verenigde Staten)\nBron: https://www.pga.nyc/r
- egistration--session-fees.html
-URL:https://www.pga.nyc/registration--session-fees.html
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Laatste dag early-bird: 80th PostGraduate Assembly in Anesthesi
- ology (PGA)
-TRIGGER:-P7D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:pga-80-2026-annuleren@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20260930
-DTEND;VALUE=DATE:20261001
-SUMMARY:Laatste dag annuleren met terugbetaling: 80th PostGraduate Assembly
-  in Anesthesiology (PGA)
-DESCRIPTION:80th PostGraduate Assembly in Anesthesiology (PGA) (2026-12-11 
- t/m 2026-12-14\, New York\, Verenigde Staten)\nBron: https://www.pga.nyc/r
- egistration--session-fees.html
-URL:https://www.pga.nyc/registration--session-fees.html
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Laatste dag annuleren met terugbetaling: 80th PostGraduate Asse
- mbly in Anesthesiology (PGA)
-TRIGGER:-P7D
-END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:nysora-kitzb-hel-2027@rik-spacecowboy.github.io
@@ -496,8 +437,8 @@ LOCATION:Las Vegas\, Verenigde Staten
 DESCRIPTION:NANS (North American Neuromodulation Society)\nLet op: Handmati
  g toegevoegd\, nog geen scraper voor deze bron.\nKosten: Vanaf $200 (stude
  nt/trainee-lid)\; niet-lid (fysicus) $885–$985\, zie bron voor volledige
-  tabel\nLaatste dag early-bird: 2026-10-27\nBron: https://www.neuromodulat
- ion.org/annual-meeting.html
+  tabel\nLaatste dag early-bird: 2026-10-27\nLaatste dag abstracts indienen
+ : 2026-11-01\nBron: https://www.neuromodulation.org/annual-meeting.html
 URL:https://www.neuromodulation.org/annual-meeting.html
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -515,6 +456,22 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Laatste dag early-bird: NANS 2027 Annual Meeting (30th)
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:nans-annual-2027-abstracts@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:Laatste dag abstracts indienen: NANS 2027 Annual Meeting (30th)
+DESCRIPTION:NANS 2027 Annual Meeting (30th) (2027-01-21 t/m 2027-01-24\, La
+ s Vegas\, Verenigde Staten)\nBron: https://www.nans.org/abstracts/
+URL:https://www.nans.org/abstracts/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag abstracts indienen: NANS 2027 Annual Meeting (30th)
 TRIGGER:-P7D
 END:VALARM
 END:VEVENT
@@ -645,16 +602,36 @@ DESCRIPTION:Iris Scientific Group\nLet op: Commercieel georganiseerd congre
  s (Iris Scientific Group\, host van tientallen vergelijkbare "World [Vakge
  bied] Congress"-events)\, geen erkende beroepsvereniging. Op uitdrukkelijk
   verzoek toegevoegd\; handmatig bijgehouden.\nKosten: Vanaf $399 (virtueel
- )\; vanaf $699 fysiek\; meerdere tarieven\, zie bron\nLaatste dag early-bi
- rd: 2026-09-29\nBron: https://surgeryanesthesiacongress.com/
+ )\; vanaf $699 fysiek\; meerdere tarieven\, zie bron\nLaatste dag abstract
+ s indienen: 2026-10-15\nLaatste dag early-bird: 2026-10-15\nBron: https://
+ surgeryanesthesiacongress.com/
 URL:https://surgeryanesthesiacongress.com/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:wsac-2027-abstracts@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261015
+DTEND;VALUE=DATE:20261016
+SUMMARY:Laatste dag abstracts indienen: World Surgery and Anesthesia Congre
+ ss (WSAC 2027)
+DESCRIPTION:World Surgery and Anesthesia Congress (WSAC 2027) (2027-03-11 t
+ /m 2027-03-13\, Singapore\, Singapore)\nBron: https://surgeryanesthesiacon
+ gress.com/
+URL:https://surgeryanesthesiacongress.com/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag abstracts indienen: World Surgery and Anesthesia Co
+ ngress (WSAC 2027)
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:wsac-2027-early-bird@rik-spacecowboy.github.io
 DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20260929
-DTEND;VALUE=DATE:20260930
+DTSTART;VALUE=DATE:20261015
+DTEND;VALUE=DATE:20261016
 SUMMARY:Laatste dag early-bird: World Surgery and Anesthesia Congress (WSAC
   2027)
 DESCRIPTION:World Surgery and Anesthesia Congress (WSAC 2027) (2027-03-11 t
@@ -741,16 +718,36 @@ LOCATION:Zürich\, Zwitserland
 DESCRIPTION:Inovine Conferences\nLet op: Commercieel georganiseerd congres 
  (Inovine Conferences)\, geen erkende beroepsvereniging. Op uitdrukkelijk v
  erzoek toegevoegd\; handmatig bijgehouden.\nKosten: Nog niet gepubliceerd\
- nLaatste dag early-bird: 2026-09-29\nBron: https://surgery.inovineconferen
- ces.com/
+ nNascholing: 16+ CPD (volgens organisator\; accrediterende instantie niet 
+ vermeld)\nLaatste dag abstracts indienen: 2026-10-12\nLaatste dag early-bi
+ rd: 2026-10-14\nBron: https://surgery.inovineconferences.com/
 URL:https://surgery.inovineconferences.com/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:icsa-2027-abstracts@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261012
+DTEND;VALUE=DATE:20261013
+SUMMARY:Laatste dag abstracts indienen: 2nd International Conference on Sur
+ gery and Anesthesia
+DESCRIPTION:2nd International Conference on Surgery and Anesthesia (2027-04
+ -09 t/m 2027-04-10\, Zürich\, Zwitserland)\nBron: https://surgery.inovine
+ conferences.com/
+URL:https://surgery.inovineconferences.com/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag abstracts indienen: 2nd International Conference on
+  Surgery and Anesthesia
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:icsa-2027-early-bird@rik-spacecowboy.github.io
 DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20260929
-DTEND;VALUE=DATE:20260930
+DTSTART;VALUE=DATE:20261014
+DTEND;VALUE=DATE:20261015
 SUMMARY:Laatste dag early-bird: 2nd International Conference on Surgery and
   Anesthesia
 DESCRIPTION:2nd International Conference on Surgery and Anesthesia (2027-04
