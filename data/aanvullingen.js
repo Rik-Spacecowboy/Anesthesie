@@ -64,7 +64,7 @@ const AANVULLINGEN = {
     kosten: "€695–€995 (trainee-lid t/m niet-lid) · volgeboekt",
     kostenBron: "https://esraeurope.org/meeting/1st-esra-pocus-workshop/",
     deadlines: [
-      { soort: "annuleren", datum: "2026-10-25", bron: "https://esraeurope.org/meeting/1st-esra-pocus-workshop/", gecontroleerd: "2026-09-28" }
+      { soort: "annuleren", datum: "2026-10-25", bron: "https://esraeurope.org/meeting/1st-esra-pocus-workshop/", gecontroleerd: "2026-10-08" }
     ],
     gecontroleerd: "2026-09-25"
   },
@@ -80,7 +80,7 @@ const AANVULLINGEN = {
     kosten: "€875 (alleen voor ESRA-leden)",
     kostenBron: "https://esraeurope.org/meeting/7th-esra-instructor-course/",
     deadlines: [
-      { soort: "annuleren", datum: "2026-11-12", bron: "https://esraeurope.org/meeting/7th-esra-instructor-course/", gecontroleerd: "2026-09-28" }
+      { soort: "annuleren", datum: "2026-11-12", bron: "https://esraeurope.org/meeting/7th-esra-instructor-course/", gecontroleerd: "2026-10-08" }
     ],
     gecontroleerd: "2026-09-25"
   },
@@ -95,7 +95,7 @@ const AANVULLINGEN = {
     kosten: "€1.075 (early bird, inschrijven vóór 13 dec 2026) · daarna €1.175",
     kostenBron: "https://nysora.com/event/conferences/update-on-regional-anesthesia-and-pain-management-including-hands-on-scanning-practice/",
     deadlines: [
-      { soort: "early-bird", datum: "2026-12-12", bron: "https://nysora.com/event/conferences/update-on-regional-anesthesia-and-pain-management-including-hands-on-scanning-practice/", gecontroleerd: "2026-09-26" }
+      { soort: "early-bird", datum: "2026-12-12", bron: "https://nysora.com/event/conferences/update-on-regional-anesthesia-and-pain-management-including-hands-on-scanning-practice/", gecontroleerd: "2026-10-08" }
     ],
     gecontroleerd: "2026-09-25"
   },
@@ -103,8 +103,8 @@ const AANVULLINGEN = {
     kosten: "Lid £220–£610 (online/fysiek, 1–2 dagen) · niet-lid £750–£1.025",
     kostenBron: "https://anaesthetists.org/Home/Education-events/Winter-Scientific-Meeting/How-to-book",
     deadlines: [
-      { soort: "early-bird", datum: "2026-12-03", bron: "https://anaesthetists.org/Home/Education-events/Winter-Scientific-Meeting/How-to-book", gecontroleerd: "2026-09-26" },
-      { soort: "annuleren", datum: "2026-12-15", bron: "https://anaesthetists.org/Home/Education-events/Winter-Scientific-Meeting/How-to-book", gecontroleerd: "2026-09-26" }
+      { soort: "early-bird", datum: "2026-12-03", bron: "https://anaesthetists.org/Home/Education-events/Winter-Scientific-Meeting/How-to-book", gecontroleerd: "2026-10-08" },
+      { soort: "annuleren", datum: "2026-12-15", bron: "https://anaesthetists.org/Home/Education-events/Winter-Scientific-Meeting/How-to-book", gecontroleerd: "2026-10-08" }
     ],
     gecontroleerd: "2026-09-25"
   },
@@ -112,7 +112,7 @@ const AANVULLINGEN = {
     puntenIndicatie: "2026: max. 23,5 AMA PRA Category 1",
     puntenBron: "https://www.nans.org/cmeaccreditation/",
     deadlines: [
-      { soort: "early-bird", datum: "2026-10-27", bron: "https://www.nans.org/annual-meeting.html", gecontroleerd: "2026-10-05" },
+      { soort: "early-bird", datum: "2026-10-27", bron: "https://www.nans.org/annual-meeting.html", gecontroleerd: "2026-10-08" },
       { soort: "abstracts", datum: "2026-11-01", bron: "https://www.nans.org/abstracts/", gecontroleerd: "2026-10-05" }
     ],
     gecontroleerd: "2026-09-25"
@@ -121,7 +121,7 @@ const AANVULLINGEN = {
     kosten: "€1.075 (early bird, inschrijven vóór 8 jan 2027) · daarna €1.175",
     kostenBron: "https://nysora.com/event/conferences/anesthesia-review-conference-valdisere-2027/",
     deadlines: [
-      { soort: "early-bird", datum: "2027-01-07", bron: "https://nysora.com/event/conferences/anesthesia-review-conference-valdisere-2027/", gecontroleerd: "2026-09-26" }
+      { soort: "early-bird", datum: "2027-01-07", bron: "https://nysora.com/event/conferences/anesthesia-review-conference-valdisere-2027/", gecontroleerd: "2026-10-08" }
     ],
     gecontroleerd: "2026-09-25"
   },
@@ -142,11 +142,16 @@ const AANVULLINGEN = {
     puntenIndicatie: "2025: 24 ECMEC (EACCME)",
     puntenBron: "https://europeanpainfederation.eu/news/efic2025-has-received-24-eaccme-credits/",
     deadlines: [
-      { soort: "abstracts", datum: "2026-09-30", bron: "https://europeanpainfederation.eu/efic2027/", gecontroleerd: "2026-09-26" },
-      { soort: "early-bird", datum: "2026-12-14", bron: "https://europeanpainfederation.eu/efic2027/", gecontroleerd: "2026-09-26" },
-      { soort: "registratie", datum: "2027-03-22", bron: "https://europeanpainfederation.eu/efic2027/", gecontroleerd: "2026-09-26" }
+      { soort: "annuleren", datum: "2026-12-13", bron: "https://europeanpainfederation.eu/efic2027/", gecontroleerd: "2026-10-08" },
+      { soort: "early-bird", datum: "2026-12-14", bron: "https://europeanpainfederation.eu/efic2027/", gecontroleerd: "2026-10-08" },
+      { soort: "registratie", datum: "2027-03-22", bron: "https://europeanpainfederation.eu/efic2027/", gecontroleerd: "2026-10-08" }
     ],
     gecontroleerd: "2026-09-25"
+  },
+  "spa-annual-2027": {
+    deadlines: [
+      { soort: "abstracts", datum: "2026-10-26", bron: "https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/", gecontroleerd: "2026-10-08" }
+    ]
   },
   "nva-anesthesiologendagen-2027": {
     kostenIndicatie: "2026: lid €435 (hele congres) / €320 (1 dag); aios €305 / €240",
@@ -221,8 +226,8 @@ const AANVULLINGEN = {
   },
   "wsac-2027": {
     deadlines: [
-      { soort: "abstracts", datum: "2026-10-15", bron: "https://surgeryanesthesiacongress.com/", gecontroleerd: "2026-10-05" },
-      { soort: "early-bird", datum: "2026-10-15", bron: "https://surgeryanesthesiacongress.com/", gecontroleerd: "2026-10-05" }
+      { soort: "abstracts", datum: "2026-10-15", bron: "https://surgeryanesthesiacongress.com/", gecontroleerd: "2026-10-08" },
+      { soort: "early-bird", datum: "2026-10-15", bron: "https://surgeryanesthesiacongress.com/", gecontroleerd: "2026-10-08" }
     ],
     gecontroleerd: "2026-09-28"
   },
@@ -230,8 +235,8 @@ const AANVULLINGEN = {
     punten: "16+ CPD (volgens organisator; accrediterende instantie niet vermeld)",
     puntenBron: "https://surgery.inovineconferences.com/",
     deadlines: [
-      { soort: "abstracts", datum: "2026-10-12", bron: "https://surgery.inovineconferences.com/", gecontroleerd: "2026-10-05" },
-      { soort: "early-bird", datum: "2026-10-14", bron: "https://surgery.inovineconferences.com/", gecontroleerd: "2026-10-05" }
+      { soort: "abstracts", datum: "2026-10-12", bron: "https://surgery.inovineconferences.com/", gecontroleerd: "2026-10-08" },
+      { soort: "early-bird", datum: "2026-10-14", bron: "https://surgery.inovineconferences.com/", gecontroleerd: "2026-10-08" }
     ],
     gecontroleerd: "2026-09-28"
   }
