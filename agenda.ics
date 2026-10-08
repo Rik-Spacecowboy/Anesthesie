@@ -34,19 +34,6 @@ URL:https://www.espacongress.com/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:esra-sunny-autumn-meeting-2026@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261005
-DTEND;VALUE=DATE:20261010
-SUMMARY:10th ESRA Sunny Autumn Meeting
-LOCATION:Quinta do Lago\, Algarve\, Portugal
-DESCRIPTION:ESRA (European Society of Regional Anaesthesia and Pain Therapy
- )\nKosten: €730–€1.070 (trainee-lid t/m niet-lid\, incl. diners/lunc
- hes)\nBron: https://esraeurope.org/meetings/?meeting_type=esra-events
-URL:https://esraeurope.org/meetings/?meeting_type=esra-events
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:asa-anesthesiology-2026@rik-spacecowboy.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20261016
@@ -759,72 +746,6 @@ BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Laatste dag early-bird: 2nd International Conference on Surgery
   and Anesthesia
-TRIGGER:-P7D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:efic-2027@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20270421
-DTEND;VALUE=DATE:20270424
-SUMMARY:EFIC Congress 2027 (Pain in Europe)
-LOCATION:Glasgow\, Verenigd Koninkrijk
-DESCRIPTION:EFIC (European Pain Federation)\nKosten: €940–€1.192 (nie
- t-lid)\nLaatste dag abstracts indienen: 2026-09-30\nLaatste dag early-bird
- : 2026-12-14\nLaatste dag inschrijven: 2027-03-22\nBron: https://europeanp
- ainfederation.eu/efic2027/
-URL:https://europeanpainfederation.eu/efic2027/
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:efic-2027-abstracts@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20260930
-DTEND;VALUE=DATE:20261001
-SUMMARY:Laatste dag abstracts indienen: EFIC Congress 2027 (Pain in Europe)
-DESCRIPTION:EFIC Congress 2027 (Pain in Europe) (2027-04-21 t/m 2027-04-23\
- , Glasgow\, Verenigd Koninkrijk)\nBron: https://europeanpainfederation.eu/
- efic2027/
-URL:https://europeanpainfederation.eu/efic2027/
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Laatste dag abstracts indienen: EFIC Congress 2027 (Pain in Eur
- ope)
-TRIGGER:-P7D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:efic-2027-early-bird@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261214
-DTEND;VALUE=DATE:20261215
-SUMMARY:Laatste dag early-bird: EFIC Congress 2027 (Pain in Europe)
-DESCRIPTION:EFIC Congress 2027 (Pain in Europe) (2027-04-21 t/m 2027-04-23\
- , Glasgow\, Verenigd Koninkrijk)\nBron: https://europeanpainfederation.eu/
- efic2027/
-URL:https://europeanpainfederation.eu/efic2027/
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Laatste dag early-bird: EFIC Congress 2027 (Pain in Europe)
-TRIGGER:-P7D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:efic-2027-registratie@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20270322
-DTEND;VALUE=DATE:20270323
-SUMMARY:Laatste dag inschrijven: EFIC Congress 2027 (Pain in Europe)
-DESCRIPTION:EFIC Congress 2027 (Pain in Europe) (2027-04-21 t/m 2027-04-23\
- , Glasgow\, Verenigd Koninkrijk)\nBron: https://europeanpainfederation.eu/
- efic2027/
-URL:https://europeanpainfederation.eu/efic2027/
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Laatste dag inschrijven: EFIC Congress 2027 (Pain in Europe)
 TRIGGER:-P7D
 END:VALARM
 END:VEVENT

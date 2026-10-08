@@ -38,18 +38,6 @@ const CONGRESSEN = [
     bron: "https://www.espacongress.com/"
   },
   {
-    id: "esra-sunny-autumn-meeting-2026",
-    naam: "10th ESRA Sunny Autumn Meeting",
-    organisatie: "ESRA (European Society of Regional Anaesthesia and Pain Therapy)",
-    land: "Portugal",
-    stad: "Quinta do Lago, Algarve",
-    datumStart: "2026-10-05",
-    datumEind: "2026-10-09",
-    onderwerp: ["regionale anesthesie", "pijngeneeskunde"],
-    kosten: "Nog niet gepubliceerd",
-    bron: "https://esraeurope.org/meetings/?meeting_type=esra-events"
-  },
-  {
     id: "spa-annual-2026",
     naam: "SPA 40th Annual Meeting",
     organisatie: "SPA (Society for Pediatric Anesthesia)",
@@ -426,18 +414,6 @@ const CONGRESSEN = [
     bron: "https://surgery.inovineconferences.com/",
     letOp: "Commercieel georganiseerd congres (Inovine Conferences), geen erkende beroepsvereniging. Op uitdrukkelijk verzoek toegevoegd; handmatig bijgehouden.",
     letOpType: "commercieel"
-  },
-  {
-    id: "efic-2027",
-    naam: "EFIC Congress 2027 (Pain in Europe)",
-    organisatie: "EFIC (European Pain Federation)",
-    land: "Verenigd Koninkrijk",
-    stad: "Glasgow",
-    datumStart: "2027-04-21",
-    datumEind: "2027-04-23",
-    onderwerp: ["pijngeneeskunde"],
-    kosten: "€940–€1.192 (niet-lid)",
-    bron: "https://europeanpainfederation.eu/efic2027/"
   },
   {
     id: "esra-residents-trainees-workshop-2027",
