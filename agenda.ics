@@ -34,19 +34,6 @@ URL:https://www.espacongress.com/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:esra-sunny-autumn-meeting-2026@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261005
-DTEND;VALUE=DATE:20261010
-SUMMARY:10th ESRA Sunny Autumn Meeting
-LOCATION:Quinta do Lago\, Algarve\, Portugal
-DESCRIPTION:ESRA (European Society of Regional Anaesthesia and Pain Therapy
- )\nKosten: €730–€1.070 (trainee-lid t/m niet-lid\, incl. diners/lunc
- hes)\nBron: https://esraeurope.org/meetings/?meeting_type=esra-events
-URL:https://esraeurope.org/meetings/?meeting_type=esra-events
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:asa-anesthesiology-2026@rik-spacecowboy.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20261016

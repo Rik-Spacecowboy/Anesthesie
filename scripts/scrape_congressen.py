@@ -780,7 +780,7 @@ def scrape_efic():
             m = re.match(rf"EFIC Congress {jaar} - (.+?), ([A-Za-z .]+)$", regel)
             if m and not stad:
                 stad = m.group(2).strip()
-            m = re.fullmatch(r"(\d{1,2}) to (\d{1,2}) ([A-Za-z]+) (20\d{2})", regel)
+            m = re.fullmatch(r"(\d{1,2})(?: to |\s*[-–]\s*)(\d{1,2}) ([A-Za-z]+) (20\d{2})", regel)
             if m and not datum and m.group(4) == str(jaar):
                 datum = (maak_datum(jaar, m.group(3), m.group(1)), maak_datum(jaar, m.group(3), m.group(2)))
         if stad and datum and datum[0]:
