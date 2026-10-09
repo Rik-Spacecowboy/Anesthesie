@@ -38,18 +38,6 @@ const CONGRESSEN = [
     bron: "https://www.espacongress.com/"
   },
   {
-    id: "esra-sunny-autumn-meeting-2026",
-    naam: "10th ESRA Sunny Autumn Meeting",
-    organisatie: "ESRA (European Society of Regional Anaesthesia and Pain Therapy)",
-    land: "Portugal",
-    stad: "Quinta do Lago, Algarve",
-    datumStart: "2026-10-05",
-    datumEind: "2026-10-09",
-    onderwerp: ["regionale anesthesie", "pijngeneeskunde"],
-    kosten: "Nog niet gepubliceerd",
-    bron: "https://esraeurope.org/meetings/?meeting_type=esra-events"
-  },
-  {
     id: "spa-annual-2026",
     naam: "SPA 40th Annual Meeting",
     organisatie: "SPA (Society for Pediatric Anesthesia)",
