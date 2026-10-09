@@ -757,18 +757,19 @@ DTEND;VALUE=DATE:20270424
 SUMMARY:EFIC Congress 2027 (Pain in Europe)
 LOCATION:Glasgow\, Verenigd Koninkrijk
 DESCRIPTION:EFIC (European Pain Federation)\nKosten: €940–€1.192 (nie
- t-lid)\nLaatste dag abstracts indienen: 2026-09-30\nLaatste dag early-bird
- : 2026-12-14\nLaatste dag inschrijven: 2027-03-22\nBron: https://europeanp
- ainfederation.eu/efic2027/
+ t-lid)\nLaatste dag annuleren met terugbetaling: 2026-12-13\nLaatste dag e
+ arly-bird: 2026-12-14\nLaatste dag inschrijven: 2027-03-22\nBron: https://
+ europeanpainfederation.eu/efic2027/
 URL:https://europeanpainfederation.eu/efic2027/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:efic-2027-abstracts@rik-spacecowboy.github.io
+UID:efic-2027-annuleren@rik-spacecowboy.github.io
 DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20260930
-DTEND;VALUE=DATE:20261001
-SUMMARY:Laatste dag abstracts indienen: EFIC Congress 2027 (Pain in Europe)
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:Laatste dag annuleren met terugbetaling: EFIC Congress 2027 (Pain i
+ n Europe)
 DESCRIPTION:EFIC Congress 2027 (Pain in Europe) (2027-04-21 t/m 2027-04-23\
  , Glasgow\, Verenigd Koninkrijk)\nBron: https://europeanpainfederation.eu/
  efic2027/
@@ -776,8 +777,8 @@ URL:https://europeanpainfederation.eu/efic2027/
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Laatste dag abstracts indienen: EFIC Congress 2027 (Pain in Eur
- ope)
+DESCRIPTION:Laatste dag annuleren met terugbetaling: EFIC Congress 2027 (Pa
+ in in Europe)
 TRIGGER:-P7D
 END:VALARM
 END:VEVENT
@@ -987,10 +988,27 @@ DTEND;VALUE=DATE:20271016
 SUMMARY:SPA 41st Annual Meeting
 LOCATION:Boston\, Verenigde Staten
 DESCRIPTION:SPA (Society for Pediatric Anesthesia)\nKosten: Nog niet gepubl
- iceerd\nBron: https://pedsanesthesia.org/education-and-meetings/upcoming-m
- eetings/
+ iceerd\nLaatste dag abstracts indienen: 2026-10-26\nBron: https://pedsanes
+ thesia.org/education-and-meetings/upcoming-meetings/
 URL:https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/
 TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:spa-annual-2027-abstracts@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261026
+DTEND;VALUE=DATE:20261027
+SUMMARY:Laatste dag abstracts indienen: SPA 41st Annual Meeting
+DESCRIPTION:SPA 41st Annual Meeting (2027-10-15 t/m 2027-10-15\, Boston\, V
+ erenigde Staten)\nBron: https://pedsanesthesia.org/education-and-meetings/
+ upcoming-meetings/
+URL:https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag abstracts indienen: SPA 41st Annual Meeting
+TRIGGER:-P7D
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:nwas-current-topics-maui-2027@rik-spacecowboy.github.io
