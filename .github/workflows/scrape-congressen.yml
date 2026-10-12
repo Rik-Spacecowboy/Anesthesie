@@ -30,8 +30,12 @@ jobs:
         run: python3 scripts/bouw_agenda.py
 
       - name: Open pull request als er wijzigingen zijn
+        id: pr
         uses: peter-evans/create-pull-request@v6
         with:
+          # PAT i.p.v. GITHUB_TOKEN: PR's van GITHUB_TOKEN starten geen workflows,
+          # dus de check "Controle" zou nooit draaien en auto-merge blijft hangen.
+          token: ${{ secrets.PAT_AUTOMERGE }}
           commit-message: "Congressen bijwerken via automatische scrape"
           title: "Automatische update: congressendata"
           body: |
@@ -40,3 +44,9 @@ jobs:
             Controleer de wijzigingen voordat je merget -- vooral entries met een `letOp`-veld verdienen een extra check.
           branch: auto/scrape-congressen
           delete-branch: true
+
+      - name: Auto-merge aanzetten (merget zodra Controle slaagt)
+        if: steps.pr.outputs.pull-request-number != ''
+        env:
+          GH_TOKEN: ${{ secrets.PAT_AUTOMERGE }}
+        run: gh pr merge "${{ steps.pr.outputs.pull-request-number }}" --auto --squash --repo "${{ github.repository }}"
