@@ -143,14 +143,15 @@ const AANVULLINGEN = {
     puntenBron: "https://europeanpainfederation.eu/news/efic2025-has-received-24-eaccme-credits/",
     deadlines: [
       { soort: "annuleren", datum: "2026-12-13", bron: "https://europeanpainfederation.eu/efic2027/", gecontroleerd: "2026-10-08" },
-      { soort: "early-bird", datum: "2026-12-14", bron: "https://europeanpainfederation.eu/efic2027/", gecontroleerd: "2026-10-08" },
-      { soort: "registratie", datum: "2027-03-22", bron: "https://europeanpainfederation.eu/efic2027/", gecontroleerd: "2026-10-08" }
+      { soort: "early-bird", datum: "2026-12-13", bron: "https://europeanpainfederation.eu/efic2027/", gecontroleerd: "2026-10-12" },
+      { soort: "registratie", datum: "2027-03-21", bron: "https://europeanpainfederation.eu/efic2027/", gecontroleerd: "2026-10-12" }
     ],
     gecontroleerd: "2026-09-25"
   },
-  "spa-annual-2027": {
+  "spa-aap-2027": {
     deadlines: [
-      { soort: "abstracts", datum: "2026-10-26", bron: "https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/", gecontroleerd: "2026-10-08" }
+      { soort: "abstracts", datum: "2026-10-25", bron: "https://www2.pedsanesthesia.org/meetings/2027winter/guide/posters/cfa.iphtml", gecontroleerd: "2026-10-12" },
+      { soort: "early-bird", datum: "2027-01-15", bron: "https://www2.pedsanesthesia.org/meetings/2027winter/guide/reg/index.iphtml", gecontroleerd: "2026-10-12" }
     ]
   },
   "nva-anesthesiologendagen-2027": {
@@ -215,7 +216,9 @@ const AANVULLINGEN = {
   },
   "euroanaesthesia-2027": {
     deadlines: [
-      { soort: "abstracts", datum: "2026-12-05", bron: "https://euroanaesthesia.org/2027/abstracts/", gecontroleerd: "2026-09-26" }
+      { soort: "abstracts", datum: "2026-12-05", bron: "https://euroanaesthesia.org/2027/abstracts/", gecontroleerd: "2026-09-26" },
+      { soort: "early-bird", datum: "2027-02-17", bron: "https://euroanaesthesia.org/2027/registration/", gecontroleerd: "2026-10-12" },
+      { soort: "registratie", datum: "2027-05-25", bron: "https://euroanaesthesia.org/2027/registration/", gecontroleerd: "2026-10-12" }
     ]
   },
   "wca-2028": {
