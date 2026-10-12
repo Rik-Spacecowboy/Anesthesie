@@ -586,10 +586,49 @@ DTEND;VALUE=DATE:20270308
 SUMMARY:SPA-AAP Pediatric Anesthesiology 2027
 LOCATION:Nassau\, Bahama's
 DESCRIPTION:SPA (Society for Pediatric Anesthesia)\nKosten: Nog niet gepubl
- iceerd\nBron: https://pedsanesthesia.org/education-and-meetings/upcoming-m
- eetings/
+ iceerd\nLaatste dag abstracts indienen: 2026-10-25\nLaatste dag early-bird
+ : 2027-01-15\nBron: https://pedsanesthesia.org/education-and-meetings/upco
+ ming-meetings/
 URL:https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/
 TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:spa-aap-2027-abstracts@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261025
+DTEND;VALUE=DATE:20261026
+SUMMARY:Laatste dag abstracts indienen: SPA-AAP Pediatric Anesthesiology 20
+ 27
+DESCRIPTION:SPA-AAP Pediatric Anesthesiology 2027 (2027-03-05 t/m 2027-03-0
+ 7\, Nassau\, Bahama's)\nBron: https://www2.pedsanesthesia.org/meetings/202
+ 7winter/guide/posters/cfa.iphtml
+URL:https://www2.pedsanesthesia.org/meetings/2027winter/guide/posters/cfa.i
+ phtml
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag abstracts indienen: SPA-AAP Pediatric Anesthesiolog
+ y 2027
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:spa-aap-2027-early-bird@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270115
+DTEND;VALUE=DATE:20270116
+SUMMARY:Laatste dag early-bird: SPA-AAP Pediatric Anesthesiology 2027
+DESCRIPTION:SPA-AAP Pediatric Anesthesiology 2027 (2027-03-05 t/m 2027-03-0
+ 7\, Nassau\, Bahama's)\nBron: https://www2.pedsanesthesia.org/meetings/202
+ 7winter/guide/reg/index.iphtml
+URL:https://www2.pedsanesthesia.org/meetings/2027winter/guide/reg/index.iph
+ tml
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag early-bird: SPA-AAP Pediatric Anesthesiology 2027
+TRIGGER:-P7D
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wsac-2027@rik-spacecowboy.github.io
@@ -771,7 +810,7 @@ SUMMARY:EFIC Congress 2027 (Pain in Europe)
 LOCATION:Glasgow\, Verenigd Koninkrijk
 DESCRIPTION:EFIC (European Pain Federation)\nKosten: €940–€1.192 (nie
  t-lid)\nLaatste dag annuleren met terugbetaling: 2026-12-13\nLaatste dag e
- arly-bird: 2026-12-14\nLaatste dag inschrijven: 2027-03-22\nBron: https://
+ arly-bird: 2026-12-13\nLaatste dag inschrijven: 2027-03-21\nBron: https://
  europeanpainfederation.eu/efic2027/
 URL:https://europeanpainfederation.eu/efic2027/
 TRANSP:TRANSPARENT
@@ -798,8 +837,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:efic-2027-early-bird@rik-spacecowboy.github.io
 DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261214
-DTEND;VALUE=DATE:20261215
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
 SUMMARY:Laatste dag early-bird: EFIC Congress 2027 (Pain in Europe)
 DESCRIPTION:EFIC Congress 2027 (Pain in Europe) (2027-04-21 t/m 2027-04-23\
  , Glasgow\, Verenigd Koninkrijk)\nBron: https://europeanpainfederation.eu/
@@ -815,8 +854,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:efic-2027-registratie@rik-spacecowboy.github.io
 DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20270322
-DTEND;VALUE=DATE:20270323
+DTSTART;VALUE=DATE:20270321
+DTEND;VALUE=DATE:20270322
 SUMMARY:Laatste dag inschrijven: EFIC Congress 2027 (Pain in Europe)
 DESCRIPTION:EFIC Congress 2027 (Pain in Europe) (2027-04-21 t/m 2027-04-23\
  , Glasgow\, Verenigd Koninkrijk)\nBron: https://europeanpainfederation.eu/
@@ -905,7 +944,8 @@ SUMMARY:Euroanaesthesia 2027
 LOCATION:Kopenhagen\, Denemarken
 DESCRIPTION:ESAIC (European Society of Anaesthesiology and Intensive Care)\
  nKosten: Nog niet gepubliceerd\nLaatste dag abstracts indienen: 2026-12-05
- \nBron: https://euroanaesthesia.org/2027/
+ \nLaatste dag early-bird: 2027-02-17\nLaatste dag inschrijven: 2027-05-25\
+ nBron: https://euroanaesthesia.org/2027/
 URL:https://euroanaesthesia.org/2027/
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -922,6 +962,38 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Laatste dag abstracts indienen: Euroanaesthesia 2027
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:euroanaesthesia-2027-early-bird@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270217
+DTEND;VALUE=DATE:20270218
+SUMMARY:Laatste dag early-bird: Euroanaesthesia 2027
+DESCRIPTION:Euroanaesthesia 2027 (2027-05-29 t/m 2027-05-31\, Kopenhagen\, 
+ Denemarken)\nBron: https://euroanaesthesia.org/2027/registration/
+URL:https://euroanaesthesia.org/2027/registration/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag early-bird: Euroanaesthesia 2027
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:euroanaesthesia-2027-registratie@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270525
+DTEND;VALUE=DATE:20270526
+SUMMARY:Laatste dag inschrijven: Euroanaesthesia 2027
+DESCRIPTION:Euroanaesthesia 2027 (2027-05-29 t/m 2027-05-31\, Kopenhagen\, 
+ Denemarken)\nBron: https://euroanaesthesia.org/2027/registration/
+URL:https://euroanaesthesia.org/2027/registration/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag inschrijven: Euroanaesthesia 2027
 TRIGGER:-P7D
 END:VALARM
 END:VEVENT
@@ -1001,27 +1073,10 @@ DTEND;VALUE=DATE:20271016
 SUMMARY:SPA 41st Annual Meeting
 LOCATION:Boston\, Verenigde Staten
 DESCRIPTION:SPA (Society for Pediatric Anesthesia)\nKosten: Nog niet gepubl
- iceerd\nLaatste dag abstracts indienen: 2026-10-26\nBron: https://pedsanes
- thesia.org/education-and-meetings/upcoming-meetings/
+ iceerd\nBron: https://pedsanesthesia.org/education-and-meetings/upcoming-m
+ eetings/
 URL:https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/
 TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:spa-annual-2027-abstracts@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261026
-DTEND;VALUE=DATE:20261027
-SUMMARY:Laatste dag abstracts indienen: SPA 41st Annual Meeting
-DESCRIPTION:SPA 41st Annual Meeting (2027-10-15 t/m 2027-10-15\, Boston\, V
- erenigde Staten)\nBron: https://pedsanesthesia.org/education-and-meetings/
- upcoming-meetings/
-URL:https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Laatste dag abstracts indienen: SPA 41st Annual Meeting
-TRIGGER:-P7D
-END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:nwas-current-topics-maui-2027@rik-spacecowboy.github.io
