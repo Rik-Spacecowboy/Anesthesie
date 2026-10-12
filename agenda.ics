@@ -579,6 +579,19 @@ URL:https://nysora.com/events/conferences
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:spa-aap-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270305
+DTEND;VALUE=DATE:20270308
+SUMMARY:SPA-AAP Pediatric Anesthesiology 2027
+LOCATION:Nassau\, Bahama's
+DESCRIPTION:SPA (Society for Pediatric Anesthesia)\nKosten: Nog niet gepubl
+ iceerd\nBron: https://pedsanesthesia.org/education-and-meetings/upcoming-m
+ eetings/
+URL:https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:wsac-2027@rik-spacecowboy.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270311

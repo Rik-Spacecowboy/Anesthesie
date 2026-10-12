@@ -346,6 +346,18 @@ const CONGRESSEN = [
     bron: "https://nysora.com/events/conferences"
   },
   {
+    id: "spa-aap-2027",
+    naam: "SPA-AAP Pediatric Anesthesiology 2027",
+    organisatie: "SPA (Society for Pediatric Anesthesia)",
+    land: "Bahama's",
+    stad: "Nassau",
+    datumStart: "2027-03-05",
+    datumEind: "2027-03-07",
+    onderwerp: ["kinderanesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/"
+  },
+  {
     id: "wsac-2027",
     naam: "World Surgery and Anesthesia Congress (WSAC 2027)",
     organisatie: "Iris Scientific Group",
