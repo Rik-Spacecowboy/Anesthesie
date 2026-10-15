@@ -174,6 +174,9 @@ const AANVULLINGEN = {
     kostenBron: "https://esraeurope.org/meeting/20th-esra-winter-week-conference/",
     puntenIndicatie: "2026: 20 ECMEC (EACCME)",
     puntenBron: "https://esraeurope.org/meeting/20th-esra-winter-week-conference/",
+    deadlines: [
+      { soort: "annuleren", datum: "2026-12-19", bron: "https://esraeurope.org/meeting/21st-esra-winter-week-conference/", gecontroleerd: "2026-10-15" }
+    ],
     gecontroleerd: "2026-09-25"
   },
   "esra-pain-cadaver-workshop-2027": {
@@ -223,7 +226,8 @@ const AANVULLINGEN = {
   },
   "wca-2028": {
     deadlines: [
-      { soort: "abstracts", datum: "2027-10-20", bron: "https://wcacongress.org/abstracts/", gecontroleerd: "2026-09-29" }
+      { soort: "abstracts", datum: "2027-03-23", bron: "https://wcacongress.org/abstracts/", gecontroleerd: "2026-10-15" },
+      { soort: "abstracts", datum: "2027-10-20", bron: "https://wcacongress.org/abstracts/", gecontroleerd: "2026-10-15" }
     ],
     gecontroleerd: "2026-09-28"
   },
@@ -238,8 +242,8 @@ const AANVULLINGEN = {
     punten: "16+ CPD (volgens organisator; accrediterende instantie niet vermeld)",
     puntenBron: "https://surgery.inovineconferences.com/",
     deadlines: [
-      { soort: "abstracts", datum: "2026-10-12", bron: "https://surgery.inovineconferences.com/", gecontroleerd: "2026-10-08" },
-      { soort: "early-bird", datum: "2026-10-14", bron: "https://surgery.inovineconferences.com/", gecontroleerd: "2026-10-08" }
+      { soort: "abstracts", datum: "2026-10-28", bron: "https://surgery.inovineconferences.com/", gecontroleerd: "2026-10-15" },
+      { soort: "early-bird", datum: "2026-10-30", bron: "https://surgery.inovineconferences.com/", gecontroleerd: "2026-10-15" }
     ],
     gecontroleerd: "2026-09-28"
   }
