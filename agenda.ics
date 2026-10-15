@@ -382,10 +382,30 @@ DTEND;VALUE=DATE:20270123
 SUMMARY:21st ESRA Winter Week Conference
 LOCATION:Längenfeld\, Oostenrijk
 DESCRIPTION:ESRA (European Society of Regional Anaesthesia and Pain Therapy
- )\nKosten: Nog niet gepubliceerd\nBron: https://esraeurope.org/meetings/?m
- eeting_type=esra-events
+ )\nKosten: Nog niet gepubliceerd\nLaatste dag annuleren met terugbetaling:
+  2026-12-19\nBron: https://esraeurope.org/meetings/?meeting_type=esra-even
+ ts
 URL:https://esraeurope.org/meetings/?meeting_type=esra-events
 TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:esra-winter-week-conference-2027-annuleren@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261219
+DTEND;VALUE=DATE:20261220
+SUMMARY:Laatste dag annuleren met terugbetaling: 21st ESRA Winter Week Conf
+ erence
+DESCRIPTION:21st ESRA Winter Week Conference (2027-01-17 t/m 2027-01-22\, L
+ ängenfeld\, Oostenrijk)\nBron: https://esraeurope.org/meeting/21st-esra-w
+ inter-week-conference/
+URL:https://esraeurope.org/meeting/21st-esra-winter-week-conference/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag annuleren met terugbetaling: 21st ESRA Winter Week 
+ Conference
+TRIGGER:-P7D
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:winter-pain-symposium-2027@rik-spacecowboy.github.io
@@ -758,16 +778,16 @@ DESCRIPTION:Inovine Conferences\nLet op: Commercieel georganiseerd congres
  (Inovine Conferences)\, geen erkende beroepsvereniging. Op uitdrukkelijk v
  erzoek toegevoegd\; handmatig bijgehouden.\nKosten: Nog niet gepubliceerd\
  nNascholing: 16+ CPD (volgens organisator\; accrediterende instantie niet 
- vermeld)\nLaatste dag abstracts indienen: 2026-10-12\nLaatste dag early-bi
- rd: 2026-10-14\nBron: https://surgery.inovineconferences.com/
+ vermeld)\nLaatste dag abstracts indienen: 2026-10-28\nLaatste dag early-bi
+ rd: 2026-10-30\nBron: https://surgery.inovineconferences.com/
 URL:https://surgery.inovineconferences.com/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:icsa-2027-abstracts@rik-spacecowboy.github.io
 DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261012
-DTEND;VALUE=DATE:20261013
+DTSTART;VALUE=DATE:20261028
+DTEND;VALUE=DATE:20261029
 SUMMARY:Laatste dag abstracts indienen: 2nd International Conference on Sur
  gery and Anesthesia
 DESCRIPTION:2nd International Conference on Surgery and Anesthesia (2027-04
@@ -785,8 +805,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:icsa-2027-early-bird@rik-spacecowboy.github.io
 DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261014
-DTEND;VALUE=DATE:20261015
+DTSTART;VALUE=DATE:20261030
+DTEND;VALUE=DATE:20261031
 SUMMARY:Laatste dag early-bird: 2nd International Conference on Surgery and
   Anesthesia
 DESCRIPTION:2nd International Conference on Surgery and Anesthesia (2027-04
@@ -1140,10 +1160,30 @@ DTEND;VALUE=DATE:20280511
 SUMMARY:20th World Congress of Anaesthesiologists (WCA 2028)
 LOCATION:Vancouver\, Canada
 DESCRIPTION:WFSA (World Federation of Societies of Anaesthesiologists)\nKos
- ten: Nog niet gepubliceerd\nLaatste dag abstracts indienen: 2027-10-20\nBr
- on: https://wfsahq.org/our-work/world-congress/
+ ten: Nog niet gepubliceerd\nLaatste dag abstracts indienen: 2027-03-23\nLa
+ atste dag abstracts indienen: 2027-10-20\nBron: https://wfsahq.org/our-wor
+ k/world-congress/
 URL:https://wfsahq.org/our-work/world-congress/
 TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:wca-2028-abstracts@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270323
+DTEND;VALUE=DATE:20270324
+SUMMARY:Laatste dag abstracts indienen: 20th World Congress of Anaesthesiol
+ ogists (WCA 2028)
+DESCRIPTION:20th World Congress of Anaesthesiologists (WCA 2028) (2028-05-0
+ 7 t/m 2028-05-10\, Vancouver\, Canada)\nBron: https://wcacongress.org/abst
+ racts/
+URL:https://wcacongress.org/abstracts/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag abstracts indienen: 20th World Congress of Anaesthe
+ siologists (WCA 2028)
+TRIGGER:-P7D
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wca-2028-abstracts@rik-spacecowboy.github.io
