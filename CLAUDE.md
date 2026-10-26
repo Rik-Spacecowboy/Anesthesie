@@ -34,6 +34,11 @@ Faalt het bouwscript (index.html is zo veranderd dat een aanpassing niet meer pa
 in plaats van het over te slaan. Daarnaast checkt een geplande Routine twee keer per dag of de artifact
 achterloopt op `main` (vangt bv. scraper-PR's op die in GitHub zelf gemerged worden).
 
+De workflow `.github/workflows/bouw-artifact.yml` draait het bouwscript bij elke push naar `main` en zet de
+uitvoer (`index.html`, `data/*.js`, `img/steden/*.jpg`) als kale branch `build-artifact`. Wie de artifact
+bijwerkt zonder het script te mogen draaien, leest de bestanden van die branch; de commit-message noemt de
+`main`-commit waaruit gebouwd is.
+
 ## PR's: Claude maakt én merget ze
 
 Rik doet zelf geen PR's, ook niet de scrape-PR (`auto/scrape-congressen`). Laat dus nooit een PR voor hem
