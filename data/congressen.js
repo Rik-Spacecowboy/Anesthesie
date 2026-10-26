@@ -38,18 +38,6 @@ const CONGRESSEN = [
     bron: "https://www.espacongress.com/"
   },
   {
-    id: "spa-annual-2026",
-    naam: "SPA 40th Annual Meeting",
-    organisatie: "SPA (Society for Pediatric Anesthesia)",
-    land: "Verenigde Staten",
-    stad: "San Diego",
-    datumStart: "2026-10-16",
-    datumEind: "2026-10-16",
-    onderwerp: ["kinderanesthesiologie"],
-    kosten: "Nog niet gepubliceerd",
-    bron: "https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/"
-  },
-  {
     id: "asa-anesthesiology-2026",
     naam: "ANESTHESIOLOGY 2026 (ASA Annual Meeting)",
     organisatie: "American Society of Anesthesiologists (ASA)",
@@ -62,6 +50,18 @@ const CONGRESSEN = [
     bron: "https://www.asahq.org/annualmeeting",
     letOp: "Niet automatisch gescraped: apsf.org (oude bron) blokkeert scrapers en asahq.org verbiedt in de site-voorwaarden expliciet gebruik van hun content met AI/automatisering. Handmatig controleren en bijwerken.",
     letOpType: "data"
+  },
+  {
+    id: "spa-annual-2026",
+    naam: "SPA 40th Annual Meeting",
+    organisatie: "SPA (Society for Pediatric Anesthesia)",
+    land: "Verenigde Staten",
+    stad: "San Diego",
+    datumStart: "2026-10-16",
+    datumEind: "2026-10-16",
+    onderwerp: ["kinderanesthesiologie"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/"
   },
   {
     id: "eaccm-2026",
