@@ -1,0 +1,43 @@
+name: Artifact bouwen
+
+# Bouwt bij elke push naar main de artifactversie van de site (scripts/bouw_artifact.py) en zet het
+# resultaat (index.html, data/*.js, img/steden/*.jpg) als enige inhoud op de branch build-artifact.
+# De taak die de claude.ai-artifact bijwerkt hoeft dan alleen die branch te lezen, zonder het script te draaien.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+# Twee pushes kort na elkaar: alleen de laatste build telt.
+concurrency:
+  group: bouw-artifact
+  cancel-in-progress: true
+
+jobs:
+  bouw:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Artifact bouwen
+        run: python3 scripts/bouw_artifact.py "$RUNNER_TEMP/artifact"
+
+      - name: Naar branch build-artifact pushen
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        working-directory: ${{ runner.temp }}/artifact
+        run: |
+          # Kale branch zonder geschiedenis: elke build vervangt de vorige volledig.
+          git init -q -b build-artifact
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Artifact gebouwd uit ${GITHUB_SHA}"
+          git push --force "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:build-artifact
