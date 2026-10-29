@@ -224,7 +224,7 @@ const CONGRESSEN = [
     datumStart: "2027-01-17",
     datumEind: "2027-01-22",
     onderwerp: ["pijngeneeskunde"],
-    kosten: "Vanaf £400 (excl. verblijf)",
+    kosten: "Nog niet gepubliceerd",
     bron: "https://www.winterpainsymposium.com/"
   },
   {
