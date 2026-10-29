@@ -1,0 +1,1761 @@
+<title>Anesthesie &amp; Pijn Congressen</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+    :root {
+      --bg: #f3f3f0;
+      --surface: #ffffff;
+      --ink: #0a0a0a;
+      --ink-zacht: #5d5d58;
+      --lijn: #d9d9d3;
+      --accent: #ff5500;
+      --accent-tekst: #0a0a0a;
+      --hero-bg: #0a0a0a;
+      --hero-ink: #f5f5f2;
+      --hero-zacht: #a3a39c;
+      --ring: #262624;
+      --kaart-land: #e6e4dd;
+      --land-tekst: 72%;
+      --land-vlak: 15%;
+      --land-rand: 100%;
+      --display: 'Barlow Condensed', 'Arial Narrow', 'Helvetica Neue', Arial, sans-serif;
+      --tekst: 'Barlow', 'Helvetica Neue', Arial, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --bg: #0a0a0a;
+        --surface: #141414;
+        --ink: #f5f5f2;
+        --ink-zacht: #a3a39c;
+        --lijn: #2a2a28;
+        --hero-bg: #000000;
+        --ring: #232321;
+        --kaart-land: #2e2e2b;
+        --land-tekst: 42%;
+        --land-vlak: 30%;
+        --land-rand: 70%;
+      }
+    }
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #0a0a0a;
+      --surface: #141414;
+      --ink: #f5f5f2;
+      --ink-zacht: #a3a39c;
+      --lijn: #2a2a28;
+      --hero-bg: #000000;
+      --ring: #232321;
+      --kaart-land: #2e2e2b;
+      --land-tekst: 42%;
+      --land-vlak: 30%;
+      --land-rand: 70%;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--tekst);
+      font-size: 16px;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    /* ---------- topbalk ---------- */
+    .topbalk {
+      background: var(--hero-bg);
+      color: var(--hero-ink);
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 14px 20px;
+      font-family: var(--display); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 1rem;
+    }
+    .topbalk .merk { display: flex; align-items: center; gap: 10px; }
+    .topbalk .merk i { width: 12px; height: 12px; background: var(--accent); border-radius: 50%; display: inline-block; }
+    .topbalk .teller-top { color: var(--hero-zacht); font-weight: 600; }
+    .topbalk-rechts { display: flex; align-items: center; gap: 16px; }
+    .info-knop {
+      display: inline-flex; align-items: center; gap: 7px; cursor: pointer;
+      background: transparent; color: var(--hero-ink); border: 1.5px solid #3a3a37; border-radius: 999px;
+      padding: 4px 12px 4px 5px; font: 700 0.85rem var(--display); letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .info-knop:hover, .info-knop[aria-expanded="true"] { border-color: var(--accent); }
+    .info-knop .i {
+      width: 20px; height: 20px; border-radius: 50%; background: var(--accent); color: var(--accent-tekst);
+      display: inline-grid; place-items: center; font: 800 0.8rem/1 Georgia, serif; text-transform: none; letter-spacing: 0;
+    }
+
+
+    /* ---------- notitie: wat ontbreekt ---------- */
+    .notitie { background: var(--hero-bg); color: var(--hero-zacht); border-top: 1px solid #1f1f1d; font-size: 0.82rem; }
+    .notitie-binnen { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+    .notitie-kop { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 14px 0 4px; }
+    .notitie-kop h2 { margin: 0; font: 800 1.05rem var(--display); letter-spacing: 0.08em; text-transform: uppercase; color: var(--hero-ink); }
+    .notitie-sluit { background: none; border: 0; cursor: pointer; color: var(--hero-zacht); font: 700 0.85rem var(--display); letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 0; }
+    .notitie-sluit:hover { color: var(--hero-ink); }
+    .notitie-inhoud { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px 28px; padding: 6px 0 18px; }
+    .notitie-inhoud h3 { margin: 0 0 4px; font: 700 0.8rem var(--display); letter-spacing: 0.12em; text-transform: uppercase; color: var(--hero-ink); }
+    .notitie-inhoud p { margin: 0; line-height: 1.4; }
+
+    /* ---------- hero ---------- */
+    .hero {
+      background: var(--hero-bg);
+      color: var(--hero-ink);
+      overflow: hidden;
+      position: relative;
+    }
+    /* Compacte kop: titel en illustratie naast elkaar, zodat zoekbalk en congressen snel in beeld zijn. */
+    .hero-binnen {
+      max-width: 1180px; margin: 0 auto;
+      padding: 22px 20px 0;
+      display: grid; grid-template-columns: 1fr auto; grid-template-areas: "tekst beeld" "extra beeld";
+      gap: 0 28px; align-items: end;
+    }
+    .hero-tekst { grid-area: tekst; align-self: end; }
+    .hero-extra { grid-area: extra; padding-bottom: 24px; }
+    .eyebrow {
+      font-family: var(--display); font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em;
+      color: var(--accent); font-size: 1rem; margin: 0 0 10px;
+    }
+    .hero h1 {
+      font-family: var(--display); font-weight: 800; text-transform: uppercase;
+      font-size: clamp(2.3rem, 5.6vw, 4.4rem); line-height: 0.9; letter-spacing: -0.01em;
+      margin: 0 0 12px; text-wrap: balance;
+    }
+    .hero h1 em { font-style: normal; color: var(--accent); }
+    .hero .sub { color: var(--hero-zacht); max-width: 52ch; margin: 0 0 16px; font-size: 1rem; }
+    .volgend {
+      display: inline-flex; align-items: stretch; gap: 0; text-decoration: none;
+      background: var(--accent); color: var(--accent-tekst);
+      border-radius: 2px; max-width: 100%;
+    }
+    .volgend .dagen {
+      font-family: var(--display); font-weight: 800; line-height: 0.85; font-size: 2.8rem;
+      padding: 10px 14px 8px; background: var(--hero-ink); color: var(--hero-bg); text-align: center; min-width: 4.6rem;
+    }
+    .volgend .dagen small { display: block; font-size: 0.95rem; letter-spacing: 0.1em; margin-top: 6px; font-weight: 700; }
+    .volgend .waar { padding: 8px 16px; display: flex; flex-direction: column; justify-content: center; min-width: 0; }
+    .volgend .label { font-family: var(--display); text-transform: uppercase; font-weight: 700; letter-spacing: 0.12em; font-size: 0.9rem; }
+    .volgend .naam { font-family: var(--display); text-transform: uppercase; font-weight: 800; font-size: 1.3rem; line-height: 1; margin: 2px 0 4px; }
+    .volgend .plek { font-size: 0.95rem; font-weight: 500; }
+    .volgend:hover { filter: brightness(1.06); }
+
+    .hero-beeld { grid-area: beeld; align-self: end; width: clamp(96px, 22vw, 250px); }
+    .hero-beeld svg { display: block; width: 100%; height: auto; }
+    .ecg { stroke-dasharray: 1400; stroke-dashoffset: 1400; animation: ecg 3.2s linear infinite; }
+    .ring-puls { transform-origin: 300px 330px; animation: puls 3.2s ease-in-out infinite; }
+    @keyframes ecg { 0% { stroke-dashoffset: 1400; } 70%, 100% { stroke-dashoffset: 0; } }
+    @keyframes puls { 0%, 100% { transform: scale(1); opacity: .55; } 50% { transform: scale(1.04); opacity: 1; } }
+
+    /* ---------- lopende band ---------- */
+    .band { background: var(--accent); color: var(--accent-tekst); overflow: hidden; white-space: nowrap; border-block: 2px solid var(--hero-bg); }
+    .band-spoor { display: inline-flex; animation: band 42s linear infinite; }
+    .band span {
+      font-family: var(--display); font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; font-size: 1.35rem;
+      padding: 8px 0;
+    }
+    .band span::after { content: "✚"; margin: 0 1.1rem; font-size: 1rem; vertical-align: 2px; }
+    @keyframes band { to { transform: translateX(-50%); } }
+
+    /* ---------- filters ---------- */
+    main { max-width: 1180px; margin: 0 auto; padding: 0 20px 80px; }
+    .toolbar {
+      position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+      background: var(--bg);
+      padding: 8px 0 6px;
+      border-bottom: 1px solid var(--lijn);
+      margin-bottom: 4px;
+      max-height: 100vh; overflow-y: auto;
+    }
+    .zoekrij { display: flex; gap: 10px; align-items: stretch; }
+    .zoek {
+      flex: 1; min-width: 0;
+      font: 600 1rem var(--tekst);
+      padding: 8px 14px;
+      background: var(--surface); color: var(--ink);
+      border: 2px solid var(--ink); border-radius: 2px;
+    }
+    .zoek::placeholder { color: var(--ink-zacht); font-weight: 500; }
+    .zoek:focus-visible { outline-offset: 0; border-color: var(--accent); }
+    .knop {
+      font: 700 0.9rem var(--display); letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0 16px; border-radius: 2px; cursor: pointer;
+      background: var(--ink); color: var(--bg); border: 2px solid var(--ink);
+    }
+    .knop:hover { background: var(--accent); border-color: var(--accent); color: var(--accent-tekst); }
+    .chips { display: flex; gap: 8px; overflow-x: auto; padding: 8px 0 2px; scrollbar-width: none; align-items: center; }
+    .chips::-webkit-scrollbar { display: none; }
+    /* Vervagende rand waar nog chips buiten beeld staan (rij scrollt horizontaal). */
+    .chips.rand-rechts { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 56px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 56px), transparent); }
+    .chips.rand-links { -webkit-mask-image: linear-gradient(to right, transparent, #000 56px); mask-image: linear-gradient(to right, transparent, #000 56px); }
+    .chips.rand-links.rand-rechts {
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 56px, #000 calc(100% - 56px), transparent);
+      mask-image: linear-gradient(to right, transparent, #000 56px, #000 calc(100% - 56px), transparent);
+    }
+    .chip {
+      flex: none; cursor: pointer;
+      font: 700 0.85rem var(--display); text-transform: uppercase; letter-spacing: 0.07em;
+      padding: 4px 11px; border-radius: 999px;
+      background: transparent; color: var(--ink); border: 2px solid var(--lijn);
+    }
+    .chip:hover { border-color: var(--ink); }
+    .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-tekst); }
+    .chips .scheiding { flex: none; width: 2px; align-self: stretch; background: var(--lijn); margin: 4px 4px; }
+    details.meer { margin-top: 2px; }
+    details.meer summary {
+      cursor: pointer; list-style: none; display: inline-flex; gap: 8px; align-items: center;
+      font: 700 0.85rem var(--display); letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 0;
+    }
+    details.meer summary::-webkit-details-marker { display: none; }
+    details.meer summary::after { content: "+"; font-size: 1.3rem; line-height: 1; }
+    details.meer[open] summary::after { content: "–"; }
+    .meer-raster { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; padding: 10px 0 6px; }
+    .veld { display: flex; flex-direction: column; gap: 4px; }
+    .veld label { font: 700 0.8rem var(--display); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-zacht); }
+    .veld select, .veld input {
+      font: 500 1rem var(--tekst); padding: 10px 10px; background: var(--surface); color: var(--ink);
+      border: 2px solid var(--lijn); border-radius: 2px;
+    }
+    .veld select:focus-visible, .veld input:focus-visible { border-color: var(--accent); outline-offset: 0; }
+    #resultaatTeller { margin: 18px 0 0; font: 700 1rem var(--display); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-zacht); }
+
+    /* ---------- lijst ---------- */
+    .congres-lijst { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 16px; padding-top: 8px; }
+    .jaarkop {
+      grid-column: 1 / -1; margin: 26px 0 -4px;
+      font-family: var(--display); font-weight: 800; line-height: 0.85;
+      font-size: clamp(4rem, 14vw, 9rem); letter-spacing: -0.01em;
+      color: transparent; -webkit-text-stroke: 2px var(--ink);
+    }
+    .congres-kaart {
+      background: var(--surface); border: 2px solid var(--ink); border-left: 8px solid color-mix(in srgb, var(--landkleur, var(--ink)) var(--land-rand), var(--ink)); border-radius: 2px;
+      display: flex; flex-direction: column; overflow: hidden;
+      transition: transform .18s ease, box-shadow .18s ease;
+      animation: op 0.5s ease both; animation-delay: calc(var(--i, 0) * 30ms);
+    }
+    .congres-kaart:hover { transform: translate(-4px, -4px); box-shadow: 8px 8px 0 var(--accent); }
+    .kaart-datum {
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 12px;
+      padding: 16px 18px 12px; border-bottom: 2px solid var(--ink);
+      background: var(--hero-bg); color: var(--hero-ink);
+    }
+    .dagen-groot { font-family: var(--display); font-weight: 800; font-size: 3.6rem; line-height: 0.85; letter-spacing: -0.01em; }
+    .weekdagen { font: 600 0.85rem var(--tekst); color: var(--hero-zacht); margin-top: 7px; }
+    .maand { font-family: var(--display); font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; font-size: 1.1rem; color: var(--accent); }
+    /* Stadsfoto als kop (data/steden.js), met verloop zodat datum en week leesbaar blijven. */
+    .kaart-datum { position: relative; overflow: hidden; }
+    .kaart-datum.met-foto { min-height: 150px; }
+    .kaart-datum.met-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.82), rgba(0,0,0,.05) 72%); }
+    .kaart-datum > div { position: relative; z-index: 1; }
+    .kop-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .met-foto .maand, .met-foto .dagen-groot { text-shadow: 0 1px 3px rgba(0,0,0,.55); }
+    .met-foto .weekdagen, .met-foto .weekbadge { color: #e4e4de; }
+    .foto-credit {
+      position: absolute; top: 8px; left: 10px; z-index: 2; max-width: calc(100% - 64px);
+      font: 500 0.66rem var(--tekst); color: #fff; background: rgba(0,0,0,.45); padding: 1px 6px; border-radius: 2px;
+      text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .foto-credit:hover { text-decoration: underline; }
+    .plek-regel { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+    .landchip {
+      display: inline-flex; align-items: center; gap: 6px; border-radius: 999px; padding: 2px 9px;
+      font: 700 0.75rem var(--display); letter-spacing: 0.08em; text-transform: uppercase;
+      background: color-mix(in srgb, var(--landkleur) var(--land-vlak), var(--surface)); color: color-mix(in srgb, var(--landkleur) var(--land-tekst), var(--ink));
+    }
+    .landchip i { width: 8px; height: 8px; border-radius: 50%; background: var(--landkleur); display: inline-block; }
+    .kaart-datum .rechts { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+    .status { font: 700 0.8rem var(--display); letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+    .status.nu { background: var(--accent); color: var(--accent-tekst); }
+    .status.voorbij { background: transparent; border: 1px solid var(--hero-zacht); color: var(--hero-zacht); }
+    .weekbadge { font: 700 0.85rem var(--display); letter-spacing: 0.1em; text-transform: uppercase; color: var(--hero-zacht); }
+    .weekbadge b { color: var(--hero-ink); }
+    .weekbadge.even::before, .weekbadge.oneven::before { content: ""; display: inline-block; width: 9px; height: 9px; margin-right: 6px; border-radius: 50%; }
+    .weekbadge.even::before { background: var(--hero-ink); }
+    .weekbadge.oneven::before { background: var(--accent); }
+    .kaart-body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+    .congres-kaart h2 { margin: 0; font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: 1.75rem; line-height: 0.98; text-wrap: balance; }
+    .organisatie { color: var(--ink-zacht); font-size: 0.92rem; }
+    .kaart-body .plek { font-weight: 600; display: flex; gap: 8px; align-items: baseline; }
+    .kaart-body .plek::before { content: ""; flex: none; width: 10px; height: 10px; background: var(--accent); border-radius: 50% 50% 50% 0; transform: rotate(-45deg) translateY(1px); }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { font: 700 0.82rem var(--display); letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border: 1.5px solid var(--ink); border-radius: 999px; }
+    .kaart-voet { margin-top: auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; padding-top: 8px; border-top: 1px solid var(--lijn); }
+    .kosten { display: flex; flex-direction: column; gap: 1px; }
+    .kosten-hoofd { font-weight: 700; font-size: 1.05rem; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; }
+    .kosten-hoofd.onbekend { font-weight: 500; font-size: 0.92rem; color: var(--ink-zacht); }
+    .kosten-detail { color: var(--ink-zacht); font-size: 0.85rem; line-height: 1.35; }
+    .volgeboekt { font: 700 0.72rem var(--display); letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 7px; border-radius: 2px; background: var(--ink); color: var(--bg); }
+    .indicatie { display: block; font-size: 0.8rem; font-style: italic; }
+    .punten { font-size: 0.9rem; display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: baseline; }
+    .punten-label { font: 700 0.72rem var(--display); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-zacht); }
+    .punten .indicatie { display: inline; color: var(--ink-zacht); }
+    .deadlines { font-size: 0.9rem; display: flex; flex-direction: column; gap: 3px; }
+    .deadline { display: flex; flex-wrap: wrap; gap: 0 8px; align-items: baseline; }
+    .deadline a { text-decoration-color: var(--lijn); text-underline-offset: 3px; }
+    .deadline a:hover { text-decoration-color: var(--accent); }
+    .deadline .nog { color: var(--ink-zacht); font-size: 0.82rem; }
+    .deadline.dringend .nog { color: var(--ink); font-weight: 700; }
+    .deadline.dringend .nog::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 5px; border-radius: 50%; background: var(--accent); }
+    .edities { font-size: 0.85rem; color: var(--ink-zacht); display: flex; flex-wrap: wrap; gap: 2px 14px; }
+    .editie-link {
+      background: none; border: 0; padding: 0; cursor: pointer; font: inherit; color: var(--ink);
+      text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px;
+    }
+    .congres-kaart.uitgelicht { transform: translate(-4px, -4px); box-shadow: 8px 8px 0 var(--accent); }
+    a.bron {
+      flex: none; font: 800 0.95rem var(--display); letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+      background: var(--ink); color: var(--bg); padding: 8px 14px; border-radius: 999px;
+    }
+    a.bron:hover { background: var(--accent); color: var(--accent-tekst); }
+    .kaart-acties { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    .actie {
+      flex: none; cursor: pointer; font: 800 0.85rem var(--display); letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+      background: transparent; color: var(--ink); border: 2px solid var(--lijn); padding: 6px 11px; border-radius: 999px;
+    }
+    .actie:hover { border-color: var(--ink); }
+    .ster {
+      cursor: pointer; background: transparent; border: 0; padding: 0 2px; line-height: 1;
+      font-size: 1.7rem; color: var(--hero-zacht);
+    }
+    .ster:hover { color: var(--hero-ink); }
+    .ster[aria-pressed="true"] { color: var(--accent); }
+    .teller-rij { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-top: 18px; }
+    .teller-rij #resultaatTeller { margin: 0; }
+    .weergave { display: inline-flex; border: 2px solid var(--ink); border-radius: 999px; overflow: hidden; }
+    .weergave-knop {
+      cursor: pointer; border: 0; background: transparent; color: var(--ink); padding: 6px 13px;
+      font: 800 0.85rem var(--display); letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .weergave-knop[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+    .filter-noot { margin: 0 0 6px; font-size: 0.8rem; color: var(--ink-zacht); max-width: 80ch; }
+    .week-uitleg { margin: 6px 0 2px; font-size: 0.88rem; color: var(--ink-zacht); max-width: 70ch; border-left: 3px solid var(--accent); padding-left: 10px; }
+    .chip.uitleg-knop { width: 36px; padding: 7px 0; text-align: center; }
+
+    /* ---------- lijstweergave ---------- */
+    .congres-lijst.als-lijst { display: block; }
+    .als-lijst .jaarkop { font-size: clamp(2.6rem, 8vw, 4.5rem); margin: 22px 0 6px; }
+    .lijst-rij { border-left: 4px solid color-mix(in srgb, var(--landkleur, transparent) var(--land-rand), var(--ink)); padding-left: 6px; border-bottom: 1px solid var(--lijn); display: grid; grid-template-columns: 1fr auto; align-items: center; }
+    .lijst-rij.voorbij { opacity: .62; }
+    .rij-hoofd {
+      all: unset; box-sizing: border-box; cursor: pointer; padding: 11px 6px;
+      display: grid; grid-template-columns: 112px minmax(0, 1fr) 170px 118px 150px 200px; gap: 4px 14px; align-items: baseline;
+    }
+    .rij-hoofd:hover .rij-naam b, .rij-hoofd:focus-visible .rij-naam b { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+    .rij-hoofd:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+    .rij-hoofd small { display: block; color: var(--ink-zacht); font-size: 0.8rem; }
+    .rij-datum b { font: 800 1.15rem var(--display); letter-spacing: 0.02em; text-transform: uppercase; }
+    .rij-naam b { font-weight: 700; }
+    .rij-plek, .rij-prijs, .rij-deadline { font-size: 0.9rem; }
+    .rij-prijs { font-weight: 700; }
+    .rij-prijs.onbekend, .rij-deadline { font-weight: 400; color: var(--ink-zacht); }
+    .rij-deadline.dringend { color: var(--ink); font-weight: 700; }
+    .rij-week { font: 700 0.8rem var(--display); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-zacht); }
+    .rij-week::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 6px; border-radius: 50%; background: var(--ink); }
+    .rij-week.oneven::before { background: var(--accent); }
+    .rij-meta { display: none; }
+    .lijst-rij .ster { color: var(--lijn); padding: 0 8px; font-size: 1.5rem; }
+    .lijst-rij .ster:hover { color: var(--ink-zacht); }
+    .lijst-rij .ster[aria-pressed="true"] { color: var(--accent); }
+    .rij-nu { font: 700 0.7rem var(--display); letter-spacing: 0.1em; text-transform: uppercase; background: var(--accent); color: var(--accent-tekst); padding: 1px 6px; border-radius: 2px; margin-left: 6px; vertical-align: 2px; }
+    .rij-detail { grid-column: 1 / -1; padding: 4px 0 18px; max-width: 520px; }
+    @media (max-width: 900px) {
+      .rij-hoofd { grid-template-columns: 84px minmax(0, 1fr); padding: 10px 2px; }
+      .rij-plek, .rij-week, .rij-prijs, .rij-deadline { display: none; }
+      .rij-meta { display: block; grid-column: 2; font-size: 0.82rem; color: var(--ink-zacht); }
+      .rij-datum b { font-size: 1.05rem; }
+    }
+
+    /* ---------- kaartweergave ---------- */
+    .congres-lijst.als-kaart { display: block; }
+    .regio-keuze { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 12px 0 10px; }
+    .regio-keuze .regio-teller { font: 700 0.9rem var(--display); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-zacht); margin-left: 4px; }
+    .kaart-vak { position: relative; background: var(--surface); border: 2px solid var(--ink); border-radius: 2px; overflow: hidden; min-height: 200px; }
+    .kaart-vak svg { display: block; width: 100%; height: auto; }
+    .kaart-vak .land { fill: var(--kaart-land); stroke: var(--surface); stroke-width: .7; }
+    .stip { fill: var(--accent); stroke: var(--ink); stroke-width: 1.3; cursor: pointer; }
+    .stip:hover, .stip:focus-visible, .stip.gekozen { fill: var(--ink); stroke: var(--accent); stroke-width: 3; outline: none; }
+    .stip-getal { font: 800 12px var(--display); fill: #0a0a0a; text-anchor: middle; pointer-events: none; }
+    .stip-getal.gekozen { fill: var(--bg); }
+    .kaart-tip {
+      position: absolute; pointer-events: none; background: var(--ink); color: var(--bg); padding: 3px 9px; border-radius: 2px;
+      font: 700 0.8rem var(--display); letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap;
+    }
+    .kaart-laden { padding: 80px 16px; text-align: center; color: var(--ink-zacht); }
+    .kaart-paneel { margin-top: 14px; }
+    .kaart-paneel h3 { margin: 0 0 10px; font: 800 1.5rem var(--display); text-transform: uppercase; }
+    .kaart-paneel h3 small { font: 500 0.95rem var(--tekst); text-transform: none; color: var(--ink-zacht); margin-left: 8px; }
+    .kaart-paneel .paneel-kaarten { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 16px; }
+    .kaart-hint { margin: 0; color: var(--ink-zacht); }
+    .kaart-elders { margin: 14px 0 0; font-size: 0.9rem; color: var(--ink-zacht); }
+    .kaart-elders button { background: none; border: 0; padding: 0; font: inherit; color: var(--ink); cursor: pointer; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+
+    /* ---------- persoonlijk: jaaroverzicht ---------- */
+    .jaaroverzicht { margin: 12px 0 0; font-size: 0.9rem; color: var(--hero-zacht); display: flex; flex-direction: column; gap: 2px; }
+    .jaaroverzicht b { color: var(--hero-ink); font-weight: 600; }
+    .jaaroverzicht .ster-klein { color: var(--accent); margin-right: 4px; }
+
+    /* ---------- melden ---------- */
+    .voet { background: var(--hero-bg); color: var(--hero-zacht); margin-top: 40px; }
+    .voet-binnen { max-width: 1180px; margin: 0 auto; padding: 28px 20px 36px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 28px; }
+    .voet p { margin: 0; max-width: 62ch; }
+    .voet strong { color: var(--hero-ink); }
+    .voet .knop { background: var(--accent); border-color: var(--accent); color: var(--accent-tekst); padding: 10px 20px; }
+    .geen-melden .voet, .geen-melden .meld-link { display: none; }
+    .meld-link { background: none; border: 0; padding: 0; cursor: pointer; font: inherit; font-size: 0.82rem; color: var(--ink-zacht); text-decoration: underline; text-decoration-color: var(--lijn); text-underline-offset: 3px; }
+    .meld-link:hover { color: var(--ink); text-decoration-color: var(--accent); }
+    .meld-dialoog {
+      width: min(560px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: 0; border: 2px solid var(--ink); border-radius: 2px;
+      background: var(--surface); color: var(--ink);
+    }
+    .meld-dialoog::backdrop { background: rgba(10, 10, 10, 0.6); }
+    .meld-dialoog form { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 12px; }
+    .meld-kop { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+    .meld-kop h2 { margin: 0; font: 800 1.35rem var(--display); text-transform: uppercase; letter-spacing: 0.02em; }
+    .meld-dialoog .notitie-sluit { color: var(--ink-zacht); }
+    .meld-dialoog label { display: flex; flex-direction: column; gap: 4px; font: 700 0.8rem var(--display); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-zacht); }
+    .meld-dialoog label span { text-transform: none; letter-spacing: 0; font: 400 0.8rem var(--tekst); }
+    .meld-dialoog input[type="text"], .meld-dialoog input[type="email"], .meld-dialoog select, .meld-dialoog textarea {
+      font: 500 1rem var(--tekst); padding: 9px 10px; background: var(--bg); color: var(--ink); border: 2px solid var(--lijn); border-radius: 2px; text-transform: none; letter-spacing: 0;
+    }
+    .meld-dialoog textarea { resize: vertical; min-height: 110px; }
+    .meld-dialoog :is(input, select, textarea):focus-visible { border-color: var(--accent); outline-offset: 0; }
+    .meld-soort { border: 0; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px 16px; }
+    .meld-soort legend { font: 700 0.8rem var(--display); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-zacht); margin-bottom: 6px; padding: 0; }
+    .meld-dialoog .meld-soort label { flex-direction: row; align-items: center; gap: 6px; font: 500 0.95rem var(--tekst); letter-spacing: 0; text-transform: none; color: var(--ink); }
+    .meld-rij { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+    .honing { position: absolute; left: -9999px; }
+    .meld-privacy { margin: 0; font-size: 0.8rem; color: var(--ink-zacht); }
+    .meld-acties { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    #meldStatus { font-size: 0.9rem; }
+    #meldStatus.fout { color: #b3261e; font-weight: 600; }
+    #meldStatus.gelukt { font-weight: 700; }
+    .teller-acties { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .abonnement summary { list-style: none; display: inline-block; }
+    .abonnement summary::-webkit-details-marker { display: none; }
+    .abonnement[open] summary { border-color: var(--ink); }
+    .abonnement-paneel {
+      margin-top: 10px; padding: 14px 16px; background: var(--surface); border: 2px solid var(--ink); border-radius: 2px;
+      display: flex; flex-direction: column; gap: 10px; font-size: 0.92rem;
+    }
+    .abonnement-paneel p { margin: 0; }
+    .abonnement-knoppen { display: flex; flex-wrap: wrap; gap: 8px; }
+    .abonnement-paneel label { display: flex; flex-direction: column; gap: 4px; color: var(--ink-zacht); font-size: 0.85rem; }
+    .abonnement-paneel input {
+      font: 500 0.9rem var(--tekst); padding: 8px 10px; background: var(--bg); color: var(--ink);
+      border: 2px solid var(--lijn); border-radius: 2px; width: 100%;
+    }
+    .teller-rij:has(.abonnement[open]) .teller-acties { flex-basis: 100%; }
+    .abonnement[open] { flex-basis: 100%; }
+    .melding {
+      position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 50;
+      background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: 2px;
+      font: 700 0.95rem var(--display); letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .congres-kaart.voorbij { opacity: .62; }
+    .congres-kaart.voorbij:hover { opacity: 1; }
+    .let-op { font-size: 0.85rem; color: var(--ink-zacht); border-left: 3px solid var(--lijn); padding-left: 10px; }
+    .let-op .let-op-label { display: block; font: 700 0.72rem var(--display); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2px; }
+    .let-op.data { border-left-color: var(--ink-zacht); }
+    .let-op.data .let-op-label { color: var(--ink-zacht); }
+    .let-op.commercieel { border-left-color: var(--accent); color: var(--ink); }
+    .let-op.commercieel .let-op-label { color: var(--accent); }
+    .leeg-resultaat { grid-column: 1 / -1; text-align: center; padding: 60px 20px; font: 700 1.8rem var(--display); text-transform: uppercase; color: var(--ink-zacht); }
+    @keyframes op { from { transform: translateY(14px); } to { transform: none; } }
+
+    @media (max-width: 820px) {
+      .hero-binnen { grid-template-areas: "tekst beeld" "extra extra"; padding-top: 16px; gap: 0 14px; }
+      .hero-tekst { padding-bottom: 12px; }
+      .hero-beeld { align-self: center; margin-bottom: 12px; }
+      .hero-extra { padding-bottom: 20px; }
+      .kaart-datum, .dagen-groot { }
+    }
+    @media (max-width: 480px) {
+      main, .hero-binnen, .topbalk, .notitie-binnen { padding-left: 16px; padding-right: 16px; }
+      .topbalk .teller-top { display: none; }
+      .zoek { font-size: 1rem; padding: 12px; }
+      .zoekrij .knop { padding: 0 12px; }
+      .volgend .naam { font-size: 1.15rem; }
+      .eyebrow { font-size: 0.82rem; letter-spacing: 0.1em; }
+      .hero h1 { font-size: 1.95rem; }
+      .hero-beeld { width: 84px; }
+      .hero .sub { font-size: 0.92rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .ecg, .ring-puls, .band-spoor, .congres-kaart { animation: none; }
+      .ecg { stroke-dashoffset: 0; }
+      .congres-kaart { transition: none; }
+    }
+  </style>
+
+  <div class="topbalk">
+    <div class="merk"><i></i> Anesthesie &amp; Pijn</div>
+    <div class="topbalk-rechts">
+      <button type="button" class="info-knop" id="infoKnop" aria-expanded="false" aria-controls="notitie"><span class="i" aria-hidden="true">i</span>Wat ontbreekt?</button>
+      <div class="teller-top" id="tellerTop"></div>
+    </div>
+  </div>
+
+  <div class="notitie" id="notitie" hidden>
+    <div class="notitie-binnen">
+        <div class="notitie-kop">
+          <h2>Niet elke organisatie staat (volledig) in de lijst</h2>
+          <button type="button" class="notitie-sluit" id="infoSluit">Sluiten ✕</button>
+        </div>
+        <div class="notitie-inhoud">
+          <div><h3>Handmatig bijgehouden</h3><p>ASA (ANESTHESIOLOGY), NWAS en PGA. Hun voorwaarden of site staan geautomatiseerd ophalen niet toe, dus deze worden met de hand bijgewerkt en kunnen achterlopen.</p></div>
+          <div><h3>Niet opgenomen: niet toegestaan</h3><p>UF Spring Anesthesia Ski Summit en Holiday Seminars sluiten bots uit in hun robots.txt.</p></div>
+          <div><h3>Niet opgenomen: geblokkeerd</h3><p>OAA (UK) en Northern Lights Anaesthetics blokkeren geautomatiseerde toegang; er is ook nog geen datum voor 2027 bekend.</p></div>
+          <div><h3>Nog geen datum bekend</h3><p>SSAI 2028, PROSA 2028 en de Refresher Course Obstetrische Anesthesiologie. Zodra er een datum is, kunnen ze erbij.</p></div>
+          <div><h3>Commercieel, op verzoek toegevoegd</h3><p>EACCM (Plenareno), WSAC en de International Conference on Surgery and Anesthesia zijn congresfabrieken, geen erkende beroepsverenigingen -- toegevoegd op uitdrukkelijk verzoek. Herkenbaar aan het oranje "Commercieel congres"-label op de kaart, los van het grijze "Let op"-label voor ontbrekende data.</p></div>
+          <div><h3>Nascholingspunten</h3><p>ECMEC-punten (EACCME, 1 punt per uur) kun je in Nederland laten meetellen voor herregistratie via GAIA; de NVA bepaalt per congres of ze gelden voor anesthesiologie of pijngeneeskunde. Voor Amerikaanse AMA PRA-punten vraag je zelf accreditatie aan in GAIA.</p></div>
+          <div><h3>"Vorige editie"</h3><p>Staan de prijs of punten van een editie nog niet online, dan tonen we die van de vorige editie als indicatie. Geen toezegging: tarieven stijgen meestal.</p></div>
+          <div><h3>Nog niet gevonden</h3><p>IPME, Doctors Updates en de School/Academy for Integrative Medicine: onduidelijk welke organisatie bedoeld is.</p></div>
+        </div>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="hero-binnen">
+      <div class="hero-tekst">
+        <p class="eyebrow">Europa · Noord-Amerika · meerdere jaren vooruit</p>
+        <h1>Alle <em>congressen</em> voor anesthesie &amp; pijn</h1>
+      </div>
+      <div class="hero-extra">
+        <p class="sub" id="heroSub">Filter op plek, datum, onderwerp en even/oneven week. Elke kaart heeft een bron.</p>
+        <a class="volgend" id="volgend" href="#lijst" hidden>
+          <span class="dagen"><span id="volgendDagen">0</span><small id="volgendEenheid">DAGEN</small></span>
+          <span class="waar">
+            <span class="label" id="volgendLabel">Volgend congres</span>
+            <span class="naam" id="volgendNaam"></span>
+            <span class="plek" id="volgendPlek"></span>
+          </span>
+        </a>
+        <p class="jaaroverzicht" id="jaaroverzicht" hidden></p>
+      </div>
+      <div class="hero-beeld" aria-hidden="true">
+        <svg viewBox="0 0 600 700" role="img" focusable="false">
+          <circle class="ring-puls" cx="300" cy="330" r="268" fill="none" stroke="#ff5500" stroke-width="4"/>
+          <circle cx="300" cy="330" r="250" fill="#1b1b19"/>
+          <!-- schouders / scrubs -->
+          <path d="M40 700 C50 585 170 520 300 522 C430 520 550 585 560 700 Z" fill="#2c2c29"/>
+          <!-- hals -->
+          <path d="M262 420 L262 520 Q300 560 338 520 L338 420 Z" fill="#dcb7a1"/>
+          <!-- V-hals -->
+          <path d="M238 524 L300 618 L362 524 Q300 552 238 524 Z" fill="#dcb7a1"/>
+          <path d="M232 520 L300 626 L368 520" fill="none" stroke="#ff5500" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+          <!-- stethoscoop -->
+          <path d="M226 500 C206 600 246 660 300 664 C354 660 394 600 374 500" fill="none" stroke="#f5f5f2" stroke-width="8" stroke-linecap="round"/>
+          <circle cx="374" cy="640" r="26" fill="#f5f5f2"/><circle cx="374" cy="640" r="13" fill="#2c2c29"/>
+          <path d="M374 614 C374 570 350 560 350 540" fill="none" stroke="#f5f5f2" stroke-width="8" stroke-linecap="round"/>
+          <!-- oren -->
+          <ellipse cx="192" cy="330" rx="16" ry="30" fill="#e6c1ab"/><ellipse cx="408" cy="330" rx="16" ry="30" fill="#e6c1ab"/>
+          <!-- gezicht -->
+          <ellipse cx="300" cy="320" rx="108" ry="128" fill="#f0d0bb"/>
+          <!-- operatiemuts -->
+          <path d="M186 300 C176 150 424 150 414 300 C384 272 216 272 186 300 Z" fill="#ff5500"/>
+          <path d="M186 300 C216 272 384 272 414 300" fill="none" stroke="#0a0a0a" stroke-opacity=".25" stroke-width="6"/>
+          <path d="M240 190 C270 168 330 168 360 190" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="6" stroke-linecap="round"/>
+          <!-- bril -->
+          <rect x="222" y="292" width="68" height="46" rx="18" fill="#fff" fill-opacity=".12" stroke="#0a0a0a" stroke-width="6"/>
+          <rect x="310" y="292" width="68" height="46" rx="18" fill="#fff" fill-opacity=".12" stroke="#0a0a0a" stroke-width="6"/>
+          <path d="M290 312 H310" stroke="#0a0a0a" stroke-width="6"/>
+          <ellipse cx="256" cy="316" rx="9" ry="10" fill="#0a0a0a"/><ellipse cx="344" cy="316" rx="9" ry="10" fill="#0a0a0a"/>
+          <path d="M230 282 Q256 268 284 280 M316 280 Q344 268 370 282" fill="none" stroke="#7a5a48" stroke-width="7" stroke-linecap="round"/>
+          <!-- mondkapje -->
+          <path d="M196 356 L404 356 C410 420 372 470 300 474 C228 470 190 420 196 356 Z" fill="#f5f5f2"/>
+          <path d="M204 388 H396 M208 416 H392 M226 444 H374" stroke="#0a0a0a" stroke-opacity=".14" stroke-width="5" stroke-linecap="round"/>
+          <path d="M197 366 Q176 350 178 326 M403 366 Q424 350 422 326" fill="none" stroke="#f5f5f2" stroke-width="4" stroke-linecap="round"/>
+          <!-- hartslag -->
+          <path class="ecg" d="M0 590 H150 L182 590 L206 520 L238 660 L268 560 L288 590 H600" fill="none" stroke="#ff5500" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <div class="band" aria-hidden="true"><div class="band-spoor" id="bandSpoor"></div></div>
+
+  <main id="lijst">
+    <div class="toolbar">
+      <div class="zoekrij">
+        <label for="zoek" class="visually-hidden" style="position:absolute;left:-9999px">Zoeken</label>
+        <input type="text" id="zoek" class="zoek" placeholder="Zoek op naam, organisatie, stad…" autocomplete="off">
+        <button type="button" id="resetFilters" class="knop">Wis</button>
+        <button type="button" id="deelFilters" class="knop" hidden title="Kopieer een link naar deze selectie">Deel</button>
+      </div>
+      <div class="chips" id="chipRij" role="group" aria-label="Snelfilters"></div>
+      <p class="week-uitleg" id="weekUitleg" hidden>Even en oneven gaan over het ISO-weeknummer (een week loopt van maandag tot en met zondag). Een congres telt voor de week waarin de meeste congresdagen vallen. Handig als je rooster in even en oneven weken loopt.</p>
+      <details class="meer">
+        <summary>Meer filters</summary>
+        <div class="meer-raster">
+          <div class="veld"><label for="filterLand">Land</label><select id="filterLand"><option value="">Alle landen</option></select></div>
+          <div class="veld"><label for="filterStad">Stad</label><select id="filterStad"><option value="">Alle steden</option></select></div>
+          <div class="veld"><label for="filterContinent">Continent</label><select id="filterContinent"><option value="">Alle continenten</option></select></div>
+          <div class="veld"><label for="vanaf">Vanaf datum</label><input type="date" id="vanaf"></div>
+          <div class="veld"><label for="tot">Tot datum</label><input type="date" id="tot"></div>
+          <div class="veld"><label for="sorteer">Sorteer op</label><select id="sorteer"><option value="">Datum</option><option value="prijs">Prijs (laag–hoog)</option></select></div>
+          <div class="veld"><label for="maxPrijs">Max. prijs (€)</label><input type="number" id="maxPrijs" min="0" step="50" inputmode="numeric" placeholder="geen maximum"></div>
+        </div>
+        <p class="filter-noot">Prijs = het eerste (laagste) bedrag op de kaart. Bedragen in $ en £ zijn alleen voor sorteren en filteren omgerekend tegen een vaste koers (1 $ ≈ € 0,90 · 1 £ ≈ € 1,17); op de kaarten staan altijd de bedragen van de organisator. Congressen zonder bekende prijs vallen buiten een maximum en staan bij sorteren achteraan.</p>
+      </details>
+      <select id="filterOnderwerp" hidden><option value="">Alle onderwerpen</option></select>
+      <select id="filterWeek" hidden>
+        <option value="">Even of oneven</option>
+        <option value="even">Even week</option>
+        <option value="oneven">Oneven week</option>
+      </select>
+    </div>
+
+    <div class="teller-rij">
+      <p id="resultaatTeller"></p>
+      <div class="teller-acties">
+        <div class="weergave" role="group" aria-label="Weergave">
+          <button type="button" class="weergave-knop" data-weergave="kaarten" aria-pressed="true">Kaarten</button>
+          <button type="button" class="weergave-knop" data-weergave="lijst" aria-pressed="false">Lijst</button>
+          <button type="button" class="weergave-knop" data-weergave="kaart" aria-pressed="false">Kaart</button>
+        </div>
+        <button type="button" id="exportBewaard" class="actie" hidden>Bewaarde in agenda (.ics)</button>
+        <details class="abonnement">
+          <summary class="actie">Agenda-abonnement</summary>
+          <div class="abonnement-paneel">
+            <p>Alle congressen én hun deadlines (early-bird, abstracts, inschrijving) in je eigen agenda. Nieuwe congressen en gewijzigde data komen vanzelf door. Deadlines hebben een herinnering een week van tevoren (op de iPhone: zet bij het abonnement "Verwijder meldingen" uit).</p>
+            <div class="abonnement-knoppen">
+              <a class="actie" id="abonneerWebcal" href="#">iPhone, Mac, Outlook</a>
+              <a class="actie" id="abonneerGoogle" href="#" target="_blank" rel="noopener">Google Agenda</a>
+            </div>
+            <label>Werkt een knop niet? Voeg deze link toe als agenda-abonnement:
+              <input type="text" id="abonnementUrl" readonly>
+            </label>
+          </div>
+        </details>
+      </div>
+    </div>
+    <div class="melding" id="melding" role="status" hidden></div>
+    <div class="congres-lijst" id="congresLijst"></div>
+  </main>
+
+  <footer class="voet">
+    <div class="voet-binnen">
+      <p><strong>Mis je een congres of klopt er iets niet?</strong> Laat het weten, dan passen we het aan. Zo helpt iedereen de lijst beter te maken.</p>
+      <button type="button" class="knop" id="meldKnop">Meld het</button>
+    </div>
+  </footer>
+
+  <dialog id="meldDialoog" class="meld-dialoog" aria-labelledby="meldTitel">
+    <form id="meldFormulier" novalidate>
+      <div class="meld-kop">
+        <h2 id="meldTitel">Meld een fout of aanvulling</h2>
+        <button type="button" class="notitie-sluit" id="meldSluit">Sluiten ✕</button>
+      </div>
+      <fieldset class="meld-soort">
+        <legend>Waar gaat het over?</legend>
+        <label><input type="radio" name="soort" value="Fout in de gegevens" checked> Fout in de gegevens</label>
+        <label><input type="radio" name="soort" value="Congres ontbreekt"> Congres ontbreekt</label>
+        <label><input type="radio" name="soort" value="Suggestie voor de site"> Suggestie voor de site</label>
+      </fieldset>
+      <label for="meldCongres">Welk congres?
+        <select id="meldCongres" name="congres"><option value="">— geen / een nieuw congres —</option></select>
+      </label>
+      <label for="meldBericht">Je melding
+        <textarea id="meldBericht" name="bericht" rows="5" required placeholder="Bijvoorbeeld: de early-bird loopt tot 15 december, zie de registratiepagina."></textarea>
+      </label>
+      <div class="meld-rij">
+        <label>Naam <span>(optioneel)</span><input type="text" name="naam" autocomplete="name"></label>
+        <label>E-mail <span>(optioneel, als je antwoord wilt)</span><input type="email" name="email" autocomplete="email"></label>
+      </div>
+      <input type="checkbox" name="botcheck" class="honing" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <p class="meld-privacy">Je melding gaat via de formulierdienst Web3Forms naar de beheerder van deze site. Naam en e-mail zijn optioneel en worden alleen gebruikt om je te antwoorden.</p>
+      <div class="meld-acties">
+        <span id="meldStatus" role="status"></span>
+        <button type="submit" class="knop" id="meldVerstuur">Versturen</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="data/congressen.js"></script>
+  <script src="data/aanvullingen.js"></script>
+  <script src="data/steden.js"></script>
+  <script src="data/kaartlanden.js" defer></script>
+  <script>
+    // Bereken ISO-weekinfo voor een datum (standaardalgoritme, maandag = eerste dag).
+    // Werkt volledig in UTC: een kalenderdatum als "2027-01-18" moet overal hetzelfde
+    // weeknummer geven, ongeacht de tijdzone van de bezoeker. Een eerdere versie parste
+    // de datum als lokale tijd maar las 'm terug met UTC-methodes -- dat schoof in
+    // tijdzones vóór UTC (zoals Nederland) soms een kalenderdag terug en kon zo een
+    // maandag-start per ongeluk aan de vorige (oneven/even) week toekennen.
+    function isoWeekInfo(datum) {
+      const kopie = new Date(datum.getTime());
+      const dagVanWeek = (kopie.getUTCDay() + 6) % 7; // maandag = 0
+      kopie.setUTCDate(kopie.getUTCDate() - dagVanWeek + 3); // donderdag van deze week
+      const eersteDonderdag = new Date(Date.UTC(kopie.getUTCFullYear(), 0, 4));
+      const dagVanEersteWeek = (eersteDonderdag.getUTCDay() + 6) % 7;
+      eersteDonderdag.setUTCDate(eersteDonderdag.getUTCDate() - dagVanEersteWeek + 3);
+      const verschilInWeken = Math.round((kopie - eersteDonderdag) / (7 * 24 * 60 * 60 * 1000));
+      return { jaar: kopie.getUTCFullYear(), week: verschilInWeken + 1 };
+    }
+
+    function isoWeekNummer(datumString) {
+      return isoWeekInfo(new Date(datumString + 'T00:00:00Z')).week;
+    }
+
+    // De week (en dus even/oneven) van een congres wordt bepaald door de week waarin de
+    // MEESTE dagen van het congres vallen, niet simpelweg de week van de startdatum. Bij
+    // een gelijke verdeling wint de week van de startdatum.
+    function meerderheidsWeek(rij) {
+      const start = new Date(rij.datumStart + 'T00:00:00Z');
+      const eind = new Date(rij.datumEind + 'T00:00:00Z');
+      const tellingen = new Map();
+      for (let t = start.getTime(); t <= eind.getTime(); t += 86400000) {
+        const info = isoWeekInfo(new Date(t));
+        const sleutel = `${info.jaar}-${info.week}`;
+        const entry = tellingen.get(sleutel) || { week: info.week, aantal: 0 };
+        entry.aantal += 1;
+        tellingen.set(sleutel, entry);
+      }
+      let beste = null;
+      tellingen.forEach(entry => {
+        if (!beste || entry.aantal > beste.aantal) beste = entry;
+      });
+      return { week: beste.week, pariteit: beste.week % 2 === 0 ? 'even' : 'oneven' };
+    }
+
+    function lokaleDatumString(d) {
+      const p = n => String(n).padStart(2, '0');
+      return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+    }
+    const VANDAAG = lokaleDatumString(new Date());
+
+    const MAANDEN_KORT = ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
+
+    function formatDatum(datumString) {
+      const datum = new Date(datumString + 'T00:00:00');
+      return datum.toLocaleDateString('nl-NL', { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric' });
+    }
+
+    // "do – za · 3 dagen": handig voor het aanvragen van vrije dagen.
+    const WEEKDAGEN_KORT = ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'];
+    function weekdagen(rij) {
+      const start = new Date(rij.datumStart + 'T00:00:00Z');
+      const eind = new Date(rij.datumEind + 'T00:00:00Z');
+      const aantal = Math.round((eind - start) / 86400000) + 1;
+      const dagen = aantal === 1 ? WEEKDAGEN_KORT[start.getUTCDay()] : `${WEEKDAGEN_KORT[start.getUTCDay()]} – ${WEEKDAGEN_KORT[eind.getUTCDay()]}`;
+      return `${dagen} · ${aantal} ${aantal === 1 ? 'dag' : 'dagen'}`;
+    }
+
+    function datumBlok(rij) {
+      const start = new Date(rij.datumStart + 'T00:00:00');
+      const eind = new Date(rij.datumEind + 'T00:00:00');
+      const zelfdeMaand = start.getMonth() === eind.getMonth() && start.getFullYear() === eind.getFullYear();
+      const jaar = start.getFullYear();
+      if (rij.datumStart === rij.datumEind) return { dagen: String(start.getDate()), maand: MAANDEN_KORT[start.getMonth()], jaar };
+      if (zelfdeMaand) return { dagen: `${start.getDate()}–${eind.getDate()}`, maand: MAANDEN_KORT[start.getMonth()], jaar };
+      return { dagen: `${start.getDate()}–${eind.getDate()}`, maand: `${MAANDEN_KORT[start.getMonth()]}/${MAANDEN_KORT[eind.getMonth()]}`, jaar };
+    }
+
+    const CONTINENT_VAN_LAND = {
+      'Albanië': 'Europa', 'Andorra': 'Europa', 'België': 'Europa', 'Bosnië en Herzegovina': 'Europa',
+      'Bulgarije': 'Europa', 'Cyprus': 'Europa', 'Denemarken': 'Europa', 'Duitsland': 'Europa',
+      'Estland': 'Europa', 'Finland': 'Europa', 'Frankrijk': 'Europa', 'Griekenland': 'Europa',
+      'Hongarije': 'Europa', 'IJsland': 'Europa', 'Ierland': 'Europa', 'Italië': 'Europa',
+      'Kroatië': 'Europa', 'Letland': 'Europa', 'Liechtenstein': 'Europa', 'Litouwen': 'Europa',
+      'Luxemburg': 'Europa', 'Malta': 'Europa', 'Moldavië': 'Europa', 'Monaco': 'Europa',
+      'Montenegro': 'Europa', 'Nederland': 'Europa', 'Noord-Macedonië': 'Europa', 'Noorwegen': 'Europa',
+      'Oekraïne': 'Europa', 'Oostenrijk': 'Europa', 'Polen': 'Europa', 'Portugal': 'Europa',
+      'Roemenië': 'Europa', 'Rusland': 'Europa', 'Servië': 'Europa', 'Slovenië': 'Europa',
+      'Slowakije': 'Europa', 'Spanje': 'Europa', 'Tsjechië': 'Europa', 'Turkije': 'Europa',
+      'Verenigd Koninkrijk': 'Europa', 'Wit-Rusland': 'Europa', 'Zweden': 'Europa', 'Zwitserland': 'Europa',
+      'Verenigde Staten': 'Noord-Amerika', 'Canada': 'Noord-Amerika', 'Curaçao': 'Noord-Amerika',
+      "Bahama's": 'Noord-Amerika', 'Puerto Rico': 'Noord-Amerika',
+      'Thailand': 'Azië', 'Singapore': 'Azië',
+    };
+    function continentVan(land) {
+      return CONTINENT_VAN_LAND[land] || 'Overig';
+    }
+
+    // Handmatige aanvullingen (data/aanvullingen.js): kosten die de scraper niet vindt en
+    // nascholingspunten. Waar prijs of punten nog onbekend zijn, tonen we die van de vorige
+    // editie in dezelfde reeks als indicatie (reeks = id zonder editie-/jaarnummer).
+    const ONBEKEND = 'Nog niet gepubliceerd';
+    const reeksVan = id => id.replace(/(-\d+)?-\d{4}$/, '');
+    (function pasAanvullingenToe() {
+      const aanvullingen = typeof AANVULLINGEN === 'undefined' ? {} : AANVULLINGEN;
+      CONGRESSEN.forEach(r => {
+        const a = aanvullingen[r.id];
+        if (!a) return;
+        if (a.kosten && r.kosten === ONBEKEND) r.kosten = a.kosten;
+        ['punten', 'kostenIndicatie', 'puntenIndicatie'].forEach(v => { if (a[v]) r[v] = a[v]; });
+        if (a.deadlines) r.deadlines = [...a.deadlines].sort((x, y) => x.datum.localeCompare(y.datum));
+      });
+      CONGRESSEN.forEach(r => {
+        const eerder = CONGRESSEN
+          .filter(o => o !== r && reeksVan(o.id) === reeksVan(r.id) && o.datumStart < r.datumStart)
+          .sort((a, b) => b.datumStart.localeCompare(a.datumStart));
+        const vorigeKosten = eerder.find(o => o.kosten !== ONBEKEND);
+        const vorigePunten = eerder.find(o => o.punten);
+        if (r.kosten === ONBEKEND && !r.kostenIndicatie && vorigeKosten) r.kostenIndicatie = `${vorigeKosten.datumStart.slice(0, 4)}: ${vorigeKosten.kosten}`;
+        if (!r.punten && !r.puntenIndicatie && vorigePunten) r.puntenIndicatie = `${vorigePunten.datumStart.slice(0, 4)}: ${vorigePunten.punten}`;
+      });
+    })();
+
+    // Deadlines (early-bird e.d.) uit aanvullingen.js; datum = laatste dag die nog telt.
+    const DEADLINE_LABEL = {
+      'early-bird': 'Early-bird t/m', 'abstracts': 'Abstracts indienen t/m',
+      'registratie': 'Inschrijven t/m', 'annuleren': 'Annuleren met terugbetaling t/m'
+    };
+    const DEADLINE_BINNENKORT = 30; // dagen, voor de chip "Deadline binnenkort"
+    const DEADLINE_DRINGEND = 14;   // dagen, extra nadruk op de kaart
+    const dagenTot = datum => Math.round((new Date(datum + 'T00:00:00') - new Date(VANDAAG + 'T00:00:00')) / 86400000);
+    const komendeDeadlines = rij => (rij.deadlines || []).filter(d => d.datum >= VANDAAG);
+    const heeftDeadlineBinnenkort = rij => komendeDeadlines(rij).some(d => dagenTot(d.datum) <= DEADLINE_BINNENKORT);
+
+    // Edities van dezelfde reeks (zelfde id zonder jaartal), op datum.
+    function edities(rij) {
+      return CONGRESSEN.filter(o => reeksVan(o.id) === reeksVan(rij.id)).sort((a, b) => a.datumStart.localeCompare(b.datumStart));
+    }
+
+    // Agenda-abonnement op agenda.ics (gebouwd door scripts/bouw_agenda.py, gehost op GitHub Pages).
+    const AGENDA_URL = 'https://rik-spacecowboy.github.io/Anesthesie/agenda.ics';
+    const AGENDA_WEBCAL = AGENDA_URL.replace(/^https:/, 'webcal:');
+
+    // Kostentekst (vrije tekst uit scraper/aanvullingen) opsplitsen in een duidelijk bedrag en
+    // de toelichting: "€790–€880 (niet-lid) · volgeboekt" -> hoofd "€790–€880", detail "niet-lid".
+    function splitsKosten(tekst) {
+      const delen = [];
+      let diepte = 0, huidig = '';
+      for (let i = 0; i < tekst.length; i++) {
+        const c = tekst[i];
+        if (c === '(') diepte++;
+        if (c === ')') diepte--;
+        const scheiding = diepte === 0 && (tekst.startsWith(' · ', i) || tekst.startsWith('; ', i));
+        if (scheiding) { delen.push(huidig); huidig = ''; i += tekst[i] === ' ' ? 2 : 1; continue; }
+        huidig += c;
+      }
+      delen.push(huidig);
+      const [eerste, ...rest] = delen.map(d => d.trim()).filter(Boolean);
+      const haakjes = eerste.match(/\s*\(([^()]*(?:\([^()]*\)[^()]*)*)\)/);
+      const hoofd = haakjes ? eerste.replace(haakjes[0], '').trim() : eerste;
+      const detail = [haakjes ? haakjes[1] : '', ...rest].filter(Boolean);
+      const volgeboekt = detail.some(d => /^volgeboekt$/i.test(d));
+      return { hoofd, detail: detail.filter(d => !/^volgeboekt$/i.test(d)).join(' · '), volgeboekt };
+    }
+
+    // Prijs voor sorteren/filteren: het eerste bedrag in het hoofdbedrag (bij "€790–€880" de ondergrens,
+    // bij "Vanaf €199/$199" de europrijs), in euro.
+    // $ en £ tegen een vaste koers (alleen voor de volgorde en het maximum; nooit getoond).
+    const KOERS_EUR = { '€': 1, '$': 0.9, '£': 1.17 };
+    function prijsEuro(rij) {
+      if (rij._prijs !== undefined) return rij._prijs;
+      let prijs = null;
+      if (rij.kosten && rij.kosten !== ONBEKEND) {
+        const bedragen = [...splitsKosten(rij.kosten).hoofd.matchAll(/([€$£])\s?(\d{1,3}(?:\.\d{3})+|\d+)/g)]
+          .map(m => Number(m[2].replace(/\./g, '')) * KOERS_EUR[m[1]]);
+        if (bedragen.length) prijs = bedragen[0];
+      }
+      rij._prijs = prijs;
+      return prijs;
+    }
+
+    function kostenHtml(rij) {
+      if (rij.kosten === ONBEKEND) {
+        return `<div class="kosten"><span class="punten-label">Kosten</span><span class="kosten-hoofd onbekend">Nog niet gepubliceerd</span>${rij.kostenIndicatie ? `<span class="kosten-detail indicatie">vorige editie ${esc(rij.kostenIndicatie)}</span>` : ''}</div>`;
+      }
+      const k = splitsKosten(rij.kosten);
+      return `<div class="kosten"><span class="punten-label">Kosten</span><span class="kosten-hoofd">${esc(k.hoofd)}${k.volgeboekt ? '<span class="volgeboekt">Volgeboekt</span>' : ''}</span>${k.detail ? `<span class="kosten-detail">${esc(k.detail)}</span>` : ''}</div>`;
+    }
+
+    // Landkleuren (gedempt, afgeleid van de vlag) voor de rand en het landlabel.
+    const LANDKLEUR = {
+      'Nederland': '#c4561d', 'België': '#a88414', 'Duitsland': '#5e5a52', 'Verenigd Koninkrijk': '#22386b', 'Frankrijk': '#2f5aa8',
+      'Spanje': '#b8321f', 'Portugal': '#1f6b45', 'Italië': '#3f8a5a', 'Oostenrijk': '#7d1b2e', 'Zwitserland': '#d23b3b',
+      'Denemarken': '#c8102e', 'Hongarije': '#4d7a3a', 'Verenigde Staten': '#1d3f7a', 'Canada': '#b0232a', 'Curaçao': '#0f6f8f',
+      'Puerto Rico': '#0f6f8f', 'Thailand': '#6b3fa0', 'Singapore': '#b83a5e'
+    };
+    const landkleur = land => LANDKLEUR[land] || '#7a7a74';
+    const STEDEN_DATA = typeof STEDEN === 'undefined' ? {} : STEDEN;
+    const stadInfo = rij => STEDEN_DATA[rij.stad] || null;
+
+    function esc(t) {
+      return String(t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    }
+
+    function toonMelding(tekst) {
+      const el = document.getElementById('melding');
+      el.textContent = tekst;
+      el.hidden = false;
+      clearTimeout(toonMelding.timer);
+      toonMelding.timer = setTimeout(() => { el.hidden = true; }, 2200);
+    }
+
+    // ---------- bewaarde congressen ----------
+    // Alleen in deze browser (localStorage), dus niet gesynchroniseerd tussen apparaten.
+    // localStorage kan ontbreken of gooien (privévenster, geblokkeerde sitedata): dan werkt
+    // bewaren alleen voor deze sessie.
+    const BEWAARD_SLEUTEL = 'bewaardeCongressen';
+    const bewaard = new Set((() => {
+      try { return JSON.parse(localStorage.getItem(BEWAARD_SLEUTEL)) || []; } catch { return []; }
+    })());
+    let alleenBewaard = false;
+    let alleenDeadline = false;
+    let weergave = (() => { try { const w = localStorage.getItem('weergave'); return ['lijst', 'kaart'].includes(w) ? w : 'kaarten'; } catch { return 'kaarten'; } })();
+    let kaartRegio = 'eu';
+    let kaartGekozen = null;
+
+    function wisselBewaard(id) {
+      if (bewaard.has(id)) bewaard.delete(id); else bewaard.add(id);
+      try { localStorage.setItem(BEWAARD_SLEUTEL, JSON.stringify([...bewaard])); } catch { /* alleen deze sessie */ }
+    }
+
+    // ---------- agenda-export ----------
+    // Congressen zijn hele-dag-afspraken; DTEND is in iCalendar exclusief, dus einddatum + 1 dag.
+    function dagErna(datumString) {
+      const d = new Date(datumString + 'T00:00:00Z');
+      d.setUTCDate(d.getUTCDate() + 1);
+      return d.toISOString().slice(0, 10);
+    }
+    const compact = datumString => datumString.replace(/-/g, '');
+
+    function agendaLocatie(rij) {
+      return [rij.stad, rij.land].filter(w => w && !/^(nog niet bekend|onbekend)$/i.test(w)).join(', ');
+    }
+    function agendaOmschrijving(rij) {
+      const deadlines = komendeDeadlines(rij).map(d => `${DEADLINE_LABEL[d.soort]} ${formatDatum(d.datum)}`);
+      return [rij.organisatie, rij.letOp ? `Let op: ${rij.letOp}` : '', `Kosten: ${rij.kosten}`, rij.punten ? `Nascholing: ${rij.punten}` : '', ...deadlines, `Bron: ${rij.bron}`].filter(Boolean).join('\n');
+    }
+
+    function icsTekst(t) {
+      return String(t).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\r?\n/g, '\\n');
+    }
+    // RFC 5545: regels langer dan 75 octets vouwen (vervolgregel begint met een spatie).
+    function vouw(regel) {
+      const bytes = new TextEncoder();
+      const delen = [];
+      let huidig = '';
+      for (const teken of regel) {
+        if (bytes.encode(huidig + teken).length > (delen.length ? 74 : 75)) { delen.push(huidig); huidig = ''; }
+        huidig += teken;
+      }
+      delen.push(huidig);
+      return delen.join('\r\n ');
+    }
+
+    function icsBestand(rijen) {
+      const stempel = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+/, '');
+      const regels = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Anesthesie en Pijn Congressen//NL', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH'];
+      rijen.forEach(rij => {
+        regels.push(
+          'BEGIN:VEVENT',
+          `UID:${rij.id}@rik-spacecowboy.github.io`,
+          `DTSTAMP:${stempel}`,
+          `DTSTART;VALUE=DATE:${compact(rij.datumStart)}`,
+          `DTEND;VALUE=DATE:${compact(dagErna(rij.datumEind))}`,
+          `SUMMARY:${icsTekst(rij.naam)}`,
+          `LOCATION:${icsTekst(agendaLocatie(rij))}`,
+          `DESCRIPTION:${icsTekst(agendaOmschrijving(rij))}`,
+          `URL:${rij.bron}`,
+          'TRANSP:TRANSPARENT',
+          'END:VEVENT'
+        );
+      });
+      regels.push('END:VCALENDAR');
+      return regels.map(vouw).join('\r\n') + '\r\n';
+    }
+
+    function downloadIcs(rijen, bestandsnaam) {
+      const blob = new Blob([icsBestand(rijen)], { type: 'text/calendar;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = bestandsnaam;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+
+    function googleAgendaUrl(rij) {
+      const params = new URLSearchParams({
+        action: 'TEMPLATE',
+        text: rij.naam,
+        dates: `${compact(rij.datumStart)}/${compact(dagErna(rij.datumEind))}`,
+        location: agendaLocatie(rij),
+        details: agendaOmschrijving(rij)
+      });
+      return `https://calendar.google.com/calendar/render?${params}`;
+    }
+
+    // ---------- filters in de URL ----------
+    // Zo is elke selectie te delen of te bookmarken. "vanaf" is standaard vandaag en staat dan
+    // niet in de URL, zodat een gedeelde link bij de ontvanger ook "vanaf vandaag" betekent.
+    // Een bewust leeg "vanaf" (ook afgelopen congressen tonen) wordt vanaf=alles.
+    const URL_VELDEN = { zoek: 'q', filterLand: 'land', filterStad: 'stad', filterContinent: 'continent',
+      filterOnderwerp: 'onderwerp', filterWeek: 'week', tot: 'tot', sorteer: 'sorteer', maxPrijs: 'max' };
+
+    function filtersUitUrl() {
+      const params = new URLSearchParams(location.search);
+      Object.entries(URL_VELDEN).forEach(([id, sleutel]) => {
+        const el = document.getElementById(id);
+        const waarde = params.get(sleutel);
+        if (waarde === null) return;
+        el.value = waarde;
+        if (el.value !== waarde) el.value = ''; // onbekende optie in een select (bv. verouderde link)
+      });
+      const vanaf = params.get('vanaf');
+      const vanafVeld = document.getElementById('vanaf');
+      vanafVeld.value = vanaf === null ? VANDAAG : vanaf === 'alles' ? '' : vanaf;
+      if (vanaf !== 'alles' && !vanafVeld.value) vanafVeld.value = VANDAAG; // ongeldige datum in de link
+    }
+
+    function filtersNaarUrl() {
+      return; // in een artifact komt de querystring niet door
+      const params = new URLSearchParams();
+      Object.entries(URL_VELDEN).forEach(([id, sleutel]) => {
+        const waarde = document.getElementById(id).value.trim();
+        if (waarde) params.set(sleutel, waarde);
+      });
+      const vanaf = document.getElementById('vanaf').value;
+      if (!vanaf) params.set('vanaf', 'alles');
+      else if (vanaf !== VANDAAG) params.set('vanaf', vanaf);
+      const query = params.toString();
+      history.replaceState(null, '', location.pathname + (query ? `?${query}` : '') + location.hash);
+    }
+
+    async function deelFilters() {
+      const url = location.href;
+      if (navigator.share && matchMedia('(pointer: coarse)').matches) {
+        try { await navigator.share({ title: document.title, url }); return; } catch (e) { if (e.name === 'AbortError') return; }
+      }
+      try {
+        await navigator.clipboard.writeText(url);
+        toonMelding('Link gekopieerd');
+      } catch {
+        prompt('Kopieer deze link:', url);
+      }
+    }
+
+    function vulFilterOpties() {
+      const landen = [...new Set(CONGRESSEN.map(r => r.land))].sort();
+      const steden = [...new Set(CONGRESSEN.map(r => r.stad))].sort();
+      const onderwerpen = [...new Set(CONGRESSEN.flatMap(r => r.onderwerp))].sort();
+
+      const vulSelect = (id, waarden) => {
+        const select = document.getElementById(id);
+        waarden.forEach(w => {
+          const optie = document.createElement('option');
+          optie.value = w;
+          optie.textContent = w;
+          select.appendChild(optie);
+        });
+      };
+      const continenten = [...new Set(CONGRESSEN.map(r => continentVan(r.land)))].sort();
+      vulSelect('filterLand', landen);
+      vulSelect('filterStad', steden);
+      vulSelect('filterContinent', continenten);
+      vulSelect('filterOnderwerp', onderwerpen);
+    }
+
+    // Snelfilters (chips) sturen de bestaande selects aan, zodat de filterlogica ongewijzigd blijft.
+    function bouwChips() {
+      const rij = document.getElementById('chipRij');
+      const maak = (tekst, selectId, waarde) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'chip';
+        b.textContent = tekst;
+        b.dataset.select = selectId;
+        b.dataset.waarde = waarde;
+        b.addEventListener('click', () => {
+          const sel = document.getElementById(selectId);
+          sel.value = (sel.value === waarde) ? '' : waarde;
+          toonCongressen();
+        });
+        return b;
+      };
+      // Afgelopen congressen zijn standaard verborgen (vanaf = vandaag); deze chip toont ze ook.
+      const afgelopen = document.createElement('button');
+      afgelopen.type = 'button';
+      afgelopen.className = 'chip';
+      afgelopen.textContent = 'Ook afgelopen';
+      afgelopen.dataset.select = 'vanaf';
+      afgelopen.dataset.waarde = '';
+      afgelopen.addEventListener('click', () => {
+        const veld = document.getElementById('vanaf');
+        veld.value = veld.value === '' ? VANDAAG : '';
+        toonCongressen();
+      });
+      rij.appendChild(afgelopen);
+      const bewaardChip = document.createElement('button');
+      bewaardChip.type = 'button';
+      bewaardChip.className = 'chip';
+      bewaardChip.id = 'bewaardChip';
+      bewaardChip.addEventListener('click', () => {
+        alleenBewaard = !alleenBewaard;
+        toonCongressen();
+      });
+      rij.appendChild(bewaardChip);
+      const deadlineChip = document.createElement('button');
+      deadlineChip.type = 'button';
+      deadlineChip.className = 'chip';
+      deadlineChip.id = 'deadlineChip';
+      deadlineChip.title = `Congressen met een deadline (early-bird, abstracts, inschrijving) binnen ${DEADLINE_BINNENKORT} dagen`;
+      deadlineChip.addEventListener('click', () => {
+        alleenDeadline = !alleenDeadline;
+        toonCongressen();
+      });
+      rij.appendChild(deadlineChip);
+      rij.appendChild(maak('Even week', 'filterWeek', 'even'));
+      rij.appendChild(maak('Oneven week', 'filterWeek', 'oneven'));
+      const uitleg = document.createElement('button');
+      uitleg.type = 'button';
+      uitleg.className = 'chip uitleg-knop';
+      uitleg.textContent = '?';
+      uitleg.setAttribute('aria-label', 'Wat betekent even en oneven week?');
+      uitleg.setAttribute('aria-expanded', 'false');
+      uitleg.setAttribute('aria-controls', 'weekUitleg');
+      uitleg.addEventListener('click', () => {
+        const tekst = document.getElementById('weekUitleg');
+        tekst.hidden = !tekst.hidden;
+        uitleg.setAttribute('aria-expanded', tekst.hidden ? 'false' : 'true');
+      });
+      rij.appendChild(uitleg);
+      const scheiding = document.createElement('span');
+      scheiding.className = 'scheiding';
+      rij.appendChild(scheiding);
+      [...new Set(CONGRESSEN.flatMap(r => r.onderwerp))].sort().forEach(o => rij.appendChild(maak(o, 'filterOnderwerp', o)));
+    }
+
+    function syncChipRanden() {
+      const rij = document.getElementById('chipRij');
+      rij.classList.toggle('rand-links', rij.scrollLeft > 2);
+      rij.classList.toggle('rand-rechts', rij.scrollLeft + rij.clientWidth < rij.scrollWidth - 2);
+    }
+
+    function syncChips() {
+      document.querySelectorAll('#chipRij .chip[data-select]').forEach(b => {
+        const actief = document.getElementById(b.dataset.select).value === b.dataset.waarde;
+        b.setAttribute('aria-pressed', actief ? 'true' : 'false');
+      });
+      const bewaardChip = document.getElementById('bewaardChip');
+      bewaardChip.textContent = `★ Bewaard (${bewaardeRijen().length})`;
+      bewaardChip.setAttribute('aria-pressed', alleenBewaard ? 'true' : 'false');
+      const deadlineChip = document.getElementById('deadlineChip');
+      deadlineChip.textContent = `Deadline binnenkort (${CONGRESSEN.filter(heeftDeadlineBinnenkort).length})`;
+      deadlineChip.setAttribute('aria-pressed', alleenDeadline ? 'true' : 'false');
+      syncChipRanden();
+    }
+
+    function huidigeFilters() {
+      return {
+        zoek: document.getElementById('zoek').value.trim().toLowerCase(),
+        land: document.getElementById('filterLand').value,
+        stad: document.getElementById('filterStad').value,
+        onderwerp: document.getElementById('filterOnderwerp').value,
+        week: document.getElementById('filterWeek').value,
+        vanaf: document.getElementById('vanaf').value,
+        tot: document.getElementById('tot').value,
+        continent: document.getElementById('filterContinent').value,
+        sorteer: document.getElementById('sorteer').value,
+        maxPrijs: Number(document.getElementById('maxPrijs').value) || 0
+      };
+    }
+
+    function voldoetAanFilters(rij, filters) {
+      if (alleenBewaard && !bewaard.has(rij.id)) return false;
+      if (alleenDeadline && !heeftDeadlineBinnenkort(rij)) return false;
+      if (filters.land && rij.land !== filters.land) return false;
+      if (filters.stad && rij.stad !== filters.stad) return false;
+      if (filters.onderwerp && !rij.onderwerp.includes(filters.onderwerp)) return false;
+      if (filters.week && meerderheidsWeek(rij).pariteit !== filters.week) return false;
+      if (filters.continent && continentVan(rij.land) !== filters.continent) return false;
+      if (filters.vanaf && rij.datumEind < filters.vanaf) return false;
+      if (filters.tot && rij.datumStart > filters.tot) return false;
+      if (filters.maxPrijs) {
+        const prijs = prijsEuro(rij);
+        if (prijs === null || prijs > filters.maxPrijs) return false;
+      }
+      if (filters.zoek) {
+        const doorzoekbaar = [rij.naam, rij.organisatie, rij.land, rij.stad, rij.punten || '', ...rij.onderwerp].join(' ').toLowerCase();
+        if (!doorzoekbaar.includes(filters.zoek)) return false;
+      }
+      return true;
+    }
+
+    function renderCongres(rij, index) {
+      const { week: weekNr, pariteit } = meerderheidsWeek(rij);
+      const blok = datumBlok(rij);
+      const voorbij = rij.datumEind < VANDAAG;
+      const nu = rij.datumStart <= VANDAAG && VANDAAG <= rij.datumEind;
+      const div = document.createElement('article');
+      div.className = 'congres-kaart' + (voorbij ? ' voorbij' : '');
+      div.dataset.id = rij.id;
+      const deadlines = komendeDeadlines(rij).map(d => {
+        const n = dagenTot(d.datum);
+        const nog = n === 0 ? 'vandaag' : n === 1 ? 'morgen' : `nog ${n} dagen`;
+        return `<div class="deadline${n <= DEADLINE_DRINGEND ? ' dringend' : ''}">${esc(DEADLINE_LABEL[d.soort])} <a href="${esc(d.bron)}" target="_blank" rel="noopener">${esc(formatDatum(d.datum))}</a><span class="nog">${nog}</span></div>`;
+      }).join('');
+      const reeks = edities(rij);
+      const plekVan = o => [o.datumStart.slice(0, 4), agendaLocatie(o)].filter(Boolean).join(', ');
+      const vorige = reeks[reeks.indexOf(rij) - 1];
+      const volgende = reeks[reeks.indexOf(rij) + 1];
+      const editieLink = (label, o) => `<span>${label}: <button type="button" class="editie-link" data-naar="${esc(o.id)}">${esc(plekVan(o))}</button></span>`;
+      const editiesHtml = vorige || volgende
+        ? `<div class="edities">${vorige ? editieLink('Vorige editie', vorige) : ''}${volgende ? editieLink('Volgende editie', volgende) : ''}</div>`
+        : '';
+      div.style.setProperty('--i', Math.min(index, 12));
+      div.style.setProperty('--landkleur', landkleur(rij.land));
+      const foto = stadInfo(rij)?.foto;
+      div.innerHTML = `
+        <div class="kaart-datum${foto ? ' met-foto' : ''}">
+          ${foto ? `<img class="kop-foto" src="${esc(foto.bestand)}" alt="" loading="lazy" decoding="async"><a class="foto-credit" href="${esc(foto.bron)}" target="_blank" rel="noopener" title="Foto: ${esc(foto.fotograaf)}, ${esc(foto.licentie)} (Wikimedia Commons)">Foto: ${esc(foto.fotograaf)} · ${esc(foto.licentie)}</a>` : ''}
+          <div>
+            <div class="maand">${esc(blok.maand)} ${blok.jaar}</div>
+            <div class="dagen-groot">${esc(blok.dagen)}</div>
+            <div class="weekdagen">${esc(weekdagen(rij))}</div>
+          </div>
+          <div class="rechts">
+            <button type="button" class="ster" aria-pressed="${bewaard.has(rij.id)}" aria-label="Bewaar ${esc(rij.naam)}" title="Bewaren">★</button>
+            ${nu ? '<span class="status nu">Nu bezig</span>' : ''}${voorbij ? '<span class="status voorbij">Afgelopen</span>' : ''}
+            <span class="weekbadge ${pariteit}">week <b>${weekNr}</b> · ${pariteit}</span>
+          </div>
+        </div>
+        <div class="kaart-body">
+          <h2>${esc(rij.naam)}</h2>
+          <div class="organisatie">${esc(rij.organisatie)}</div>
+          <div class="plek-regel"><span class="landchip"><i></i>${esc(rij.land)}</span><span class="plek">${esc(rij.stad === 'Nog niet bekend' ? 'Stad nog niet bekend' : rij.stad)}</span></div>
+          <div class="tags">${rij.onderwerp.map(o => `<span class="tag">${esc(o)}</span>`).join('')}</div>
+          ${rij.letOp ? `<div class="let-op ${rij.letOpType === 'commercieel' ? 'commercieel' : 'data'}"><span class="let-op-label">${rij.letOpType === 'commercieel' ? 'Commercieel congres' : 'Let op'}</span>${esc(rij.letOp)}</div>` : ''}
+          ${rij.punten || rij.puntenIndicatie ? `<div class="punten"><span class="punten-label">Nascholing</span>${rij.punten ? esc(rij.punten) : `<span class="indicatie">vorige editie ${esc(rij.puntenIndicatie)}</span>`}</div>` : ''}
+          ${deadlines ? `<div class="deadlines"><span class="punten-label">Deadlines</span>${deadlines}</div>` : ''}
+          ${editiesHtml}
+          ${kostenHtml(rij)}
+          <div class="kaart-voet">
+            <button type="button" class="meld-link">Klopt er iets niet?</button>
+            <div class="kaart-acties">
+              <button type="button" class="actie ics" hidden title="Voor Apple Agenda, Outlook en andere agenda-apps">+ Agenda</button>
+              <a class="actie" href="${esc(googleAgendaUrl(rij))}" target="_blank" rel="noopener" title="Toevoegen aan Google Agenda">Google</a>
+              <a class="bron" href="${esc(rij.bron)}" target="_blank" rel="noopener">Bron →</a>
+            </div>
+          </div>
+        </div>
+      `;
+      div.querySelector('.ics').addEventListener('click', () => downloadIcs([rij], `${rij.id}.ics`));
+      div.querySelectorAll('.editie-link').forEach(b => b.addEventListener('click', () => gaNaarEditie(b.dataset.naar)));
+      div.querySelector('.meld-link').addEventListener('click', () => openMelden(rij.id));
+      div.querySelector('.ster').addEventListener('click', e => sterGeklikt(rij, e.currentTarget));
+      return div;
+    }
+
+    function sterGeklikt(rij, knop) {
+      wisselBewaard(rij.id);
+      document.querySelectorAll('.ster').forEach(s => {
+        if (s.closest('[data-id]')?.dataset.id === rij.id) s.setAttribute('aria-pressed', bewaard.has(rij.id) ? 'true' : 'false');
+      });
+      knop.setAttribute('aria-pressed', bewaard.has(rij.id) ? 'true' : 'false');
+      // In de bewaard-weergave verdwijnt een ontsterd congres meteen; anders alleen tellers bijwerken.
+      if (alleenBewaard) toonCongressen(); else { syncChips(); syncExportKnop(); }
+      toonPersoonlijk();
+    }
+
+    // Compacte datum voor de lijstweergave: "24–26 sep", "30 sep – 2 okt", "21 nov".
+    function datumKort(rij) {
+      const s = new Date(rij.datumStart + 'T00:00:00Z'), e = new Date(rij.datumEind + 'T00:00:00Z');
+      const m = d => MAANDEN_KORT[d.getUTCMonth()];
+      if (rij.datumStart === rij.datumEind) return `${s.getUTCDate()} ${m(s)}`;
+      if (s.getUTCMonth() === e.getUTCMonth()) return `${s.getUTCDate()}–${e.getUTCDate()} ${m(s)}`;
+      return `${s.getUTCDate()} ${m(s)} – ${e.getUTCDate()} ${m(e)}`;
+    }
+
+    function renderRij(rij) {
+      const { week, pariteit } = meerderheidsWeek(rij);
+      const voorbij = rij.datumEind < VANDAAG;
+      const nu = rij.datumStart <= VANDAAG && VANDAAG <= rij.datumEind;
+      const prijs = rij.kosten === ONBEKEND ? null : splitsKosten(rij.kosten).hoofd;
+      const deadline = komendeDeadlines(rij)[0];
+      const deadlineTekst = deadline ? `${DEADLINE_LABEL[deadline.soort]} ${datumKort({ datumStart: deadline.datum, datumEind: deadline.datum })}` : '';
+      const plek = agendaLocatie(rij) || 'Locatie nog niet bekend';
+      const el = document.createElement('article');
+      el.className = 'lijst-rij' + (voorbij ? ' voorbij' : '');
+      el.style.setProperty('--landkleur', landkleur(rij.land));
+      el.dataset.id = rij.id;
+      el.innerHTML = `
+        <button type="button" class="rij-hoofd" aria-expanded="false">
+          <span class="rij-datum"><b>${esc(datumKort(rij))}</b><small>${esc(weekdagen(rij).split(' · ')[0])}</small></span>
+          <span class="rij-naam"><b>${esc(rij.naam)}</b>${nu ? '<span class="rij-nu">Nu</span>' : ''}<small>${esc(rij.organisatie.split(' (')[0])}</small></span>
+          <span class="rij-plek">${esc(plek)}</span>
+          <span class="rij-week ${pariteit}">week ${week} · ${pariteit}</span>
+          <span class="rij-prijs${prijs ? '' : ' onbekend'}">${esc(prijs || 'Prijs onbekend')}</span>
+          <span class="rij-deadline${deadline && dagenTot(deadline.datum) <= DEADLINE_DRINGEND ? ' dringend' : ''}">${esc(deadlineTekst)}</span>
+          <span class="rij-meta">${esc([plek, `wk ${week} ${pariteit}`, prijs, deadlineTekst].filter(Boolean).join(' · '))}</span>
+        </button>
+        <button type="button" class="ster" aria-pressed="${bewaard.has(rij.id)}" aria-label="Bewaar ${esc(rij.naam)}" title="Bewaren">★</button>`;
+      const hoofd = el.querySelector('.rij-hoofd');
+      hoofd.addEventListener('click', () => klapRij(el, rij));
+      el.querySelector('.ster').addEventListener('click', e => sterGeklikt(rij, e.currentTarget));
+      return el;
+    }
+
+    // Een lijstregel openklappen toont de volledige kaart eronder.
+    function klapRij(el, rij, open) {
+      const hoofd = el.querySelector('.rij-hoofd');
+      const bestaand = el.querySelector('.rij-detail');
+      const wordtOpen = open ?? !bestaand;
+      if (bestaand && !wordtOpen) bestaand.remove();
+      if (!bestaand && wordtOpen) {
+        const detail = document.createElement('div');
+        detail.className = 'rij-detail';
+        detail.appendChild(renderCongres(rij, 0));
+        el.appendChild(detail);
+      }
+      hoofd.setAttribute('aria-expanded', wordtOpen ? 'true' : 'false');
+    }
+
+    function zetWeergave(nieuw) {
+      weergave = nieuw;
+      try { localStorage.setItem('weergave', nieuw); } catch { /* alleen deze sessie */ }
+      document.querySelectorAll('.weergave-knop').forEach(k => k.setAttribute('aria-pressed', k.dataset.weergave === nieuw ? 'true' : 'false'));
+      toonCongressen();
+    }
+
+    function toonCongressen() {
+      const filters = huidigeFilters();
+      const opPrijs = filters.sorteer === 'prijs';
+      const gefilterd = CONGRESSEN
+        .filter(rij => voldoetAanFilters(rij, filters))
+        .sort((a, b) => {
+          if (opPrijs) {
+            const pa = prijsEuro(a), pb = prijsEuro(b);
+            if (pa !== pb) return pa === null ? 1 : pb === null ? -1 : pa - pb;
+          }
+          return a.datumStart.localeCompare(b.datumStart);
+        });
+
+      const lijst = document.getElementById('congresLijst');
+      lijst.classList.toggle('als-lijst', weergave === 'lijst');
+      lijst.classList.toggle('als-kaart', weergave === 'kaart');
+      lijst.innerHTML = '';
+      if (weergave === 'kaart') {
+        toonKaart(gefilterd);
+      } else if (gefilterd.length === 0) {
+        lijst.innerHTML = alleenBewaard && bewaardeRijen().length === 0
+          ? '<div class="leeg-resultaat">Nog niets bewaard — tik op ★ bij een congres</div>'
+          : '<div class="leeg-resultaat">Niets gevonden — probeer het breder</div>';
+      } else {
+        let huidigJaar = null;
+        gefilterd.forEach((rij, i) => {
+          const jaar = rij.datumStart.slice(0, 4);
+          if (!opPrijs && jaar !== huidigJaar) {
+            huidigJaar = jaar;
+            const kop = document.createElement('h2');
+            kop.className = 'jaarkop';
+            kop.textContent = jaar;
+            lijst.appendChild(kop);
+          }
+          lijst.appendChild(weergave === 'lijst' ? renderRij(rij) : renderCongres(rij, i));
+        });
+      }
+
+      // Teller: standaard telt alleen wat komt; afgelopen en prijsloze congressen apart benoemd.
+      const alleenKomend = filters.vanaf === VANDAAG;
+      const basis = alleenKomend ? CONGRESSEN.filter(r => r.datumEind >= VANDAAG).length : CONGRESSEN.length;
+      const soort = alleenKomend ? 'komende congressen' : 'congressen';
+      const verborgen = alleenKomend ? CONGRESSEN.filter(r => r.datumEind < VANDAAG).length : 0;
+      const zonderPrijs = filters.maxPrijs ? CONGRESSEN.filter(r => prijsEuro(r) === null && voldoetAanFilters(r, { ...filters, maxPrijs: 0 })).length : 0;
+      document.getElementById('resultaatTeller').textContent =
+        (gefilterd.length === basis ? `${basis} ${soort}` : `${gefilterd.length} van de ${basis} ${soort}`)
+        + (verborgen ? ` · ${verborgen} afgelopen verborgen` : '')
+        + (zonderPrijs ? ` · ${zonderPrijs} zonder bekende prijs` : '');
+      syncChips();
+      syncExportKnop();
+      filtersNaarUrl();
+    }
+
+    // ---------- kaartweergave ----------
+    // Alles zit in de site zelf (geen externe bibliotheken of kaartdata), zodat de kaart ook in de
+    // claude.ai-artifact werkt: landsgrenzen uit data/kaartlanden.js (afgeleid van world-atlas / Natural
+    // Earth) en twee eenvoudige projecties hieronder. Stippen tonen de congressen die door de filters komen.
+    function kaartLanden() {
+      if (typeof KAARTLANDEN !== 'undefined') return Promise.resolve(KAARTLANDEN.features);
+      // data/kaartlanden.js laadt met "defer"; wacht daarop als de kaart al bij het openen van de pagina getoond wordt.
+      return new Promise((ok, fout) => document.addEventListener('DOMContentLoaded', () =>
+        typeof KAARTLANDEN !== 'undefined' ? ok(KAARTLANDEN.features) : fout(new Error('kaartlanden ontbreekt')), { once: true }));
+    }
+    const RAD = Math.PI / 180;
+    // Azimutale equivalente projectie rond (lon0, lat0): Europa zonder vertekening in oppervlakte.
+    function azimutaal(lon0, lat0) {
+      const s0 = Math.sin(lat0 * RAD), c0 = Math.cos(lat0 * RAD);
+      return ([lon, lat]) => {
+        const l = (lon - lon0) * RAD, f = lat * RAD, cf = Math.cos(f), cl = Math.cos(l);
+        const k = Math.sqrt(2 / Math.max(1e-9, 1 + s0 * Math.sin(f) + c0 * cf * cl));
+        return [k * cf * Math.sin(l), -k * (c0 * Math.sin(f) - s0 * cf * cl)];
+      };
+    }
+    // Kegelprojectie van Albers (standaardparallellen p1, p2), de gangbare kaart van Noord-Amerika.
+    function kegel(lon0, p1, p2) {
+      const s1 = Math.sin(p1 * RAD), n = (s1 + Math.sin(p2 * RAD)) / 2, C = Math.cos(p1 * RAD) ** 2 + 2 * n * s1, r0 = Math.sqrt(C) / n;
+      return ([lon, lat]) => {
+        const dl = ((lon - lon0 + 540) % 360) - 180;
+        const r = Math.sqrt(Math.max(0, C - 2 * n * Math.sin(lat * RAD))) / n, t = n * dl * RAD;
+        return [r * Math.sin(t), -(r0 - r * Math.cos(t))];
+      };
+    }
+    // Schaal en verschuif zo dat de hoekpunten van de regio precies in het vlak (met marge) passen.
+    function pasIn(ruw, hoeken, W, H, marge) {
+      const pts = hoeken.map(ruw), xs = pts.map(p => p[0]), ys = pts.map(p => p[1]);
+      const [x0, x1, y0, y1] = [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)];
+      const k = Math.min((W - 2 * marge) / (x1 - x0), (H - 2 * marge) / (y1 - y0));
+      const tx = W / 2 - k * (x0 + x1) / 2, ty = H / 2 - k * (y0 + y1) / 2;
+      return p => { const [x, y] = ruw(p); return [tx + k * x, ty + k * y]; };
+    }
+    const KAART_REGIO = {
+      eu: { naam: 'Europa', hoeken: [[-11, 36], [26, 36], [-11, 60], [26, 60]], projectie: () => azimutaal(7, 49) },
+      na: { naam: 'Noord-Amerika', hoeken: [[-125, 12], [-62, 12], [-125, 50], [-62, 50]], projectie: () => kegel(-96, 20, 50) }
+    };
+    let laatsteKaartRijen = [];
+    const SVG_NS = 'http://www.w3.org/2000/svg';
+    function svgEl(naam, attrs, ouder) {
+      const el = document.createElementNS(SVG_NS, naam);
+      Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+      if (ouder) ouder.appendChild(el);
+      return el;
+    }
+
+    function toonKaart(rijen) {
+      laatsteKaartRijen = rijen;
+      const lijst = document.getElementById('congresLijst');
+      const perRegio = r => CONGRESSEN_REGIO(r);
+      const aantal = regio => rijen.filter(r => perRegio(r) === regio).length;
+      lijst.innerHTML = `
+        <div class="regio-keuze" role="group" aria-label="Regio">
+          ${Object.entries(KAART_REGIO).map(([k, v]) => `<button type="button" class="chip" data-regio="${k}" aria-pressed="${k === kaartRegio}">${v.naam} (${aantal(k)})</button>`).join('')}
+        </div>
+        <div class="kaart-vak" id="kaartVak"><div class="kaart-laden">Kaart laden…</div><div class="kaart-tip" id="kaartTip" hidden></div></div>
+        <div class="kaart-paneel" id="kaartPaneel"><p class="kaart-hint">Klik op een stip om de congressen in die stad te zien. Hoe groter de stip, hoe meer congressen.</p></div>
+        <p class="kaart-elders" id="kaartElders"></p>`;
+      lijst.querySelectorAll('[data-regio]').forEach(b => b.addEventListener('click', () => {
+        kaartRegio = b.dataset.regio; kaartGekozen = null; toonKaart(laatsteKaartRijen);
+      }));
+      const elders = rijen.filter(r => !perRegio(r));
+      const eldersEl = document.getElementById('kaartElders');
+      if (elders.length) {
+        eldersEl.innerHTML = 'Niet op deze kaart: ' + elders.map(r => `<button type="button" data-id="${esc(r.id)}">${esc(r.naam)}</button> (${esc(r.land === 'Cruise' ? r.stad : agendaLocatie(r) || r.land)})`).join(' · ');
+        eldersEl.querySelectorAll('button').forEach(b => b.addEventListener('click', () => toonPaneel({ titel: 'Niet op de kaart', rijen: [CONGRESSEN.find(r => r.id === b.dataset.id)] })));
+      }
+      if (rijen.length === 0) { document.getElementById('kaartPaneel').innerHTML = '<p class="kaart-hint">Niets gevonden — probeer het breder.</p>'; }
+      kaartLanden().then(landen => tekenKaart(landen, rijen)).catch(() => {
+        const laden = document.querySelector('#kaartVak .kaart-laden');
+        if (laden) laden.textContent = 'De kaart kon niet laden. Kies Kaarten of Lijst, of probeer het later opnieuw.';
+      });
+    }
+    function CONGRESSEN_REGIO(rij) { return stadInfo(rij)?.regio || null; }
+
+    function tekenKaart(landen, rijen) {
+      const vak = document.getElementById('kaartVak');
+      if (!vak || weergave !== 'kaart') return;
+      const regio = KAART_REGIO[kaartRegio];
+      const W = Math.max(300, vak.clientWidth), H = Math.round(W < 600 ? W * 0.95 : Math.min(W * 0.6, 620)); // telefoon: hoger, anders vallen stippen samen
+      const basis = W < 600 ? 5.5 : 7;
+      const projectie = pasIn(regio.projectie(), regio.hoeken, W, H, 24);
+      vak.querySelector('svg')?.remove();
+      vak.querySelector('.kaart-laden')?.remove();
+      const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': `Kaart van ${regio.naam} met de congressteden` });
+      vak.insertBefore(svg, document.getElementById('kaartTip'));
+      const landenG = svgEl('g', {}, svg);
+      landen.forEach(f => {
+        const d = f.geometry.coordinates.map(poly => poly.map(ring =>
+          'M' + ring.map(p => projectie(p).map(v => v.toFixed(1)).join(',')).join('L') + 'Z').join('')).join('');
+        svgEl('path', { class: 'land', d, 'fill-rule': 'evenodd' }, landenG);
+      });
+
+      // Steden groeperen; steden die op het scherm bijna samenvallen (bv. Tignes en Val d'Isère) worden één stip.
+      const perStad = new Map();
+      rijen.filter(r => CONGRESSEN_REGIO(r) === kaartRegio).forEach(r => {
+        if (!perStad.has(r.stad)) { const s = stadInfo(r); perStad.set(r.stad, { steden: [r.stad], rijen: [], xy: projectie([s.lon, s.lat]) }); }
+        perStad.get(r.stad).rijen.push(r);
+      });
+      const groepen = [];
+      [...perStad.values()].sort((a, b) => b.rijen.length - a.rijen.length).forEach(p => {
+        const buur = groepen.find(g => Math.hypot(g.xy[0] - p.xy[0], g.xy[1] - p.xy[1]) < 10);
+        if (buur) { buur.steden.push(...p.steden); buur.rijen.push(...p.rijen); } else groepen.push({ ...p, steden: [...p.steden], rijen: [...p.rijen] });
+      });
+      const sleutel = g => g.steden.slice().sort().join('|');
+      const tip = document.getElementById('kaartTip');
+      const stippenG = svgEl('g', {}, svg);
+      groepen.forEach(gr => {
+        const n = gr.rijen.length, r = Math.min(basis + (n - 1) * 2.4, 20);
+        const gekozen = kaartGekozen === sleutel(gr);
+        const label = `${gr.steden.join(' / ')}: ${n} ${n === 1 ? 'congres' : 'congressen'}`;
+        const c = svgEl('circle', { class: 'stip' + (gekozen ? ' gekozen' : ''), cx: gr.xy[0].toFixed(1), cy: gr.xy[1].toFixed(1), r,
+          tabindex: 0, role: 'button', 'aria-label': label }, stippenG);
+        if (n > 1) svgEl('text', { class: 'stip-getal' + (gekozen ? ' gekozen' : ''), x: gr.xy[0].toFixed(1), y: (gr.xy[1] + 4).toFixed(1) }, stippenG).textContent = n;
+        c.addEventListener('mousemove', ev => {
+          const box = vak.getBoundingClientRect();
+          tip.hidden = false; tip.textContent = `${gr.steden.join(' / ')} · ${n}`;
+          tip.style.left = `${Math.min(ev.clientX - box.left + 12, box.width - tip.offsetWidth - 6)}px`;
+          tip.style.top = `${ev.clientY - box.top - 30}px`;
+        });
+        c.addEventListener('mouseleave', () => { tip.hidden = true; });
+        c.addEventListener('click', () => kiesGroep(gr));
+        c.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); kiesGroep(gr); } });
+      });
+      function kiesGroep(gr) {
+        kaartGekozen = sleutel(gr);
+        toonPaneel({ titel: gr.steden.join(' / '), sub: gr.rijen[0].land, rijen: gr.rijen });
+        tekenKaart(landen, laatsteKaartRijen);
+      }
+    }
+
+    function toonPaneel({ titel, sub, rijen }) {
+      const paneel = document.getElementById('kaartPaneel');
+      paneel.innerHTML = `<h3>${esc(titel)}${sub ? `<small>${esc(sub)}</small>` : ''}</h3><div class="paneel-kaarten"></div>`;
+      const vak = paneel.querySelector('.paneel-kaarten');
+      rijen.slice().sort((a, b) => a.datumStart.localeCompare(b.datumStart)).forEach((r, i) => vak.appendChild(renderCongres(r, i)));
+      paneel.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'nearest' });
+    }
+    let kaartResizeTimer;
+    window.addEventListener('resize', () => {
+      if (weergave !== 'kaart') return;
+      clearTimeout(kaartResizeTimer);
+      kaartResizeTimer = setTimeout(() => kaartLanden().then(landen => tekenKaart(landen, laatsteKaartRijen)), 150);
+    });
+
+    // Bewaarde congressen die nog in de data staan (een id kan verdwijnen na een scraper-run).
+    // De export pakt ze allemaal, ongeacht de actieve filters.
+    function bewaardeRijen() {
+      return CONGRESSEN.filter(r => bewaard.has(r.id)).sort((a, b) => a.datumStart.localeCompare(b.datumStart));
+    }
+    function syncExportKnop() {
+      const knop = document.getElementById('exportBewaard');
+      const aantal = bewaardeRijen().length;
+      knop.hidden = true; // downloads werken niet in een artifact
+      knop.textContent = `${aantal} bewaarde in agenda (.ics)`;
+    }
+
+    // Aftellen: naar je eigen eerstvolgende bewaarde congres, anders naar het eerstvolgende congres.
+    function toonVolgend() {
+      const opDatum = (a, b) => a.datumStart.localeCompare(b.datumStart);
+      const eigen = bewaardeRijen().filter(r => r.datumEind >= VANDAAG).sort(opDatum)[0];
+      const komend = eigen || CONGRESSEN.filter(r => r.datumEind >= VANDAAG).sort(opDatum)[0];
+      const knop = document.getElementById('volgend');
+      if (!komend) { knop.hidden = true; return; }
+      const nu = komend.datumStart <= VANDAAG;
+      const dagen = Math.max(0, dagenTot(komend.datumStart));
+      document.getElementById('volgendDagen').textContent = nu ? '•' : dagen;
+      document.getElementById('volgendEenheid').textContent = nu ? 'NU' : (dagen === 1 ? 'DAG' : 'DAGEN');
+      document.getElementById('volgendLabel').textContent = eigen
+        ? (nu ? '★ Jouw congres: nu bezig' : '★ Jouw volgende congres')
+        : (nu ? 'Nu bezig' : 'Volgend congres');
+      document.getElementById('volgendNaam').textContent = komend.naam.length > 42 ? komend.naam.slice(0, 40) + '…' : komend.naam;
+      document.getElementById('volgendPlek').textContent = `${agendaLocatie(komend) || 'Locatie nog niet bekend'} · ${formatDatum(komend.datumStart)}`;
+      knop.dataset.id = komend.id;
+      knop.hidden = false;
+    }
+
+    // Nascholingspunten uit de vrije tekst halen, bv. "max. 23 AMA PRA Category 1" -> 23 AMA PRA (max).
+    function puntenWaarde(tekst) {
+      const m = /^(max\.\s*)?(\d+(?:,\d+)?)\+?\s+(.*)$/i.exec(tekst || '');
+      if (!m || /per dag/i.test(tekst)) return null;
+      const soort = ['ECMEC', 'AMA PRA', 'ESRA-DRA', 'CPD', 'CME'].find(s => m[3].toUpperCase().includes(s));
+      return soort ? { soort, aantal: parseFloat(m[2].replace(',', '.')), max: !!m[1] } : null;
+    }
+    const getalNl = n => n.toLocaleString('nl-NL', { maximumFractionDigits: 2 });
+
+    // Jouw congresjaar: overzicht van de bewaarde congressen, per jaar vanaf dit jaar.
+    function toonJaaroverzicht() {
+      const el = document.getElementById('jaaroverzicht');
+      const ditJaar = VANDAAG.slice(0, 4);
+      const perJaar = {};
+      bewaardeRijen().filter(r => r.datumStart.slice(0, 4) >= ditJaar).forEach(r => (perJaar[r.datumStart.slice(0, 4)] ??= []).push(r));
+      const jaren = Object.keys(perJaar).sort();
+      el.hidden = jaren.length === 0;
+      el.innerHTML = jaren.map(jaar => {
+        const rijen = perJaar[jaar];
+        const landen = new Set(rijen.map(r => r.land).filter(l => l && l !== 'Onbekend'));
+        const punten = {}, max = {};
+        let onbekend = 0;
+        rijen.forEach(r => {
+          const p = puntenWaarde(r.punten);
+          if (!p) { onbekend++; return; }
+          punten[p.soort] = (punten[p.soort] || 0) + p.aantal;
+          max[p.soort] = max[p.soort] || p.max;
+        });
+        const puntenTekst = Object.keys(punten).map(s => `${max[s] ? 'max. ' : ''}${getalNl(punten[s])} ${s}`).join(' + ');
+        const delen = [
+          `${rijen.length} ${rijen.length === 1 ? 'congres' : 'congressen'}`,
+          `${landen.size} ${landen.size === 1 ? 'land' : 'landen'}`,
+          puntenTekst ? `${puntenTekst} punten` : '',
+          onbekend ? `${onbekend} zonder bekende punten` : ''
+        ].filter(Boolean);
+        return `<span><span class="ster-klein">★</span><b>Jouw ${jaar}:</b> ${esc(delen.join(' · '))}</span>`;
+      }).join('');
+    }
+
+    function toonPersoonlijk() {
+      toonVolgend();
+      toonJaaroverzicht();
+    }
+
+    function bouwHero() {
+      const komende = CONGRESSEN.filter(r => r.datumEind >= VANDAAG).length;
+      document.getElementById('tellerTop').textContent = `${komende} komende congressen`;
+      document.getElementById('heroSub').textContent =
+        `${komende} komende congressen, meerdere jaren vooruit. Filter op plek, datum, onderwerp en even/oneven week; elke kaart heeft een bron.`;
+      toonPersoonlijk();
+
+      const organisaties = [...new Set(CONGRESSEN.map(r => r.organisatie.split(' (')[0].replace(/^American Society of Anesthesiologists$/, 'ASA')))];
+      const html = organisaties.map(o => `<span>${esc(o)}</span>`).join('');
+      document.getElementById('bandSpoor').innerHTML = html + html;
+    }
+
+    ['zoek', 'filterLand', 'filterStad', 'filterContinent', 'filterOnderwerp', 'filterWeek', 'vanaf', 'tot', 'sorteer', 'maxPrijs'].forEach(id => {
+      document.getElementById(id).addEventListener('input', toonCongressen);
+    });
+    // "Wis" gaat terug naar de standaardweergave: alle komende congressen (afgelopen verborgen).
+    function wisFilters() {
+      ['zoek', 'tot', 'filterLand', 'filterStad', 'filterContinent', 'filterOnderwerp', 'filterWeek', 'sorteer', 'maxPrijs'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('vanaf').value = VANDAAG;
+      alleenBewaard = false;
+      alleenDeadline = false;
+    }
+    document.getElementById('resetFilters').addEventListener('click', () => {
+      wisFilters();
+      toonCongressen();
+    });
+
+    // Klik op "vorige/volgende editie": toon die kaart, zo nodig door afgelopen congressen
+    // mee te tonen of (als andere filters hem verbergen) de filters te wissen.
+    function gaNaarEditie(id) {
+      const rij = CONGRESSEN.find(r => r.id === id);
+      if (weergave === 'kaart') zetWeergave('kaarten');
+      if (!voldoetAanFilters(rij, huidigeFilters())) {
+        const vanaf = document.getElementById('vanaf');
+        if (vanaf.value && rij.datumEind < vanaf.value) vanaf.value = '';
+        if (!voldoetAanFilters(rij, huidigeFilters())) {
+          wisFilters();
+          if (rij.datumEind < VANDAAG) vanaf.value = '';
+        }
+        toonCongressen();
+      }
+      let kaart = [...document.querySelectorAll('.congres-kaart, .lijst-rij')].find(k => k.dataset.id === id);
+      if (!kaart) return;
+      if (kaart.classList.contains('lijst-rij')) klapRij(kaart, rij, true);
+      kaart.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
+      kaart.classList.add('uitgelicht');
+      setTimeout(() => kaart.classList.remove('uitgelicht'), 1600);
+    }
+
+    document.getElementById('chipRij').addEventListener('scroll', syncChipRanden, { passive: true });
+    window.addEventListener('resize', syncChipRanden);
+    document.fonts?.ready.then(syncChipRanden); // breedte van de chips verandert als het webfont laadt
+
+    document.querySelectorAll('.weergave-knop').forEach(k => {
+      k.setAttribute('aria-pressed', k.dataset.weergave === weergave ? 'true' : 'false');
+      k.addEventListener('click', () => zetWeergave(k.dataset.weergave));
+    });
+    document.getElementById('volgend').addEventListener('click', e => {
+      if (!e.currentTarget.dataset.id) return;
+      e.preventDefault();
+      gaNaarEditie(e.currentTarget.dataset.id);
+    });
+
+    // ---------- melden (fout, ontbrekend congres, suggestie) ----------
+    // Meldingen gaan via Web3Forms naar de beheerder; de sleutel is openbaar bedoeld (alleen
+    // om te versturen). Zonder sleutel is de meldfunctie verborgen. In de claude.ai-artifact
+    // (MELDEN_EXTERN) opent de knop het formulier op GitHub Pages.
+    const WEB3FORMS_SLEUTEL = '9b46ae12-cf09-4c14-b2db-f67169e60e66';
+    const MELDEN_EXTERN = 'https://rik-spacecowboy.github.io/Anesthesie/';
+    if (!WEB3FORMS_SLEUTEL) document.body.classList.add('geen-melden');
+    const meldDialoog = document.getElementById('meldDialoog');
+    const meldCongres = document.getElementById('meldCongres');
+    CONGRESSEN.filter(r => r.datumEind >= VANDAAG).sort((a, b) => a.datumStart.localeCompare(b.datumStart)).forEach(r => {
+      meldCongres.add(new Option(`${r.naam} (${r.datumStart.slice(0, 4)})`, r.id));
+    });
+    function openMelden(id) {
+      if (!WEB3FORMS_SLEUTEL) return;
+      if (MELDEN_EXTERN) { window.open(`${MELDEN_EXTERN}#melden${id ? '=' + encodeURIComponent(id) : ''}`, '_blank', 'noopener'); return; }
+      const rij = CONGRESSEN.find(r => r.id === id);
+      if (rij && ![...meldCongres.options].some(o => o.value === id)) meldCongres.add(new Option(`${rij.naam} (${rij.datumStart.slice(0, 4)})`, id));
+      meldCongres.value = id || '';
+      document.getElementById('meldStatus').textContent = '';
+      document.getElementById('meldStatus').className = '';
+      meldDialoog.showModal();
+      document.getElementById('meldBericht').focus();
+    }
+    document.getElementById('meldKnop').addEventListener('click', () => openMelden(''));
+    document.getElementById('meldSluit').addEventListener('click', () => meldDialoog.close());
+    meldDialoog.addEventListener('click', e => { if (e.target === meldDialoog) meldDialoog.close(); });
+    document.getElementById('meldFormulier').addEventListener('submit', async e => {
+      e.preventDefault();
+      const form = e.currentTarget;
+      const status = document.getElementById('meldStatus');
+      const knop = document.getElementById('meldVerstuur');
+      const data = new FormData(form);
+      if (!String(data.get('bericht')).trim()) {
+        status.textContent = 'Schrijf eerst je melding.';
+        status.className = 'fout';
+        document.getElementById('meldBericht').focus();
+        return;
+      }
+      if (data.get('botcheck')) return; // honeypot: alleen bots vullen dit verborgen vakje in
+      const rij = CONGRESSEN.find(r => r.id === data.get('congres'));
+      const payload = {
+        access_key: WEB3FORMS_SLEUTEL,
+        subject: `Congressite: ${data.get('soort')}${rij ? ' – ' + rij.naam : ''}`,
+        from_name: 'Anesthesie & Pijn Congressen',
+        soort: data.get('soort'),
+        congres: rij ? `${rij.naam} (${rij.id}, ${rij.datumStart})` : '—',
+        message: String(data.get('bericht')).trim(),
+        name: data.get('naam') || 'Anoniem',
+        email: data.get('email') || undefined,
+        pagina: location.href
+      };
+      knop.disabled = true;
+      status.className = '';
+      status.textContent = 'Versturen…';
+      try {
+        const antwoord = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(payload)
+        });
+        const json = await antwoord.json();
+        if (!json.success) throw new Error(json.message || 'onbekende fout');
+        form.reset();
+        status.className = 'gelukt';
+        status.textContent = 'Bedankt! Je melding is verstuurd.';
+      } catch (fout) {
+        status.className = 'fout';
+        status.textContent = `Versturen lukte niet (${fout.message}). Probeer het later nog eens.`;
+      } finally {
+        knop.disabled = false;
+      }
+    });
+    const meldHash = /^#melden(?:=(.*))?$/.exec(location.hash);
+    if (meldHash) openMelden(meldHash[1] ? decodeURIComponent(meldHash[1]) : '');
+
+    // Info-knop "Wat ontbreekt?" klapt de uitleg onder de topbalk open en dicht.
+    function zetInfo(open) {
+      document.getElementById('notitie').hidden = !open;
+      document.getElementById('infoKnop').setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    document.getElementById('infoKnop').addEventListener('click', () => zetInfo(document.getElementById('notitie').hidden));
+    document.getElementById('infoSluit').addEventListener('click', () => { zetInfo(false); document.getElementById('infoKnop').focus(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !document.getElementById('notitie').hidden) zetInfo(false); });
+
+    document.getElementById('abonneerWebcal').href = AGENDA_WEBCAL;
+    document.getElementById('abonneerGoogle').href = `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(AGENDA_WEBCAL)}`;
+    const abonnementVeld = document.getElementById('abonnementUrl');
+    abonnementVeld.value = AGENDA_URL;
+    abonnementVeld.addEventListener('focus', () => abonnementVeld.select());
+    document.getElementById('deelFilters').addEventListener('click', deelFilters);
+    document.getElementById('exportBewaard').addEventListener('click', () => downloadIcs(bewaardeRijen(), 'bewaarde-congressen.ics'));
+
+    vulFilterOpties();
+    bouwChips();
+    bouwHero();
+    filtersUitUrl(); // zonder parameters: standaard alleen komende congressen
+    // Filters uit een gedeelde link die in "Meer filters" zitten: klap dat blok open zodat ze zichtbaar zijn.
+    if (['filterLand', 'filterStad', 'filterContinent', 'tot', 'sorteer', 'maxPrijs'].some(id => document.getElementById(id).value)
+        || document.getElementById('vanaf').value !== VANDAAG) {
+      document.querySelector('details.meer').open = true;
+    }
+    toonCongressen();
+  </script>
