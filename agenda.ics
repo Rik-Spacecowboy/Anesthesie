@@ -27,10 +27,12 @@ DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20260924
 DTEND;VALUE=DATE:20260927
 SUMMARY:16th European Congress for Paediatric Anaesthesiology
-LOCATION:Madrid\, Spanje
-DESCRIPTION:ESPA (European Society for Paediatric Anaesthesiology)\nKosten:
-  €790–€880 (niet-lid)\nBron: https://www.espacongress.com/
-URL:https://www.espacongress.com/
+DESCRIPTION:ESPA (European Society for Paediatric Anaesthesiology)\nLet op:
+  Stad/land niet gevonden -- https://www.espacongress.com/ toonde een laads
+ cherm i.p.v. de congrespagina\, dit komt van de terugval-bron. Controleer 
+ handmatig.\nKosten: €330–€880 (trainee t/m niet-lid\, incl. btw) · 
+ verpleegkundige/student €180\nBron: https://www.euroespa.com/
+URL:https://www.euroespa.com/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
