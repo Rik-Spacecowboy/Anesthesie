@@ -57,29 +57,10 @@ DTEND;VALUE=DATE:20261017
 SUMMARY:SPA 40th Annual Meeting
 LOCATION:San Diego\, Verenigde Staten
 DESCRIPTION:SPA (Society for Pediatric Anesthesia)\nKosten: Nog niet gepubl
- iceerd\nNascholing: max. 7\,25 AMA PRA Category 1 (+ losse workshops)\nLaa
- tste dag inschrijven: 2026-10-16\nBron: https://pedsanesthesia.org/educati
- on-and-meetings/upcoming-meetings/
+ iceerd\nNascholing: max. 7\,25 AMA PRA Category 1 (+ losse workshops)\nBro
+ n: https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/
 URL:https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/
 TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:spa-annual-2026-registratie@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261016
-DTEND;VALUE=DATE:20261017
-SUMMARY:Laatste dag inschrijven: SPA 40th Annual Meeting
-DESCRIPTION:SPA 40th Annual Meeting (2026-10-16 t/m 2026-10-16\, San Diego\
- , Verenigde Staten)\nBron: https://www2.pedsanesthesia.org/meetings/2026an
- nual/guide/info/general.iphtml
-URL:https://www2.pedsanesthesia.org/meetings/2026annual/guide/info/general.
- iphtml
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Laatste dag inschrijven: SPA 40th Annual Meeting
-TRIGGER:-P7D
-END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:eaccm-2026@rik-spacecowboy.github.io
@@ -91,30 +72,10 @@ LOCATION:Berlijn\, Duitsland
 DESCRIPTION:Plenareno\nLet op: Commercieel georganiseerd congres (Plenareno
  )\, geen erkende beroepsvereniging. Op uitdrukkelijk verzoek toegevoegd\; 
  handmatig bijgehouden.\nKosten: €215–€349 (spottarief t/m 19 okt: st
- udent/e-poster €215\, academic/business €349) · virtual €225\nLaats
- te dag inschrijven: 2026-10-19\nBron: https://anesthesiology.plenareno.com
- /
+ udent/e-poster €215\, academic/business €349) · virtual €225\nBron:
+  https://anesthesiology.plenareno.com/
 URL:https://anesthesiology.plenareno.com/
 TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:eaccm-2026-registratie@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261019
-DTEND;VALUE=DATE:20261020
-SUMMARY:Laatste dag inschrijven: V Euro Anesthesiology and Critical Care Co
- ngress (EACCM 26)
-DESCRIPTION:V Euro Anesthesiology and Critical Care Congress (EACCM 26) (20
- 26-10-19 t/m 2026-10-20\, Berlijn\, Duitsland)\nBron: https://anesthesiolo
- gy.plenareno.com/
-URL:https://anesthesiology.plenareno.com/
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Laatste dag inschrijven: V Euro Anesthesiology and Critical Car
- e Congress (EACCM 26)
-TRIGGER:-P7D
-END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:esra-eastern-european-cadaver-workshop-2026@rik-spacecowboy.github.io
@@ -165,29 +126,10 @@ DTEND;VALUE=DATE:20261122
 SUMMARY:1st ESRA PoCUS Workshop
 LOCATION:Amsterdam\, Nederland
 DESCRIPTION:ESRA (European Society of Regional Anaesthesia and Pain Therapy
- )\nKosten: €695–€995 (trainee-lid t/m niet-lid) · volgeboekt\nLaats
- te dag annuleren met terugbetaling: 2026-10-25\nBron: https://esraeurope.o
- rg/meetings/?meeting_type=esra-events
+ )\nKosten: €695–€995 (trainee-lid t/m niet-lid) · volgeboekt\nBron:
+  https://esraeurope.org/meetings/?meeting_type=esra-events
 URL:https://esraeurope.org/meetings/?meeting_type=esra-events
 TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:esra-pocus-workshop-2026-annuleren@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261025
-DTEND;VALUE=DATE:20261026
-SUMMARY:Laatste dag annuleren met terugbetaling: 1st ESRA PoCUS Workshop
-DESCRIPTION:1st ESRA PoCUS Workshop (2026-11-20 t/m 2026-11-21\, Amsterdam\
- , Nederland)\nBron: https://esraeurope.org/meeting/1st-esra-pocus-workshop
- /
-URL:https://esraeurope.org/meeting/1st-esra-pocus-workshop/
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Laatste dag annuleren met terugbetaling: 1st ESRA PoCUS Worksho
- p
-TRIGGER:-P7D
-END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:bapa-annual-2026@rik-spacecowboy.github.io
@@ -444,43 +386,9 @@ LOCATION:Las Vegas\, Verenigde Staten
 DESCRIPTION:NANS (North American Neuromodulation Society)\nLet op: Handmati
  g toegevoegd\, nog geen scraper voor deze bron.\nKosten: Vanaf $200 (stude
  nt/trainee-lid)\; niet-lid (fysicus) $885–$985\, zie bron voor volledige
-  tabel\nLaatste dag early-bird: 2026-10-27\nLaatste dag abstracts indienen
- : 2026-11-01\nBron: https://www.neuromodulation.org/annual-meeting.html
+  tabel\nBron: https://www.neuromodulation.org/annual-meeting.html
 URL:https://www.neuromodulation.org/annual-meeting.html
 TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:nans-annual-2027-early-bird@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261027
-DTEND;VALUE=DATE:20261028
-SUMMARY:Laatste dag early-bird: NANS 2027 Annual Meeting (30th)
-DESCRIPTION:NANS 2027 Annual Meeting (30th) (2027-01-21 t/m 2027-01-24\, La
- s Vegas\, Verenigde Staten)\nBron: https://www.nans.org/annual-meeting.htm
- l
-URL:https://www.nans.org/annual-meeting.html
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Laatste dag early-bird: NANS 2027 Annual Meeting (30th)
-TRIGGER:-P7D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:nans-annual-2027-abstracts@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261101
-DTEND;VALUE=DATE:20261102
-SUMMARY:Laatste dag abstracts indienen: NANS 2027 Annual Meeting (30th)
-DESCRIPTION:NANS 2027 Annual Meeting (30th) (2027-01-21 t/m 2027-01-24\, La
- s Vegas\, Verenigde Staten)\nBron: https://www.nans.org/abstracts/
-URL:https://www.nans.org/abstracts/
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Laatste dag abstracts indienen: NANS 2027 Annual Meeting (30th)
-TRIGGER:-P7D
-END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:nwas-new-horizons-cruise-2027@rik-spacecowboy.github.io
@@ -606,31 +514,10 @@ DTEND;VALUE=DATE:20270308
 SUMMARY:SPA-AAP Pediatric Anesthesiology 2027
 LOCATION:Nassau\, Bahama's
 DESCRIPTION:SPA (Society for Pediatric Anesthesia)\nKosten: Nog niet gepubl
- iceerd\nLaatste dag abstracts indienen: 2026-10-25\nLaatste dag early-bird
- : 2027-01-15\nBron: https://pedsanesthesia.org/education-and-meetings/upco
- ming-meetings/
+ iceerd\nLaatste dag early-bird: 2027-01-15\nBron: https://pedsanesthesia.o
+ rg/education-and-meetings/upcoming-meetings/
 URL:https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/
 TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:spa-aap-2027-abstracts@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261025
-DTEND;VALUE=DATE:20261026
-SUMMARY:Laatste dag abstracts indienen: SPA-AAP Pediatric Anesthesiology 20
- 27
-DESCRIPTION:SPA-AAP Pediatric Anesthesiology 2027 (2027-03-05 t/m 2027-03-0
- 7\, Nassau\, Bahama's)\nBron: https://www2.pedsanesthesia.org/meetings/202
- 7winter/guide/posters/cfa.iphtml
-URL:https://www2.pedsanesthesia.org/meetings/2027winter/guide/posters/cfa.i
- phtml
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Laatste dag abstracts indienen: SPA-AAP Pediatric Anesthesiolog
- y 2027
-TRIGGER:-P7D
-END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:spa-aap-2027-early-bird@rik-spacecowboy.github.io
@@ -662,7 +549,7 @@ DESCRIPTION:Iris Scientific Group\nLet op: Commercieel georganiseerd congre
  bied] Congress"-events)\, geen erkende beroepsvereniging. Op uitdrukkelijk
   verzoek toegevoegd\; handmatig bijgehouden.\nKosten: Vanaf $399 (virtueel
  )\; vanaf $699 fysiek\; meerdere tarieven\, zie bron\nLaatste dag abstract
- s indienen: 2026-10-15\nLaatste dag early-bird: 2026-10-15\nBron: https://
+ s indienen: 2026-11-13\nLaatste dag early-bird: 2026-11-15\nBron: https://
  surgeryanesthesiacongress.com/
 URL:https://surgeryanesthesiacongress.com/
 TRANSP:TRANSPARENT
@@ -670,8 +557,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:wsac-2027-abstracts@rik-spacecowboy.github.io
 DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261015
-DTEND;VALUE=DATE:20261016
+DTSTART;VALUE=DATE:20261113
+DTEND;VALUE=DATE:20261114
 SUMMARY:Laatste dag abstracts indienen: World Surgery and Anesthesia Congre
  ss (WSAC 2027)
 DESCRIPTION:World Surgery and Anesthesia Congress (WSAC 2027) (2027-03-11 t
@@ -689,8 +576,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:wsac-2027-early-bird@rik-spacecowboy.github.io
 DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261015
-DTEND;VALUE=DATE:20261016
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
 SUMMARY:Laatste dag early-bird: World Surgery and Anesthesia Congress (WSAC
   2027)
 DESCRIPTION:World Surgery and Anesthesia Congress (WSAC 2027) (2027-03-11 t
@@ -730,15 +617,15 @@ LOCATION:Orlando\, Verenigde Staten
 DESCRIPTION:AAPM (American Academy of Pain Medicine)\nLet op: Handmatig toe
  gevoegd\, nog geen scraper voor deze bron.\nKosten: Vanaf $188 (student/tr
  ainee-lid)\; meerdere tarieven o.b.v. lidmaatschap/categorie\, zie bron\nL
- aatste dag abstracts indienen: 2026-11-11\nBron: https://painconnect.org/
+ aatste dag abstracts indienen: 2026-11-10\nBron: https://painconnect.org/
 URL:https://painconnect.org/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:aapm-painconnect-2027-abstracts@rik-spacecowboy.github.io
 DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261111
-DTEND;VALUE=DATE:20261112
+DTSTART;VALUE=DATE:20261110
+DTEND;VALUE=DATE:20261111
 SUMMARY:Laatste dag abstracts indienen: AAPM PainConnect 2027 (43rd Annual 
  Meeting)
 DESCRIPTION:AAPM PainConnect 2027 (43rd Annual Meeting) (2027-03-18 t/m 202
@@ -778,16 +665,16 @@ DESCRIPTION:Inovine Conferences\nLet op: Commercieel georganiseerd congres
  (Inovine Conferences)\, geen erkende beroepsvereniging. Op uitdrukkelijk v
  erzoek toegevoegd\; handmatig bijgehouden.\nKosten: Nog niet gepubliceerd\
  nNascholing: 16+ CPD (volgens organisator\; accrediterende instantie niet 
- vermeld)\nLaatste dag abstracts indienen: 2026-10-28\nLaatste dag early-bi
- rd: 2026-10-30\nBron: https://surgery.inovineconferences.com/
+ vermeld)\nLaatste dag abstracts indienen: 2026-11-12\nLaatste dag early-bi
+ rd: 2026-11-14\nBron: https://surgery.inovineconferences.com/
 URL:https://surgery.inovineconferences.com/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:icsa-2027-abstracts@rik-spacecowboy.github.io
 DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261028
-DTEND;VALUE=DATE:20261029
+DTSTART;VALUE=DATE:20261112
+DTEND;VALUE=DATE:20261113
 SUMMARY:Laatste dag abstracts indienen: 2nd International Conference on Sur
  gery and Anesthesia
 DESCRIPTION:2nd International Conference on Surgery and Anesthesia (2027-04
@@ -805,8 +692,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:icsa-2027-early-bird@rik-spacecowboy.github.io
 DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261030
-DTEND;VALUE=DATE:20261031
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
 SUMMARY:Laatste dag early-bird: 2nd International Conference on Surgery and
   Anesthesia
 DESCRIPTION:2nd International Conference on Surgery and Anesthesia (2027-04
@@ -963,8 +850,8 @@ DTEND;VALUE=DATE:20270601
 SUMMARY:Euroanaesthesia 2027
 LOCATION:Kopenhagen\, Denemarken
 DESCRIPTION:ESAIC (European Society of Anaesthesiology and Intensive Care)\
- nKosten: Nog niet gepubliceerd\nLaatste dag abstracts indienen: 2026-12-05
- \nLaatste dag early-bird: 2027-02-17\nLaatste dag inschrijven: 2027-05-25\
+ nKosten: Nog niet gepubliceerd\nLaatste dag abstracts indienen: 2026-12-09
+ \nLaatste dag early-bird: 2027-02-17\nLaatste dag inschrijven: 2027-05-26\
  nBron: https://euroanaesthesia.org/2027/
 URL:https://euroanaesthesia.org/2027/
 TRANSP:TRANSPARENT
@@ -972,8 +859,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:euroanaesthesia-2027-abstracts@rik-spacecowboy.github.io
 DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261205
-DTEND;VALUE=DATE:20261206
+DTSTART;VALUE=DATE:20261209
+DTEND;VALUE=DATE:20261210
 SUMMARY:Laatste dag abstracts indienen: Euroanaesthesia 2027
 DESCRIPTION:Euroanaesthesia 2027 (2027-05-29 t/m 2027-05-31\, Kopenhagen\, 
  Denemarken)\nBron: https://euroanaesthesia.org/2027/abstracts/
@@ -1004,8 +891,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:euroanaesthesia-2027-registratie@rik-spacecowboy.github.io
 DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20270525
-DTEND;VALUE=DATE:20270526
+DTSTART;VALUE=DATE:20270526
+DTEND;VALUE=DATE:20270527
 SUMMARY:Laatste dag inschrijven: Euroanaesthesia 2027
 DESCRIPTION:Euroanaesthesia 2027 (2027-05-29 t/m 2027-05-31\, Kopenhagen\, 
  Denemarken)\nBron: https://euroanaesthesia.org/2027/registration/
