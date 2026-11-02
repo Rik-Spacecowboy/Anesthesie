@@ -29,13 +29,15 @@ const CONGRESSEN = [
     id: "espa-congress-2026",
     naam: "16th European Congress for Paediatric Anaesthesiology",
     organisatie: "ESPA (European Society for Paediatric Anaesthesiology)",
-    land: "Spanje",
-    stad: "Madrid",
+    land: "Onbekend",
+    stad: "Nog niet bekend",
     datumStart: "2026-09-24",
     datumEind: "2026-09-26",
     onderwerp: ["kinderanesthesiologie"],
-    kosten: "€790–€880 (niet-lid)",
-    bron: "https://www.espacongress.com/"
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://www.euroespa.com/",
+    letOp: "Stad/land niet gevonden -- https://www.espacongress.com/ toonde een laadscherm i.p.v. de congrespagina, dit komt van de terugval-bron. Controleer handmatig.",
+    letOpType: "data"
   },
   {
     id: "asa-anesthesiology-2026",
