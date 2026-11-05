@@ -388,9 +388,27 @@ LOCATION:Las Vegas\, Verenigde Staten
 DESCRIPTION:NANS (North American Neuromodulation Society)\nLet op: Handmati
  g toegevoegd\, nog geen scraper voor deze bron.\nKosten: Vanaf $200 (stude
  nt/trainee-lid)\; niet-lid (fysicus) $885–$985\, zie bron voor volledige
-  tabel\nBron: https://www.neuromodulation.org/annual-meeting.html
+  tabel\nLaatste dag inschrijven: 2026-12-08\nBron: https://www.neuromodula
+ tion.org/annual-meeting.html
 URL:https://www.neuromodulation.org/annual-meeting.html
 TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:nans-annual-2027-registratie@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20261208
+DTEND;VALUE=DATE:20261209
+SUMMARY:Laatste dag inschrijven: NANS 2027 Annual Meeting (30th)
+DESCRIPTION:NANS 2027 Annual Meeting (30th) (2027-01-21 t/m 2027-01-24\, La
+ s Vegas\, Verenigde Staten)\nBron: https://www.nans.org/annual-meeting.htm
+ l
+URL:https://www.nans.org/annual-meeting.html
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag inschrijven: NANS 2027 Annual Meeting (30th)
+TRIGGER:-P7D
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:nwas-new-horizons-cruise-2027@rik-spacecowboy.github.io
@@ -477,10 +495,30 @@ DTEND;VALUE=DATE:20270226
 SUMMARY:16th ESRA Pain Cadaver Workshop
 LOCATION:Innsbruck\, Oostenrijk
 DESCRIPTION:ESRA (European Society of Regional Anaesthesia and Pain Therapy
- )\nKosten: Nog niet gepubliceerd\nBron: https://esraeurope.org/meetings/?m
- eeting_type=esra-events
+ )\nKosten: Nog niet gepubliceerd\nLaatste dag annuleren met terugbetaling:
+  2027-01-26\nBron: https://esraeurope.org/meetings/?meeting_type=esra-even
+ ts
 URL:https://esraeurope.org/meetings/?meeting_type=esra-events
 TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:esra-pain-cadaver-workshop-2027-annuleren@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270126
+DTEND;VALUE=DATE:20270127
+SUMMARY:Laatste dag annuleren met terugbetaling: 16th ESRA Pain Cadaver Wor
+ kshop
+DESCRIPTION:16th ESRA Pain Cadaver Workshop (2027-02-24 t/m 2027-02-25\, In
+ nsbruck\, Oostenrijk)\nBron: https://esraeurope.org/meeting/16th-esra-pain
+ -cadaver-workshop/
+URL:https://esraeurope.org/meeting/16th-esra-pain-cadaver-workshop/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag annuleren met terugbetaling: 16th ESRA Pain Cadaver
+  Workshop
+TRIGGER:-P7D
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:esra-ra-cadaver-workshop-2027@rik-spacecowboy.github.io
@@ -490,10 +528,30 @@ DTEND;VALUE=DATE:20270228
 SUMMARY:40th ESRA RA Cadaver Workshop
 LOCATION:Innsbruck\, Oostenrijk
 DESCRIPTION:ESRA (European Society of Regional Anaesthesia and Pain Therapy
- )\nKosten: Nog niet gepubliceerd\nBron: https://esraeurope.org/meetings/?m
- eeting_type=esra-events
+ )\nKosten: Nog niet gepubliceerd\nLaatste dag annuleren met terugbetaling:
+  2027-01-26\nBron: https://esraeurope.org/meetings/?meeting_type=esra-even
+ ts
 URL:https://esraeurope.org/meetings/?meeting_type=esra-events
 TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:esra-ra-cadaver-workshop-2027-annuleren@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270126
+DTEND;VALUE=DATE:20270127
+SUMMARY:Laatste dag annuleren met terugbetaling: 40th ESRA RA Cadaver Works
+ hop
+DESCRIPTION:40th ESRA RA Cadaver Workshop (2027-02-26 t/m 2027-02-27\, Inns
+ bruck\, Oostenrijk)\nBron: https://esraeurope.org/meeting/40th-esra-ra-cad
+ aver-workshop/
+URL:https://esraeurope.org/meeting/40th-esra-ra-cadaver-workshop/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag annuleren met terugbetaling: 40th ESRA RA Cadaver W
+ orkshop
+TRIGGER:-P7D
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:nysora-leuven-2027@rik-spacecowboy.github.io
@@ -619,7 +677,8 @@ LOCATION:Orlando\, Verenigde Staten
 DESCRIPTION:AAPM (American Academy of Pain Medicine)\nLet op: Handmatig toe
  gevoegd\, nog geen scraper voor deze bron.\nKosten: Vanaf $188 (student/tr
  ainee-lid)\; meerdere tarieven o.b.v. lidmaatschap/categorie\, zie bron\nL
- aatste dag abstracts indienen: 2026-11-10\nBron: https://painconnect.org/
+ aatste dag abstracts indienen: 2026-11-10\nLaatste dag annuleren met terug
+ betaling: 2027-02-25\nBron: https://painconnect.org/
 URL:https://painconnect.org/
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -638,6 +697,25 @@ BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Laatste dag abstracts indienen: AAPM PainConnect 2027 (43rd Ann
  ual Meeting)
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aapm-painconnect-2027-annuleren@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270225
+DTEND;VALUE=DATE:20270226
+SUMMARY:Laatste dag annuleren met terugbetaling: AAPM PainConnect 2027 (43r
+ d Annual Meeting)
+DESCRIPTION:AAPM PainConnect 2027 (43rd Annual Meeting) (2027-03-18 t/m 202
+ 7-03-21\, Orlando\, Verenigde Staten)\nBron: https://painconnect.org/regis
+ tration/
+URL:https://painconnect.org/registration/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag annuleren met terugbetaling: AAPM PainConnect 2027 
+ (43rd Annual Meeting)
 TRIGGER:-P7D
 END:VALARM
 END:VEVENT
