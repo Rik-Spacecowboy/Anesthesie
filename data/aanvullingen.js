@@ -99,6 +99,9 @@ const AANVULLINGEN = {
   "nans-annual-2027": {
     puntenIndicatie: "2026: max. 23,5 AMA PRA Category 1",
     puntenBron: "https://www.nans.org/cmeaccreditation/",
+    deadlines: [
+      { soort: "registratie", datum: "2026-12-08", bron: "https://www.nans.org/annual-meeting.html", gecontroleerd: "2026-11-05" }
+    ],
     gecontroleerd: "2026-09-25"
   },
   "nysora-val-d-isere-2027": {
@@ -118,7 +121,8 @@ const AANVULLINGEN = {
     puntenIndicatie: "2025: 24,5 CME",
     puntenBron: "https://painconnect.org/about-painconnect/",
     deadlines: [
-      { soort: "abstracts", datum: "2026-11-10", bron: "https://painconnect.org/", gecontroleerd: "2026-11-02" }
+      { soort: "abstracts", datum: "2026-11-10", bron: "https://painconnect.org/", gecontroleerd: "2026-11-05" },
+      { soort: "annuleren", datum: "2027-02-25", bron: "https://painconnect.org/registration/", gecontroleerd: "2026-11-05" }
     ],
     gecontroleerd: "2026-09-25"
   },
@@ -167,6 +171,9 @@ const AANVULLINGEN = {
     kostenBron: "https://esraeurope.org/meeting/15th-esra-pain-cadaver-workshop/",
     puntenIndicatie: "2026: 9 ECMEC (EACCME)",
     puntenBron: "https://esraeurope.org/meeting/15th-esra-pain-cadaver-workshop/",
+    deadlines: [
+      { soort: "annuleren", datum: "2027-01-26", bron: "https://esraeurope.org/meeting/16th-esra-pain-cadaver-workshop/", gecontroleerd: "2026-11-05" }
+    ],
     gecontroleerd: "2026-09-25"
   },
   "esra-ra-cadaver-workshop-2027": {
@@ -174,6 +181,9 @@ const AANVULLINGEN = {
     kostenBron: "https://esraeurope.org/meeting/39th-esra-ra-cadaver-workshop/",
     puntenIndicatie: "2026: 15,5 ECMEC (EACCME)",
     puntenBron: "https://esraeurope.org/meeting/39th-esra-ra-cadaver-workshop/",
+    deadlines: [
+      { soort: "annuleren", datum: "2027-01-26", bron: "https://esraeurope.org/meeting/40th-esra-ra-cadaver-workshop/", gecontroleerd: "2026-11-05" }
+    ],
     gecontroleerd: "2026-09-25"
   },
   "esra-residents-trainees-workshop-2027": {
