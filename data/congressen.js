@@ -430,6 +430,18 @@ const CONGRESSEN = [
     letOpType: "commercieel"
   },
   {
+    id: "nysora-milan-2027",
+    naam: "NYSORA: Regional Anesthesia Updates and Techniques Demonstration",
+    organisatie: "NYSORA",
+    land: "Italië",
+    stad: "Milaan",
+    datumStart: "2027-04-17",
+    datumEind: "2027-04-17",
+    onderwerp: ["regionale anesthesie", "pijngeneeskunde"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://nysora.com/events/conferences"
+  },
+  {
     id: "efic-2027",
     naam: "EFIC Congress 2027 (Pain in Europe)",
     organisatie: "EFIC (European Pain Federation)",

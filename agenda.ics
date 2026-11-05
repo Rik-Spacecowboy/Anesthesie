@@ -789,6 +789,18 @@ TRIGGER:-P7D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:nysora-milan-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270417
+DTEND;VALUE=DATE:20270418
+SUMMARY:NYSORA: Regional Anesthesia Updates and Techniques Demonstration
+LOCATION:Milaan\, Italië
+DESCRIPTION:NYSORA\nKosten: Nog niet gepubliceerd\nBron: https://nysora.com
+ /events/conferences
+URL:https://nysora.com/events/conferences
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:efic-2027@rik-spacecowboy.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20270421
