@@ -677,28 +677,10 @@ LOCATION:Orlando\, Verenigde Staten
 DESCRIPTION:AAPM (American Academy of Pain Medicine)\nLet op: Handmatig toe
  gevoegd\, nog geen scraper voor deze bron.\nKosten: Vanaf $188 (student/tr
  ainee-lid)\; meerdere tarieven o.b.v. lidmaatschap/categorie\, zie bron\nL
- aatste dag abstracts indienen: 2026-11-10\nLaatste dag annuleren met terug
- betaling: 2027-02-25\nBron: https://painconnect.org/
+ aatste dag annuleren met terugbetaling: 2027-02-25\nBron: https://painconn
+ ect.org/
 URL:https://painconnect.org/
 TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:aapm-painconnect-2027-abstracts@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261110
-DTEND;VALUE=DATE:20261111
-SUMMARY:Laatste dag abstracts indienen: AAPM PainConnect 2027 (43rd Annual 
- Meeting)
-DESCRIPTION:AAPM PainConnect 2027 (43rd Annual Meeting) (2027-03-18 t/m 202
- 7-03-21\, Orlando\, Verenigde Staten)\nBron: https://painconnect.org/
-URL:https://painconnect.org/
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Laatste dag abstracts indienen: AAPM PainConnect 2027 (43rd Ann
- ual Meeting)
-TRIGGER:-P7D
-END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:aapm-painconnect-2027-annuleren@rik-spacecowboy.github.io
@@ -795,10 +777,31 @@ DTSTART;VALUE=DATE:20270417
 DTEND;VALUE=DATE:20270418
 SUMMARY:NYSORA: Regional Anesthesia Updates and Techniques Demonstration
 LOCATION:Milaan\, Italië
-DESCRIPTION:NYSORA\nKosten: Nog niet gepubliceerd\nBron: https://nysora.com
- /events/conferences
+DESCRIPTION:NYSORA\nKosten: Nog niet gepubliceerd\nLaatste dag early-bird: 
+ 2027-03-16\nBron: https://nysora.com/events/conferences
 URL:https://nysora.com/events/conferences
 TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:nysora-milan-2027-early-bird@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270316
+DTEND;VALUE=DATE:20270317
+SUMMARY:Laatste dag early-bird: NYSORA: Regional Anesthesia Updates and Tec
+ hniques Demonstration
+DESCRIPTION:NYSORA: Regional Anesthesia Updates and Techniques Demonstratio
+ n (2027-04-17 t/m 2027-04-17\, Milaan\, Italië)\nBron: https://nysora.com
+ /event/conferences/regional-anesthesia-updates-and-techniques-demonstratio
+ n/
+URL:https://nysora.com/event/conferences/regional-anesthesia-updates-and-te
+ chniques-demonstration/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag early-bird: NYSORA: Regional Anesthesia Updates and
+  Techniques Demonstration
+TRIGGER:-P7D
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:efic-2027@rik-spacecowboy.github.io
@@ -889,9 +892,48 @@ SUMMARY:Annual Regional Anesthesiology and Acute Pain Medicine Meeting
 LOCATION:Houston\, Verenigde Staten
 DESCRIPTION:ASRA Pain Medicine\nLet op: Automatisch gevonden\; ordinal (bv.
   '52nd') stond niet in de brontekst\, controleer de exacte naam.\nKosten: 
- Nog niet gepubliceerd\nBron: https://asra.com/events-education
+ Nog niet gepubliceerd\nLaatste dag abstracts indienen: 2027-02-03\nLaatste
+  dag early-bird: 2027-03-18\nBron: https://asra.com/events-education
 URL:https://asra.com/events-education
 TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:asra-regional-2027-abstracts@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270203
+DTEND;VALUE=DATE:20270204
+SUMMARY:Laatste dag abstracts indienen: Annual Regional Anesthesiology and 
+ Acute Pain Medicine Meeting
+DESCRIPTION:Annual Regional Anesthesiology and Acute Pain Medicine Meeting 
+ (2027-05-13 t/m 2027-05-15\, Houston\, Verenigde Staten)\nBron: https://as
+ ra.com/about-asra/deadlines
+URL:https://asra.com/about-asra/deadlines
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag abstracts indienen: Annual Regional Anesthesiology 
+ and Acute Pain Medicine Meeting
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:asra-regional-2027-early-bird@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270318
+DTEND;VALUE=DATE:20270319
+SUMMARY:Laatste dag early-bird: Annual Regional Anesthesiology and Acute Pa
+ in Medicine Meeting
+DESCRIPTION:Annual Regional Anesthesiology and Acute Pain Medicine Meeting 
+ (2027-05-13 t/m 2027-05-15\, Houston\, Verenigde Staten)\nBron: https://as
+ ra.com/about-asra/deadlines
+URL:https://asra.com/about-asra/deadlines
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Laatste dag early-bird: Annual Regional Anesthesiology and Acut
+ e Pain Medicine Meeting
+TRIGGER:-P7D
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:soap-2027@rik-spacecowboy.github.io
@@ -942,7 +984,7 @@ DTEND;VALUE=DATE:20270601
 SUMMARY:Euroanaesthesia 2027
 LOCATION:Kopenhagen\, Denemarken
 DESCRIPTION:ESAIC (European Society of Anaesthesiology and Intensive Care)\
- nKosten: Nog niet gepubliceerd\nLaatste dag abstracts indienen: 2026-12-09
+ nKosten: Nog niet gepubliceerd\nLaatste dag abstracts indienen: 2026-12-10
  \nLaatste dag early-bird: 2027-02-17\nLaatste dag inschrijven: 2027-05-26\
  nBron: https://euroanaesthesia.org/2027/
 URL:https://euroanaesthesia.org/2027/
@@ -951,8 +993,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:euroanaesthesia-2027-abstracts@rik-spacecowboy.github.io
 DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261209
-DTEND;VALUE=DATE:20261210
+DTSTART;VALUE=DATE:20261210
+DTEND;VALUE=DATE:20261211
 SUMMARY:Laatste dag abstracts indienen: Euroanaesthesia 2027
 DESCRIPTION:Euroanaesthesia 2027 (2027-05-29 t/m 2027-05-31\, Kopenhagen\, 
  Denemarken)\nBron: https://euroanaesthesia.org/2027/abstracts/

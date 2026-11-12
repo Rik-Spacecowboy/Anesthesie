@@ -121,7 +121,6 @@ const AANVULLINGEN = {
     puntenIndicatie: "2025: 24,5 CME",
     puntenBron: "https://painconnect.org/about-painconnect/",
     deadlines: [
-      { soort: "abstracts", datum: "2026-11-10", bron: "https://painconnect.org/", gecontroleerd: "2026-11-05" },
       { soort: "annuleren", datum: "2027-02-25", bron: "https://painconnect.org/registration/", gecontroleerd: "2026-11-05" }
     ],
     gecontroleerd: "2026-09-25"
@@ -198,6 +197,10 @@ const AANVULLINGEN = {
     kostenBron: "https://asra.com/events-education/past-events/past-ra-acute-pain-medicine-meetings/51st-annual-regional-anesthesiology-and-acute-pain-medicine-meeting/register",
     puntenIndicatie: "2026: max. 21,75 AMA PRA Category 1",
     puntenBron: "https://asra.com/events-education/past-events/past-ra-acute-pain-medicine-meetings/51st-annual-regional-anesthesiology-and-acute-pain-medicine-meeting/cme-cpd",
+    deadlines: [
+      { soort: "abstracts", datum: "2027-02-03", bron: "https://asra.com/about-asra/deadlines", gecontroleerd: "2026-11-12" },
+      { soort: "early-bird", datum: "2027-03-18", bron: "https://asra.com/about-asra/deadlines", gecontroleerd: "2026-11-12" }
+    ],
     gecontroleerd: "2026-09-25"
   },
   "esra-congress-2027": {
@@ -210,9 +213,14 @@ const AANVULLINGEN = {
     kostenBron: "https://www.anesthesiologie.nl/agenda/anesthesiologendagen-2026/",
     gecontroleerd: "2026-09-25"
   },
+  "nysora-milan-2027": {
+    deadlines: [
+      { soort: "early-bird", datum: "2027-03-16", bron: "https://nysora.com/event/conferences/regional-anesthesia-updates-and-techniques-demonstration/", gecontroleerd: "2026-11-12" }
+    ]
+  },
   "euroanaesthesia-2027": {
     deadlines: [
-      { soort: "abstracts", datum: "2026-12-09", bron: "https://euroanaesthesia.org/2027/abstracts/", gecontroleerd: "2026-11-02" },
+      { soort: "abstracts", datum: "2026-12-10", bron: "https://euroanaesthesia.org/2027/abstracts/", gecontroleerd: "2026-11-12" },
       { soort: "early-bird", datum: "2027-02-17", bron: "https://euroanaesthesia.org/2027/registration/", gecontroleerd: "2026-11-02" },
       { soort: "registratie", datum: "2027-05-26", bron: "https://euroanaesthesia.org/2027/registration/", gecontroleerd: "2026-11-02" }
     ]
