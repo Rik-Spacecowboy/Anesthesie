@@ -60,16 +60,13 @@ const AANVULLINGEN = {
     kosten: "€125–€220 (aios/verpleegkundige lid t/m specialist niet-lid)",
     kostenBron: "https://www.bapanaesth.be/events/bapa-annual-scientific-meeting-21st-of-november-2026/",
     deadlines: [
-      { soort: "registratie", datum: "2026-11-18", bron: "https://www.bapanaesth.be/events/bapa-annual-scientific-meeting-21st-of-november-2026/", gecontroleerd: "2026-11-02" }
+      { soort: "registratie", datum: "2026-11-18", bron: "https://www.bapanaesth.be/events/bapa-annual-scientific-meeting-21st-of-november-2026/", gecontroleerd: "2026-11-16" }
     ],
     gecontroleerd: "2026-09-25"
   },
   "esra-instructor-course-2026": {
     kosten: "€875 (alleen voor ESRA-leden)",
     kostenBron: "https://esraeurope.org/meeting/7th-esra-instructor-course/",
-    deadlines: [
-      { soort: "annuleren", datum: "2026-11-12", bron: "https://esraeurope.org/meeting/7th-esra-instructor-course/", gecontroleerd: "2026-11-02" }
-    ],
     gecontroleerd: "2026-09-25"
   },
   "pga-80-2026": {
@@ -83,7 +80,7 @@ const AANVULLINGEN = {
     kosten: "€1.075 (early bird, inschrijven vóór 13 dec 2026) · daarna €1.175",
     kostenBron: "https://nysora.com/event/conferences/update-on-regional-anesthesia-and-pain-management-including-hands-on-scanning-practice/",
     deadlines: [
-      { soort: "early-bird", datum: "2026-12-12", bron: "https://nysora.com/event/conferences/update-on-regional-anesthesia-and-pain-management-including-hands-on-scanning-practice/", gecontroleerd: "2026-11-02" }
+      { soort: "early-bird", datum: "2026-12-12", bron: "https://nysora.com/event/conferences/update-on-regional-anesthesia-and-pain-management-including-hands-on-scanning-practice/", gecontroleerd: "2026-11-16" }
     ],
     gecontroleerd: "2026-09-25"
   },
@@ -91,8 +88,8 @@ const AANVULLINGEN = {
     kosten: "Lid £220–£610 (online/fysiek, 1–2 dagen) · niet-lid £750–£1.025",
     kostenBron: "https://anaesthetists.org/Home/Education-events/Winter-Scientific-Meeting/How-to-book",
     deadlines: [
-      { soort: "early-bird", datum: "2026-12-03", bron: "https://anaesthetists.org/Home/Education-events/Winter-Scientific-Meeting/How-to-book", gecontroleerd: "2026-11-02" },
-      { soort: "annuleren", datum: "2026-12-15", bron: "https://anaesthetists.org/Home/Education-events/Winter-Scientific-Meeting/How-to-book", gecontroleerd: "2026-11-02" }
+      { soort: "early-bird", datum: "2026-12-03", bron: "https://anaesthetists.org/Home/Education-events/Winter-Scientific-Meeting/How-to-book", gecontroleerd: "2026-11-16" },
+      { soort: "annuleren", datum: "2026-12-15", bron: "https://anaesthetists.org/Home/Education-events/Winter-Scientific-Meeting/How-to-book", gecontroleerd: "2026-11-16" }
     ],
     gecontroleerd: "2026-09-25"
   },
@@ -100,7 +97,7 @@ const AANVULLINGEN = {
     puntenIndicatie: "2026: max. 23,5 AMA PRA Category 1",
     puntenBron: "https://www.nans.org/cmeaccreditation/",
     deadlines: [
-      { soort: "registratie", datum: "2026-12-08", bron: "https://www.nans.org/annual-meeting.html", gecontroleerd: "2026-11-05" }
+      { soort: "early-bird", datum: "2026-12-08", bron: "https://www.nans.org/annual-meeting.html", gecontroleerd: "2026-11-16" }
     ],
     gecontroleerd: "2026-09-25"
   },
@@ -108,7 +105,7 @@ const AANVULLINGEN = {
     kosten: "€1.075 (early bird, inschrijven vóór 8 jan 2027) · daarna €1.175",
     kostenBron: "https://nysora.com/event/conferences/anesthesia-review-conference-valdisere-2027/",
     deadlines: [
-      { soort: "early-bird", datum: "2027-01-07", bron: "https://nysora.com/event/conferences/anesthesia-review-conference-valdisere-2027/", gecontroleerd: "2026-11-02" }
+      { soort: "early-bird", datum: "2027-01-07", bron: "https://nysora.com/event/conferences/anesthesia-review-conference-valdisere-2027/", gecontroleerd: "2026-11-16" }
     ],
     gecontroleerd: "2026-09-25"
   },
@@ -121,7 +118,7 @@ const AANVULLINGEN = {
     puntenIndicatie: "2025: 24,5 CME",
     puntenBron: "https://painconnect.org/about-painconnect/",
     deadlines: [
-      { soort: "annuleren", datum: "2027-02-25", bron: "https://painconnect.org/registration/", gecontroleerd: "2026-11-05" }
+      { soort: "annuleren", datum: "2027-02-25", bron: "https://painconnect.org/registration/", gecontroleerd: "2026-11-16" }
     ],
     gecontroleerd: "2026-09-25"
   },
@@ -129,15 +126,15 @@ const AANVULLINGEN = {
     puntenIndicatie: "2025: 24 ECMEC (EACCME)",
     puntenBron: "https://europeanpainfederation.eu/news/efic2025-has-received-24-eaccme-credits/",
     deadlines: [
-      { soort: "annuleren", datum: "2026-12-13", bron: "https://europeanpainfederation.eu/efic2027/", gecontroleerd: "2026-11-02" },
-      { soort: "early-bird", datum: "2026-12-13", bron: "https://europeanpainfederation.eu/efic2027/", gecontroleerd: "2026-11-02" },
+      { soort: "annuleren", datum: "2026-12-13", bron: "https://europeanpainfederation.eu/efic2027/", gecontroleerd: "2026-11-16" },
+      { soort: "early-bird", datum: "2026-12-13", bron: "https://europeanpainfederation.eu/efic2027/", gecontroleerd: "2026-11-16" },
       { soort: "registratie", datum: "2027-03-21", bron: "https://europeanpainfederation.eu/efic2027/", gecontroleerd: "2026-11-02" }
     ],
     gecontroleerd: "2026-09-25"
   },
   "spa-aap-2027": {
     deadlines: [
-      { soort: "early-bird", datum: "2027-01-15", bron: "https://www2.pedsanesthesia.org/meetings/2027winter/guide/reg/index.iphtml", gecontroleerd: "2026-11-02" }
+      { soort: "early-bird", datum: "2027-01-15", bron: "https://www2.pedsanesthesia.org/meetings/2027winter/guide/reg/index.iphtml", gecontroleerd: "2026-11-16" }
     ]
   },
   "nva-anesthesiologendagen-2027": {
@@ -161,7 +158,7 @@ const AANVULLINGEN = {
     puntenIndicatie: "2026: 20 ECMEC (EACCME)",
     puntenBron: "https://esraeurope.org/meeting/20th-esra-winter-week-conference/",
     deadlines: [
-      { soort: "annuleren", datum: "2026-12-19", bron: "https://esraeurope.org/meeting/21st-esra-winter-week-conference/", gecontroleerd: "2026-11-02" }
+      { soort: "annuleren", datum: "2026-12-19", bron: "https://esraeurope.org/meeting/21st-esra-winter-week-conference/", gecontroleerd: "2026-11-16" }
     ],
     gecontroleerd: "2026-09-25"
   },
@@ -171,7 +168,7 @@ const AANVULLINGEN = {
     puntenIndicatie: "2026: 9 ECMEC (EACCME)",
     puntenBron: "https://esraeurope.org/meeting/15th-esra-pain-cadaver-workshop/",
     deadlines: [
-      { soort: "annuleren", datum: "2027-01-26", bron: "https://esraeurope.org/meeting/16th-esra-pain-cadaver-workshop/", gecontroleerd: "2026-11-05" }
+      { soort: "annuleren", datum: "2027-01-26", bron: "https://esraeurope.org/meeting/16th-esra-pain-cadaver-workshop/", gecontroleerd: "2026-11-16" }
     ],
     gecontroleerd: "2026-09-25"
   },
@@ -181,7 +178,7 @@ const AANVULLINGEN = {
     puntenIndicatie: "2026: 15,5 ECMEC (EACCME)",
     puntenBron: "https://esraeurope.org/meeting/39th-esra-ra-cadaver-workshop/",
     deadlines: [
-      { soort: "annuleren", datum: "2027-01-26", bron: "https://esraeurope.org/meeting/40th-esra-ra-cadaver-workshop/", gecontroleerd: "2026-11-05" }
+      { soort: "annuleren", datum: "2027-01-26", bron: "https://esraeurope.org/meeting/40th-esra-ra-cadaver-workshop/", gecontroleerd: "2026-11-16" }
     ],
     gecontroleerd: "2026-09-25"
   },
@@ -198,8 +195,8 @@ const AANVULLINGEN = {
     puntenIndicatie: "2026: max. 21,75 AMA PRA Category 1",
     puntenBron: "https://asra.com/events-education/past-events/past-ra-acute-pain-medicine-meetings/51st-annual-regional-anesthesiology-and-acute-pain-medicine-meeting/cme-cpd",
     deadlines: [
-      { soort: "abstracts", datum: "2027-02-03", bron: "https://asra.com/about-asra/deadlines", gecontroleerd: "2026-11-12" },
-      { soort: "early-bird", datum: "2027-03-18", bron: "https://asra.com/about-asra/deadlines", gecontroleerd: "2026-11-12" }
+      { soort: "abstracts", datum: "2027-02-03", bron: "https://asra.com/about-asra/deadlines", gecontroleerd: "2026-11-16" },
+      { soort: "early-bird", datum: "2027-03-18", bron: "https://asra.com/about-asra/deadlines", gecontroleerd: "2026-11-16" }
     ],
     gecontroleerd: "2026-09-25"
   },
@@ -215,37 +212,26 @@ const AANVULLINGEN = {
   },
   "nysora-milan-2027": {
     deadlines: [
-      { soort: "early-bird", datum: "2027-03-16", bron: "https://nysora.com/event/conferences/regional-anesthesia-updates-and-techniques-demonstration/", gecontroleerd: "2026-11-12" }
+      { soort: "early-bird", datum: "2027-03-16", bron: "https://nysora.com/event/conferences/regional-anesthesia-updates-and-techniques-demonstration/", gecontroleerd: "2026-11-16" }
     ]
   },
   "euroanaesthesia-2027": {
     deadlines: [
-      { soort: "abstracts", datum: "2026-12-10", bron: "https://euroanaesthesia.org/2027/abstracts/", gecontroleerd: "2026-11-12" },
-      { soort: "early-bird", datum: "2027-02-17", bron: "https://euroanaesthesia.org/2027/registration/", gecontroleerd: "2026-11-02" },
+      { soort: "abstracts", datum: "2026-12-10", bron: "https://euroanaesthesia.org/2027/abstracts/", gecontroleerd: "2026-11-16" },
+      { soort: "early-bird", datum: "2027-02-17", bron: "https://euroanaesthesia.org/2027/registration/", gecontroleerd: "2026-11-16" },
       { soort: "registratie", datum: "2027-05-26", bron: "https://euroanaesthesia.org/2027/registration/", gecontroleerd: "2026-11-02" }
     ]
   },
   "wca-2028": {
     deadlines: [
-      { soort: "abstracts", datum: "2027-03-23", bron: "https://wcacongress.org/abstracts/", gecontroleerd: "2026-11-02" },
-      { soort: "abstracts", datum: "2027-10-20", bron: "https://wcacongress.org/abstracts/", gecontroleerd: "2026-11-02" }
-    ],
-    gecontroleerd: "2026-09-28"
-  },
-  "wsac-2027": {
-    deadlines: [
-      { soort: "abstracts", datum: "2026-11-13", bron: "https://surgeryanesthesiacongress.com/", gecontroleerd: "2026-11-02" },
-      { soort: "early-bird", datum: "2026-11-15", bron: "https://surgeryanesthesiacongress.com/", gecontroleerd: "2026-11-02" }
+      { soort: "abstracts", datum: "2027-03-23", bron: "https://wcacongress.org/abstracts/", gecontroleerd: "2026-11-16" },
+      { soort: "abstracts", datum: "2027-10-20", bron: "https://wcacongress.org/abstracts/", gecontroleerd: "2026-11-16" }
     ],
     gecontroleerd: "2026-09-28"
   },
   "icsa-2027": {
     punten: "16+ CPD (volgens organisator; accrediterende instantie niet vermeld)",
     puntenBron: "https://surgery.inovineconferences.com/",
-    deadlines: [
-      { soort: "abstracts", datum: "2026-11-12", bron: "https://surgery.inovineconferences.com/", gecontroleerd: "2026-11-02" },
-      { soort: "early-bird", datum: "2026-11-14", bron: "https://surgery.inovineconferences.com/", gecontroleerd: "2026-11-02" }
-    ],
     gecontroleerd: "2026-09-28"
   }
 };

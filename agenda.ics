@@ -172,29 +172,10 @@ DTEND;VALUE=DATE:20261213
 SUMMARY:7th ESRA Instructor Course
 LOCATION:Antwerpen\, België
 DESCRIPTION:ESRA (European Society of Regional Anaesthesia and Pain Therapy
- )\nKosten: €875 (alleen voor ESRA-leden)\nLaatste dag annuleren met teru
- gbetaling: 2026-11-12\nBron: https://esraeurope.org/meetings/?meeting_type
- =esra-events
+ )\nKosten: €875 (alleen voor ESRA-leden)\nBron: https://esraeurope.org/m
+ eetings/?meeting_type=esra-events
 URL:https://esraeurope.org/meetings/?meeting_type=esra-events
 TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:esra-instructor-course-2026-annuleren@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261112
-DTEND;VALUE=DATE:20261113
-SUMMARY:Laatste dag annuleren met terugbetaling: 7th ESRA Instructor Course
-DESCRIPTION:7th ESRA Instructor Course (2026-12-11 t/m 2026-12-12\, Antwerp
- en\, België)\nBron: https://esraeurope.org/meeting/7th-esra-instructor-co
- urse/
-URL:https://esraeurope.org/meeting/7th-esra-instructor-course/
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Laatste dag annuleren met terugbetaling: 7th ESRA Instructor Co
- urse
-TRIGGER:-P7D
-END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:pga-80-2026@rik-spacecowboy.github.io
@@ -388,17 +369,17 @@ LOCATION:Las Vegas\, Verenigde Staten
 DESCRIPTION:NANS (North American Neuromodulation Society)\nLet op: Handmati
  g toegevoegd\, nog geen scraper voor deze bron.\nKosten: Vanaf $200 (stude
  nt/trainee-lid)\; niet-lid (fysicus) $885–$985\, zie bron voor volledige
-  tabel\nLaatste dag inschrijven: 2026-12-08\nBron: https://www.neuromodula
- tion.org/annual-meeting.html
+  tabel\nLaatste dag early-bird: 2026-12-08\nBron: https://www.neuromodulat
+ ion.org/annual-meeting.html
 URL:https://www.neuromodulation.org/annual-meeting.html
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:nans-annual-2027-registratie@rik-spacecowboy.github.io
+UID:nans-annual-2027-early-bird@rik-spacecowboy.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20261208
 DTEND;VALUE=DATE:20261209
-SUMMARY:Laatste dag inschrijven: NANS 2027 Annual Meeting (30th)
+SUMMARY:Laatste dag early-bird: NANS 2027 Annual Meeting (30th)
 DESCRIPTION:NANS 2027 Annual Meeting (30th) (2027-01-21 t/m 2027-01-24\, La
  s Vegas\, Verenigde Staten)\nBron: https://www.nans.org/annual-meeting.htm
  l
@@ -406,7 +387,7 @@ URL:https://www.nans.org/annual-meeting.html
 TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Laatste dag inschrijven: NANS 2027 Annual Meeting (30th)
+DESCRIPTION:Laatste dag early-bird: NANS 2027 Annual Meeting (30th)
 TRIGGER:-P7D
 END:VALARM
 END:VEVENT
@@ -608,49 +589,10 @@ DESCRIPTION:Iris Scientific Group\nLet op: Commercieel georganiseerd congre
  s (Iris Scientific Group\, host van tientallen vergelijkbare "World [Vakge
  bied] Congress"-events)\, geen erkende beroepsvereniging. Op uitdrukkelijk
   verzoek toegevoegd\; handmatig bijgehouden.\nKosten: Vanaf $399 (virtueel
- )\; vanaf $699 fysiek\; meerdere tarieven\, zie bron\nLaatste dag abstract
- s indienen: 2026-11-13\nLaatste dag early-bird: 2026-11-15\nBron: https://
- surgeryanesthesiacongress.com/
+ )\; vanaf $699 fysiek\; meerdere tarieven\, zie bron\nBron: https://surger
+ yanesthesiacongress.com/
 URL:https://surgeryanesthesiacongress.com/
 TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:wsac-2027-abstracts@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261113
-DTEND;VALUE=DATE:20261114
-SUMMARY:Laatste dag abstracts indienen: World Surgery and Anesthesia Congre
- ss (WSAC 2027)
-DESCRIPTION:World Surgery and Anesthesia Congress (WSAC 2027) (2027-03-11 t
- /m 2027-03-13\, Singapore\, Singapore)\nBron: https://surgeryanesthesiacon
- gress.com/
-URL:https://surgeryanesthesiacongress.com/
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Laatste dag abstracts indienen: World Surgery and Anesthesia Co
- ngress (WSAC 2027)
-TRIGGER:-P7D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:wsac-2027-early-bird@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261115
-DTEND;VALUE=DATE:20261116
-SUMMARY:Laatste dag early-bird: World Surgery and Anesthesia Congress (WSAC
-  2027)
-DESCRIPTION:World Surgery and Anesthesia Congress (WSAC 2027) (2027-03-11 t
- /m 2027-03-13\, Singapore\, Singapore)\nBron: https://surgeryanesthesiacon
- gress.com/
-URL:https://surgeryanesthesiacongress.com/
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Laatste dag early-bird: World Surgery and Anesthesia Congress (
- WSAC 2027)
-TRIGGER:-P7D
-END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:nwas-fresh-tracks-breckenridge-2027@rik-spacecowboy.github.io
@@ -727,48 +669,9 @@ DESCRIPTION:Inovine Conferences\nLet op: Commercieel georganiseerd congres
  (Inovine Conferences)\, geen erkende beroepsvereniging. Op uitdrukkelijk v
  erzoek toegevoegd\; handmatig bijgehouden.\nKosten: Nog niet gepubliceerd\
  nNascholing: 16+ CPD (volgens organisator\; accrediterende instantie niet 
- vermeld)\nLaatste dag abstracts indienen: 2026-11-12\nLaatste dag early-bi
- rd: 2026-11-14\nBron: https://surgery.inovineconferences.com/
+ vermeld)\nBron: https://surgery.inovineconferences.com/
 URL:https://surgery.inovineconferences.com/
 TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:icsa-2027-abstracts@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261112
-DTEND;VALUE=DATE:20261113
-SUMMARY:Laatste dag abstracts indienen: 2nd International Conference on Sur
- gery and Anesthesia
-DESCRIPTION:2nd International Conference on Surgery and Anesthesia (2027-04
- -09 t/m 2027-04-10\, Zürich\, Zwitserland)\nBron: https://surgery.inovine
- conferences.com/
-URL:https://surgery.inovineconferences.com/
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Laatste dag abstracts indienen: 2nd International Conference on
-  Surgery and Anesthesia
-TRIGGER:-P7D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:icsa-2027-early-bird@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261114
-DTEND;VALUE=DATE:20261115
-SUMMARY:Laatste dag early-bird: 2nd International Conference on Surgery and
-  Anesthesia
-DESCRIPTION:2nd International Conference on Surgery and Anesthesia (2027-04
- -09 t/m 2027-04-10\, Zürich\, Zwitserland)\nBron: https://surgery.inovine
- conferences.com/
-URL:https://surgery.inovineconferences.com/
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Laatste dag early-bird: 2nd International Conference on Surgery
-  and Anesthesia
-TRIGGER:-P7D
-END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:nysora-milan-2027@rik-spacecowboy.github.io
