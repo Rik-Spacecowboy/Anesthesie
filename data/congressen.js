@@ -130,18 +130,6 @@ const CONGRESSEN = [
     bron: "https://esraeurope.org/meetings/?meeting_type=esra-events"
   },
   {
-    id: "bapa-annual-2026",
-    naam: "BAPA Annual Scientific Meeting 2026",
-    organisatie: "BAPA (Belgian Association for Paediatric Anaesthesiology)",
-    land: "België",
-    stad: "Brussel",
-    datumStart: "2026-11-21",
-    datumEind: "2026-11-21",
-    onderwerp: ["kinderanesthesiologie"],
-    kosten: "Nog niet gepubliceerd",
-    bron: "https://www.bapanaesth.be/events/"
-  },
-  {
     id: "esra-instructor-course-2026",
     naam: "7th ESRA Instructor Course",
     organisatie: "ESRA (European Society of Regional Anaesthesia and Pain Therapy)",
@@ -478,6 +466,18 @@ const CONGRESSEN = [
     bron: "https://asra.com/events-education",
     letOp: "Automatisch gevonden; ordinal (bv. '52nd') stond niet in de brontekst, controleer de exacte naam.",
     letOpType: "data"
+  },
+  {
+    id: "esra-eastern-european-cadaver-workshop-2027",
+    naam: "24th ESRA Eastern European Cadaver Workshop",
+    organisatie: "ESRA (European Society of Regional Anaesthesia and Pain Therapy)",
+    land: "Tsjechië",
+    stad: "Praag",
+    datumStart: "2027-05-14",
+    datumEind: "2027-05-16",
+    onderwerp: ["regionale anesthesie", "pijngeneeskunde"],
+    kosten: "Nog niet gepubliceerd",
+    bron: "https://esraeurope.org/meetings/?meeting_type=esra-events"
   },
   {
     id: "soap-2027",

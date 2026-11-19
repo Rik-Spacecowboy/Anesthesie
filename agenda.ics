@@ -134,19 +134,6 @@ URL:https://esraeurope.org/meetings/?meeting_type=esra-events
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:bapa-annual-2026@rik-spacecowboy.github.io
-DTSTAMP:20260101T000000Z
-DTSTART;VALUE=DATE:20261121
-DTEND;VALUE=DATE:20261122
-SUMMARY:BAPA Annual Scientific Meeting 2026
-LOCATION:Brussel\, België
-DESCRIPTION:BAPA (Belgian Association for Paediatric Anaesthesiology)\nKost
- en: €125–€220 (aios/verpleegkundige lid t/m specialist niet-lid)\nBr
- on: https://www.bapanaesth.be/events/
-URL:https://www.bapanaesth.be/events/
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:esra-instructor-course-2026@rik-spacecowboy.github.io
 DTSTAMP:20260101T000000Z
 DTSTART;VALUE=DATE:20261211
@@ -954,6 +941,19 @@ DESCRIPTION:Laatste dag early-bird: Annual Regional Anesthesiology and Acut
  e Pain Medicine Meeting
 TRIGGER:-P7D
 END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:esra-eastern-european-cadaver-workshop-2027@rik-spacecowboy.github.io
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20270514
+DTEND;VALUE=DATE:20270517
+SUMMARY:24th ESRA Eastern European Cadaver Workshop
+LOCATION:Praag\, Tsjechië
+DESCRIPTION:ESRA (European Society of Regional Anaesthesia and Pain Therapy
+ )\nKosten: Nog niet gepubliceerd\nBron: https://esraeurope.org/meetings/?m
+ eeting_type=esra-events
+URL:https://esraeurope.org/meetings/?meeting_type=esra-events
+TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:soap-2027@rik-spacecowboy.github.io
