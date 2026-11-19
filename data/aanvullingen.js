@@ -59,9 +59,6 @@ const AANVULLINGEN = {
   "bapa-annual-2026": {
     kosten: "€125–€220 (aios/verpleegkundige lid t/m specialist niet-lid)",
     kostenBron: "https://www.bapanaesth.be/events/bapa-annual-scientific-meeting-21st-of-november-2026/",
-    deadlines: [
-      { soort: "registratie", datum: "2026-11-18", bron: "https://www.bapanaesth.be/events/bapa-annual-scientific-meeting-21st-of-november-2026/", gecontroleerd: "2026-11-16" }
-    ],
     gecontroleerd: "2026-09-25"
   },
   "esra-instructor-course-2026": {
@@ -118,6 +115,7 @@ const AANVULLINGEN = {
     puntenIndicatie: "2025: 24,5 CME",
     puntenBron: "https://painconnect.org/about-painconnect/",
     deadlines: [
+      { soort: "early-bird", datum: "2027-01-04", bron: "https://painconnect.org/registration/", gecontroleerd: "2026-11-19" },
       { soort: "annuleren", datum: "2027-02-25", bron: "https://painconnect.org/registration/", gecontroleerd: "2026-11-16" }
     ],
     gecontroleerd: "2026-09-25"
@@ -232,6 +230,19 @@ const AANVULLINGEN = {
   "icsa-2027": {
     punten: "16+ CPD (volgens organisator; accrediterende instantie niet vermeld)",
     puntenBron: "https://surgery.inovineconferences.com/",
+    deadlines: [
+      { soort: "abstracts", datum: "2026-11-28", bron: "https://surgery.inovineconferences.com/", gecontroleerd: "2026-11-19" },
+      { soort: "early-bird", datum: "2026-11-29", bron: "https://surgery.inovineconferences.com/registration.php", gecontroleerd: "2026-11-19" }
+    ],
     gecontroleerd: "2026-09-28"
+  },
+  "wsac-2027": {
+    deadlines: [
+      { soort: "abstracts", datum: "2026-11-27", bron: "https://www.surgeryanesthesiacongress.com/important-dates", gecontroleerd: "2026-11-19" },
+      { soort: "early-bird", datum: "2026-11-30", bron: "https://www.surgeryanesthesiacongress.com/important-dates", gecontroleerd: "2026-11-19" },
+      { soort: "abstracts", datum: "2027-01-28", bron: "https://www.surgeryanesthesiacongress.com/important-dates", gecontroleerd: "2026-11-19" },
+      { soort: "abstracts", datum: "2027-03-04", bron: "https://www.surgeryanesthesiacongress.com/important-dates", gecontroleerd: "2026-11-19" }
+    ],
+    gecontroleerd: "2026-11-19"
   }
 };
