@@ -241,7 +241,7 @@ const AANVULLINGEN = {
       { soort: "abstracts", datum: "2026-11-27", bron: "https://www.surgeryanesthesiacongress.com/important-dates", gecontroleerd: "2026-11-19" },
       { soort: "early-bird", datum: "2026-11-30", bron: "https://www.surgeryanesthesiacongress.com/important-dates", gecontroleerd: "2026-11-19" },
       { soort: "abstracts", datum: "2027-01-28", bron: "https://www.surgeryanesthesiacongress.com/important-dates", gecontroleerd: "2026-11-19" },
-      { soort: "abstracts", datum: "2027-03-04", bron: "https://www.surgeryanesthesiacongress.com/important-dates", gecontroleerd: "2026-11-19" }
+      { soort: "abstracts", datum: "2027-03-01", bron: "https://surgeryanesthesiacongress.com/", gecontroleerd: "2026-11-26" }
     ],
     gecontroleerd: "2026-11-19"
   }
